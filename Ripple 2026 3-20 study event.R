@@ -211,7 +211,7 @@ if (Sys.info()["sysname"] == "Windows") {
 # Construct file path
 pr_path <- file.path(
   BASE_PATH,
-  "Data/Reports/Participant Registration/ParticipantRegistration_Export_05122026.xlsx"
+  "Data/Reports/Participant Registration/ParticipantRegistration_Export_05262026.xlsx"
 )
 
 # Import data
