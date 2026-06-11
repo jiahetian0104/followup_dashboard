@@ -4,6 +4,7 @@ library(httr2)
 library(readxl)
 library(XLConnect) # read excel file with password protection
 library(tibble)
+library(openxlsx)
 
 # 1. Ripple data ----------------------------------------------------------
 
@@ -211,7 +212,7 @@ if (Sys.info()["sysname"] == "Windows") {
 # Construct file path
 pr_path <- file.path(
   BASE_PATH,
-  "Data/Reports/Participant Registration/ParticipantRegistration_Export_05262026.xlsx"
+  "Data/Reports/Participant Registration/ParticipantRegistration_Export_06112026.xlsx"
 )
 
 # Import data
@@ -861,7 +862,7 @@ writeData(summary_wb, "With Potential", dashboard_summary_with_potential)
 addWorksheet(summary_wb, "Without Potential")
 writeData(summary_wb, "Without Potential", dashboard_summary_without_potential)
 
-saveWorkbook(
+openxlsx::saveWorkbook(
   summary_wb,
   file.path(snapshot_dir, "summary.xlsx"),
   overwrite = TRUE
