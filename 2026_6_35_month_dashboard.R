@@ -490,87 +490,71 @@ event_progress_yes_only <- activity_log_with_staff %>%
   ) %>%
   arrange(staff, Event)
 
-library(fs)
+
+# 6. Build Streamlit dashboard data ---------------------------------------
+
+library(readr)
 library(openxlsx)
-# -----------------------------
-# 1. Set output folder
-# -----------------------------
+library(fs)
 
-APP_DIR <- file.path(
-  "/Users/tianjiah/Library/CloudStorage/OneDrive-MichiganStateUniversity/Data Manager/followup_dashboard",
-  "6_35_followup_streamlit_app"
-)
-
-latest_dir <- file.path(APP_DIR, "data", "latest")
-snapshot_date <- format(Sys.Date(), "%Y-%m-%d")
-snapshot_dir <- file.path(APP_DIR, "data", "snapshots", snapshot_date)
-
-dir_create(latest_dir)
-dir_create(snapshot_dir)
-
-# -----------------------------
-# 2. Standardize dashboard detail data
-# -----------------------------
-
+# Convert the activity log into the same dashboard_detail structure expected
+# by streamlit_app.py.
 dashboard_detail <- activity_log_with_staff %>%
   mutate(
-    # Use a display-friendly event name while keeping the original event name
+    # Keep the existing Streamlit naming convention.
     event_short = Event,
-    
-    # Fill missing staff assignment for dashboard grouping
-    staff = if_else(is.na(staff) | str_trim(staff) == "", "Unassigned", staff),
-    
-    # Keep status_group as the standardized participant status for dashboard filters
+    Outcome = Completion,
+    statusId = status_group,
     status_2026_std = status_group,
     participant_status = status_group,
+    child_echo_id = ECHO_ID,
+    source_sheet = "2026_6_35_month",
     
-    # Streamlit denominator logic:
-    # Yes and Potential Participants are controlled by the app toggle.
-    # No records are never included in the denominator.
+    # Eligible denominator logic:
+    # - Yes = eligible
+    # - Potential Participants = eligible only when the dashboard toggle includes them
+    # - No = not eligible
     eligible_flag = case_when(
       Eligibility %in% c("Yes", "Potential Participants") ~ 1,
       TRUE ~ 0
     ),
     
-    # Streamlit numerator logic:
-    # Complete is counted as 1; all unfinished states are counted as 0.
+    # Score logic used by Streamlit:
+    # Complete contributes 1 to the numerator.
+    # Incomplete / No record / Other contributes 0 when eligible_flag == 1.
     Score = case_when(
-      Completion == "Complete" ~ 1,
-      Completion %in% c("Incomplete", "No record", "Other") ~ 0,
+      Outcome == "Complete" ~ 1,
+      Outcome %in% c("Incomplete", "No record", "Other") ~ 0,
       TRUE ~ NA_real_
-    ),
-    
-    Outcome = Completion,
-    source_sheet = "2026_6_35_month.R"
+    )
   ) %>%
   select(
+    child_echo_id,
     ECHO_ID,
     staff,
-    Event,
-    event_short,
     status_group,
+    statusId,
     status_2026_std,
     participant_status,
     Eligibility,
     Age_Window,
+    event_short,
+    Event,
     Outcome,
     Completion_Date,
     eligible_flag,
     Score,
     source_sheet
   ) %>%
-  arrange(staff, Event, status_group, ECHO_ID)
+  arrange(staff, event_short, child_echo_id)
 
-# -----------------------------
-# 3. Summary helper
-# -----------------------------
 
 summarise_dashboard <- function(data) {
   summary_by_event <- data %>%
     group_by(staff, event_short) %>%
     summarise(
       denominator = sum(eligible_flag, na.rm = TRUE),
-      numerator = sum(if_else(eligible_flag == 1, coalesce(Score, 0), 0), na.rm = TRUE),
+      numerator = sum(if_else(eligible_flag == 1, Score, 0), na.rm = TRUE),
       progress = if_else(denominator == 0, NA_real_, numerator / denominator),
       .groups = "drop"
     )
@@ -579,7 +563,7 @@ summarise_dashboard <- function(data) {
     group_by(staff) %>%
     summarise(
       denominator = sum(eligible_flag, na.rm = TRUE),
-      numerator = sum(if_else(eligible_flag == 1, coalesce(Score, 0), 0), na.rm = TRUE),
+      numerator = sum(if_else(eligible_flag == 1, Score, 0), na.rm = TRUE),
       progress = if_else(denominator == 0, NA_real_, numerator / denominator),
       .groups = "drop"
     ) %>%
@@ -590,49 +574,52 @@ summarise_dashboard <- function(data) {
     arrange(staff, event_short)
 }
 
-# -----------------------------
-# 4. Create two summary versions
-# -----------------------------
-
-# Version 1: include both eligible participants and Potential Participants
+# Version 1: include eligible participants plus Potential Participants.
 dashboard_summary_with_potential <- dashboard_detail %>%
   filter(Eligibility %in% c("Yes", "Potential Participants")) %>%
   summarise_dashboard()
 
-# Version 2: only include currently eligible participants
+# Version 2: eligible participants only; Potential Participants excluded.
 dashboard_summary_without_potential <- dashboard_detail %>%
-  filter(Eligibility == "Yes") %>%
-  mutate(
-    eligible_flag = 1
-  ) %>%
+  filter(Eligibility == "Yes", status_group != "Potential Participants") %>%
   summarise_dashboard()
 
-# -----------------------------
-# 5. Save latest and snapshot outputs
-# -----------------------------
 
+# 7. Save dashboard outputs for Streamlit ---------------------------------
+
+# Project folder that contains streamlit_app.py.
+APP_DIR <- "/Users/tianjiah/Library/CloudStorage/OneDrive-MichiganStateUniversity/Data Manager/followup_dashboard/followup_streamlit_app"
+
+latest_dir <- file.path(APP_DIR, "data", "latest")
+snapshot_date <- format(Sys.Date(), "%Y-%m-%d")
+snapshot_dir <- file.path(APP_DIR, "data", "snapshots", snapshot_date)
+
+dir_create(latest_dir)
+dir_create(snapshot_dir)
+
+# Save latest detail CSV for routine Streamlit monitoring.
 write_csv(
   dashboard_detail,
   file.path(latest_dir, "dashboard_detail.csv"),
   na = ""
 )
 
+# Save dated snapshot detail CSV for historical review.
 write_csv(
   dashboard_detail,
   file.path(snapshot_dir, "detail.csv"),
   na = ""
 )
 
-write_csv(
-  dashboard_summary_with_potential,
-  file.path(snapshot_dir, "summary_with_potential.csv"),
-  na = ""
-)
-
-write_csv(
-  dashboard_summary_without_potential,
-  file.path(snapshot_dir, "summary_without_potential.csv"),
-  na = ""
+# Save optional snapshot summary workbook with both denominator definitions.
+notes_df <- tibble::tibble(
+  Note = c(
+    "1. This dashboard is based on 2026_6_35_month.R and uses status_group as the dashboard participant status.",
+    "2. For caregiver survey and IPA scheduled events, Age_Window is derived from status_group. For consent events, Age_Window is not applicable.",
+    "3. Staff assignment prioritizes Anna/Jody/Cassie tags. If no staff tag is present, staff is assigned by status_group: 6_11_month = Anna, 12_23_month = Jody, 24_35_month = Cassie.",
+    "4. eligible_flag = 1 when Eligibility is Yes or Potential Participants. Streamlit can exclude Potential Participants using the sidebar toggle because participant_status/status_2026_std is set to status_group.",
+    "5. Score = 1 for Complete; Score = 0 for Incomplete, No record, or Other. Progress is numerator divided by denominator among eligible rows."
+  )
 )
 
 summary_wb <- createWorkbook()
@@ -643,15 +630,44 @@ writeData(summary_wb, "With Potential", dashboard_summary_with_potential)
 addWorksheet(summary_wb, "Without Potential")
 writeData(summary_wb, "Without Potential", dashboard_summary_without_potential)
 
-addWorksheet(summary_wb, "Detail")
-writeData(summary_wb, "Detail", dashboard_detail)
+addWorksheet(summary_wb, "Notes")
+writeData(summary_wb, "Notes", notes_df)
 
-saveWorkbook(
+setColWidths(summary_wb, "With Potential", cols = 1:ncol(dashboard_summary_with_potential), widths = "auto")
+setColWidths(summary_wb, "Without Potential", cols = 1:ncol(dashboard_summary_without_potential), widths = "auto")
+setColWidths(summary_wb, "Notes", cols = 1:ncol(notes_df), widths = "auto")
+
+openxlsx::saveWorkbook(
   summary_wb,
   file.path(snapshot_dir, "summary.xlsx"),
   overwrite = TRUE
 )
 
-message("Dashboard data saved to: ", APP_DIR)
-message("Latest detail: ", file.path(latest_dir, "dashboard_detail.csv"))
-message("Snapshot folder: ", snapshot_dir)
+# Optional local Excel export for quick review outside Streamlit.
+review_dir <- "/Users/tianjiah/Library/CloudStorage/OneDrive-MichiganStateUniversity/Data Manager/followup_dashboard"
+dir_create(review_dir)
+
+review_wb <- createWorkbook()
+
+addWorksheet(review_wb, "dashboard_detail")
+writeData(review_wb, "dashboard_detail", dashboard_detail)
+
+addWorksheet(review_wb, "With Potential")
+writeData(review_wb, "With Potential", dashboard_summary_with_potential)
+
+addWorksheet(review_wb, "Without Potential")
+writeData(review_wb, "Without Potential", dashboard_summary_without_potential)
+
+addWorksheet(review_wb, "Notes")
+writeData(review_wb, "Notes", notes_df)
+
+setColWidths(review_wb, "dashboard_detail", cols = 1:ncol(dashboard_detail), widths = "auto")
+setColWidths(review_wb, "With Potential", cols = 1:ncol(dashboard_summary_with_potential), widths = "auto")
+setColWidths(review_wb, "Without Potential", cols = 1:ncol(dashboard_summary_without_potential), widths = "auto")
+setColWidths(review_wb, "Notes", cols = 1:ncol(notes_df), widths = "auto")
+
+openxlsx::saveWorkbook(
+  review_wb,
+  file.path(review_dir, paste0("followup_dashboard_review_", snapshot_date, ".xlsx")),
+  overwrite = TRUE
+)
