@@ -1,4 +1,5 @@
 
+rm(list = ls())
 # 1. Load Packages --------------------------------------------------------
 
 library(tidyverse)
@@ -17,7 +18,7 @@ get_path <- function(relative_path) {
 }
 
 participant_registration <- read_excel(
-  get_path("Data/Reports/Participant Registration/ParticipantRegistration_Export_05132026.xlsx")
+  get_path("Data/Reports/Participant Registration/ParticipantRegistration_Export_06112026.xlsx")
 )
 
 ## 2.1. Set up parameters ----------------------------------------------------
@@ -95,6 +96,7 @@ ripple_data <- read_csv(
 
 # 3.1 Ripple Data ---------------------------------------------------------
 
+# related events
 event_cols <- c(
   ## Caregiver survey
   "event.6_11_mo_cg_survey.completed",
