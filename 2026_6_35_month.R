@@ -18,7 +18,7 @@ get_path <- function(relative_path) {
 }
 
 participant_registration <- read_excel(
-  get_path("Data/Reports/Participant Registration/ParticipantRegistration_Export_06112026.xlsx")
+  get_path("Data/Reports/Participant Registration/ParticipantRegistration_Export_06162026.xlsx")
 )
 
 ## 2.1. Set up parameters ----------------------------------------------------
@@ -451,6 +451,39 @@ activity_log_with_staff <- activity_log %>%
     by = c("ECHO_ID", "status_group")
   )
 
+# quality check
+
+potential_staff_missing_ID <- activity_log_with_staff %>%
+  filter(
+    is.na(staff) | str_trim(staff) == "" ,
+      status_group == "Potential Participants"
+  ) %>%
+  select(ECHO_ID) %>%
+  distinct()
+
+class(ripple_activity_wide$birthday)
+
+missing_staff_list <- ripple_activity_wide %>%
+  filter(
+    ECHO_ID %in% potential_staff_missing_ID$ECHO_ID
+  ) %>%
+  select(ECHO_ID, birthday, status_group) %>%
+  mutate(
+    birthday = mdy(birthday),
+    # Calculate age in completed months
+    age_months = interval(birthday, Sys.Date()) %/% months(1),
+    # Calculate age in completed years
+    age = as.integer(interval(birthday, Sys.Date()) / years(1))
+  )
+
+activity_log_with_staff <- activity_log_with_staff %>%
+  mutate(
+    Eligibility = case_when(
+      ECHO_ID %in% missing_staff_list$ECHO_ID ~ "No",
+      TRUE ~ Eligibility
+    )
+  )
+
 
 # 5. Progress -------------------------------------------------------------
 
@@ -489,6 +522,7 @@ event_progress_yes_only <- activity_log_with_staff %>%
     .groups = "drop"
   ) %>%
   arrange(staff, Event)
+
 
 library(fs)
 library(openxlsx)
