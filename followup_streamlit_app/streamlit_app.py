@@ -74,8 +74,8 @@ def find_snapshot_detail_files(snapshot_dir: Path = SNAPSHOT_DIR) -> dict[str, P
 
 
 @st.cache_data(show_spinner=False)
-def load_csv_from_path(path: str) -> pd.DataFrame:
-    """Load a CSV from a repository path and cache it for faster reruns."""
+def load_csv_from_path(path: str, modified_time: int) -> pd.DataFrame:
+    """Load a CSV and refresh the cache whenever the file changes."""
     return pd.read_csv(path)
 
 
@@ -362,12 +362,22 @@ def resolve_data_source() -> tuple[pd.DataFrame | None, str]:
     )
 
     if selected_source == "Latest":
-        raw = load_csv_from_path(str(LATEST_DETAIL_PATH))
+        raw = load_csv_from_path(
+            str(LATEST_DETAIL_PATH),
+            LATEST_DETAIL_PATH.stat().st_mtime_ns,
+        )
         return raw, "Latest"
 
     if selected_source == "Snapshot":
-        snapshot_date = st.sidebar.selectbox("Snapshot date", list(snapshots.keys()))
-        raw = load_csv_from_path(str(snapshots[snapshot_date]))
+        snapshot_date = st.sidebar.selectbox(
+            "Snapshot date",
+            list(snapshots.keys()),
+        )
+        snapshot_path = snapshots[snapshot_date]
+        raw = load_csv_from_path(
+            str(snapshot_path),
+            snapshot_path.stat().st_mtime_ns,
+        )
         return raw, f"Snapshot: {snapshot_date}"
 
     uploaded_file = st.sidebar.file_uploader("Upload dashboard_detail.csv", type=["csv"])
