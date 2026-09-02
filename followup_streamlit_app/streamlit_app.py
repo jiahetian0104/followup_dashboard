@@ -38,6 +38,14 @@ BASE_DIR = Path(__file__).resolve().parent
 LATEST_DETAIL_PATH = BASE_DIR / "data" / "latest" / "dashboard_detail.csv"
 SNAPSHOT_DIR = BASE_DIR / "data" / "snapshots"
 
+# Plotly typography is defined centrally so all dashboard charts remain
+# consistent and can be adjusted in one place.
+CHART_TITLE_FONT_SIZE = 25
+AXIS_TITLE_FONT_SIZE = 20
+AXIS_TICK_FONT_SIZE = 17
+HOVER_FONT_SIZE = 17
+HEATMAP_VALUE_FONT_SIZE = 18
+
 
 # =========================
 # Page settings
@@ -273,6 +281,24 @@ def prep_detail_table(data: pd.DataFrame) -> pd.DataFrame:
     return data[cols + remaining_cols].copy()
 
 
+def apply_chart_typography(fig):
+    """Apply accessible, consistent typography to a Plotly figure."""
+    fig.update_layout(
+        title_font=dict(size=CHART_TITLE_FONT_SIZE),
+        font=dict(size=AXIS_TICK_FONT_SIZE),
+        hoverlabel=dict(font_size=HOVER_FONT_SIZE),
+    )
+    fig.update_xaxes(
+        title_font=dict(size=AXIS_TITLE_FONT_SIZE),
+        tickfont=dict(size=AXIS_TICK_FONT_SIZE),
+    )
+    fig.update_yaxes(
+        title_font=dict(size=AXIS_TITLE_FONT_SIZE),
+        tickfont=dict(size=AXIS_TICK_FONT_SIZE),
+    )
+    return fig
+
+
 def make_bar_staff(data: pd.DataFrame):
     """Create the staff-level progress bar chart."""
     sdf = summarize_by_staff(data)
@@ -288,10 +314,10 @@ def make_bar_staff(data: pd.DataFrame):
         yaxis_tickformat=".0%",
         xaxis_title="Staff",
         yaxis_title="Progress",
-        height=420,
+        height=470,
         margin=dict(l=20, r=20, t=60, b=20),
     )
-    return fig
+    return apply_chart_typography(fig)
 
 
 def make_bar_event(data: pd.DataFrame):
@@ -309,18 +335,19 @@ def make_bar_event(data: pd.DataFrame):
         yaxis_tickformat=".0%",
         xaxis_title="Event",
         yaxis_title="Progress",
-        height=420,
-        margin=dict(l=20, r=20, t=60, b=80),
+        height=500,
+        margin=dict(l=20, r=20, t=70, b=130),
     )
     fig.update_xaxes(tickangle=45)
-    return fig
+    return apply_chart_typography(fig)
 
 
 def make_heatmap(data: pd.DataFrame):
     """Create the staff-by-event progress heatmap."""
     sdf = summarize_staff_event(data, add_overall=False)
     if sdf.empty:
-        return px.imshow([[None]], text_auto=False, title="Staff × Event Progress")
+        fig = px.imshow([[None]], text_auto=False, title="Staff × Event Progress")
+        return apply_chart_typography(fig)
 
     pivot = sdf.pivot(index="staff", columns="event_short", values="progress")
     fig = px.imshow(
@@ -332,10 +359,14 @@ def make_heatmap(data: pd.DataFrame):
     )
     fig.update_layout(
         template="plotly_white",
-        height=520,
-        margin=dict(l=20, r=20, t=60, b=40),
+        height=600,
+        margin=dict(l=30, r=30, t=70, b=80),
     )
-    return fig
+    fig.update_traces(textfont=dict(size=HEATMAP_VALUE_FONT_SIZE))
+    fig.update_coloraxes(
+        colorbar_tickfont=dict(size=AXIS_TICK_FONT_SIZE),
+    )
+    return apply_chart_typography(fig)
 
 
 def dataframe_to_csv_bytes(data: pd.DataFrame) -> bytes:

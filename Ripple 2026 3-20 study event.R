@@ -76,6 +76,7 @@ selected_data <- ripple_data %>%
     starts_with("event.2026")
   ) %>%
   filter(!(globalId %in% c("iri0LoVJXJ734mKYy","54jpojzH4AVzTJoPD")))  %>% # delete Anna and Mallory from the result
+  filter(statusId != "Withdrawn") %>%
   extract(
     globalId, 
     into = c("child_echo_id", "PIN"), 
@@ -212,7 +213,7 @@ if (Sys.info()["sysname"] == "Windows") {
 # Construct file path
 pr_path <- file.path(
   BASE_PATH,
-  "Data/Reports/Participant Registration/ParticipantRegistration_Export_08122026.xlsx"
+  "Data/Reports/Participant Registration/ParticipantRegistration_Export_09012026.xlsx"
 )
 
 # Import data
