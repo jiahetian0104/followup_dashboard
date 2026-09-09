@@ -1,0 +1,737 @@
+Event Type Name,Meeting Notes Plain,Meeting Host,Invitee Name,Child Name,Child First Name,Child Last Name,Child Age,Event Created Date & Time,Canceled,No Show,No Show Created Date & Time,Event Created Date,No Show Created Date
+East Lansing Assessment ,NA,Cassie Nickerson,Shamari Reed,NA,NA,NA,NA,2026-03-06T16:43:31.987378Z,TRUE,FALSE,NA,2026-03-06,NA
+Flint Assessment  ,NA,Jody Kendall,Kelsey Baxter,NA,NA,NA,NA,2026-03-05T12:58:54.450158Z,FALSE,FALSE,NA,2026-03-05,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Shamari Reed,NA,NA,NA,NA,2026-03-07T18:02:06.272888Z,FALSE,FALSE,NA,2026-03-07,NA
+Traverse City Assessment ,TLP747-01-A,Nicole Lipcaman,Joscilyn Jenkins,NA,NA,NA,NA,2026-03-04T16:58:57.486335Z,FALSE,FALSE,NA,2026-03-04,NA
+Flint Assessment  ,NA,Jody Kendall,latricia Patrick,NA,NA,NA,NA,2026-03-04T16:10:57.301916Z,FALSE,FALSE,NA,2026-03-04,NA
+Traverse City Assessment ,VQX210-01-A,Nicole Lipcaman,Adelynn Knoke,Adelynn Knoke,Adelynn,Knoke,6,2026-03-13T13:22:20.283632Z,FALSE,FALSE,NA,2026-03-13,NA
+Traverse City Assessment ,"86414
+
+6 y/o",Nicole Lipcaman,Adelynn Knoke,NA,NA,NA,NA,2026-03-06T22:33:05.473137Z,TRUE,FALSE,NA,2026-03-06,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Emilia Boortz,NA,NA,NA,NA,2026-03-10T19:28:18.482149Z,FALSE,FALSE,NA,2026-03-10,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Michelle Smith,NA,NA,NA,NA,2026-03-07T03:40:16.870812Z,FALSE,FALSE,NA,2026-03-07,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Ann McCourt,NA,NA,NA,NA,2026-03-10T19:50:41.509188Z,TRUE,FALSE,NA,2026-03-10,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Jessica Wilkins,NA,NA,NA,NA,2026-03-08T18:24:34.454686Z,FALSE,FALSE,NA,2026-03-08,NA
+Traverse City Assessment ,"3108
+
+8 y/o",Nicole Lipcaman,Nicole VanNess,NA,NA,NA,NA,2026-03-04T20:55:12.657586Z,TRUE,FALSE,NA,2026-03-04,NA
+Traverse City Assessment ,"86414
+
+6 y/o",Nicole Lipcaman,Adelynn Knoke,NA,NA,NA,NA,2026-03-13T00:37:51.823376Z,TRUE,FALSE,NA,2026-03-13,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Julyan Kosier,NA,NA,NA,NA,2026-03-09T17:24:31.540354Z,FALSE,FALSE,NA,2026-03-09,NA
+Detroit Assessment,NA,Shetoye  Rice,Shanna Pugh,NA,NA,NA,NA,2026-03-12T20:40:19.395656Z,FALSE,FALSE,NA,2026-03-12,NA
+Detroit Assessment,NA,Shetoye  Rice,Jesus Soto,NA,NA,NA,NA,2026-03-12T03:22:40.061555Z,FALSE,FALSE,NA,2026-03-12,NA
+Detroit Assessment,NA,Shetoye  Rice,Andrea Smith,Xavier smith ,Xavier,smith,7 ,2026-03-13T13:57:48.260169Z,TRUE,FALSE,NA,2026-03-13,NA
+Detroit Assessment,NA,Breanna Kornatowski,JaVora Walker,Hailey Ives ,Hailey,Ives,6,2026-03-13T20:09:07.310375Z,FALSE,TRUE,2026-03-25T14:38:09.985952Z,2026-03-13,2026-03-25
+East Lansing Assessment ,1622,Jolyn Lerma,Anna Stouffer-Hopkins,Katelyn Stouffer-Hopkins ,Katelyn,Stouffer-Hopkins,12,2026-03-20T10:33:56.577565Z,FALSE,FALSE,NA,2026-03-20,NA
+East Lansing Assessment ,"Cancelled appt at 10:53am via Calendly stating ""flat tire"". Appt was for 11:00am. Confirmed appt 3/27/26.",Jolyn Lerma,Marina Brinker,NA,NA,NA,NA,2026-03-10T17:59:49.673912Z,FALSE,FALSE,NA,2026-03-10,NA
+Traverse City Assessment ,CCC242-01-A,Nicole Lipcaman,Tichele Glander,Monte Bingham III,Monte,Bingham,18 months,2026-03-16T17:48:59.294132Z,FALSE,FALSE,NA,2026-03-16,NA
+Traverse City Assessment ,SPR662-01-A,Nicole Lipcaman,Sebastian Leidinger,NA,NA,NA,NA,2026-03-10T18:21:37.698309Z,FALSE,FALSE,NA,2026-03-10,NA
+Traverse City Assessment ,TSC574-01-A,Nicole Lipcaman,Frances Rockwell,Frances Rockwell,Frances,Rockwell,7,2026-03-13T20:24:20.680894Z,FALSE,FALSE,NA,2026-03-13,NA
+Traverse City Assessment ,WYR002-01-A,Nicole Lipcaman,Cheryl Cassens,NA,NA,NA,NA,2026-03-04T17:16:42.295815Z,FALSE,FALSE,NA,2026-03-04,NA
+Traverse City Assessment ,XXW639-01-A,Nicole Lipcaman,Ashley Westover,NA,NA,NA,NA,2026-03-12T18:58:26.375787Z,FALSE,FALSE,NA,2026-03-12,NA
+Traverse City Assessment ,GDJ477-01-A,Nicole Lipcaman,Jennifer Holm,Carter Jo Holm,Carter,Holm,17 months,2026-03-16T21:22:04.174415Z,FALSE,FALSE,NA,2026-03-16,NA
+East Lansing Assessment ,NA,Jolyn Lerma,Lyric Barker,NA,NA,NA,NA,2026-03-09T14:24:03.931591Z,TRUE,FALSE,NA,2026-03-09,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Waychonay Beachy,Dallas Beachy,Dallas,Beachy,17 months,2026-03-16T20:01:45.787222Z,TRUE,FALSE,NA,2026-03-16,NA
+Detroit Assessment,NA,Shetoye  Rice,Cara Sikora,Mila sikora ,Mila,sikora,7,2026-03-17T21:05:13.078684Z,FALSE,FALSE,NA,2026-03-17,NA
+Detroit Assessment,NA,Shetoye  Rice,Megan Spears,Odin Spears,Odin,Spears,5,2026-03-13T19:40:49.866409Z,FALSE,FALSE,NA,2026-03-13,NA
+Traverse City Assessment ,YJD781-01-A,Nicole Lipcaman,Billi Darter,NA,NA,NA,NA,2026-03-10T17:27:45.300754Z,FALSE,FALSE,NA,2026-03-10,NA
+Traverse City Assessment ,ZND119-01-A,Nicole Lipcaman,Grant Handwerk,NA,NA,NA,NA,2026-03-04T17:53:35.319371Z,FALSE,FALSE,NA,2026-03-04,NA
+East Lansing Assessment ,9yr,Cassie Nickerson,Erin Bryant,NA,NA,NA,NA,2026-03-04T18:44:12.502758Z,FALSE,FALSE,NA,2026-03-04,NA
+Traverse City Assessment ,XTP134-01-A,Nicole Lipcaman,Amanda Manning,NA,NA,NA,NA,2026-03-07T13:37:08.412838Z,FALSE,FALSE,NA,2026-03-07,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Heather Rutledge,NA,NA,NA,NA,2026-03-06T16:57:19.073444Z,FALSE,FALSE,NA,2026-03-06,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Destiny hacker,Jacksyn hacker,Jacksyn,hacker,15,2026-03-24T21:08:59.313731Z,FALSE,FALSE,NA,2026-03-24,NA
+Detroit Assessment,NA,Shetoye  Rice,Heather Louser,Stephan George,Stephan,George,9,2026-03-18T03:38:57.981943Z,FALSE,FALSE,NA,2026-03-18,NA
+Traverse City Assessment ,QHF620-01-A,Nicole Lipcaman,Alyssa Jordan,Marcos Jordan ,Marcos,Jordan,17montha old ,2026-03-17T13:53:22.936223Z,FALSE,FALSE,NA,2026-03-17,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Ann Baughman,NA,NA,NA,NA,2026-03-11T16:24:42.446771Z,FALSE,FALSE,NA,2026-03-11,NA
+Traverse City Assessment ,ZVV604-01-A,Nicole Lipcaman,Natasha Mix,NA,NA,NA,NA,2026-03-10T17:33:44.684580Z,FALSE,FALSE,NA,2026-03-10,NA
+Detroit Assessment,NA,Shetoye  Rice,Heidi Reijm,Silas Rafferty,Silas,Rafferty,9,2026-03-20T16:21:21.634963Z,TRUE,FALSE,NA,2026-03-20,NA
+Detroit Assessment,NA,Shetoye  Rice,Jing Zhao,Kristen Soong,Kristen,Soong,9,2026-03-23T13:46:38.682814Z,FALSE,FALSE,NA,2026-03-23,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Sophia Williams,NA,NA,NA,NA,2026-03-11T16:31:19.003915Z,TRUE,FALSE,NA,2026-03-11,NA
+Traverse City Assessment ,VXC743-01-A,Nicole Lipcaman,Anna Semelbauer,NA,NA,NA,NA,2026-03-12T23:36:49.818951Z,FALSE,FALSE,NA,2026-03-12,NA
+East Lansing Assessment ,7yr,Cassie Nickerson,Meaghan Stoinski,Lucien Stoinski,Lucien,Stoinski,7,2026-03-14T00:42:13.623428Z,FALSE,FALSE,NA,2026-03-14,NA
+Detroit Assessment,NA,Shetoye  Rice,Danielle Welcome,Jade Welcome,Jade,Welcome,9,2026-03-20T01:59:51.445942Z,FALSE,FALSE,NA,2026-03-20,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Ann Paquette-Lukens,Oscar Lukens,Oscar,Lukens,12,2026-03-17T16:33:04.373048Z,FALSE,FALSE,NA,2026-03-17,NA
+Detroit Assessment,NA,Shetoye  Rice,Danielle Welcome,Jamir Welcome,Jamir,Welcome,9,2026-03-20T21:04:59.392338Z,FALSE,FALSE,NA,2026-03-20,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Ann Paquette-Lukens,Rocco Lukens,Rocco,Lukens,12,2026-03-17T16:33:51.061881Z,FALSE,FALSE,NA,2026-03-17,NA
+Detroit Assessment,NA,Shetoye  Rice,Katelin Iott,NA,NA,NA,NA,2026-03-06T13:31:04.311704Z,FALSE,FALSE,NA,2026-03-06,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Mallorie Gillespie,Dominic Gillespie,Dominic,Gillespie,14,2026-03-17T15:36:37.939584Z,FALSE,FALSE,NA,2026-03-17,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Valerie Telfor,Jonathan Beck ,Jonathan,Beck,12 ,2026-03-17T18:10:27.622515Z,TRUE,FALSE,NA,2026-03-17,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Ellen Dally,Collin Dally,Collin,Dally,13,2026-03-27T15:37:03.188183Z,FALSE,FALSE,NA,2026-03-27,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Nicole VanNess,Frances Rockwell,Frances,Rockwell,7,2026-03-13T20:20:48.730427Z,TRUE,FALSE,NA,2026-03-13,NA
+Traverse City Assessment ,NDP128-01-A,Nicole Lipcaman,Rachel Hunter,Eleanor Hunter,Eleanor,Hunter,19 months,2026-03-16T18:51:27.454447Z,FALSE,FALSE,NA,2026-03-16,NA
+Flint Assessment  ,NA,Jody Kendall,Charlene Young,Da’Mari Young ,Da’Mari,Young,1,2026-03-21T00:56:39.664264Z,FALSE,FALSE,NA,2026-03-21,NA
+Traverse City Assessment ,SSN103-01-A,Nicole Lipcaman,Theresa Kuzma,NA,NA,NA,NA,2026-03-12T20:37:55.801230Z,FALSE,FALSE,NA,2026-03-12,NA
+Flint Assessment  ,NA,Jody Kendall,Owen Fernandez,NA,NA,NA,NA,2026-03-11T16:27:24.739378Z,FALSE,FALSE,NA,2026-03-11,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Valerie Telfor,Jonathan Beck ,Jonathan,Beck,12 ,2026-03-18T19:04:35.123188Z,FALSE,FALSE,NA,2026-03-18,NA
+Traverse City Assessment ,RZS580-01-A,Nicole Lipcaman,Madelyn Wilcox,Stetson Wilcox,Stetson,Wilcox,"19 months (today, yay!)",2026-04-01T19:09:47.247194Z,FALSE,FALSE,NA,2026-04-01,NA
+Traverse City Assessment ,"86414
+
+6 y/o",Nicole Lipcaman,Adelynn Knoke,NA,NA,NA,NA,2026-03-10T10:54:25.701105Z,TRUE,FALSE,NA,2026-03-10,NA
+Traverse City Assessment ,PHN877-02-A,Nicole Lipcaman,Annemarie Wigton,David wigton,David,wigton,16mo,2026-03-17T15:07:23.320048Z,FALSE,FALSE,NA,2026-03-17,NA
+Flint Assessment  ,NA,Jody Kendall,Amanda Ashlock,Asher trevino,Asher,trevino,14 months,2026-03-31T20:10:40.946495Z,TRUE,FALSE,NA,2026-03-31,NA
+Traverse City Assessment ,YMF346-01-A,Nicole Lipcaman,Kaitlyn Steele,Tatum Clutts ,Tatum,Clutts,17 months ,2026-03-17T18:04:12.425936Z,FALSE,FALSE,NA,2026-03-17,NA
+Flint Assessment  ,NA,Jody Kendall,Shayla Johnson,Montinez smith jr ,Montinez,smith,7 ,2026-03-17T16:01:21.798013Z,TRUE,FALSE,NA,2026-03-17,NA
+Traverse City Assessment ,YMP799-01-A,Nicole Lipcaman,Sarah Long,Benjamin Hsu,Benjamin,Hsu,12 months,2026-03-23T18:45:34.258364Z,FALSE,FALSE,NA,2026-03-23,NA
+Flint Assessment  ,NA,Jody Kendall,Eva Crawford,NA,NA,NA,NA,2026-03-12T17:34:58.049801Z,FALSE,FALSE,NA,2026-03-12,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Amanda Shotrosky,Parker Shotrosky,Parker,Shotrosky,15,2026-03-27T17:32:48.481416Z,FALSE,FALSE,NA,2026-03-27,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Grace Robles,Charlotte Robles,Charlotte,Robles,4,2026-04-01T02:01:55.114756Z,FALSE,FALSE,NA,2026-04-01,NA
+East Lansing Assessment ,"TGD969-01-A
+
+
+Breanna K to complete",Amy Scharmen-Burgdolf,Stacey Courter,Trevinn Eagle ,Trevinn,Eagle,13,2026-03-30T01:08:19.869414Z,FALSE,FALSE,NA,2026-03-30,NA
+East Lansing Assessment ,463,Jolyn Lerma,Frank Baumer,Frank Baumer,Frank,Baumer,16,2026-03-25T20:24:09.029254Z,FALSE,FALSE,NA,2026-03-25,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Emily Wilterink,Emily Wilterink,Emily,Wilterink,4,2026-03-31T19:42:21.780973Z,TRUE,FALSE,NA,2026-03-31,NA
+Detroit Assessment,NA,Shetoye  Rice,Samantha Henry,Ryale Jones,Ryale,Jones,4,2026-03-28T22:09:24.481991Z,FALSE,FALSE,NA,2026-03-28,NA
+Detroit Assessment,NA,Shetoye  Rice,Andrea Smith,Xavier smith ,Xavier,smith,7 ,2026-03-23T14:06:19.180612Z,FALSE,TRUE,2026-04-09T20:50:08.562106Z,2026-03-23,2026-04-09
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Jessica Hahn,NA,NA,NA,NA,2026-03-10T17:32:46.440869Z,FALSE,FALSE,NA,2026-03-10,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Loretta Borczak,NA,NA,NA,NA,2026-03-11T17:26:52.023974Z,TRUE,FALSE,NA,2026-03-11,NA
+Detroit Assessment,NA,Shetoye  Rice,Heidi Reijm,Silas Rafferty,Silas,Rafferty,9,2026-03-20T16:24:31.475389Z,TRUE,FALSE,NA,2026-03-20,NA
+Detroit Assessment,NA,Shetoye  Rice,Christal Garner,Alahni Eason ,Alahni,Eason,5 years old ,2026-04-08T14:57:55.498628Z,FALSE,FALSE,NA,2026-04-08,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Sophia Williams,Karizma Scott,Karizma,Scott,11,2026-04-02T20:31:56.600426Z,FALSE,FALSE,NA,2026-04-02,NA
+East Lansing Assessment ,NA,Jolyn Lerma,Elleisha Burrow,Bryson Burrow,Bryson,Burrow,15 years old,2026-03-30T21:01:04.280738Z,TRUE,FALSE,NA,2026-03-30,NA
+East Lansing Assessment ,70633,Jolyn Lerma,Samantha Handy,Avalee Handy,Avalee,Handy,14,2026-04-01T11:03:31.717661Z,FALSE,FALSE,NA,2026-04-01,NA
+East Lansing Assessment ,70422,Jolyn Lerma,Lyndsay Minier,Alayna Pettit,Alayna,Pettit,16,2026-03-25T23:57:54.364758Z,FALSE,FALSE,NA,2026-03-25,NA
+East Lansing Assessment ,71671,Jolyn Lerma,Mai Xiong,NA,NA,NA,NA,2026-03-06T21:32:56.590493Z,FALSE,FALSE,NA,2026-03-06,NA
+East Lansing Assessment ,83116,Jolyn Lerma,Caroline Roberts,James Mueller,James,Mueller,7,2026-03-15T19:50:00.749479Z,FALSE,FALSE,NA,2026-03-15,NA
+Flint Assessment  ,NA,Jody Kendall,Theresa Riggie,NA,NA,NA,NA,2026-03-12T04:52:23.746578Z,FALSE,FALSE,NA,2026-03-12,NA
+Flint Assessment  ,NA,Jody Kendall,LaQuila Ware,NA,NA,NA,NA,2026-03-13T00:48:35.641280Z,FALSE,FALSE,NA,2026-03-13,NA
+East Lansing Assessment ,XRZ528-01-A,Cassie Nickerson,Elleisha Burrow,Bryson Burrow,Bryson,Burrow,15 years old,2026-04-01T01:39:57.072749Z,FALSE,FALSE,NA,2026-04-01,NA
+Detroit Assessment,NA,Shetoye  Rice,Vivian Mazeh,Mia Mazeh,Mia,Mazeh,3,2026-04-13T17:54:57.141277Z,FALSE,FALSE,NA,2026-04-13,NA
+Traverse City Assessment ,QQL383-01-A,Nicole Lipcaman,Storme Romager,Elowyn Hindle,Elowyn,Hindle,17 months,2026-03-17T19:11:16.653754Z,FALSE,TRUE,2026-04-21T17:11:17.288472Z,2026-03-17,2026-04-21
+Traverse City Assessment ,TNZ700-01-A,Nicole Lipcaman,Bethany Prykucki,NA,NA,NA,NA,2026-03-10T19:17:42.557881Z,FALSE,FALSE,NA,2026-03-10,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Beaux LaCoy,Beaux LaCoy,Beaux,LaCoy,3,2026-04-17T02:25:58.156694Z,FALSE,FALSE,NA,2026-04-17,NA
+Detroit Assessment,NA,Shetoye  Rice,Vivian Mazeh,Mia Mazeh,Mia,Mazeh,3,2026-04-13T17:53:35.027740Z,TRUE,FALSE,NA,2026-04-13,NA
+Detroit Assessment,NA,Shetoye  Rice,Jessica Benson,Anthony Watkins,Anthony,Watkins,4,2026-04-14T16:17:30.781019Z,FALSE,FALSE,NA,2026-04-14,NA
+East Lansing Assessment ,71568,Jolyn Lerma,Lyric Barker,Lyric Barker,Lyric,Barker,12,2026-03-28T14:53:10.756810Z,TRUE,FALSE,NA,2026-03-28,NA
+East Lansing Assessment ,71565,Jolyn Lerma,Chase Deleon-chaney,NA,NA,NA,NA,2026-03-11T15:10:05.968427Z,TRUE,FALSE,NA,2026-03-11,NA
+East Lansing Assessment ,71568,Jolyn Lerma,Lyric Barker,Lyric Barker,Lyric,Barker,12,2026-04-20T19:23:43.092070Z,FALSE,FALSE,NA,2026-04-20,NA
+Grand Rapids Assessments,KJR698-01-A ,Anna VanTubergen,Stephanie Hanko,Ava Hanko,Ava,Hanko,4,2026-03-31T19:28:55.024736Z,TRUE,FALSE,NA,2026-03-31,NA
+East Lansing Assessment ,VKY771-01-A,Cassie Nickerson,Amanda Hopkins,Sadie Hopkins,Sadie,Hopkins,6,2026-03-21T00:44:08.403122Z,TRUE,FALSE,NA,2026-03-21,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Kristy Rahn,Lucas Rahn,Lucas,Rahn,7,2026-04-23T13:06:14.964254Z,TRUE,FALSE,NA,2026-04-23,NA
+East Lansing Assessment ,GRN392-01-A,Cassie Nickerson,Brittney Hooper,LeeAnn Hooper,LeeAnn,Hooper,16,2026-03-24T22:23:15.690671Z,FALSE,FALSE,NA,2026-03-24,NA
+Detroit Assessment,NA,Shetoye  Rice,Elizabeth Crabtree,NA,NA,NA,NA,2026-03-06T19:39:00.871327Z,FALSE,FALSE,NA,2026-03-06,NA
+Detroit Assessment,NA,Shetoye  Rice,Danielle Welcome,Jamir Welcome,Jamir,Welcome,9,2026-03-20T02:11:59.967078Z,TRUE,FALSE,NA,2026-03-20,NA
+Flint Assessment  ,4415F1,Jody Kendall,Sharonda Jones,Brielle Levy ,Brielle,Levy,16 months ,2026-03-23T16:22:24.738257Z,TRUE,FALSE,NA,2026-03-23,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Nicole Astfalk,Brynlee Astfalk,Brynlee,Astfalk,4,2026-04-01T19:18:11.733900Z,FALSE,FALSE,NA,2026-04-01,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Marina Price,Jayce Garcia-Cox,Jayce,Garcia-Cox,11,2026-04-23T14:29:49.592631Z,FALSE,FALSE,NA,2026-04-23,NA
+Traverse City Assessment ,TDX359-01-A,Nicole Lipcaman,Nichole Henderson,Adaline Henderson ,Adaline,Henderson,20 months ,2026-03-17T15:30:03.655504Z,FALSE,FALSE,NA,2026-03-17,NA
+Flint Assessment  ,4414F1,Jody Kendall,Brynn Bobo,Krishae Thomas ,Krishae,Thomas,15 months ,2026-04-02T16:10:36.710907Z,FALSE,FALSE,NA,2026-04-02,NA
+East Lansing Assessment ,XDF604-01-A,Cassie Nickerson,Anna Loveland,Carmela Buffamonte ,Carmela,Buffamonte,7,2026-03-21T00:22:26.984698Z,FALSE,FALSE,NA,2026-03-21,NA
+Traverse City Assessment ,RGM456-01-A,Nicole Lipcaman,Lauryn Keiser,Cameron Keiser,Cameron,Keiser,9.5,2026-03-13T15:22:55.643640Z,FALSE,FALSE,NA,2026-03-13,NA
+East Lansing Assessment ,WHW151-01-A,Cassie Nickerson,Mandy Koski,Brooklyn Banks,Brooklyn,Banks,15,2026-03-31T16:02:57.775804Z,FALSE,FALSE,NA,2026-03-31,NA
+Detroit Assessment,NA,Shetoye  Rice,Nicole Seaman,Juliannah williams,Juliannah,williams,5,2026-03-14T13:24:38.389542Z,FALSE,TRUE,2026-04-28T21:01:13.966142Z,2026-03-14,2026-04-28
+Grand Rapids Assessments,NA,Anna VanTubergen,Skyler Kilcrease,Raegan Helgevold ,Raegan,Helgevold,4,2026-04-21T00:35:51.849777Z,TRUE,FALSE,NA,2026-04-21,NA
+Traverse City Assessment ,SBH525-01-A,Nicole Lipcaman,Ona Bradford,Arthur Bradford,Arthur,Bradford,17 months old,2026-03-17T16:58:41.000835Z,FALSE,FALSE,NA,2026-03-17,NA
+East Lansing Assessment ,JMR655-01-A,Cassie Nickerson,Summer Sanders,NA,NA,NA,NA,2026-03-08T19:08:23.604617Z,TRUE,FALSE,NA,2026-03-08,NA
+Traverse City Assessment ,NVB331-01-A,Nicole Lipcaman,Kristin Klingelsmith,Madelynn Klingelsmith,Madelynn,Klingelsmith,9,2026-03-13T18:01:59.919819Z,FALSE,FALSE,NA,2026-03-13,NA
+Detroit Assessment,NA,Shetoye  Rice,Shareta Williams,Genesis Williams ,Genesis,Williams,5,2026-03-31T02:48:15.986554Z,TRUE,FALSE,NA,2026-03-31,NA
+Detroit Assessment,TPN036-01-A (416)-,Shetoye  Rice,Tahjanay Jarrell,Nevaeh Jackson ,Nevaeh,Jackson,5 ,2026-04-22T13:11:00.287576Z,FALSE,FALSE,NA,2026-04-22,NA
+Traverse City Assessment ,YND734-01-A,Nicole Lipcaman,Lindsey Miller,Broderick Huggett,Broderick,Huggett,18 months,2026-03-17T19:05:23.855958Z,FALSE,FALSE,NA,2026-03-17,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Jillian Kadau,Willem Kadau,Willem,Kadau,4,2026-04-06T15:31:06.604620Z,FALSE,FALSE,NA,2026-04-06,NA
+Detroit Assessment,NA,Shetoye  Rice,Tiffani Peer,Lucian wizinsky ,Lucian,wizinsky,5,2026-04-08T23:00:29.531098Z,FALSE,FALSE,NA,2026-04-08,NA
+Grand Rapids Assessments,KJR698-01-A ,Anna VanTubergen,Stephanie Hanko,Ava Hanko,Ava,Hanko,4,2026-04-21T16:43:25.569699Z,FALSE,FALSE,NA,2026-04-21,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Skyler Kilcrease,Raegan Helgevold ,Raegan,Helgevold,4,2026-04-28T12:41:34.811475Z,FALSE,FALSE,NA,2026-04-28,NA
+East Lansing Assessment ,71489,Jolyn Lerma,Charity Welch,Parris Welch ,Parris,Welch,13,2026-04-22T22:06:11.089228Z,FALSE,FALSE,NA,2026-04-22,NA
+East Lansing Assessment ,70470,Jolyn Lerma,Cameron Nichols,NA,NA,NA,NA,2026-03-11T18:33:53.616674Z,FALSE,FALSE,NA,2026-03-11,NA
+East Lansing Assessment ,NA,Jolyn Lerma,Mai Xiong,Malakai Xiong ,Malakai,Xiong,11,2026-04-17T19:35:04.090097Z,TRUE,FALSE,NA,2026-04-17,NA
+East Lansing Assessment ,83612,Jolyn Lerma,Megan Roth,Addison Roth,Addison,Roth,4,2026-04-22T19:49:19.862625Z,FALSE,FALSE,NA,2026-04-22,NA
+East Lansing Assessment ,ZNQ676-01-A,Cassie Nickerson,Denise Sanders,Braylin sanders ,Braylin,sanders,13,2026-03-30T23:36:06.581177Z,TRUE,FALSE,NA,2026-03-30,NA
+Flint Assessment  ,NA,Jody Kendall,LaQuila Ware,Logann ware,Logann,ware,7,2026-03-30T16:59:03.744811Z,TRUE,FALSE,NA,2026-03-30,NA
+Flint Assessment  ,4427F1,Jody Kendall,Amanda Ashlock,Asher trevino,Asher,trevino,14 months,2026-04-05T17:05:07.153568Z,FALSE,TRUE,2026-05-03T19:34:20.330418Z,2026-04-05,2026-05-03
+Detroit Assessment,NA,Shetoye  Rice,Heidi Reijm,Silas Rafferty,Silas,Rafferty,9,2026-03-30T22:05:18.799352Z,FALSE,FALSE,NA,2026-03-30,NA
+Flint Assessment  ,83415M1,Jody Kendall,Marissa Tapplin,Maverick Tapplin,Maverick,Tapplin,4,2026-04-01T19:22:42.885512Z,FALSE,FALSE,NA,2026-04-01,NA
+East Lansing Assessment ,71577,Jolyn Lerma,Synquiss Antes,Alaiya Smith,Alaiya,Smith,12,2026-04-27T02:41:51.932409Z,FALSE,FALSE,NA,2026-04-27,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Katie Bongard-Jolman,Madelyn Jolman,Madelyn,Jolman,4,2026-04-28T13:14:55.360183Z,FALSE,FALSE,NA,2026-04-28,NA
+East Lansing Assessment ,JMR655-01-A,Cassie Nickerson,Summer Sanders,Summer sanders ,Summer,sanders,10,2026-04-28T10:28:24.278465Z,TRUE,FALSE,NA,2026-04-28,NA
+East Lansing Assessment ,71565,Cassie Nickerson,Chase Deleon-chaney,Chase DeLeon-Chaney,Chase,DeLeon-Chaney,12,2026-04-16T19:56:19.849736Z,FALSE,FALSE,NA,2026-04-16,NA
+East Lansing Assessment ,NA,Jolyn Lerma,Antonia Vidal,Rolando Vidal ,Rolando,Vidal,13,2026-04-30T21:51:27.586332Z,TRUE,FALSE,NA,2026-04-30,NA
+East Lansing Assessment ,"TQW013-01-A
+
+1572",Amy Scharmen-Burgdolf,Charity Hursey,AUBREY,AUBREY,NA,12,2026-04-28T18:22:53.787100Z,FALSE,FALSE,NA,2026-04-28,NA
+Detroit Assessment,NA,Shetoye  Rice,Natalie Sampson,Zeke Gagacki,Zeke,Gagacki,7,2026-04-15T23:30:53.966330Z,TRUE,FALSE,NA,2026-04-15,NA
+Detroit Assessment,NA,Shetoye  Rice,Karneca Jackson,Jakobe taylor,Jakobe,taylor,9,2026-04-21T14:16:40.752193Z,FALSE,TRUE,2026-05-06T18:34:46.972328Z,2026-04-21,2026-05-06
+Traverse City Assessment ,WSG161-01-A,Nicole Lipcaman,Evangelina Paz,Niigaanii Burris,Niigaanii,Burris,1 y 1 mo,2026-04-02T18:02:45.932907Z,FALSE,FALSE,NA,2026-04-02,NA
+Flint Assessment  ,4443F1,Jody Kendall,Calviniesha Frye,Janerrio Frte,Janerrio,Frte,1,2026-04-02T17:54:15.528942Z,FALSE,TRUE,2026-05-07T15:19:28.811736Z,2026-04-02,2026-05-07
+Detroit Assessment,NA,Shetoye  Rice,Natalie Sampson,Zeke Gagacki,Zeke,Gagacki,7,2026-04-15T23:36:35.171126Z,TRUE,FALSE,NA,2026-04-15,NA
+Flint Assessment  ,4430F1,Jody Kendall,Taleaha Gadison,Ty’Laha Hill,Ty’Laha,Hill,One,2026-04-02T21:43:12.417324Z,FALSE,FALSE,NA,2026-04-02,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Samuel neuhoff,Samuel Neuhoff,Samuel,Neuhoff,5,2026-04-23T18:20:44.496938Z,FALSE,FALSE,NA,2026-04-23,NA
+Detroit Assessment,NA,Shetoye  Rice,Veronica esmiralda Garcia-martinez Garcia-martinez,Veronica esmiralda Garcia-martinez,Veronica,Garcia-martinez,3,2026-04-21T14:41:24.651274Z,FALSE,TRUE,2026-05-09T13:47:41.534319Z,2026-04-21,2026-05-09
+Traverse City Assessment ,NSQ870-01-A,Nicole Lipcaman,JaeMi Visser,Maverick Setzer,Maverick,Setzer,19 months,2026-04-02T15:50:39.566860Z,FALSE,FALSE,NA,2026-04-02,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Jocelyn Westra,Olivia Westra,Olivia,Westra,4,2026-04-28T03:24:09.751842Z,TRUE,FALSE,NA,2026-04-28,NA
+Traverse City Assessment ,XYN414-01-A,Nicole Lipcaman,Samantha Musselman,Leland Musselman,Leland,Musselman,1,2026-03-26T17:07:55.199222Z,TRUE,FALSE,NA,2026-03-26,NA
+Traverse City Assessment ,XHP409-01-A,Nicole Lipcaman,Rebecca Teahen,NA,NA,NA,NA,2026-03-12T16:55:40.112202Z,TRUE,FALSE,NA,2026-03-12,NA
+East Lansing Assessment ,"642
+
+DRW841-01-A",Amy Scharmen-Burgdolf,John Calley,Jude Calley,Jude,Calley,14,2026-04-11T00:24:27.660399Z,FALSE,FALSE,NA,2026-04-11,NA
+East Lansing Assessment ,"467
+
+KPV565-01-A",Amy Scharmen-Burgdolf,Karin Polischuk,Veronica Polischuk,Veronica,Polischuk,15,2026-04-13T12:24:49.234531Z,FALSE,FALSE,NA,2026-04-13,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Meia Bator,Kaliyah Ray,Kaliyah,Ray,12,2026-05-07T21:33:56.973283Z,FALSE,FALSE,NA,2026-05-07,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Antonia Vidal,Rolando Vidal ,Rolando,Vidal,13,2026-05-05T11:24:55.589286Z,FALSE,FALSE,NA,2026-05-05,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Trisha Whitting,Jovie Whitting,Jovie,Whitting,3,2026-04-24T15:44:57.233587Z,FALSE,FALSE,NA,2026-04-24,NA
+East Lansing Assessment ,"RWC339-01-M
+
+426",Amy Scharmen-Burgdolf,Christena Frisch,Jseth beech,Jseth,beech,16,2026-04-28T15:29:34.306369Z,FALSE,FALSE,NA,2026-04-28,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Jana Simmons,Amanda Simmons,Amanda,Simmons,16,2026-05-04T23:37:31.524773Z,FALSE,FALSE,NA,2026-05-04,NA
+Detroit Assessment,NA,Shetoye  Rice,Michaela Allen,Ian Gordon,Ian,Gordon,3,2026-04-27T17:22:02.045366Z,TRUE,FALSE,NA,2026-04-27,NA
+Flint Assessment  ,NA,Jody Kendall,Ta’Quandra Davis,Autum’Dior Hall,Autum’Dior,Hall,6,2026-04-15T16:33:19.768946Z,TRUE,FALSE,NA,2026-04-15,NA
+Flint Assessment  ,80577M1,Jody Kendall,kylee list,kamari bryson,kamari,bryson,4,2026-04-14T17:47:03.164943Z,TRUE,FALSE,NA,2026-04-14,NA
+Flint Assessment  ,84513M1,Jody Kendall,Shayla Johnson,Montinez smith jr ,Montinez,smith,7 ,2026-05-13T20:55:11.356948Z,FALSE,FALSE,NA,2026-05-13,NA
+Detroit Assessment,NA,Shetoye  Rice,Meagan Stramy,Spencer Machowicz,Spencer,Machowicz,3,2026-04-10T02:43:58.654555Z,FALSE,FALSE,NA,2026-04-10,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Katie Barnhart,Aiden Leefers,Aiden,Leefers,4,2026-04-29T14:45:42.574831Z,FALSE,FALSE,NA,2026-04-29,NA
+Flint Assessment  ,84513M1,Jody Kendall,Shayla Johnson,Montinez smith jr ,Montinez,smith,7 ,2026-04-07T11:58:25.205946Z,TRUE,FALSE,NA,2026-04-07,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Kiara Comer,Emoni evans ,Emoni,evans,3,2026-05-12T12:43:05.747737Z,FALSE,FALSE,NA,2026-05-12,NA
+Detroit Assessment,NA,Shetoye  Rice,Shareta Williams,Genesis Williams ,Genesis,Williams,5,2026-04-21T19:06:07.828460Z,FALSE,FALSE,NA,2026-04-21,NA
+Traverse City Assessment ,GBH901-01-A,Nicole Lipcaman,Amanda Blades,Clara,Clara,NA,1.5 yrs,2026-04-01T23:49:58.098372Z,FALSE,FALSE,NA,2026-04-01,NA
+Traverse City Assessment ,XKQ019-01-A,Nicole Lipcaman,Kaitlyn Oracz-Price,Oliver Price,Oliver,Price,18 months ,2026-03-17T19:41:45.680345Z,FALSE,FALSE,NA,2026-03-17,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Jocelyn Westra,Olivia Westra,Olivia,Westra,4,2026-05-06T16:32:10.454905Z,TRUE,FALSE,NA,2026-05-06,NA
+Traverse City Assessment ,TMB738-01-A,Nicole Lipcaman,Candace Musselman,Everly Musselman,Everly,Musselman,7,2026-03-20T15:17:45.637040Z,FALSE,FALSE,NA,2026-03-20,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Loretta Borczak,Sergio flores,Sergio,flores,15,2026-04-10T18:24:24.884773Z,TRUE,FALSE,NA,2026-04-10,NA
+Grand Rapids Assessments,Participant was at another appointment that ran late. We rescheduled for next Friday at 3.,Anna VanTubergen,Irene Bernardino,Christian Bernardino,Christian,Bernardino,3,2026-05-04T16:55:00.668188Z,FALSE,FALSE,NA,2026-05-04,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Braylin Sanders,BRAYLIN ,BRAYLIN,NA,13,2026-05-03T14:45:14.049532Z,FALSE,FALSE,NA,2026-05-03,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Lillians Sedman-Clark,Makai sedman-clark,Makai,sedman-clark,7,2026-05-06T14:04:40.726475Z,FALSE,TRUE,2026-05-17T16:45:33.117348Z,2026-05-06,2026-05-17
+Traverse City Assessment ,GDN788-01-A,Nicole Lipcaman,Melanie VandenBoss,Job Vandenboss ,Job,Vandenboss,21 months ,2026-03-31T22:22:45.001476Z,TRUE,FALSE,NA,2026-03-31,NA
+Traverse City Assessment ,JLN021-01-A,Nicole Lipcaman,Sarah Dixon,Madelyn Dixon,Madelyn,Dixon,1,2026-04-07T21:03:08.675132Z,FALSE,FALSE,NA,2026-04-07,NA
+Traverse City Assessment ,RMH180-01-A,Nicole Lipcaman,Ashley Cater,Adela Cater,Adela,Cater,18 months,2026-04-02T02:08:07.009847Z,TRUE,FALSE,NA,2026-04-02,NA
+Traverse City Assessment ,LZV055-01-A,Nicole Lipcaman,Meghan Arbury,David Arbury,David,Arbury,18 months ,2026-03-24T10:39:50.140355Z,FALSE,FALSE,NA,2026-03-24,NA
+Detroit Assessment,NA,Shetoye  Rice,ELIZABETH STOVER,Charles Stover,Charles,Stover,3 years,2026-04-24T14:26:28.387429Z,FALSE,FALSE,NA,2026-04-24,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Alicia Hill,Adeline Hill,Adeline,Hill,18 months ,2026-03-26T14:02:35.587386Z,TRUE,FALSE,NA,2026-03-26,NA
+Flint Assessment  ,80842M1,Jody Kendall,Cadia Hofmann,Caelen Hofmann,Caelen,Hofmann,4,2026-04-01T19:52:36.455945Z,FALSE,FALSE,NA,2026-04-01,NA
+Traverse City Assessment ,NDG495-01-A,Nicole Lipcaman,Waychonay Beachy,Dallas Beachy,Dallas,Beachy,1 year,2026-04-07T18:12:48.365954Z,FALSE,TRUE,2026-05-19T17:54:46.709668Z,2026-04-07,2026-05-19
+Flint Assessment  ,NA,Jody Kendall,Bronce White,Bronce White,Bronce,White,7,2026-04-15T18:54:24.872219Z,TRUE,FALSE,NA,2026-04-15,NA
+Detroit Assessment,NA,Shetoye  Rice,Melissa Maxwell,Zora Howard ,Zora,Howard,5,2026-04-23T19:34:51.361937Z,FALSE,FALSE,NA,2026-04-23,NA
+Traverse City Assessment ,LTS268-01-A,Nicole Lipcaman,Maura Carney,Nell Fritz,Nell,Fritz,18 months ,2026-03-23T20:52:38.961899Z,FALSE,FALSE,NA,2026-03-23,NA
+Detroit Assessment,NA,Shetoye  Rice,Rachel Hawks,Daisy Brown ,Daisy,Brown,3,2026-04-25T12:22:39.999087Z,FALSE,FALSE,NA,2026-04-25,NA
+East Lansing Assessment ,"JQF218-01-A
+
+1631
+
+
+Cassie to do this IPA for Amy due to a prior committment",Amy Scharmen-Burgdolf,Angie Castanon,Fernando Bustillos-Castanon ,Fernando,Bustillos-Castanon,11,2026-04-22T22:21:10.238912Z,FALSE,FALSE,NA,2026-04-22,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Kristen Bryson,Ezekiel Bryson,Ezekiel,Bryson,3,2026-05-06T13:01:17.906169Z,FALSE,FALSE,NA,2026-05-06,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Irene Bernardino,Christian Bernardino,Christian,Bernardino,3,2026-05-20T14:05:30.036627Z,FALSE,FALSE,NA,2026-05-20,NA
+East Lansing Assessment ,"1605
+
+JTC719-01-A",Amy Scharmen-Burgdolf,suzanne lillie,diesel bearden,diesel,bearden,11,2026-04-17T16:58:45.833484Z,FALSE,FALSE,NA,2026-04-17,NA
+East Lansing Assessment ,"ZDZ857-01-A
+
+86970",Amy Scharmen-Burgdolf,Kristy Rahn,Lucas Rahn,Lucas,Rahn,7,2026-04-25T12:28:03.606423Z,FALSE,FALSE,NA,2026-04-25,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Holly Omiljan,Cooper Omiljan,Cooper,Omiljan,4 years,2026-04-16T19:37:05.648803Z,FALSE,FALSE,NA,2026-04-16,NA
+Traverse City Assessment ,JBM041-01-A,Nicole Lipcaman,Joyce Tarker,Tessa hunt ,Tessa,hunt,1,2026-04-04T12:26:56.272865Z,TRUE,FALSE,NA,2026-04-04,NA
+Traverse City Assessment ,NHR264-01-A,Nicole Lipcaman,Samantha Johnson,Evangeline Johnson,Evangeline,Johnson,7,2026-04-07T14:01:04.078530Z,TRUE,FALSE,NA,2026-04-07,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Jocelyn Westra,Olivia Westra,Olivia,Westra,4,2026-05-14T20:10:43.568016Z,TRUE,FALSE,NA,2026-05-14,NA
+Traverse City Assessment ,RMH180-01-A,Nicole Lipcaman,Ashley Cater,Adela Cater,Adela,Cater,18 months,2026-05-18T05:59:15.004891Z,TRUE,FALSE,NA,2026-05-18,NA
+Traverse City Assessment ,XHP409-01-A,Nicole Lipcaman,Rebecca Teahen,Benjamin Teahen Purdy,Benjamin,Purdy,9,2026-05-06T19:35:13.272465Z,TRUE,FALSE,NA,2026-05-06,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Jocelyn Westra,Olivia Westra,Olivia,Westra,4,2026-05-22T19:35:43.391856Z,FALSE,FALSE,NA,2026-05-22,NA
+Flint Assessment  ,83143M1,Jody Kendall,Elizabeth Thornton,Lucas Thornton,Lucas,Thornton,4,2026-05-06T18:55:08.953940Z,TRUE,FALSE,NA,2026-05-06,NA
+Flint Assessment  ,4408,Jody Kendall,Geneva Brewer,Ta’Lina Phillips,Ta’Lina,Phillips,1,2026-05-20T14:47:41.803842Z,FALSE,FALSE,NA,2026-05-20,NA
+Flint Assessment  ,83143M2,Jody Kendall,Elizabeth Thornton,Larkin Thornton,Larkin,Thornton,4,2026-05-06T18:57:52.423571Z,TRUE,FALSE,NA,2026-05-06,NA
+Flint Assessment  ,NA,Jody Kendall,Olga Volyanyuk,Kristian Volyanyuk ,Kristian,Volyanyuk,6,2026-05-27T01:32:03.823435Z,FALSE,FALSE,NA,2026-05-27,NA
+Detroit Assessment,NA,Shetoye  Rice,Andrea Smith,Xavier smith,Xavier,smith,7,2026-05-06T14:01:02.142044Z,FALSE,FALSE,NA,2026-05-06,NA
+East Lansing Assessment ,85148,Jolyn Lerma,Kelsey Pierson,Blair Pierson,Blair,Pierson,"3 years, 4 months",2026-05-13T10:27:16.756735Z,FALSE,FALSE,NA,2026-05-13,NA
+East Lansing Assessment ,71362,Jolyn Lerma,Nicole Hardigan,Walter Ranger-Hardigan,Walter,Ranger-Hardigan,13,2026-04-29T13:13:31.499340Z,FALSE,FALSE,NA,2026-04-29,NA
+Flint Assessment  ,83143M1,Jody Kendall,Elizabeth Thornton,Lucas Thornton,Lucas,Thornton,4,2026-05-18T17:52:47.914611Z,FALSE,FALSE,NA,2026-05-18,NA
+Detroit Assessment,NA,Shetoye  Rice,Veronica esmiralda Garcia-martinez Garcia-martinez,luis garcia-martinez,luis,garcia-martinez,3,2026-05-07T22:15:12.932008Z,FALSE,FALSE,NA,2026-05-07,NA
+Flint Assessment  ,83143M2,Jody Kendall,Elizabeth Thornton,Lucas Thornton,Lucas,Thornton,4,2026-05-19T11:14:56.060089Z,FALSE,FALSE,NA,2026-05-19,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Angela Dewitt,Ahrhia ross,Ahrhia,ross,15,2026-05-20T13:54:12.460921Z,TRUE,FALSE,NA,2026-05-20,NA
+Flint Assessment  ,80577M1,Jody Kendall,kylee list,kamari bryson,kamari,bryson,4,2026-05-12T17:14:53.152361Z,TRUE,FALSE,NA,2026-05-12,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Angela Dewitt,Amya ross,Amya,ross,16,2026-05-20T14:24:53.655364Z,TRUE,FALSE,NA,2026-05-20,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Jenna Petersen,James Petersen,James,Petersen,3years,2026-05-22T16:02:37.436300Z,FALSE,FALSE,NA,2026-05-22,NA
+Traverse City Assessment ,RMH180-01-A,Nicole Lipcaman,Ashley Cater,Adela Cater,Adela,Cater,18 months,2026-05-29T01:40:50.790174Z,FALSE,FALSE,NA,2026-05-29,NA
+Detroit Assessment,No show twice,Shetoye  Rice,Karneca Jackson,Ja’kobe Taylor ,Ja’kobe,Taylor,9,2026-05-06T19:17:36.841815Z,FALSE,TRUE,2026-06-04T19:48:29.891065Z,2026-05-06,2026-06-04
+Grand Rapids Assessments,NA,Anna VanTubergen,Gabriella Hrit,Logan Hrit,Logan,Hrit,4,2026-04-10T15:31:36.054413Z,FALSE,FALSE,NA,2026-04-10,NA
+East Lansing Assessment ,71407,Jolyn Lerma,Vanivia Jones,Andrew Harris ,Andrew,Harris,25,2026-04-28T00:09:27.211960Z,FALSE,FALSE,NA,2026-04-28,NA
+East Lansing Assessment ,71407,Jolyn Lerma,Vanivia Jones,Antonio Harris ,Antonio,Harris,14,2026-04-28T00:11:02.665440Z,FALSE,FALSE,NA,2026-04-28,NA
+East Lansing Assessment ,"THL624-01-A
+
+484",Amy Scharmen-Burgdolf,Loretta Borczak,Sergio flores,Sergio,flores,15,2026-05-11T14:02:25.815792Z,TRUE,FALSE,NA,2026-05-11,NA
+East Lansing Assessment ,"QFN151-01-A
+
+89529",Amy Scharmen-Burgdolf,Melanie Beaulieu,Cassie Salame,Cassie,Salame,7,2026-06-02T02:26:49.088444Z,FALSE,FALSE,NA,2026-06-02,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Ann McCourt,Christian Brogden,Christian,Brogden,14,2026-04-22T20:35:07.096567Z,TRUE,FALSE,NA,2026-04-22,NA
+Detroit Assessment,VWP009-01-A ,Shetoye  Rice,Johnisha Walton,Elijah Benson ,Elijah,Benson,6,2026-04-30T13:55:29.999455Z,FALSE,FALSE,NA,2026-04-30,NA
+East Lansing Assessment ,"MQM950-01-A
+
+379",Amy Scharmen-Burgdolf,Crystal Gary,Elijah Lagarde,Elijah,Lagarde,16,2026-05-19T18:07:59.315222Z,TRUE,FALSE,NA,2026-05-19,NA
+Flint Assessment  ,4431F1,Jody Kendall,Allana Chappell,Kamirah Chappell-Teare ,Kamirah,Chappell-Teare,14 months,2026-04-12T15:36:40.551918Z,FALSE,FALSE,NA,2026-04-12,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Crystal Gary,Elijah LaGarde ,Elijah,LaGarde,16,2026-04-29T02:08:58.132423Z,TRUE,FALSE,NA,2026-04-29,NA
+Flint Assessment  ,86246,Jody Kendall,Denise Nelson,Hank Nelson,Hank,Nelson,4,2026-04-28T15:26:43.427839Z,FALSE,FALSE,NA,2026-04-28,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Jessica Davis,Olivia Davis,Olivia,Davis,16,2026-04-23T11:27:33.208762Z,TRUE,FALSE,NA,2026-04-23,NA
+East Lansing Assessment ,NA,Jolyn Lerma,Milan Aikens,Milan Aikens,Milan,Aikens,16,2026-06-06T22:05:00.282047Z,FALSE,FALSE,NA,2026-06-06,NA
+Detroit Assessment,NA,Shetoye  Rice,Crystal Johnson,Paris Kelly,Paris,Kelly,7,2026-05-19T14:16:20.911504Z,FALSE,FALSE,NA,2026-05-19,NA
+East Lansing Assessment ,"71683
+
+This was with Amy and moved to Jo's schedule at 2pm.",Jolyn Lerma,Pamela Walton,Summer Sanders,Summer,Sanders,10,2026-06-06T14:09:03.418359Z,FALSE,FALSE,NA,2026-06-06,NA
+Detroit Assessment,NA,Shetoye  Rice,Natalie Sampson,Zeke Gagacki,Zeke,Gagacki,7,2026-05-04T01:48:52.153907Z,TRUE,FALSE,NA,2026-05-04,NA
+East Lansing Assessment ,"JMR655-01-A
+
+1683",Amy Scharmen-Burgdolf,Summer Sanders,Summer sanders ,Summer,sanders,10,2026-05-04T10:33:36.712425Z,FALSE,FALSE,NA,2026-05-04,NA
+East Lansing Assessment ,"TYJ533-01-A
+
+1644",Amy Scharmen-Burgdolf,Karley Wilder,Raanan baker,Raanan,baker,11,2026-05-19T16:25:43.875799Z,FALSE,FALSE,NA,2026-05-19,NA
+Detroit Assessment,NA,Shetoye  Rice,Irma Santillano Lopez,Alexander Lopez Santillano ,Alexander,Santillano,3,2026-05-19T14:24:48.951274Z,FALSE,FALSE,NA,2026-05-19,NA
+Traverse City Assessment ,NDG495-01-A,Nicole Lipcaman,Waychonay Beachy,Dallas Beachy,Dallas,Beachy,1,2026-06-08T02:34:16.655978Z,FALSE,FALSE,NA,2026-06-08,NA
+East Lansing Assessment ,70683,Jolyn Lerma,Hillary Darnell,Tyson Darnell,Tyson,Darnell,14,2026-05-21T19:13:48.166473Z,FALSE,FALSE,NA,2026-05-21,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Tina Becker,Vienna Becker,Vienna,Becker,7,2026-05-08T13:05:16.679814Z,TRUE,FALSE,NA,2026-05-08,NA
+Detroit Assessment,NA,Shetoye  Rice,Lashaundra Brown,Leah Brische Johnson,Leah,Johnson,4,2026-05-13T22:47:49.830426Z,TRUE,FALSE,NA,2026-05-13,NA
+East Lansing Assessment ,70362,Jolyn Lerma,Tanya Carpenter,Frantz Lubrin,Frantz,Lubrin,16,2026-05-21T18:22:26.574117Z,TRUE,FALSE,NA,2026-05-21,NA
+Traverse City Assessment ,JBM041-01-A,Nicole Lipcaman,Joyce Tarker,Tessa hunt ,Tessa,hunt,1,2026-05-28T15:41:37.557942Z,TRUE,FALSE,NA,2026-05-28,NA
+Nicole - Traverse City,NHR264-01-A,Nicole Lipcaman,Samantha Johnson,NA,NA,NA,NA,2026-05-28T18:51:37.393705Z,FALSE,FALSE,NA,2026-05-28,NA
+Flint Assessment  ,85196M1,Jody Kendall,Alexis Bradley,Beau Bradley ,Beau,Bradley,5,2026-04-20T02:37:16.540413Z,TRUE,FALSE,NA,2026-04-20,NA
+Flint Assessment  ,NA,Jody Kendall,Sasha Dean,Kacen Tyler ,Kacen,Tyler,7,2026-04-24T18:44:54.210026Z,FALSE,FALSE,NA,2026-04-24,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Lindsay Corneal,Audra Corneal,Audra,Corneal,17,2026-05-04T01:22:20.806516Z,FALSE,FALSE,NA,2026-05-04,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Brittney Scott,Aubrianah ,Aubrianah,NA,16,2026-06-02T10:53:17.728819Z,TRUE,FALSE,NA,2026-06-02,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Patty Wey,Lucas McCain ,Lucas,McCain,15,2026-05-20T16:52:20.605144Z,TRUE,FALSE,NA,2026-05-20,NA
+Detroit Assessment,NA,Shetoye  Rice,Jessica Pilagala,Grant Parkinson,Grant,Parkinson,7,2026-04-27T19:34:41.473367Z,FALSE,FALSE,NA,2026-04-27,NA
+Detroit Assessment,NA,Breanna Kornatowski,Lanae Dobbins,Zariyah Dobbins,Zariyah,Dobbins,1 year old,2026-06-08T20:36:26.847570Z,FALSE,FALSE,NA,2026-06-08,NA
+Detroit Assessment,NA,Shetoye  Rice,Netania Hunt,Hunt,Hunt,NA,3,2026-05-11T18:35:26.558960Z,FALSE,TRUE,2026-06-17T01:20:31.148751Z,2026-05-11,2026-06-17
+East Lansing Assessment ,70362,Cassie Nickerson,Tanya Carpenter,Frantz Lubrin,Frantz,Lubrin,16,2026-06-07T22:18:00.808435Z,TRUE,FALSE,NA,2026-06-07,NA
+Detroit Assessment,NA,Breanna Kornatowski,Terron Young,Nyrie Young,Nyrie,Young,1,2026-06-08T20:51:42.779816Z,FALSE,TRUE,2026-06-17T00:09:07.203760Z,2026-06-08,2026-06-17
+Traverse City Assessment ,CXM978-01-A,Nicole Lipcaman,Amber Holmgren,Dalton somero,Dalton,somero,6,2026-06-07T17:33:41.957422Z,FALSE,FALSE,NA,2026-06-07,NA
+Detroit Assessment,documented in ripple,Shetoye  Rice,Alison Cardona,Oliver Cardona,Oliver,Cardona,3,2026-04-27T17:27:12.960994Z,TRUE,FALSE,NA,2026-04-27,NA
+Traverse City Assessment ,PXV115-01-A,Nicole Lipcaman,Bronson Doyle,Bronson Doyle,Bronson,Doyle,9,2026-05-12T04:10:32.499115Z,FALSE,FALSE,NA,2026-05-12,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Charisse Loder,Molly Mason,Molly,Mason,7,2026-06-11T19:44:38.782776Z,FALSE,FALSE,NA,2026-06-11,NA
+Detroit Assessment,documented in Ripple,Shetoye  Rice,Amy Lee,George Lee,George,Lee,9,2026-04-28T16:03:22.472416Z,FALSE,FALSE,NA,2026-04-28,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Nicole Peake,Ellie Peake ,Ellie,Peake,4,2026-05-29T23:47:20.261476Z,TRUE,FALSE,NA,2026-05-29,NA
+Traverse City Assessment ,JBM041-01-A,Nicole Lipcaman,Joyce Tarker,Tessa hunt ,Tessa,hunt,1,2026-06-10T21:15:18.425155Z,FALSE,FALSE,NA,2026-06-10,NA
+Traverse City Assessment ,GDN788-01-A,Nicole Lipcaman,Melanie VandenBoss,Job Vandenboss ,Job,Vandenboss,22 months,2026-05-03T16:24:59.114218Z,FALSE,FALSE,NA,2026-05-03,NA
+Traverse City Assessment ,HGZ645-01-A,Nicole Lipcaman,Kari Nothstine,Emily Nothstine,Emily,Nothstine,7,2026-05-21T17:02:57.003725Z,FALSE,FALSE,NA,2026-05-21,NA
+Traverse City Assessment ,MYY891-01-A,Nicole Lipcaman,Tina Becker,Vienna Becker,Vienna,Becker,7,2026-06-09T16:28:21.636897Z,FALSE,FALSE,NA,2026-06-09,NA
+Traverse City Assessment ,ZVX302-01-A,Nicole Lipcaman,Kristina Hinds,Mason Hinds,Mason,Hinds,7,2026-05-19T21:22:13.214273Z,FALSE,FALSE,NA,2026-05-19,NA
+Traverse City Assessment ,SGS765-01-A,Nicole Lipcaman,Jennifer McClellan,Terisita Cryderman ,Terisita,Cryderman,7,2026-06-03T02:57:12.994758Z,FALSE,FALSE,NA,2026-06-03,NA
+Traverse City Assessment ,SKR563-01-A,Nicole Lipcaman,Kate Cosentino,Aria Cosentino,Aria,Cosentino,7,2026-05-28T16:34:33.312860Z,FALSE,FALSE,NA,2026-05-28,NA
+Traverse City Assessment ,PTN126-01-A ,Nicole Lipcaman,Mandy LaBarre,Emilia LaBarre,Emilia,LaBarre,9,2026-05-07T13:39:53.520679Z,TRUE,FALSE,NA,2026-05-07,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Kristin Lockwood,Lucy Lockwood,Lucy,Lockwood,3,2026-06-18T15:51:22.119610Z,TRUE,FALSE,NA,2026-06-18,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,London Luster,Braylen Jones ,Braylen,Jones,3,2026-06-17T19:49:36.299816Z,TRUE,FALSE,NA,2026-06-17,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Nicole Peake,Ellie Peake ,Ellie,Peake,4,2026-06-16T18:47:31.992982Z,FALSE,FALSE,NA,2026-06-16,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Jordan Grooters,Ethan Grooters,Ethan,Grooters,3.5,2026-05-27T15:13:03.992762Z,FALSE,FALSE,NA,2026-05-27,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Alicia Bunting,Mia Bunting ,Mia,Bunting,14,2026-05-20T01:01:40.223323Z,FALSE,FALSE,NA,2026-05-20,NA
+Detroit Assessment,NA,Shetoye  Rice,Terron Young,Nyrie Young Montgomery ,Nyrie,Montgomery,1,2026-06-17T01:43:33.848249Z,FALSE,TRUE,2026-06-28T16:51:26.840310Z,2026-06-17,2026-06-28
+East Lansing Assessment ,NA,Cassie Nickerson,Ann McCourt,Christian Brogden,Christian,Brogden,14,2026-05-19T17:41:40.106264Z,TRUE,FALSE,NA,2026-05-19,NA
+Detroit Assessment,NA,Shetoye  Rice,Sarah Howell,Paislee Howell,Paislee,Howell,4,2026-05-25T04:44:41.423829Z,TRUE,FALSE,NA,2026-05-25,NA
+Traverse City Assessment ,XQD155-01-A,Nicole Lipcaman,Kali Dignan,Wren Dignan ,Wren,Dignan,7,2026-06-19T04:51:25.379236Z,FALSE,FALSE,NA,2026-06-19,NA
+Traverse City Assessment ,PLD055-01-A,Nicole Lipcaman,Kelsey Hyde,Kyrah Litherland,Kyrah,Litherland,16 months,2026-06-18T00:56:33.340749Z,FALSE,FALSE,NA,2026-06-18,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,London Luster,Braylen Jones ,Braylen,Jones,3,2026-06-24T18:03:21.602025Z,TRUE,FALSE,NA,2026-06-24,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Kelsey McEntee,Connor McEntee,Connor,McEntee,7,2026-05-03T00:55:54.909424Z,FALSE,FALSE,NA,2026-05-03,NA
+East Lansing Assessment ,70362,Cassie Nickerson,Tanya Carpenter,Frantz Lubrin,Frantz,Lubrin,16,2026-06-13T17:50:42.858045Z,FALSE,FALSE,NA,2026-06-13,NA
+Detroit Assessment,appt. documented in Ripple,Shetoye  Rice,Patricia Chinn,Harper LeaTrea,Harper,LeaTrea,7,2026-05-04T15:40:56.091329Z,FALSE,FALSE,NA,2026-05-04,NA
+Flint Assessment  ,81028M1,Jody Kendall,Flora Choi,Faith Choi ,Faith,Choi,3,2026-06-09T12:58:10.414388Z,FALSE,FALSE,NA,2026-06-09,NA
+Flint Assessment  ,89984M1,Jody Kendall,Jasmine Arnold,Grace Harris,Grace,Harris,3,2026-05-12T16:25:13.744123Z,TRUE,FALSE,NA,2026-05-12,NA
+Flint Assessment  ,82787M1,Jody Kendall,Kari Hall,Felicity Hall,Felicity,Hall,8,2026-06-30T12:09:38.261478Z,FALSE,FALSE,NA,2026-06-30,NA
+Detroit Assessment,NA,Shetoye  Rice,Geraldine Yarbrough,Delando Yarbrough,Delando,Yarbrough,5,2026-05-20T20:54:10.973689Z,FALSE,FALSE,NA,2026-05-20,NA
+Flint Assessment  ,NA,Jody Kendall,Anastasia Pathic,Henry Pathic,Henry,Pathic,5,2026-05-23T22:31:02.512940Z,TRUE,FALSE,NA,2026-05-23,NA
+Flint Assessment  ,82787M1,Jody Kendall,Kari Hall,Felicity Hall,Felicity,Hall,8,2026-06-01T16:45:53.447557Z,TRUE,FALSE,NA,2026-06-01,NA
+Detroit Assessment,NA,Shetoye  Rice,Emily Courtney,Thomas Courtney,Thomas,Courtney,5 (6 when the appointment occurs),2026-06-28T20:07:32.614088Z,FALSE,FALSE,NA,2026-06-28,NA
+Detroit Assessment,appt...documented in Ripple,Shetoye  Rice,Erin Harker,Otto Harker,Otto,Harker,7,2026-05-06T14:55:57.620470Z,TRUE,FALSE,NA,2026-05-06,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,London Luster,Braylen Jones ,Braylen,Jones,3,2026-06-29T18:41:07.471301Z,FALSE,FALSE,NA,2026-06-29,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,London Luster,Braylen Jones ,Braylen,Jones,3,2026-06-24T14:33:51.920726Z,TRUE,FALSE,NA,2026-06-24,NA
+East Lansing Assessment ,Jo spoke with Tia and she will reschedule due to Cassie having car trouble.,Cassie Nickerson,Tia Wallen,AriYhana Wallen,AriYhana,Wallen,13,2026-06-15T21:54:27.675580Z,FALSE,FALSE,NA,2026-06-15,NA
+East Lansing Assessment ,Jo is coming in to see this participant due to Cassie having car trouble and unable to make it.,Cassie Nickerson,Erica Garcia,Graciella Elizalde ,Graciella,Elizalde,16 ,2026-06-16T00:04:03.957465Z,FALSE,TRUE,2026-07-06T19:29:17.266229Z,2026-06-16,2026-07-06
+East Lansing Assessment ,Jo is coming in to see this participant due to Cassie not being able to make it due to car trouble,Cassie Nickerson,Brittney Scott,Aubrianah clayborn ,Aubrianah,clayborn,16,2026-06-16T02:02:06.079768Z,FALSE,TRUE,2026-07-06T21:20:57.607406Z,2026-06-16,2026-07-06
+Grand Rapids Assessments,NA,Anna VanTubergen,Jessica Bakker,Knox Bakker,Knox,Bakker,4,2026-06-27T03:12:03.879259Z,FALSE,FALSE,NA,2026-06-27,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Emilia Labarre,Emilia labarre,Emilia,labarre,9,2026-06-15T17:20:02.792360Z,TRUE,FALSE,NA,2026-06-15,NA
+Detroit Assessment,NA,Shetoye  Rice,Betty Woodruff,Tiahna Woodruff ,Tiahna,Woodruff,7,2026-06-02T12:03:33.285663Z,FALSE,FALSE,NA,2026-06-02,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Meredith Roe,Bennett Roe,Bennett,Roe,7,2026-06-12T00:20:45.956093Z,FALSE,FALSE,NA,2026-06-12,NA
+Detroit Assessment,NA,Shetoye  Rice,Revati Saste,Malhar Kulkarni ,Malhar,Kulkarni,7,2026-05-29T21:42:19.304547Z,FALSE,FALSE,NA,2026-05-29,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Rebecca Lucas,Amiya Lucas,Amiya,Lucas,14,2026-06-16T22:00:31.432388Z,FALSE,FALSE,NA,2026-06-16,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Grace Galvez,Isaiah Galvez ,Isaiah,Galvez,3 ,2026-06-11T18:31:42.352418Z,FALSE,FALSE,NA,2026-06-11,NA
+Traverse City Assessment ,CHL989-01-A,Nicole Lipcaman,Diana Durren,Faye Durren,Faye,Durren,7,2026-06-17T13:25:16.465650Z,TRUE,FALSE,NA,2026-06-17,NA
+Detroit Assessment,NA,Shetoye  Rice,Kesha Mcduffie,Har’lee Byrd,Har’lee,Byrd,5yrs old,2026-05-27T17:45:38.249161Z,FALSE,TRUE,2026-07-08T15:26:37.757928Z,2026-05-27,2026-07-08
+East Lansing Assessment ,NA,Cassie Nickerson,Tia Wallen,Ari'Yhana Wallen,Ari'Yhana,Wallen,13,2026-07-06T20:51:36.176603Z,FALSE,FALSE,NA,2026-07-06,NA
+Flint Assessment  ,4409,Jody Kendall,Alexandra Belanger,Dorothy Belanger ,Dorothy,Belanger,19 months,2026-05-28T01:56:14.643131Z,FALSE,FALSE,NA,2026-05-28,NA
+Flint Assessment  ,81972,Jody Kendall,Bronce White,Bronce White,Bronce,White,7,2026-05-12T19:31:40.804421Z,FALSE,FALSE,NA,2026-05-12,NA
+East Lansing Assessment ,"THL624-01-A
+
+484",Cassie Nickerson,Loretta Borczak,Sergio flores,Sergio,flores,15,2026-06-07T14:11:05.007379Z,FALSE,FALSE,NA,2026-06-07,NA
+East Lansing Assessment ,Participant coming in at 1pm to accomodate scheduling conflicts. Not changing Calendly invite to ensure invites don't get auto-canceled. Cassie to complete all 3 IPAs in EL this day,Cassie Nickerson,Christine Robbe,Emma Robbe,Emma,Robbe,13,2026-05-21T21:04:25.895923Z,FALSE,FALSE,NA,2026-05-21,NA
+East Lansing Assessment ,"MQM950-01-A
+
+379",Amy Scharmen-Burgdolf,Crystal Gary,Elijah Lagarde,Elijah,Lagarde,16,2026-06-01T11:07:23.515345Z,TRUE,FALSE,NA,2026-06-01,NA
+Traverse City Assessment ,CBL718-01-A,Nicole Lipcaman,Audrey Rosin,Eli Rosin,Eli,Rosin,7,2026-06-11T17:22:53.157314Z,FALSE,FALSE,NA,2026-06-11,NA
+Traverse City Assessment ,KKR431-01-A,Nicole Lipcaman,Zita Muladore,Paul Muladore,Paul,Muladore,6,2026-06-11T17:45:42.604069Z,FALSE,FALSE,NA,2026-06-11,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Maggy Meister,Makayla Meister,Makayla,Meister,15,2026-05-31T23:42:54.571006Z,FALSE,FALSE,NA,2026-05-31,NA
+Traverse City Assessment ,FWL830-01-A,Nicole Lipcaman,Stephanie Williams,Jack Williams,Jack,Williams,6,2026-06-29T22:10:04.680413Z,FALSE,FALSE,NA,2026-06-29,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Maggie Meister,Makenzie Meister ,Makenzie,Meister,12,2026-05-31T23:44:11.856510Z,FALSE,FALSE,NA,2026-05-31,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Kristin Lockwood,Lucy Lockwood,Lucy,Lockwood,3,2026-06-20T01:40:08.014211Z,FALSE,FALSE,NA,2026-06-20,NA
+Detroit Assessment,NA,Shetoye  Rice,Terron Young,Nyrie Young Montgomery ,Nyrie,Montgomery,1 year,2026-07-08T21:58:13.321701Z,TRUE,FALSE,NA,2026-07-08,NA
+Flint Assessment  ,NA,Jody Kendall,Jessica Pasienza,Gianna Pasienza ,Gianna,Pasienza,6,2026-06-09T02:27:21.348340Z,FALSE,FALSE,NA,2026-06-09,NA
+Detroit Assessment,NA,Shetoye  Rice,R'Tia Walker,Jay'Vaughn Anderson ,Jay'Vaughn,Anderson,7,2026-07-08T20:44:11.838882Z,TRUE,FALSE,NA,2026-07-08,NA
+Flint Assessment  ,NA,Jody Kendall,Dejavena Vanlanham,Zany’ti Staffney,Zany’ti,Staffney,14,2026-05-20T14:54:05.466393Z,FALSE,FALSE,NA,2026-05-20,NA
+Flint Assessment  ,89736M1,Jody Kendall,Anastasia Pathic,Henry Pathic,Henry,Pathic,5,2026-05-24T02:43:03.826119Z,FALSE,FALSE,NA,2026-05-24,NA
+Traverse City Assessment ,VLQ825-01-A,Nicole Lipcaman,Caitlin Erdman,Coraline Erdman ,Coraline,Erdman,15 months,2026-06-14T13:08:20.658348Z,FALSE,FALSE,NA,2026-06-14,NA
+Traverse City Assessment ,"VDW899-01-A
+
+VDW899-01-B",Nicole Lipcaman,Jamie Gomery,Colton and Dakota Gomery,Colton,Gomery,19 months,2026-05-21T02:11:50.150117Z,TRUE,FALSE,NA,2026-05-21,NA
+Detroit Assessment,NA,Shetoye  Rice,Samantha Lira,Violet Lira,Violet,Lira,6,2026-06-08T14:03:25.090006Z,FALSE,FALSE,NA,2026-06-08,NA
+Detroit Assessment,NA,Shetoye  Rice,Maekena Dickinson,Wyatt Dickinson ,Wyatt,Dickinson,3,2026-05-29T14:20:52.186181Z,FALSE,TRUE,2026-07-15T18:19:58.068321Z,2026-05-29,2026-07-15
+Detroit Assessment,NA,Shetoye  Rice,Delaya Quinney,Izhy’Lamonte Williams,Izhy’Lamonte,Williams,6,2026-06-07T22:47:27.663337Z,FALSE,TRUE,2026-07-15T20:24:43.902468Z,2026-06-07,2026-07-15
+Traverse City Assessment ,NA,Nicole Lipcaman,Emilia Labarre,Emilia labarre,Emilia,labarre,9,2026-07-07T13:08:38.670767Z,TRUE,FALSE,NA,2026-07-07,NA
+Traverse City Assessment ,QJJ178-01-A,Nicole Lipcaman,Julie Freeman,Max Freeman,Max,Freeman,7,2026-05-29T15:25:25.065143Z,FALSE,FALSE,NA,2026-05-29,NA
+Traverse City Assessment ,HQX076-01-A,Nicole Lipcaman,Delayna Steffens,Jaxson simmons,Jaxson,simmons,6,2026-06-02T17:40:25.219857Z,FALSE,FALSE,NA,2026-06-02,NA
+Traverse City Assessment ,PHN877-01-A,Nicole Lipcaman,Annemarie Wigton,Jonathan Wigton,Jonathan,Wigton,6,2026-06-26T14:04:06.353490Z,FALSE,FALSE,NA,2026-06-26,NA
+Detroit Assessment,NA,Andrew Davis,Bella Moye,Bella moye,Bella,moye,5,2026-07-16T21:22:21.203394Z,FALSE,TRUE,2026-07-20T17:06:30.107943Z,2026-07-16,2026-07-20
+East Lansing Assessment ,NA,Cassie Nickerson,Evelyn D'Haene,Elizabeth D'Haene,Elizabeth,D'Haene,14yrs old,2026-06-17T20:23:34.663285Z,FALSE,FALSE,NA,2026-06-17,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Jessica Davis,Olivia Davis,Olivia,Davis,16,2026-06-07T20:52:20.816735Z,FALSE,FALSE,NA,2026-06-07,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Emilia Labarre,Emilia labarre,Emilia,labarre,9,2026-07-12T17:36:17.095577Z,TRUE,FALSE,NA,2026-07-12,NA
+Detroit Assessment,NA,Shetoye  Rice,Amy Matteson,Abel Matteson,Abel,Matteson,7,2026-06-02T14:01:41.916804Z,FALSE,FALSE,NA,2026-06-02,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Emilia Labarre,Emilia labarre,Emilia,labarre,9,2026-07-12T17:37:10.375486Z,TRUE,FALSE,NA,2026-07-12,NA
+Detroit Assessment,NA,Andrew Davis,Cierra Cote,William thorne,William,thorne,3,2026-07-15T12:18:53.887998Z,FALSE,TRUE,2026-07-21T17:04:56.249212Z,2026-07-15,2026-07-21
+East Lansing Assessment ,NA,Cassie Nickerson,Crystal Lundy,Brezlyn Lundy,Brezlyn,Lundy,14,2026-06-16T06:24:53.914775Z,FALSE,FALSE,NA,2026-06-16,NA
+Detroit Assessment,NA,Shetoye  Rice,Lanae Dobbins,Amiyah Dobbins,Amiyah,Dobbins,9 years old ,2026-07-02T19:04:44.616292Z,FALSE,FALSE,NA,2026-07-02,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Casie Montani,Jason Walker,Jason,Walker,15,2026-07-19T03:09:10.054917Z,TRUE,FALSE,NA,2026-07-19,NA
+Traverse City Assessment ,PTN126-01-A,Nicole Lipcaman,Emilia Labarre,Emilia labarre,Emilia,labarre,9,2026-07-20T16:43:08.488389Z,FALSE,FALSE,NA,2026-07-20,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Kem Taylor,Ryen Smith,Ryen,Smith,16,2026-06-11T20:37:08.322426Z,TRUE,FALSE,NA,2026-06-11,NA
+Traverse City Assessment ,CHL989-01-A,Nicole Lipcaman,Diana Durren,Faye Durren,Faye,Durren,7,2026-07-08T13:06:19.244424Z,FALSE,FALSE,NA,2026-07-08,NA
+Detroit Assessment,NA,Andrew Davis,Anita Vinson,Peace Vinson,Peace,Vinson,3,2026-07-15T11:45:34.462083Z,FALSE,TRUE,2026-07-21T20:02:04.134288Z,2026-07-15,2026-07-21
+Detroit Assessment,NA,Shetoye  Rice,Tiffany Williams,Aiden allen,Aiden,allen,7 years old ,2026-05-28T16:13:58.701448Z,TRUE,FALSE,NA,2026-05-28,NA
+East Lansing Assessment ,71620,Jolyn Lerma,Jessica Star,Zavier Goard ,Zavier,Goard,11,2026-06-29T18:48:26.648110Z,FALSE,FALSE,NA,2026-06-29,NA
+Detroit Assessment,NA,Shetoye  Rice,Laticia Anderson,Jehlani moore,Jehlani,moore,6,2026-06-10T02:54:41.620221Z,TRUE,FALSE,NA,2026-06-10,NA
+Detroit Assessment,NA,Shetoye  Rice,Ashton Whitehead,Action Coyte ,Action,Coyte,17 months ,2026-06-17T18:29:30.389622Z,TRUE,FALSE,NA,2026-06-17,NA
+East Lansing Assessment ,71598,Jolyn Lerma,Brian Harris,Logan Harris ,Logan,Harris,12,2026-07-06T14:41:49.999745Z,FALSE,FALSE,NA,2026-07-06,NA
+East Lansing Assessment ,70305,Jolyn Lerma,Nikki Huntoon,Landon Huntoon,Landon,Huntoon,17,2026-07-06T22:36:55.911010Z,FALSE,FALSE,NA,2026-07-06,NA
+East Lansing Assessment ,71593,Jolyn Lerma,Michelle Chairs,Amiyah,Amiyah,NA,12,2026-06-15T21:05:27.765203Z,FALSE,FALSE,NA,2026-06-15,NA
+East Lansing Assessment ,70202,Jolyn Lerma,Courtney Brogan,Mick Brogan,Mick,Brogan,17,2026-06-15T17:17:03.606354Z,FALSE,FALSE,NA,2026-06-15,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Donna Roessler,Eric Roessler,Eric,Roessler,3,2026-07-08T22:57:54.478478Z,FALSE,FALSE,NA,2026-07-08,NA
+East Lansing Assessment ,87810M1,Jolyn Lerma,Julie Christensen,Dayke Christensen,Dayke,Christensen,7,2026-06-02T03:16:11.810174Z,FALSE,FALSE,NA,2026-06-02,NA
+Flint Assessment  ,84105,Jody Kendall,Lindsey Black,Edward Kronner,Edward,Kronner,3,2026-06-02T18:41:25.877104Z,FALSE,FALSE,NA,2026-06-02,NA
+Detroit Assessment,WGX824-01-A,Andrew Davis,Brandi Taylor Stinson,Joshua Stinson ,Joshua,Stinson,7,2026-07-14T20:05:02.872287Z,FALSE,FALSE,NA,2026-07-14,NA
+Flint Assessment  ,85196M1,Jody Kendall,Alexis Bradley,Beau bradkey ,Beau,bradkey,6,2026-06-08T13:52:14.640311Z,TRUE,FALSE,NA,2026-06-08,NA
+East Lansing Assessment ,80818,Jolyn Lerma,Jennifer Porath,Milayna (Mila) Porath,Milayna,Porath,7,2026-06-03T18:15:13.567493Z,FALSE,FALSE,NA,2026-06-03,NA
+Flint Assessment  ,80577M1,Jody Kendall,kylee list,kamari bryson,kamari,bryson,4,2026-06-01T19:18:48.011284Z,TRUE,FALSE,NA,2026-06-01,NA
+East Lansing Assessment ,Meeting at 230p approved by Jo,Jolyn Lerma,Stacey Adams,Regan,Regan,NA,17,2026-07-20T13:48:38.653159Z,FALSE,FALSE,NA,2026-07-20,NA
+Detroit Assessment,NA,Breanna Kornatowski,Tiffany Mousel,Mallory Mousel,Mallory,Mousel,7,2026-07-10T03:20:52.572451Z,TRUE,FALSE,NA,2026-07-10,NA
+East Lansing Assessment ,70205,Jolyn Lerma,Stacey Adams,Regan Adams ,Regan,Adams,17,2026-06-19T14:15:00.911412Z,TRUE,FALSE,NA,2026-06-19,NA
+East Lansing Assessment ,NA,Jolyn Lerma,Krystal Robinson,Antonio Waller,Antonio,Waller,14,2026-07-21T06:15:00.237644Z,FALSE,TRUE,2026-07-25T14:04:22.228502Z,2026-07-21,2026-07-25
+East Lansing Assessment ,71629,Jolyn Lerma,Monica Katz,Ja’sean Mqdon,Ja’sean,Mqdon,12,2026-06-15T15:05:58.598839Z,FALSE,FALSE,NA,2026-06-15,NA
+Detroit Assessment,NDX702-01-A,Andrew Davis,Arwa Abubaker,Eyad hatem,Eyad,hatem,3,2026-07-18T15:58:25.083954Z,FALSE,FALSE,NA,2026-07-18,NA
+Detroit Assessment,NA,Shetoye  Rice,Laticia Anderson,Journey Moore,Journey,Moore,6,2026-06-10T02:53:15.527150Z,FALSE,FALSE,NA,2026-06-10,NA
+Detroit Assessment,NA,Shetoye  Rice,Sonia Lakshmanan,Paveen Karthik,Paveen,Karthik,3,2026-06-02T15:57:24.432626Z,FALSE,FALSE,NA,2026-06-02,NA
+East Lansing Assessment ,86431,Jolyn Lerma,Shelby Brunner,Eleanor Brunner,Eleanor,Brunner,3 years,2026-06-09T14:43:13.625906Z,FALSE,FALSE,NA,2026-06-09,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Rachel Pryor,Jordan Pryor,Jordan,Pryor,3.5,2026-07-17T20:55:02.987920Z,FALSE,FALSE,NA,2026-07-17,NA
+Detroit Assessment,NA,Breanna Kornatowski,Stacye Jones,Parker Jones,Parker,Jones,7,2026-07-09T18:16:13.054006Z,FALSE,FALSE,NA,2026-07-09,NA
+East Lansing Assessment ,85574,Jolyn Lerma,Brynna Klink,Barrett Klink,Barrett,Klink,7,2026-06-29T14:53:01.092277Z,FALSE,FALSE,NA,2026-06-29,NA
+Detroit Assessment,NA,Andrew Davis,Ashley Blount,Ivoree Russell ,Ivoree,Russell,4,2026-07-15T21:11:55.599816Z,FALSE,TRUE,2026-07-27T18:48:52.335168Z,2026-07-15,2026-07-27
+Detroit Assessment,NA,Breanna Kornatowski,Ariel Shaw,Axel Gribble ,Axel,Gribble,18 months ,2026-07-09T15:00:04.488163Z,FALSE,FALSE,NA,2026-07-09,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Casie Montani,Jason Walker,Jason,Walker,15,2026-07-21T00:05:28.054315Z,FALSE,FALSE,NA,2026-07-21,NA
+Detroit Assessment,NA,Andrew Davis,Karneca Jackson,Jakobe Taylor,Jakobe,Taylor,9,2026-07-16T17:07:49.998004Z,TRUE,FALSE,NA,2026-07-16,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Morgan Sheldon,Josephine Sheldon,Josephine,Sheldon,3,2026-07-21T17:31:11.746024Z,FALSE,FALSE,NA,2026-07-21,NA
+Flint Assessment  ,70453,Jody Kendall,Ashley Schaenzer,Addison Schaenzer,Addison,Schaenzer,16,2026-06-03T12:21:40.309089Z,FALSE,FALSE,NA,2026-06-03,NA
+Flint Assessment  ,87831,Jody Kendall,Amber Lucynski,Henley Lucynski,Henley,Lucynski,4,2026-06-01T23:09:45.385487Z,FALSE,FALSE,NA,2026-06-01,NA
+East Lansing Assessment ,"KPJ294-01-A
+
+1558",Amy Scharmen-Burgdolf,Kayleigh Akley,Grace Akley,Grace,Akley,12,2026-06-29T15:52:57.261729Z,FALSE,FALSE,NA,2026-06-29,NA
+East Lansing Assessment ,"WGJ956-01-A
+
+588",Amy Scharmen-Burgdolf,Alejandra Castilla,Adrian davies,Adrian,davies,15,2026-07-06T23:38:02.308538Z,FALSE,FALSE,NA,2026-07-06,NA
+Detroit Assessment,NA,Shetoye  Rice,Chrisma Butts,Harmony Butts ,Harmony,Butts,3 years old ,2026-06-03T18:04:19.941446Z,FALSE,FALSE,NA,2026-06-03,NA
+Detroit Assessment,NA,Shetoye  Rice,Aujah Mullins,Elijah Chandler,Elijah,Chandler,6,2026-06-07T16:08:51.985932Z,TRUE,FALSE,NA,2026-06-07,NA
+Detroit Assessment,NA,Breanna Kornatowski,Tiffany Williams,Aiden allen,Aiden,allen,7 years old ,2026-07-22T13:41:56.843344Z,FALSE,FALSE,NA,2026-07-22,NA
+Detroit Assessment,NA,Shetoye  Rice,Brandi Archie,Khalil Archie,Khalil,Archie,6,2026-06-09T04:49:42.637788Z,TRUE,FALSE,NA,2026-06-09,NA
+Detroit Assessment,TTG223-01-A,Andrew Davis,Christie Donn,Riker Donn,Riker,Donn,7,2026-07-27T16:09:57.693212Z,FALSE,FALSE,NA,2026-07-27,NA
+Traverse City Assessment ,"LVN615-01-M
+
+LVN615-01-N",Nicole Lipcaman,Shanna Marsh,Axl and Silas Marsh,Axl,Marsh,7,2026-07-02T12:33:14.598521Z,FALSE,FALSE,NA,2026-07-02,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Shanna Marsh,Axl Marsh,Axl,Marsh,7,2026-07-01T16:11:53.470931Z,TRUE,FALSE,NA,2026-07-01,NA
+Traverse City Assessment ,BTK197-01-A,Nicole Lipcaman,Alison Hoeppner,Ella Hoeppner ,Ella,Hoeppner,9,2026-06-30T13:13:58.837506Z,FALSE,FALSE,NA,2026-06-30,NA
+Detroit Assessment,FYC718-01-A,Andrew Davis,Ryan Nowosatko,Emilia Nowosatko ,Emilia,Nowosatko,5,2026-07-17T11:01:15.092395Z,FALSE,FALSE,NA,2026-07-17,NA
+Flint Assessment  ,87063M1,Kowlini Wickramasinghe,Rebecca McDowell,Vincent Fulara,Vincent,Fulara,6,2026-07-28T16:33:51.464265Z,FALSE,FALSE,NA,2026-07-28,NA
+Flint Assessment  ,NA,Breanna Kornatowski,Brianna Poskitt,Ariyah johnson ,Ariyah,johnson,1 ,2026-07-16T20:19:14.724301Z,TRUE,FALSE,NA,2026-07-16,NA
+East Lansing Assessment ,81364,Jolyn Lerma,Nancy Raney,Haper Raney,Haper,Raney,14,2026-06-16T13:40:09.822653Z,FALSE,FALSE,NA,2026-06-16,NA
+East Lansing Assessment ,71364,Jolyn Lerma,Nancy Raney,Lydia Raney,Lydia,Raney,14,2026-06-16T13:41:43.620073Z,FALSE,FALSE,NA,2026-06-16,NA
+East Lansing Assessment ,83818,Jolyn Lerma,Rachel Oberst,Kyla Hall,Kyla,Hall,3,2026-06-22T19:40:09.169459Z,FALSE,FALSE,NA,2026-06-22,NA
+East Lansing Assessment ,"QYF906-01-A
+
+89382",Amy Scharmen-Burgdolf,Emily Keen,Lily Keen,Lily,Keen,7,2026-06-27T22:36:25.295874Z,FALSE,FALSE,NA,2026-06-27,NA
+East Lansing Assessment ,71583,Jolyn Lerma,Molly Hennessey Greenwalt,Mary Greene ,Mary,Greene,12,2026-07-07T00:43:08.011718Z,FALSE,FALSE,NA,2026-07-07,NA
+East Lansing Assessment ,"HYP683-01-A
+
+1576",Amy Scharmen-Burgdolf,Shaquita Lee,Sha’Qira Lee,Sha’Qira,Lee,13,2026-07-06T19:41:39.865692Z,FALSE,FALSE,NA,2026-07-06,NA
+Flint Assessment  ,NA,Jody Kendall,Pernell Gaines,Pernell gaines,Pernell,gaines,7,2026-06-16T23:34:58.787789Z,TRUE,FALSE,NA,2026-06-16,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Samantha Mansfield,Collins Mansfield ,Collins,Mansfield,3,2026-07-17T14:03:17.757881Z,TRUE,FALSE,NA,2026-07-17,NA
+Detroit Assessment,HMP636-01-A,Andrew Davis,Anna Laurie,Ava Laurie,Ava,Laurie,7,2026-07-21T19:55:53.023199Z,FALSE,FALSE,NA,2026-07-21,NA
+Flint Assessment  ,70323,Jody Kendall,Gwendolyn Reyes,Raymond Gregory,Raymond,Gregory,16,2026-06-15T17:24:26.526779Z,FALSE,FALSE,NA,2026-06-15,NA
+East Lansing Assessment ,89540,Jolyn Lerma,Breanna Davey,Ophelia Davey,Ophelia,Davey,7,2026-06-18T14:06:26.852126Z,TRUE,FALSE,NA,2026-06-18,NA
+East Lansing Assessment ,89540,Jolyn Lerma,Breanna Davey,Ophelia Davey,Ophelia,Davey,7,2026-07-29T16:14:33.155867Z,FALSE,FALSE,NA,2026-07-29,NA
+Flint Assessment  ,4443,Jody Kendall,Calviniesha Frye,Janerrio Frye,Janerrio,Frye,1,2026-06-16T21:14:50.956835Z,FALSE,FALSE,NA,2026-06-16,NA
+Detroit Assessment,BPT625-01-A,Andrew Davis,Courtney Nagel,Rocco  Nagel,Rocco,Nagel,7,2026-07-27T16:39:45.367127Z,FALSE,FALSE,NA,2026-07-27,NA
+East Lansing Assessment ,"70351
+
+IPA scheduled 6/15 w/Cassie and cancelled 30min prior. Rescheduled for 7/6 w/Jo and NS. Rescheduled again for 8/3 w/Jo and NS again.",Jolyn Lerma,Aubrianah Clayborn,Aubri clayborn,Aubri,clayborn,16,2026-07-08T13:16:58.825575Z,FALSE,TRUE,2026-08-03T19:20:09.730151Z,2026-07-08,2026-08-03
+East Lansing Assessment ,NA,Jolyn Lerma,Heather Beck,Brendan Beck ,Brendan,Beck,17,2026-06-26T23:14:42.606812Z,TRUE,FALSE,NA,2026-06-26,NA
+East Lansing Assessment ,70405,Jolyn Lerma,Diane Baird,Ellen Baird,Ellen,Baird,16,2026-07-07T20:40:07.686069Z,FALSE,FALSE,NA,2026-07-07,NA
+Detroit Assessment,NA,Shetoye  Rice,Netania Hunt,Ja’kalelani,Ja’kalelani,NA,3,2026-06-18T18:49:09.979036Z,FALSE,FALSE,NA,2026-06-18,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Ashley Green,Aurora Johnson,Aurora,Johnson,9,2026-07-15T14:26:49.566605Z,TRUE,FALSE,NA,2026-07-15,NA
+Detroit Assessment,NA,Shetoye  Rice,Diamond Potts,Damario potts,Damario,potts,6,2026-06-18T18:33:57.501536Z,FALSE,TRUE,2026-08-04T21:26:51.085730Z,2026-06-18,2026-08-04
+Flint Assessment  ,NA,Kowlini Wickramasinghe,Brianna Poskitt,Ariyah johnson ,Ariyah,johnson,1 ,2026-07-30T18:31:11.442587Z,FALSE,TRUE,2026-08-06T13:03:26.125605Z,2026-07-30,2026-08-06
+Traverse City Assessment ,CGK997-01-A,Nicole Lipcaman,Belinda Belanger,Natalie Belanger,Natalie,Belanger,8,2026-07-07T13:18:54.156745Z,FALSE,FALSE,NA,2026-07-07,NA
+Detroit Assessment,NA,Shetoye  Rice,Meg Oblak,Tillie Oblak,Tillie,Oblak,6,2026-06-08T13:09:19.468926Z,FALSE,FALSE,NA,2026-06-08,NA
+Traverse City Assessment ,TWT305-01-A,Nicole Lipcaman,Lillian Chikas,Lincoln Chikas,Lincoln,Chikas,7,2026-07-13T18:53:47.175095Z,FALSE,FALSE,NA,2026-07-13,NA
+Flint Assessment  ,80299,Jody Kendall,Peyton Gaines,Peyton gaines,Peyton,gaines,7,2026-06-16T23:37:13.804665Z,FALSE,FALSE,NA,2026-06-16,NA
+Detroit Assessment,NA,Shetoye  Rice,Nisa Moore-Roberts,Kendrick Moore-Roberts,Kendrick,Moore-Roberts,3,2026-06-11T14:16:55.945464Z,TRUE,FALSE,NA,2026-06-11,NA
+Detroit Assessment,JKF839-01-A,Andrew Davis,Lauren Snabb,Lila Muthuswami,Lila,Muthuswami,7,2026-07-23T16:00:38.067036Z,FALSE,FALSE,NA,2026-07-23,NA
+Flint Assessment  ,80299,Jody Kendall,Pernell Gaines,Pernell gaines,Pernell,gaines,7,2026-06-16T23:39:04.456471Z,FALSE,FALSE,NA,2026-06-16,NA
+Flint Assessment  ,NA,Jody Kendall,Ta’Quandra Davis,Autum’Dior Hall,Autum’Dior,Hall,7,2026-06-23T19:44:25.765640Z,FALSE,FALSE,NA,2026-06-23,NA
+Detroit Assessment,NA,Shetoye  Rice,Haley Coop,Zayvion Hill,Zayvion,Hill,3 years old,2026-06-10T13:50:39.334549Z,FALSE,FALSE,NA,2026-06-10,NA
+Flint Assessment  ,88880M1,Jody Kendall,Kathleen Wilder,Alyson Wilder,Alyson,Wilder,3,2026-06-23T18:39:58.486254Z,FALSE,FALSE,NA,2026-06-23,NA
+Traverse City Assessment ,WDS605-01-A,Nicole Lipcaman,Laura Brown,Finley Brown,Finley,Brown,7,2026-07-07T16:39:50.272886Z,FALSE,FALSE,NA,2026-07-07,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Brandie Palacios,Celeste Hernandez,Celeste,Hernandez,7,2026-07-27T16:04:53.481508Z,TRUE,FALSE,NA,2026-07-27,NA
+East Lansing Assessment ,"RMX477-01-A (878)
+
+72014",Amy Scharmen-Burgdolf,Kyleigh Brown,Payton brown,Payton,brown,9,2026-07-15T14:12:20.049435Z,FALSE,TRUE,2026-08-06T18:15:21.121568Z,2026-07-15,2026-08-06
+Flint Assessment  ,83667M1,Kowlini Wickramasinghe,Shanta Adhikari,Shreyan Bhamdari,Shreyan,Bhamdari,7,2026-07-27T23:58:00.268686Z,FALSE,FALSE,NA,2026-07-27,NA
+East Lansing Assessment ,"HBX436-01-A (120)
+
+70512",Amy Scharmen-Burgdolf,Brooke Kinney,Emillio Rynicki-Rodriguez,Emillio,Rynicki-Rodriguez,15,2026-07-15T19:58:40.531564Z,FALSE,FALSE,NA,2026-07-15,NA
+Detroit Assessment,ZZZ654-01-A,Andrew Davis,Tiffany Mousel,Mallory Mousel,Mallory,Mousel,7,2026-07-19T11:52:41.043235Z,FALSE,FALSE,NA,2026-07-19,NA
+Detroit Assessment,YGB645-01-A,Andrew Davis,Ziare King,Zimri King,Zimri,King,3,2026-07-31T21:03:52.862626Z,TRUE,FALSE,NA,2026-07-31,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Samantha Mansfield,Collins Mansfield ,Collins,Mansfield,3,2026-07-30T03:41:24.913408Z,FALSE,FALSE,NA,2026-07-30,NA
+Detroit Assessment,RQY432-01-A,Andrew Davis,Amanda Jewell,Theodore Greer,Theodore,Greer,"4, this week",2026-07-22T17:42:08.730996Z,FALSE,FALSE,NA,2026-07-22,NA
+Flint Assessment  ,4429F1,Kowlini Wickramasinghe,Angel Smith,Angel Smith ,Angel,Smith,1,2026-08-07T14:20:30.137597Z,FALSE,FALSE,NA,2026-08-07,NA
+Detroit Assessment,RCJ118-01-A,Andrew Davis,Nisa Moore-Roberts,Kendrick Moore-Roberts ,Kendrick,Moore-Roberts,3 yrs ,2026-08-04T01:35:54.834219Z,FALSE,TRUE,2026-08-10T17:57:21.165726Z,2026-08-04,2026-08-10
+Grand Rapids Assessments,NA,Anna VanTubergen,Connor MacDonald,Kai MacDonald,Kai,MacDonald,3 years,2026-07-30T03:40:59.858413Z,FALSE,FALSE,NA,2026-07-30,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Tina Curtis,Eastyn Holmes ,Eastyn,Holmes,13,2026-07-03T05:41:44.507303Z,FALSE,FALSE,NA,2026-07-03,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Salicia Williams,Noah Williams ,Noah,Williams,9,2026-08-07T18:16:01.886994Z,FALSE,FALSE,NA,2026-08-07,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Heather Beck,Brendan Beck ,Brendan,Beck,17,2026-06-26T23:16:36.481857Z,FALSE,FALSE,NA,2026-06-26,NA
+Flint Assessment  ,NA,Kowlini Wickramasinghe,Angel Smith,Angel Smith ,Angel,Smith,1,2026-08-07T14:19:12.691733Z,TRUE,FALSE,NA,2026-08-07,NA
+Detroit Assessment,NA,Shetoye  Rice,Sierra Justice,Jeremy Justice,Jeremy,Justice,18 months,2026-06-16T16:54:38.354308Z,TRUE,FALSE,NA,2026-06-16,NA
+Detroit Assessment,NDN427-01-A,Andrew Davis,Natalie Sampson,Zeke Gagacki,Zeke,Gagacki,7,2026-07-27T15:03:06.743422Z,TRUE,FALSE,NA,2026-07-27,NA
+Grand Rapids Assessments,NA,Anna VanTubergen,Ashley Green,Aurora Johnson,Aurora,Johnson,9,2026-08-04T12:47:46.035358Z,FALSE,TRUE,2026-08-11T15:36:45.314351Z,2026-08-04,2026-08-11
+Detroit Assessment,NA,Shetoye  Rice,Jasmyn Turner,Veyda Turner,Veyda,Turner,3,2026-06-11T18:03:45.144450Z,TRUE,FALSE,NA,2026-06-11,NA
+Detroit Assessment,YNZ445-01-A,Andrew Davis,Karneca Jackson,Jakobe Taylor,Jakobe,Taylor,9,2026-07-27T11:45:57.053134Z,FALSE,TRUE,2026-08-11T18:02:03.755160Z,2026-07-27,2026-08-11
+Flint Assessment  ,80577M1,Kowlini Wickramasinghe,kylee list,kamari bryson,kamari,bryson,4,2026-07-22T19:12:21.452532Z,TRUE,FALSE,NA,2026-07-22,NA
+Detroit Assessment,JVW695-01-A,Andrew Davis,Kristi Kilbourne,Brielle Kilbourne ,Brielle,Kilbourne,4,2026-07-29T20:54:31.771327Z,FALSE,FALSE,NA,2026-07-29,NA
+Detroit Assessment,NA,Shetoye  Rice,Terron Young,Nyrie Young Montgomery ,Nyrie,Montgomery,1,2026-06-17T01:30:34.469380Z,TRUE,FALSE,NA,2026-06-17,NA
+Detroit Assessment,NA,Andrew Davis,Robin White,Robin Harris-Jacks,Robin,Harris-Jacks,6,2026-08-09T15:33:29.712894Z,FALSE,FALSE,NA,2026-08-09,NA
+Flint Assessment  ,89984M1,Jody Kendall,Jasmine Arnold,Grace Harris,Grace,Harris,3,2026-06-29T13:26:18.332826Z,FALSE,FALSE,NA,2026-06-29,NA
+Detroit Assessment,NA,Shetoye  Rice,Jada White,Damon Hogan III,Damon,Hogan,18 months,2026-06-16T15:36:17.948136Z,TRUE,FALSE,NA,2026-06-16,NA
+Flint Assessment  ,4437F1,Jody Kendall,Jachia Blacknall,Uvonte walker,Uvonte,walker,1,2026-06-26T18:26:30.524883Z,TRUE,FALSE,NA,2026-06-26,NA
+Flint Assessment  ,4418F1,Jody Kendall,Rosalie Braziel,Tyreina Braziel ,Tyreina,Braziel,1,2026-06-17T13:05:58.183792Z,TRUE,FALSE,NA,2026-06-17,NA
+Detroit Assessment,NA,Andrew Davis,Haley Burns,James Burns,James,Burns,6,2026-08-09T22:17:47.330917Z,TRUE,FALSE,NA,2026-08-09,NA
+Flint Assessment  ,83123M1,Kowlini Wickramasinghe,LaRonda Sanders,Kuwaila Blackamore ,Kuwaila,Blackamore,8,2026-08-02T20:50:25.162630Z,TRUE,FALSE,NA,2026-08-02,NA
+Flint Assessment  ,83123M1,Kowlini Wickramasinghe,LaRonda Sanders,Kuwaila Blackamore ,Kuwaila,Blackamore,8,2026-08-11T20:08:22.220883Z,FALSE,FALSE,NA,2026-08-11,NA
+Detroit Assessment,YGB645-01-A,Andrew Davis,Ziare King,Zimri King,Zimri,King,3,2026-08-08T14:31:28.932657Z,FALSE,FALSE,NA,2026-08-08,NA
+Flint Assessment  ,4437F1,Kowlini Wickramasinghe,Jachia Blacknall,Uvonte walker,Uvonte,walker,1,2026-08-11T12:32:39.504814Z,FALSE,FALSE,NA,2026-08-11,NA
+Detroit Assessment,JYP178-01-A,Andrew Davis,Kenecia Story,Nyla Love,Nyla,Love,3,2026-08-02T00:19:51.576665Z,FALSE,TRUE,2026-08-14T15:54:53.551144Z,2026-08-02,2026-08-14
+Flint Assessment  ,4425F1,Kowlini Wickramasinghe,nichole maldaner,Addison fitch,Addison,fitch,18 months ,2026-08-10T16:56:53.007933Z,FALSE,FALSE,NA,2026-08-10,NA
+Detroit Assessment,JYP178-01-N,Andrew Davis,Kenecia Story,Noelle Love ,Noelle,Love,3 ,2026-08-02T00:21:40.313884Z,FALSE,TRUE,2026-08-14T17:41:11.803118Z,2026-08-02,2026-08-14
+Flint Assessment  ,84743M1,Kowlini Wickramasinghe,Elisa Urtiaga-Medina,Marcelena Urtiaga-Medina ,Marcelena,Urtiaga-Medina,4,2026-08-06T20:45:44.640126Z,FALSE,FALSE,NA,2026-08-06,NA
+Detroit Assessment,CLP827-01-A,Andrew Davis,Khaleda Kendericks,Jayla Kendricks,Jayla,Kendricks,8,2026-07-20T21:56:28.410542Z,TRUE,FALSE,NA,2026-07-20,NA
+Flint Assessment  ,80577M1,Kowlini Wickramasinghe,kylee list,kamari bryson,kamari,bryson,4,2026-08-09T20:42:41.237806Z,TRUE,FALSE,NA,2026-08-09,NA
+Flint Assessment  ,82883M1,Kowlini Wickramasinghe,melody hanson,armani carter,armani,carter,8,2026-08-12T01:31:08.662149Z,FALSE,TRUE,2026-08-15T21:24:04.851541Z,2026-08-12,2026-08-15
+Detroit Assessment,NA,Shetoye  Rice,Kanisha Gates,Khamari Gates,Khamari,Gates,3,2026-06-11T13:35:46.585773Z,TRUE,FALSE,NA,2026-06-11,NA
+Detroit Assessment,NA,Shetoye  Rice,Brandi Archie,Khalil Archie,Khalil,Archie,6,2026-07-29T19:08:23.163758Z,FALSE,FALSE,NA,2026-07-29,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Angela Dewitt,Ahrhia riss,Ahrhia,riss,15,2026-07-09T01:26:55.465696Z,FALSE,FALSE,NA,2026-07-09,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Ann McCourt,Christian Brogden,Christian,Brogden,14,2026-06-26T18:06:23.792204Z,TRUE,FALSE,NA,2026-06-26,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Ashley Terry,Akayla Malone,Akayla,Malone,11,2026-07-17T15:23:11.038055Z,TRUE,FALSE,NA,2026-07-17,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Angela Dewitt,Amya Ross ,Amya,Ross,16,2026-07-09T01:28:40.423695Z,TRUE,FALSE,NA,2026-07-09,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Paige Henry,Immanuel Hinton,Immanuel,Hinton,16,2026-08-10T18:46:23.805603Z,FALSE,FALSE,NA,2026-08-10,NA
+Detroit Assessment,NA,Shetoye  Rice,Emily Courtney,Thomas Courtney,Thomas,Courtney,5 (6 when the appointment occurs),2026-06-18T16:11:42.835894Z,TRUE,FALSE,NA,2026-06-18,NA
+Detroit Assessment,NA,Shetoye  Rice,LaShaundra Brown,Leah Brische Johnson,Leah,Johnson,4 years old,2026-06-10T17:18:21.597385Z,FALSE,TRUE,2026-08-19T01:02:12.468668Z,2026-06-10,2026-08-19
+Detroit Assessment,appt...documented in Ripple,Shetoye  Rice,Erin Harker,Otto Harker,Otto,Harker,7,2026-06-28T20:03:46.257615Z,FALSE,FALSE,NA,2026-06-28,NA
+Detroit Assessment,NA,Shetoye  Rice,Netania Hunt,Ja’kalelani,Ja’kalelani,NA,3,2026-06-18T15:37:10.417408Z,TRUE,FALSE,NA,2026-06-18,NA
+Detroit Assessment,NA,Shetoye  Rice,Emily Courtney,Thomas Courtney,Thomas,Courtney,5 (6 when the appointment occurs),2026-06-18T16:06:03.552822Z,TRUE,FALSE,NA,2026-06-18,NA
+Detroit Assessment,NA,Shetoye  Rice,Lindsey Cascadden,Brooks Cascadden,Brooks,Cascadden,3.5,2026-06-11T16:28:14.257539Z,FALSE,FALSE,NA,2026-06-11,NA
+Detroit Assessment,documented in ripple,Shetoye  Rice,Alison Cardona,Oliver Cardona,Oliver,Cardona,3,2026-06-17T12:55:19.526769Z,TRUE,FALSE,NA,2026-06-17,NA
+East Lansing Assessment ,"JQZ496-01-A
+
+70205",Amy Scharmen-Burgdolf,Stacey Adams,Regan Adams ,Regan,Adams,17,2026-07-20T12:44:09.365213Z,TRUE,FALSE,NA,2026-07-20,NA
+East Lansing Assessment ,"QZP255-01-A
+
+86307",Amy Scharmen-Burgdolf,Lindsay Herald,Amelia Herald,Amelia,Herald,7,2026-07-24T15:20:05.645015Z,FALSE,FALSE,NA,2026-07-24,NA
+East Lansing Assessment ,"NGX536-01-A
+
+2017",Amy Scharmen-Burgdolf,Pamela Pfeifer,Astrid Pfeifer-Lindberg,Astrid,Pfeifer-Lindberg,10,2026-07-17T17:05:29.464493Z,FALSE,FALSE,NA,2026-07-17,NA
+Flint Assessment  ,86974M1,Jody Kendall,Ebony Nelson,Ryleigh Neal,Ryleigh,Neal,6,2026-06-24T23:54:40.287254Z,FALSE,FALSE,NA,2026-06-24,NA
+Flint Assessment  ,4424,Jody Kendall,Lauren Speagle,Delronte wright-gray ,Delronte,wright-gray,1 ,2026-06-17T19:31:27.642452Z,TRUE,FALSE,NA,2026-06-17,NA
+Flint Assessment  ,80299M1,Kowlini Wickramasinghe,Pernell Gaines,Pernell gaines,Pernell,gaines,7,2026-08-13T14:54:03.238538Z,FALSE,TRUE,2026-08-22T23:05:27.996502Z,2026-08-13,2026-08-22
+Flint Assessment  ,80577M1,Kowlini Wickramasinghe,kylee list,kamari bryson,kamari,bryson,4,2026-08-13T18:56:45.029837Z,FALSE,TRUE,2026-08-22T23:06:29.135379Z,2026-08-13,2026-08-22
+Flint Assessment  ,80299M2,Kowlini Wickramasinghe,Peyton Gaines,Peyton gaines,Peyton,gaines,7,2026-08-13T14:58:37.595696Z,FALSE,TRUE,2026-08-23T22:31:59.586920Z,2026-08-13,2026-08-23
+Flint Assessment  ,84484M1,Kowlini Wickramasinghe,Amie Paradine-Hawver,Gabriella Hawver,Gabriella,Hawver,7,2026-08-06T12:49:24.436809Z,FALSE,FALSE,NA,2026-08-06,NA
+Detroit Assessment,NA,Shetoye  Rice,Marie Bass,Nevaeh Jordan,Nevaeh,Jordan,13,2026-08-22T17:49:24.105042Z,FALSE,FALSE,NA,2026-08-22,NA
+Detroit Assessment,CZX484-01-A,Andrew Davis,Ariel Dickerson,Gionni Dickerson,Gionni,Dickerson,7,2026-08-02T03:27:19.348459Z,FALSE,TRUE,2026-08-23T16:40:58.974177Z,2026-08-02,2026-08-23
+Flint Assessment  ,4426F1,Kowlini Wickramasinghe,Brianna Poskitt,Ariyah johnson ,Ariyah,johnson,1,2026-08-14T07:19:05.056254Z,FALSE,TRUE,2026-08-23T17:31:12.644611Z,2026-08-14,2026-08-23
+Detroit Assessment,TQW993-01-A,Andrew Davis,Kanisha Gates,Khamari Gates,Khamari,Gates,3,2026-07-23T16:07:31.602913Z,FALSE,FALSE,NA,2026-07-23,NA
+Flint Assessment  ,70295,Kowlini Wickramasinghe,TIFFANIE BALLARD,Lilly ballard,Lilly,ballard,17,2026-08-10T18:19:01.173736Z,TRUE,FALSE,NA,2026-08-10,NA
+Flint Assessment  ,4428,Kowlini Wickramasinghe,Jolecia Dowdell,J’Nai Harris,J’Nai,Harris,1,2026-08-21T13:02:40.311214Z,FALSE,FALSE,NA,2026-08-21,NA
+Flint Assessment  ,70585,Kowlini Wickramasinghe,TIFFANIE BALLARD,Olivia ballard,Olivia,ballard,12,2026-08-10T18:17:25.158547Z,TRUE,FALSE,NA,2026-08-10,NA
+Detroit Assessment,QMG495-01-A,Andrew Davis,Jasmyn Turner,Veyda Turner,Veyda,Turner,3,2026-08-05T00:53:54.401234Z,TRUE,FALSE,NA,2026-08-05,NA
+Detroit Assessment,NA,Andrew Davis,Sierra Justice,Jeremy Justice,Jeremy,Justice,20 months,2026-08-10T23:11:30.171255Z,TRUE,FALSE,NA,2026-08-10,NA
+Detroit Assessment,NA,Andrew Davis,shonice eastman,Chaz eastman,Chaz,eastman,7,2026-08-18T22:42:32.124229Z,TRUE,FALSE,NA,2026-08-18,NA
+Traverse City Assessment ,PND524-01-A,Nicole Lipcaman,Kendrin Sonneville,Carter Klumb,Carter,Klumb,7,2026-08-01T12:47:45.797026Z,FALSE,FALSE,NA,2026-08-01,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Autumn Long,Boe Choban ,Boe,Choban,16,2026-07-20T14:55:07.316109Z,TRUE,FALSE,NA,2026-07-20,NA
+Traverse City Assessment ,MRX335-01-A,Nicole Lipcaman,Paige Paul,Noah Paul,Noah,Paul,8,2026-08-14T16:51:45.119332Z,FALSE,FALSE,NA,2026-08-14,NA
+Detroit Assessment,NA,Andrew Davis,Jada White,Damon Hogan III,Damon,Hogan,20 months,2026-08-12T06:07:40.353034Z,TRUE,FALSE,NA,2026-08-12,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Kem Taylor,Ryen Smith,Ryen,Smith,16,2026-07-17T18:19:27.718899Z,TRUE,FALSE,NA,2026-07-17,NA
+Traverse City Assessment ,CSC443-01-A,Nicole Lipcaman,Brittany Stotler,Sarah Stotler,Sarah,Stotler,8,2026-08-14T22:07:33.435260Z,FALSE,FALSE,NA,2026-08-14,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Holly Bartrum,Elijah Bartrum,Elijah,Bartrum,17 months,2026-07-06T13:56:50.531020Z,TRUE,FALSE,NA,2026-07-06,NA
+Traverse City Assessment ,GMK178-01-A,Nicole Lipcaman,Zoe Loomis,Declan Loomis,Declan,Loomis,9,2026-08-18T08:22:09.332532Z,FALSE,FALSE,NA,2026-08-18,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Alicia Hill,Adeline hill,Adeline,hill,21 months,2026-06-15T14:11:53.577851Z,TRUE,FALSE,NA,2026-06-15,NA
+Detroit Assessment,NA,Shetoye  Rice,Marie Bass,Nevaeh Jordan,Nevaeh,Jordan,13,2026-06-22T19:55:17.805390Z,TRUE,FALSE,NA,2026-06-22,NA
+Flint Assessment  ,4432F1,Kowlini Wickramasinghe,Jade Scott,J’halil Matthews,J’halil,Matthews,Almost 18 months old,2026-08-19T13:54:20.943381Z,FALSE,TRUE,2026-08-25T15:54:55.712152Z,2026-08-19,2026-08-25
+Traverse City Assessment ,JWP930-01-A,Nicole Lipcaman,Alicia Hill,Adeline hill,Adeline,hill,21 months,2026-06-15T14:13:29.991877Z,TRUE,FALSE,NA,2026-06-15,NA
+Detroit Assessment,QPF716-01-A,Andrew Davis,Cierra Cote,William thorne,William,thorne,3,2026-08-21T22:56:10.730017Z,FALSE,TRUE,2026-08-25T16:50:39.676896Z,2026-08-21,2026-08-25
+Detroit Assessment,P86928,Shetoye  Rice,Gaurav Narula,Naisha Narula,Naisha,Narula,7,2026-08-07T14:26:24.670900Z,TRUE,FALSE,NA,2026-08-07,NA
+Traverse City Assessment ,RVT795-01-A,Nicole Lipcaman,Jessica Brueggeman,Journey Rennie ,Journey,Rennie,7,2026-07-21T12:17:52.343084Z,FALSE,FALSE,NA,2026-07-21,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Torena McIntyre-Arnold,Justice Arnold ,Justice,Arnold,11,2026-07-17T15:53:13.502226Z,TRUE,FALSE,NA,2026-07-17,NA
+Traverse City Assessment ,"VDW899-01-A
+
+VDW899-01-B",Nicole Lipcaman,Jamie Gomery,Dakota and Colton Gomery,Dakota,Gomery,20 months,2026-07-17T17:34:20.184047Z,TRUE,FALSE,NA,2026-07-17,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Brittney Scott,Aubrianah clayborn ,Aubrianah,clayborn,16,2026-08-03T20:37:08.229399Z,TRUE,FALSE,NA,2026-08-03,NA
+Flint Assessment  ,4419F1,Kowlini Wickramasinghe,raven chastain,eragon chastain,eragon,chastain,one and a half years old,2026-08-19T21:41:08.942798Z,FALSE,FALSE,NA,2026-08-19,NA
+Flint Assessment  ,86311M1,Kowlini Wickramasinghe,Tasheena Baker,AyDen Miller,AyDen,Miller,8,2026-08-17T21:01:53.838243Z,FALSE,FALSE,NA,2026-08-17,NA
+Flint Assessment  ,4426F1,Kowlini Wickramasinghe,Brianna Poskitt,Ariyah johnson ,Ariyah,johnson,1.5,2026-08-24T06:28:47.881242Z,FALSE,FALSE,NA,2026-08-24,NA
+East Lansing Assessment ,"SDT653-01-A
+
+86505",Amy Scharmen-Burgdolf,Julie Prussack,Hannah Prussack,Hannah,Prussack,7,2026-07-01T20:53:35.739707Z,TRUE,FALSE,NA,2026-07-01,NA
+Detroit Assessment,YNZ445-01-A,Andrew Davis,Karneca Jackson,Jakobe Taylor ,Jakobe,Taylor,9,2026-08-12T13:31:24.326968Z,FALSE,TRUE,2026-08-26T18:52:21.745143Z,2026-08-12,2026-08-26
+East Lansing Assessment ,"HJC838-01-A
+
+2011",Amy Scharmen-Burgdolf,Juliet Richardson,Nelia Richardson,Nelia,Richardson,9,2026-08-17T12:39:41.966717Z,FALSE,FALSE,NA,2026-08-17,NA
+Flint Assessment  ,85651M1,Kowlini Wickramasinghe,Sarah Bohlman,Amanda sheehan ,Amanda,sheehan,8yrs,2026-08-12T11:40:40.599959Z,FALSE,FALSE,NA,2026-08-12,NA
+East Lansing Assessment ,"VKP009-01-A
+
+1377",Amy Scharmen-Burgdolf,Kristen Proctor,Thomas Sickels ,Thomas,Sickels,14,2026-07-21T12:37:15.889554Z,TRUE,FALSE,NA,2026-07-21,NA
+Detroit Assessment,P86928,Andrew Davis,Gaurav Narula,Naisha Narula,Naisha,Narula,7,2026-08-18T17:25:48.629481Z,TRUE,FALSE,NA,2026-08-18,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Emily Brown,Tristan Gallagher ,Tristan,Gallagher,About to be 15,2026-08-24T16:47:33.941314Z,FALSE,FALSE,NA,2026-08-24,NA
+Traverse City Assessment ,LCR073-01-A,Nicole Lipcaman,Betsy Boyce,Josie Boyce,Josie,Boyce,9,2026-08-19T23:43:45.054136Z,FALSE,FALSE,NA,2026-08-19,NA
+Traverse City Assessment ,DJK313-01-A,Nicole Lipcaman,Karen Goethals,Brielle Goethals,Brielle,Goethals,9,2026-08-20T11:46:25.755055Z,FALSE,FALSE,NA,2026-08-20,NA
+Detroit Assessment,CWR588-01-A,Andrew Davis,shonice eastman,Chaz eastman,Chaz,eastman,7,2026-08-24T15:57:21.122734Z,FALSE,FALSE,NA,2026-08-24,NA
+Traverse City Assessment ,HQY396-01-A,Nicole Lipcaman,Genavieve Rhoades,Zephryne Bobier,Zephryne,Bobier,8,2026-08-15T02:02:04.100930Z,TRUE,FALSE,NA,2026-08-15,NA
+Flint Assessment  ,4427F1,Kowlini Wickramasinghe,Amanda Ashlock,Asher Trevino,Asher,Trevino,18 months,2026-08-22T23:39:32.324913Z,FALSE,FALSE,NA,2026-08-22,NA
+Nicole - Traverse City,NA,Nicole Lipcaman,Genavieve Warren,NA,NA,NA,NA,2026-08-26T18:37:44.742529Z,FALSE,FALSE,NA,2026-08-26,NA
+Traverse City Assessment ,YDC739-01-A,Nicole Lipcaman,Brandie Palacios,Celeste Hernandez,Celeste,Hernandez,7,2026-08-06T10:57:21.776285Z,TRUE,FALSE,NA,2026-08-06,NA
+Detroit Assessment,SDT653-01-A,Andrew Davis,Julie Prussack,Hannah Prussack,Hannah,Prussack,7,2026-08-25T16:25:49.170399Z,FALSE,FALSE,NA,2026-08-25,NA
+Nicole - Traverse City,ZQN091-01-A,Nicole Lipcaman,Jenny Thomas,NA,NA,NA,NA,2026-08-13T20:06:47.037645Z,TRUE,FALSE,NA,2026-08-13,NA
+Traverse City Assessment ,BPM036-01-A,Nicole Lipcaman,Paige Ames,Olivia ames ,Olivia,ames,1.5 ,2026-07-08T12:43:05.418912Z,FALSE,TRUE,2026-08-28T14:15:54.495786Z,2026-07-08,2026-08-28
+Flint Assessment  ,85890M1,Kowlini Wickramasinghe,Hayley Mccomb,Breyden Basom,Breyden,Basom,7,2026-08-18T22:46:07.260764Z,TRUE,FALSE,NA,2026-08-18,NA
+Flint Assessment  ,80299M2,Kowlini Wickramasinghe,Peyton Gaines,Peyton gaines,Peyton,gaines,7,2026-08-25T14:01:59.602714Z,FALSE,FALSE,NA,2026-08-25,NA
+Flint Assessment  ,80299M1,Kowlini Wickramasinghe,Pernell Gaines,Pernell gaines,Pernell,gaines,7,2026-08-25T14:04:23.660440Z,FALSE,FALSE,NA,2026-08-25,NA
+Flint Assessment  ,85890M1,Kowlini Wickramasinghe,Hayley Mccomb,Breyden Basom,Breyden,Basom,7,2026-08-12T00:51:13.869741Z,TRUE,FALSE,NA,2026-08-12,NA
+Flint Assessment  ,4120,Kowlini Wickramasinghe,Kaylyn Smith,Lincoln Smith,Lincoln,Smith,20m,2026-08-19T13:54:11.310729Z,FALSE,TRUE,2026-08-30T16:22:20.727292Z,2026-08-19,2026-08-30
+Detroit Assessment,NA,Andrew Davis,Gaurav Narula,Naisha Narula,Naisha,Narula,7,2026-08-07T14:23:13.360833Z,TRUE,FALSE,NA,2026-08-07,NA
+Detroit Assessment,RCJ118-01-A,Andrew Davis,Nisa Moore-Roberts,Kendrick Moore-Roberts ,Kendrick,Moore-Roberts,3,2026-08-10T19:17:50.639606Z,TRUE,FALSE,NA,2026-08-10,NA
+Flint Assessment  ,85890M1,Kowlini Wickramasinghe,Hayley Mccomb,Breyden Basom,Breyden,Basom,7,2026-08-27T21:24:05.033157Z,FALSE,FALSE,NA,2026-08-27,NA
+Detroit Assessment,NA,Andrew Davis,Madison Morris,Madison Morris ,Madison,Morris,3,2026-08-28T21:01:50.090512Z,TRUE,FALSE,NA,2026-08-28,NA
+Flint Assessment  ,82319M1,Jody Kendall,Hillary Sadler,Amelia Sadler ,Amelia,Sadler,4,2026-06-24T10:53:23.621020Z,TRUE,FALSE,NA,2026-06-24,NA
+Detroit Assessment,LMR839-01-A,Andrew Davis,Diane Hunt,Amira Hunt ,Amira,Hunt,3 years old ,2026-08-21T17:10:20.367858Z,FALSE,FALSE,NA,2026-08-21,NA
+Flint Assessment  ,"80280M1
+
+
+Kowlini to cover for Jody K",Jody Kendall,Charlotte Blasius,Lilly-Ann Rodocker ,Lilly-Ann,Rodocker,7,2026-07-09T19:34:45.440980Z,FALSE,FALSE,NA,2026-07-09,NA
+Detroit Assessment,NA,Andrew Davis,Valerie Riggins,Khalil Riggins,Khalil,Riggins,7,2026-07-24T17:08:55.947918Z,TRUE,FALSE,NA,2026-07-24,NA
+Flint Assessment  ,82319M1,Kowlini Wickramasinghe,Hillary Sadler,Amelia Sadler ,Amelia,Sadler,4,2026-08-30T22:24:20.674575Z,FALSE,FALSE,NA,2026-08-30,NA
+Detroit Assessment,XGT908-01-A,Andrew Davis,Taylor Banks,Kruz Banks,Kruz,Banks,3,2026-07-28T16:44:47.754492Z,TRUE,FALSE,NA,2026-07-28,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Olivia Nelson,Sawyer Nelson,Sawyer,Nelson,17,2026-07-30T16:13:50.735284Z,FALSE,FALSE,NA,2026-07-30,NA
+Traverse City Assessment ,SJJ920-01-A,Nicole Lipcaman,Autumn Burnam,Layla Nagy,Layla,Nagy,7,2026-07-15T14:31:12.930725Z,FALSE,FALSE,NA,2026-07-15,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Sarah Vowels,Maxwell Casteel,Maxwell,Casteel,14,2026-07-31T15:26:15.335743Z,FALSE,FALSE,NA,2026-07-31,NA
+Traverse City Assessment ,GZR716-01-A,Nicole Lipcaman,Chelsea Arbury Prorok,Stanley Prorok,Stanley,Prorok,18 months,2026-08-19T15:42:02.626637Z,FALSE,FALSE,NA,2026-08-19,NA
+Detroit Assessment,NA,Shetoye  Rice,Monique McCoy,Serenity McCoy ,Serenity,McCoy,8,2026-07-08T23:02:27.944596Z,TRUE,FALSE,NA,2026-07-08,NA
+Flint Assessment  ,4432F1,Kowlini Wickramasinghe,Jade Scott,J’halil,J’halil,NA,Matthews,2026-08-27T23:55:44.500386Z,TRUE,FALSE,NA,2026-08-27,NA
+Traverse City Assessment ,DGF778-01-A,Nicole Lipcaman,Julia Lawson,Inman Lawson,Inman,Lawson,9,2026-08-20T14:52:58.332085Z,FALSE,FALSE,NA,2026-08-20,NA
+Flint Assessment  ,NA,Kowlini Wickramasinghe,Pernell Gaines,Peenell gaines,Peenell,gaines,7,2026-08-29T19:32:02.553599Z,TRUE,FALSE,NA,2026-08-29,NA
+Detroit Assessment,NA,Shetoye  Rice,Terron Young,nyrie young montgomery ,nyrie,montgomery,1,2026-07-07T01:55:30.467420Z,TRUE,FALSE,NA,2026-07-07,NA
+Detroit Assessment,NA,Shetoye  Rice,Kalmie williams,Kalmie williams,Kalmie,williams,7years ,2026-07-09T19:11:07.562337Z,TRUE,FALSE,NA,2026-07-09,NA
+East Lansing Assessment ,"SZF435-01-A
+
+1694",Amy Scharmen-Burgdolf,Ashley Terry,Akayla Malone ,Akayla,Malone,11,2026-08-18T11:17:43.521367Z,FALSE,FALSE,NA,2026-08-18,NA
+Traverse City Assessment ,XHP409-01-A,Nicole Lipcaman,Rebecca Teahen,Benjamin Teahen Purdy,Benjamin,Purdy,9,2026-07-31T02:25:25.490030Z,FALSE,FALSE,NA,2026-07-31,NA
+East Lansing Assessment ,"QHJ854-01-A
+
+283",Amy Scharmen-Burgdolf,Annie Smith,Delvon Robinson ,Delvon,Robinson,17,2026-08-10T18:47:52.053913Z,TRUE,FALSE,NA,2026-08-10,NA
+Flint Assessment  ,80299M1,Kowlini Wickramasinghe,Pernell Gaines,Peenell gaines,Peenell,gaines,7,2026-08-29T19:34:25.535365Z,TRUE,FALSE,NA,2026-08-29,NA
+Detroit Assessment,DNW140-01-A,Andrew Davis,Tyleathea Harmon,Brayden Meeuwes,Brayden,Meeuwes,9,2026-08-26T21:29:00.473639Z,FALSE,FALSE,NA,2026-08-26,NA
+Detroit Assessment,NA,Shetoye  Rice,Tiania Cruder,Rhylee Regains ,Rhylee,Regains,3,2026-06-30T16:02:50.343263Z,TRUE,FALSE,NA,2026-06-30,NA
+Flint Assessment  ,4421F1,Kowlini Wickramasinghe,Rachel Sheron,Ariana Sheron,Ariana,Sheron,20' months adjusted age 17 months ,2026-08-18T13:13:22.410179Z,FALSE,FALSE,NA,2026-08-18,NA
+East Lansing Assessment ,"WVD031-01-A
+
+87038",Amy Scharmen-Burgdolf,Brandon Wallace,Emma Wallace,Emma,Wallace,7,2026-09-01T13:25:30.537154Z,FALSE,FALSE,NA,2026-09-01,NA
+Detroit Assessment,NA,Shetoye  Rice,Marissa Fox,Quinn Fox,Quinn,Fox,6,2026-06-25T14:07:57.593259Z,FALSE,FALSE,NA,2026-06-25,NA
+Flint Assessment  ,86746M1,Kowlini Wickramasinghe,Kiajhua Wright,Mazzio Wright,Mazzio,Wright,8,2026-08-29T00:15:17.485906Z,FALSE,FALSE,NA,2026-08-29,NA
+East Lansing Assessment ,"QRD285-01-A
+
+622",Amy Scharmen-Burgdolf,Yashica Reid,Mi’Yaina Davis ,Mi’Yaina,Davis,15,2026-08-10T21:04:48.407104Z,FALSE,FALSE,NA,2026-08-10,NA
+Flint Assessment  ,87278M1,Kowlini Wickramasinghe,Shantiniya Neal,Nehemiah flourry ,Nehemiah,flourry,8,2026-08-31T13:25:49.650681Z,FALSE,FALSE,NA,2026-08-31,NA
+East Lansing Assessment ,"YWL484-01-A 
+
+648",Amy Scharmen-Burgdolf,Krystal Robinson,Antonio Waller ,Antonio,Waller,14,2026-08-05T21:53:58.808418Z,FALSE,FALSE,NA,2026-08-05,NA
+Traverse City Assessment ,BGB558-01-A,Nicole Lipcaman,Ellen Talbott,Leah Talbott,Leah,Talbott,9,2026-08-19T18:04:07.019517Z,TRUE,FALSE,NA,2026-08-19,NA
+Traverse City Assessment ,JKZ989-01-A,Nicole Lipcaman,Jordan Byington,Hadley Noell,Hadley,Noell,7,2026-08-29T01:43:09.261167Z,FALSE,FALSE,NA,2026-08-29,NA
+Traverse City Assessment ,YDC739-01-A,Nicole Lipcaman,Brandie Palacios,Celeste Hernandez,Celeste,Hernandez,7,2026-08-27T17:06:52.726525Z,FALSE,FALSE,NA,2026-08-27,NA
+Traverse City Assessment ,SYW884-01-A,Nicole Lipcaman,Jessica Vadino,Henry Vadino,Henry,Vadino,22 months,2026-08-27T16:42:28.716990Z,FALSE,FALSE,NA,2026-08-27,NA
+Flint Assessment  ,86599M1,Kowlini Wickramasinghe,Parker Merrow,Parker Merrow,Parker,Merrow,8,2026-08-28T19:47:45.849016Z,FALSE,FALSE,NA,2026-08-28,NA
+Detroit Assessment,GHR496-01-A,Andrew Davis,Tiffany LaMar,Chloe Ross,Chloe,Ross,7,2026-08-31T07:43:17.207802Z,FALSE,FALSE,NA,2026-08-31,NA
+Detroit Assessment,PPK451-01-A,Andrew Davis,Natalia Ledesma,Jaxon Rhoads,Jaxon,Rhoads,5,2026-08-26T13:11:38.718185Z,FALSE,FALSE,NA,2026-08-26,NA
+Detroit Assessment,VKG640-01-A,Andrew Davis,Tiania Cruder,Rhylee Regains ,Rhylee,Regains,3,2026-09-01T14:47:15.321215Z,FALSE,FALSE,NA,2026-09-01,NA
+Detroit Assessment,CLP827-01-A,Andrew Davis,Khaleda Kendericks,Jayla Kendricks,Jayla,Kendricks,8,2026-08-14T01:33:32.247488Z,FALSE,FALSE,NA,2026-08-14,NA
+Flint Assessment  ,83344M1,Kowlini Wickramasinghe,Mindy Williams,Harper williams,Harper,williams,4,2026-08-25T18:23:27.270243Z,FALSE,FALSE,NA,2026-08-25,NA
+Detroit Assessment,NA,Shetoye  Rice,Hillary Sadler,Amelia Sadler,Amelia,Sadler,4,2026-06-23T17:00:53.746314Z,TRUE,FALSE,NA,2026-06-23,NA
+Detroit Assessment,CRB612-01-A,Andrew Davis,Madison Morris,Madison Morris ,Madison,Morris,3,2026-08-31T11:58:12.586564Z,FALSE,FALSE,NA,2026-08-31,NA
+Flint Assessment  ,4432F1,Kowlini Wickramasinghe,Jade Scott,J’halil,J’halil,NA,Matthews,2026-08-30T22:53:27.804360Z,FALSE,FALSE,NA,2026-08-30,NA
+Flint Assessment  ,80299M1,Kowlini Wickramasinghe,Pernell Gaines,Peenell gaines,Peenell,gaines,7,2026-09-01T19:44:56.388776Z,FALSE,FALSE,NA,2026-09-01,NA
+Detroit Assessment,ZGB387-01-A,Andrew Davis,Valerie Riggins,Khalil Riggins,Khalil,Riggins,7,2026-08-02T04:39:16.622644Z,FALSE,FALSE,NA,2026-08-02,NA
+Detroit Assessment,MXB539-01-A,Andrew Davis,Maraya Mullen,Reighan Gary,Reighan,Gary,7,2026-07-23T16:14:13.331000Z,FALSE,FALSE,NA,2026-07-23,NA
+Detroit Assessment,NA,Shetoye  Rice,Mona Blake,Nova turner ,Nova,turner,1,2026-07-08T17:30:50.588165Z,FALSE,FALSE,NA,2026-07-08,NA
+Flint Assessment  ,70295,Kowlini Wickramasinghe,TIFFANIE BALLARD,Lilly ballard,Lilly,ballard,17,2026-08-20T19:09:50.230943Z,FALSE,FALSE,NA,2026-08-20,NA
+Flint Assessment  ,70585,Kowlini Wickramasinghe,TIFFANIE BALLARD,Olivia ballard,Olivia,ballard,12,2026-08-20T19:08:50.603060Z,FALSE,FALSE,NA,2026-08-20,NA
+Traverse City Assessment ,KKW154-01-A,Nicole Lipcaman,Anne Engels,LUCAS ENGELS,LUCAS,ENGELS,9,2026-08-21T16:46:19.682892Z,FALSE,FALSE,NA,2026-08-21,NA
+Detroit Assessment,NA,Shetoye  Rice,Kristin Riley,Lucas Riley,Lucas,Riley,4,2026-06-28T15:12:07.916251Z,FALSE,FALSE,NA,2026-06-28,NA
+Detroit Assessment,NA,Shetoye  Rice,Kanisha Gates,Khamari Gates,Khamari,Gates,4,2026-07-06T22:32:11.868088Z,TRUE,FALSE,NA,2026-07-06,NA
+Detroit Assessment,NA,Shetoye  Rice,Maryann Bracy,Naomi Bracy,Naomi,Bracy,1,2026-06-24T21:07:06.795910Z,FALSE,FALSE,NA,2026-06-24,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Jaimie Upton,Guillermo Upton,Guillermo,Upton,16,2026-08-12T14:35:12.162453Z,FALSE,FALSE,NA,2026-08-12,NA
+East Lansing Assessment ,"PDV195-01-A
+
+584",Amy Scharmen-Burgdolf,Shureka Booker,Sanyaa Jackson-Young,Sanyaa,Jackson-Young,15,2026-08-12T22:41:20.254855Z,FALSE,FALSE,NA,2026-08-12,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Eboni Sarr,Mouhamad sarr,Mouhamad,sarr,9,2026-08-18T16:23:06.651951Z,FALSE,FALSE,NA,2026-08-18,NA
+East Lansing Assessment ,"RWR771-01-A
+
+692",Amy Scharmen-Burgdolf,Nicole Kiogima,Arianna Dehoff,Arianna,Dehoff,14,2026-08-07T01:37:04.347871Z,FALSE,FALSE,NA,2026-08-07,NA
+Detroit Assessment,GBB029-01-A,Andrew Davis,Paris Vann,Reign Threlkeld ,Reign,Threlkeld,7,2026-08-30T23:39:53.772419Z,FALSE,FALSE,NA,2026-08-30,NA
+Detroit Assessment,BRL402-01-A ,Andrew Davis,Vanessa Arnold,Sadie Arnold-Reosti,Sadie,Arnold-Reosti,17 months ,2026-08-28T13:34:20.518131Z,FALSE,FALSE,NA,2026-08-28,NA
+Traverse City Assessment ,BGB558-01-A,Nicole Lipcaman,Ellen Talbott,Leah Talbott,Leah,Talbott,9,2026-09-01T12:44:25.906289Z,FALSE,FALSE,NA,2026-09-01,NA
+Nicole - Traverse City,ZQN091-01-A,Nicole Lipcaman,Jenny Thomas,NA,NA,NA,NA,2026-08-27T12:02:42.280640Z,TRUE,FALSE,NA,2026-08-27,NA
+Nicole - Traverse City,ZQN091-01-A,Nicole Lipcaman,Jenny Thomas,NA,NA,NA,NA,2026-08-27T12:03:48.410047Z,FALSE,FALSE,NA,2026-08-27,NA
+Detroit Assessment,BJH083-01-A,Andrew Davis,Mellissa Regal,Austin Early,Austin,Early,8,2026-08-16T13:30:12.195110Z,FALSE,FALSE,NA,2026-08-16,NA
+Detroit Assessment,JTV110-01-A,Andrew Davis,aariona adams,aydrian miller,aydrian,miller,4,2026-08-06T20:55:21.154506Z,FALSE,FALSE,NA,2026-08-06,NA
+Detroit Assessment,NA,Andrew Davis,Mellissa Regal,Austin Early ,Austin,Early,8,2026-08-28T21:49:17.048509Z,FALSE,FALSE,NA,2026-08-28,NA
+Detroit Assessment,P86928,Andrew Davis,Gaurav Narula,Naisha Narula,Naisha,Narula,7,2026-08-18T17:23:58.749170Z,TRUE,FALSE,NA,2026-08-18,NA
+East Lansing Assessment ,"VCK629-01-A (218)
+
+89194",Amy Scharmen-Burgdolf,Angelica Garcia-Paniagua,Esmeralda Paniagua ,Esmeralda,Paniagua,7,2026-07-15T17:09:51.701190Z,FALSE,FALSE,NA,2026-07-15,NA
+East Lansing Assessment ,"RPS818-01-A
+
+2131",Amy Scharmen-Burgdolf,Kyley Rodgers,Zayn Rodgers ,Zayn,Rodgers,9,2026-08-10T01:57:01.951017Z,FALSE,FALSE,NA,2026-08-10,NA
+Flint Assessment  ,89779M1,Kowlini Wickramasinghe,Scarlet Young,Scarlet Young,Scarlet,Young,7,2026-09-01T18:10:50.713989Z,FALSE,FALSE,NA,2026-09-01,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Olivia Hill,Turin Hill,Turin,Hill,13,2026-07-15T22:34:32.562662Z,FALSE,FALSE,NA,2026-07-15,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Shannon Robinson,Patience Harris,Patience,Harris,16,2026-08-05T17:12:11.850520Z,FALSE,FALSE,NA,2026-08-05,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Shannon Robinson,Braxton Harris,Braxton,Harris,15,2026-08-05T17:15:28.021609Z,FALSE,FALSE,NA,2026-08-05,NA
+East Lansing Assessment ,NA,Amy Scharmen-Burgdolf,Keisha Boose,Cori Mixon ,Cori,Mixon,14,2026-08-23T18:06:45.152417Z,FALSE,FALSE,NA,2026-08-23,NA
+East Lansing Assessment ,"CLX467-01-A
+
+2006",Amy Scharmen-Burgdolf,Bridget Burns-King,Julian KingBurns ,Julian,KingBurns,10,2026-08-16T02:28:52.298737Z,FALSE,FALSE,NA,2026-08-16,NA
+East Lansing Assessment ,70369,Jolyn Lerma,Kem Taylor,Ryen Smith,Ryen,Smith,16,2026-08-18T23:23:21.899440Z,FALSE,FALSE,NA,2026-08-18,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Kristin Ritchie,Malaiya Love,Malaiya,Love,15,2026-08-06T19:44:56.554818Z,FALSE,FALSE,NA,2026-08-06,NA
+East Lansing Assessment ,72103,Jolyn Lerma,Jasmine Barker,Jacob Badour,Jacob,Badour,9,2026-08-18T22:51:39.296273Z,FALSE,FALSE,NA,2026-08-18,NA
+East Lansing Assessment ,70418,Jolyn Lerma,Jaimie Upton,Guillermo Upton,Guillermo,Upton,16,2026-08-12T14:32:15.881220Z,TRUE,FALSE,NA,2026-08-12,NA
+East Lansing Assessment ,"88841
+
+Drive time is 1hr 16min not 90min as noted from CG when scheduling",Jolyn Lerma,Markie Scheidel,Scout Scheidel,Scout,Scheidel,3,2026-08-29T01:44:50.653505Z,FALSE,FALSE,NA,2026-08-29,NA
+East Lansing Assessment ,70400,Jolyn Lerma,Autumn Long,Boe Choban ,Boe,Choban,16,2026-08-23T18:12:10.098975Z,FALSE,FALSE,NA,2026-08-23,NA
+Detroit Assessment,"documented in ripple
+
+
+BZP492-01-A",Andrew Davis,Alison Cardona,Oliver Cardona,Oliver,Cardona,3,2026-08-19T13:24:29.838218Z,FALSE,FALSE,NA,2026-08-19,NA
+East Lansing Assessment ,72111,Jolyn Lerma,Amber Hurd,Lillian Hurd,Lillian,Hurd,10,2026-08-19T02:01:06.509400Z,FALSE,FALSE,NA,2026-08-19,NA
+Traverse City Assessment ,JJV437-01-A,Nicole Lipcaman,Katie Kelly,Sophia Kelly,Sophia,Kelly,7,2026-08-28T23:50:07.762939Z,FALSE,FALSE,NA,2026-08-28,NA
+East Lansing Assessment ,84992,Jolyn Lerma,Karah Davis,Grant Davis,Grant,Davis,6,2026-08-18T15:35:49.711043Z,FALSE,FALSE,NA,2026-08-18,NA
+East Lansing Assessment ,"MQM950-01-A
+
+379",Jolyn Lerma,Crystal Gary,Elijah Lagarde,Elijah,Lagarde,16,2026-07-11T08:09:16.711398Z,FALSE,FALSE,NA,2026-07-11,NA
+East Lansing Assessment ,NA,Cassie Nickerson,Trisha Tacey,Nolan Scarlett,Nolan,Scarlett,9,2026-08-16T03:35:28.496170Z,FALSE,FALSE,NA,2026-08-16,NA
+Detroit Assessment,NA,Andrew Davis,Kimberly Desgrange,Scarlet Young ,Scarlet,Young,7,2026-09-01T18:07:29.324157Z,TRUE,FALSE,NA,2026-09-01,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Alexandrea Hart,Camden Hart,Camden,Hart,9,2026-08-21T19:26:30.039142Z,FALSE,FALSE,NA,2026-08-21,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Hillary Breiler,Harlan Lafferty,Harlan,Lafferty,10,2026-08-26T21:02:35.563931Z,FALSE,FALSE,NA,2026-08-26,NA
+Traverse City Assessment ,NA,Nicole Lipcaman,Hillary Breiler,Leland Lafferty,Leland,Lafferty,10,2026-08-26T21:05:06.293545Z,FALSE,FALSE,NA,2026-08-26,NA
+Detroit Assessment,RCJ118-01-A,Andrew Davis,Nisa Moore-Roberts,Kendrick Moore-Roberts ,Kendrick,Moore-Roberts,3,2026-08-29T21:22:16.730872Z,FALSE,FALSE,NA,2026-08-29,NA
+Detroit Assessment,LYY018-01-A,Andrew Davis,Lacia Thomas,Octavia Fultz ,Octavia,Fultz,8,2026-09-01T01:38:50.814007Z,FALSE,FALSE,NA,2026-09-01,NA
+Traverse City Assessment ,HCG894-01-A,Nicole Lipcaman,Corinna Weaver,Adalynn Yaster,Adalynn,Yaster,7,2026-08-31T00:06:30.611750Z,FALSE,FALSE,NA,2026-08-31,NA
