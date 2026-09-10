@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+import importlib
 import os
 from pathlib import Path
 
@@ -11,6 +12,13 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
+
+import dashboard_data as dashboard_data_module
+
+# Streamlit Cloud can rerun this main file in an existing process after a Git
+# update while retaining the previously imported helper module. Reload it so
+# new constants and functions are available during the same hot deployment.
+importlib.reload(dashboard_data_module)
 
 from dashboard_data import (
     AGE_GROUP_ORDER,
