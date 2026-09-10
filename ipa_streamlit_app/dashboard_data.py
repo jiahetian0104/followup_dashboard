@@ -20,17 +20,36 @@ REQUIRED_COLUMNS = {
     "Score",
 }
 
+ROSTER_REQUIRED_COLUMNS = {
+    "FTM",
+    "Participant ID",
+    "Participant Cohort",
+    "statusId",
+    "Age Group",
+    "Task Eligible",
+    "Eligibility Status",
+}
+
 AGE_GROUP_LABELS = {
+    "6_11_month": "6–11 months",
     "12_23_month": "12–23 months",
     "24_35_month": "24–35 months",
     "3_5yr": "3–5 years",
     "6_10yr": "6–10 years",
     "11_17yr": "11–17 years",
     "18_20yr": "18–20 years",
+    "potential": "Potential participants",
+    "needs_review": "Needs review",
 }
 
 AGE_GROUP_ORDER = list(AGE_GROUP_LABELS.values())
 OUTCOME_ORDER = ["Complete", "No-Show", "Incomplete", "No record"]
+PARTICIPANT_SCOPE_ORDER = [
+    "Task eligible",
+    "6-11 months",
+    "Potential participants",
+    "Needs review",
+]
 TREND_COLUMNS = [
     "Snapshot Date",
     "FTM",
@@ -117,6 +136,11 @@ def read_dashboard_csv(path: Path) -> pd.DataFrame:
     return pd.read_csv(path, dtype={"Participant ID": "string", "PIN": "string"})
 
 
+def read_roster_csv(path: Path) -> pd.DataFrame:
+    """Read the participant roster without coercing participant identifiers."""
+    return pd.read_csv(path, dtype={"Participant ID": "string", "PIN": "string"})
+
+
 def standardize_dashboard_data(data: pd.DataFrame) -> pd.DataFrame:
     """Validate and standardize the participant-task long table."""
     df = data.copy()
@@ -177,6 +201,79 @@ def standardize_dashboard_data(data: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def standardize_participant_roster(data: pd.DataFrame) -> pd.DataFrame:
+    """Validate the complete roster, including participants without tasks."""
+    df = data.copy()
+    missing = sorted(ROSTER_REQUIRED_COLUMNS - set(df.columns))
+    if missing:
+        raise ValueError("Missing roster column(s): " + ", ".join(missing))
+
+    text_columns = [
+        "FTM",
+        "Participant ID",
+        "firstName",
+        "lastName",
+        "Participant Cohort",
+        "statusId",
+        "Age Group",
+        "IPA Age Band",
+        "Eligibility Status",
+        "Assignment Source",
+    ]
+    for column in text_columns:
+        if column in df.columns:
+            df[column] = df[column].astype("string").str.strip()
+
+    df["FTM"] = df["FTM"].fillna("Unassigned")
+    df["Task Eligible"] = (
+        df["Task Eligible"]
+        .astype("string")
+        .str.lower()
+        .isin(["true", "1", "yes", "y"])
+    )
+    df["Age Group"] = df["Age Group"].map(AGE_GROUP_LABELS).fillna(df["Age Group"])
+    df["Age Group"] = pd.Categorical(
+        df["Age Group"], categories=AGE_GROUP_ORDER, ordered=True
+    )
+    if "birthday" in df.columns:
+        df["birthday"] = pd.to_datetime(df["birthday"], errors="coerce")
+
+    duplicate_key = ["Participant ID", "Participant Cohort"]
+    duplicates = df.duplicated(duplicate_key, keep=False)
+    if duplicates.any():
+        examples = (
+            df.loc[duplicates, duplicate_key]
+            .drop_duplicates()
+            .head(5)
+            .astype(str)
+            .agg(" / ".join, axis=1)
+            .tolist()
+        )
+        raise ValueError(
+            "Participant roster rows are not unique. Examples: " + "; ".join(examples)
+        )
+    return df
+
+
+def roster_from_task_data(data: pd.DataFrame) -> pd.DataFrame:
+    """Create an eligible-only roster for legacy snapshots without a roster file."""
+    preferred = [
+        "FTM",
+        "Participant ID",
+        "firstName",
+        "lastName",
+        "birthday",
+        "Participant Cohort",
+        "statusId",
+        "Age Group",
+    ]
+    roster = data[[column for column in preferred if column in data.columns]].copy()
+    roster = roster.drop_duplicates(["Participant ID", "Participant Cohort"])
+    roster["Task Eligible"] = True
+    roster["Eligibility Status"] = "Task eligible"
+    return roster
+
+
 def safe_unique(values: Iterable) -> list[str]:
     """Return sorted non-missing values as strings."""
     return sorted(str(value) for value in pd.Series(values).dropna().unique())
@@ -202,6 +299,26 @@ def apply_filters(
         df = df[df["Outcome"].astype("string").isin(outcomes)]
     if cohorts:
         df = df[df["Participant Cohort"].isin(cohorts)]
+    return df
+
+
+def apply_roster_filters(
+    data: pd.DataFrame,
+    ftms: list[str],
+    age_groups: list[str],
+    cohorts: list[str],
+    participant_scopes: list[str],
+) -> pd.DataFrame:
+    """Apply roster-level filters without changing task denominators."""
+    df = data.copy()
+    if ftms:
+        df = df[df["FTM"].isin(ftms)]
+    if age_groups:
+        df = df[df["Age Group"].astype("string").isin(age_groups)]
+    if cohorts:
+        df = df[df["Participant Cohort"].isin(cohorts)]
+    if participant_scopes:
+        df = df[df["Eligibility Status"].isin(participant_scopes)]
     return df
 
 
@@ -343,3 +460,27 @@ def prepare_detail_table(data: pd.DataFrame) -> pd.DataFrame:
         if column in result.columns:
             result[column] = result[column].dt.strftime("%Y-%m-%d").fillna("")
     return result
+
+
+def prepare_roster_table(data: pd.DataFrame) -> pd.DataFrame:
+    """Return the complete filtered participant roster for FTM review."""
+    preferred = [
+        "FTM",
+        "Participant ID",
+        "firstName",
+        "lastName",
+        "birthday",
+        "Participant Cohort",
+        "statusId",
+        "Age Group",
+        "Eligibility Status",
+        "Task Eligible",
+        "Assignment Source",
+    ]
+    columns = [column for column in preferred if column in data.columns]
+    result = data[columns].copy()
+    if "birthday" in result.columns:
+        result["birthday"] = result["birthday"].dt.strftime("%Y-%m-%d").fillna("")
+    return result.sort_values(
+        [column for column in ["FTM", "Participant Cohort", "Age Group", "Participant ID"] if column in result.columns]
+    )

@@ -1073,6 +1073,7 @@ calculate_age_months <- function(birthday, appointment_datetime) {
 
 assign_ipa_age_band <- function(age_months) {
   case_when(
+    age_months >= 6 & age_months < 12 ~ "6_11_month",
     age_months >= 12 & age_months < 24 ~ "12_23_month",
     age_months >= 24 & age_months < 36 ~ "24_35_month",
     age_months >= 36 & age_months < 72 ~ "3_5yr",
@@ -1277,303 +1278,7 @@ calendly_export_clean <- calendly_participant_resolved %>%
 
 
 
-# 6. 6-35 month Data Cleaning -------------------------------------------------------
-
-## 6.1 Select IPA follow-up variables for 6-35 month participants ---------
-
-# Keep participant identifiers plus the IPA events used for follow-up
-# tracking: the scheduled visit and the completed visit.
-# Only the age-window events without the "2025_" prefix are kept, matching
-# the event naming used by the follow-up dashboard scripts.
-ipa_data_6_35_month <- ripple_data_6_35_month %>%
-  select(
-    globalId,
-    firstName,
-    lastName,
-    birthday,
-    tags,
-    statusId,
-    # IPA scheduled and completed visit events (12-23 and 24-35 month
-    # windows); only the columns used downstream are kept (.completed,
-    # .completedDate). Other event columns (.missed, .scheduledDate, ...)
-    # are dropped.
-    event.12_23mo_ipa_scheduled.completed,
-    event.12_23mo_ipa_scheduled.completedDate,
-    event.24_35mo_ipa_scheduled.completed,
-    event.24_35mo_ipa_scheduled.completedDate,
-    event.12_23mo_ipa_complete.completed,
-    event.12_23mo_ipa_complete.completedDate,
-    event.24_35mo_ipa_complete.completed,
-    event.24_35mo_ipa_complete.completedDate
-  ) %>%
-  filter(!statusId %in% c("ECHO 2 Refusal", "Withdrawn"))
-
-
-## 6.2 Extract Follow-up Team Member (FTM) from tags ----------------------
-
-# Tags are pipe-separated (e.g., "St. Joe|FTM Nicole"). A participant's FTM
-# appears either as an "FTM <first name>" tag or, for Jody, as a bare
-# "<first name>" tag. The extracted value contains the name only (no "FTM"
-# prefix); multiple FTMs on one row would be joined with "; ".
-ftm_names_from_tags <- c("Jody", "Nicole", "Anna", "Cassie")
-
-extract_ftm_from_tags <- function(tags) {
-  if (is.na(tags) || trimws(tags) == "") {
-    return(NA_character_)
-  }
-  parts <- trimws(strsplit(tags, "\\|")[[1]])
-  hit <- character(0)
-  for (p in parts) {
-    if (grepl("^FTM\\s*\\S+", p, ignore.case = TRUE)) {
-      hit <- c(hit, trimws(sub("^FTM\\s*", "", p, ignore.case = TRUE)))
-    } else if (p %in% ftm_names_from_tags) {
-      hit <- c(hit, p)
-    }
-  }
-  if (length(hit) == 0) {
-    NA_character_
-  } else {
-    paste(unique(hit), collapse = "; ")
-  }
-}
-
-ipa_data_6_35_month <- ipa_data_6_35_month %>%
-  mutate(FTM = map_chr(tags, extract_ftm_from_tags)) %>%
-  relocate(FTM, .after = tags)
-
-
-
-## 6.3 Merge Calendly no-show records into IPA participant data -----------
-
-# Layered matching: each Calendly row is first resolved to a 6-35 month
-# participant using IDs in the meeting notes (customId > child_echo_id >
-# familyId); a row without a usable ID falls back to child name matching.
-# matched_by records how each row was attached; a participant with several
-# bookings gets one row per booking (many-to-many).
-cal_match_6_35 <- resolve_calendly_cohort(
-  calendly_export_clean,
-  participant_id_catalog %>% filter(cohort == "6-35 month")
-)
-
-ipa_merged_data <- ipa_data_6_35_month %>%
-  mutate(
-    fn_key = tolower(trimws(firstName)),
-    ln_key = tolower(trimws(lastName))
-  ) %>%
-  left_join(
-    cal_match_6_35 %>%
-      mutate(
-        fn_key = tolower(trimws(join_fn)),
-        ln_key = tolower(trimws(join_ln))
-      ) %>%
-      select(-join_fn, -join_ln),
-    by = c("fn_key", "ln_key"),
-    relationship = "many-to-many"
-  ) %>%
-  select(-fn_key, -ln_key)
-
-## 6.4 Determine IPA outcome with No-show consideration ------------------
-
-# The participant's current age window is derived from statusId:
-#   - "12-23 Month ..." -> 12_23_month
-#   - "24-35 Month ..." -> 24_35_month
-# IPA assessments apply to these two windows only.
-# The IPA outcome is then:
-#   - "No-show":    a matched Calendly record has No Show = TRUE
-#   - "Complete":   the IPA Complete event is TRUE
-#   - "Incomplete": the IPA Scheduled event is TRUE but the IPA Complete
-#                   event is FALSE
-# A window with no IPA Scheduled event (e.g., not yet scheduled) is left NA.
-ipa_merged_data <- ipa_merged_data %>%
-  mutate(
-    # Current age window based on statusId
-    IPA_Age_Window = case_when(
-      str_detect(statusId, "^12-23 Month") ~ "12_23_month",
-      str_detect(statusId, "^24-35 Month") ~ "24_35_month",
-      TRUE ~ NA_character_
-    ),
-    # Event flags for the current age window
-    IPA_Scheduled_Completed = case_when(
-      IPA_Age_Window == "12_23_month" ~ event.12_23mo_ipa_scheduled.completed,
-      IPA_Age_Window == "24_35_month" ~ event.24_35mo_ipa_scheduled.completed,
-      TRUE ~ NA
-    ),
-    IPA_Complete_Completed = case_when(
-      IPA_Age_Window == "12_23_month" ~ event.12_23mo_ipa_complete.completed,
-      IPA_Age_Window == "24_35_month" ~ event.24_35mo_ipa_complete.completed,
-      TRUE ~ NA
-    ),
-    # Outcome dates from the current age window events
-    IPA_Complete_Date = case_when(
-      IPA_Age_Window == "12_23_month" ~
-        as_date(mdy(event.12_23mo_ipa_complete.completedDate)),
-      IPA_Age_Window == "24_35_month" ~
-        as_date(mdy(event.24_35mo_ipa_complete.completedDate)),
-      TRUE ~ as.Date(NA)
-    ),
-    IPA_Scheduled_Date = case_when(
-      IPA_Age_Window == "12_23_month" ~
-        as_date(mdy(event.12_23mo_ipa_scheduled.completedDate)),
-      IPA_Age_Window == "24_35_month" ~
-        as_date(mdy(event.24_35mo_ipa_scheduled.completedDate)),
-      TRUE ~ as.Date(NA)
-    ),
-    # Outcome: No-show takes precedence over event-based outcomes
-    IPA_Outcome = case_when(
-      `No Show` == TRUE & !is.na(IPA_Age_Window) ~ "No-show",
-      IPA_Complete_Completed == TRUE ~ "Complete",
-      IPA_Scheduled_Completed == TRUE & IPA_Complete_Completed == FALSE ~ "Incomplete",
-      TRUE ~ NA_character_
-    ),
-    IPA_Outcome_Date = case_when(
-      IPA_Outcome == "No-show" ~ `No Show Created Date`,
-      IPA_Outcome == "Complete" ~ IPA_Complete_Date,
-      IPA_Outcome == "Incomplete" ~ IPA_Scheduled_Date,
-      TRUE ~ as.Date(NA)
-    )
-  ) %>%
-  # Keep only the derived age window/outcome columns
-  select(
-    -IPA_Scheduled_Completed,
-    -IPA_Complete_Completed,
-    -IPA_Complete_Date,
-    -IPA_Scheduled_Date
-  )
-
-
-
-# 7. 3-20 Year Data Cleaning ---------------------------------------------
-
-## 7.1 Select IPA variables for 3-20 year participants --------------------
-ipa_data_3_20_year <- ripple_data_3_20_year %>% 
-  select(
-    globalId,
-    firstName,
-    lastName,
-    sex,
-    birthday,
-    race,
-    statusId,
-    # Keep participant identifiers plus the IPA Scheduled and IPA Complete
-    # events for the four 3-20 year age bands.
-    matches("^event\\.2026_(3_5yr|6_10yr|11_17yr|18_20yr)_ipa_(scheduled|complete)\\.")
-  ) %>%
-  filter(!(globalId %in% c("iri0LoVJXJ734mKYy","54jpojzH4AVzTJoPD")))  %>% # delete Anna and Mallory from the result
-  # filter(statusId != "Withdrawn") %>%
-  extract(
-    globalId, 
-    into = c("child_echo_id", "PIN"), 
-    regex = "(.*)\\s\\((.*)\\)",
-    remove = TRUE 
-  ) %>% 
-  relocate(child_echo_id, PIN)
-
-
-
-## 7.2 Merge Calendly no-show records into 3-20 year IPA data ------------
-
-# Layered matching against the 3-20 year catalog: IDs in the meeting notes
-# first (customId > child_echo_id > familyId), then child name as fallback.
-# Rows are attached by child_echo_id.
-cal_match_3_20 <- resolve_calendly_cohort(
-  calendly_export_clean,
-  participant_id_catalog %>% filter(cohort == "3-20 year")
-)
-
-ipa_merged_data_3_20 <- ipa_data_3_20_year %>%
-  left_join(
-    cal_match_3_20 %>%
-      mutate(child_echo_id = matched_child_echo_id) %>%
-      select(-join_fn, -join_ln),
-    by = "child_echo_id",
-    relationship = "many-to-many"
-  )
-
-
-
-## 7.3 Determine IPA outcome for 3-20 year participants --------------------
-
-# Current age window from statusId:
-#   - "3-5 Year"   -> 3_5yr
-#   - "6-10 Year"  -> 6_10yr
-#   - "11-17 Year" -> 11_17yr
-#   - "18-20 Year" -> 18_20yr
-# Outcome from the current age window events, with No-show first:
-#   - "No-show":    a matched Calendly record has No Show = TRUE
-#   - "Complete":   the IPA Complete event is TRUE
-#   - "Incomplete": the IPA Scheduled event is TRUE but the IPA Complete
-#                   event is FALSE
-# Participants without an applicable age window are left NA.
-ipa_merged_data_3_20 <- ipa_merged_data_3_20 %>%
-  mutate(
-    IPA_Age_Window = case_when(
-      str_detect(statusId, "^3-5 Year") ~ "3_5yr",
-      str_detect(statusId, "^6-10 Year") ~ "6_10yr",
-      str_detect(statusId, "^11-17 Year") ~ "11_17yr",
-      str_detect(statusId, "^18-20 Year") ~ "18_20yr",
-      TRUE ~ NA_character_
-    ),
-    # Event flags for the current age window
-    IPA_Scheduled_Completed = case_when(
-      IPA_Age_Window == "3_5yr" ~ event.2026_3_5yr_ipa_scheduled.completed,
-      IPA_Age_Window == "6_10yr" ~ event.2026_6_10yr_ipa_scheduled.completed,
-      IPA_Age_Window == "11_17yr" ~ event.2026_11_17yr_ipa_scheduled.completed,
-      IPA_Age_Window == "18_20yr" ~ event.2026_18_20yr_ipa_scheduled.completed,
-      TRUE ~ NA
-    ),
-    IPA_Complete_Completed = case_when(
-      IPA_Age_Window == "3_5yr" ~ event.2026_3_5yr_ipa_complete.completed,
-      IPA_Age_Window == "6_10yr" ~ event.2026_6_10yr_ipa_complete.completed,
-      IPA_Age_Window == "11_17yr" ~ event.2026_11_17yr_ipa_complete.completed,
-      IPA_Age_Window == "18_20yr" ~ event.2026_18_20yr_ipa_complete.completed,
-      TRUE ~ NA
-    ),
-    # Outcome dates from the current age window events
-    IPA_Complete_Date = case_when(
-      IPA_Age_Window == "3_5yr" ~
-        as_date(mdy(event.2026_3_5yr_ipa_complete.completedDate)),
-      IPA_Age_Window == "6_10yr" ~
-        as_date(mdy(event.2026_6_10yr_ipa_complete.completedDate)),
-      IPA_Age_Window == "11_17yr" ~
-        as_date(mdy(event.2026_11_17yr_ipa_complete.completedDate)),
-      IPA_Age_Window == "18_20yr" ~
-        as_date(mdy(event.2026_18_20yr_ipa_complete.completedDate)),
-      TRUE ~ as.Date(NA)
-    ),
-    IPA_Scheduled_Date = case_when(
-      IPA_Age_Window == "3_5yr" ~
-        as_date(mdy(event.2026_3_5yr_ipa_scheduled.completedDate)),
-      IPA_Age_Window == "6_10yr" ~
-        as_date(mdy(event.2026_6_10yr_ipa_scheduled.completedDate)),
-      IPA_Age_Window == "11_17yr" ~
-        as_date(mdy(event.2026_11_17yr_ipa_scheduled.completedDate)),
-      IPA_Age_Window == "18_20yr" ~
-        as_date(mdy(event.2026_18_20yr_ipa_scheduled.completedDate)),
-      TRUE ~ as.Date(NA)
-    ),
-    IPA_Outcome = case_when(
-      `No Show` == TRUE & !is.na(IPA_Age_Window) ~ "No-show",
-      IPA_Complete_Completed == TRUE ~ "Complete",
-      IPA_Scheduled_Completed == TRUE & IPA_Complete_Completed == FALSE ~ "Incomplete",
-      TRUE ~ NA_character_
-    ),
-    IPA_Outcome_Date = case_when(
-      IPA_Outcome == "No-show" ~ `No Show Created Date`,
-      IPA_Outcome == "Complete" ~ IPA_Complete_Date,
-      IPA_Outcome == "Incomplete" ~ IPA_Scheduled_Date,
-      TRUE ~ as.Date(NA)
-    )
-  ) %>%
-  # Keep only the derived age window/outcome columns
-  select(
-    -IPA_Scheduled_Completed,
-    -IPA_Complete_Completed,
-    -IPA_Complete_Date,
-    -IPA_Scheduled_Date
-  )
-
-
-# 8. Final FTM Participant Task Checklist --------------------------------
+# 6. Final FTM Participant Task Checklist --------------------------------
 
 # The objects in this section are the final participant-level deliverables.
 # IPA status uses Ripple plus the cleaned/latest Calendly record. All other
@@ -1607,6 +1312,33 @@ column_or_na <- function(data, column_name) {
 }
 
 
+# Tags are pipe-separated (e.g., "St. Joe|FTM Nicole"). A participant's FTM
+# appears either as an "FTM <first name>" tag or, for Jody, as a bare
+# "<first name>" tag. Keep this helper here because the final participant base
+# uses it for both Ripple cohorts.
+ftm_names_from_tags <- c("Jody", "Nicole", "Anna", "Cassie")
+
+extract_ftm_from_tags <- function(tags) {
+  if (is.na(tags) || trimws(tags) == "") {
+    return(NA_character_)
+  }
+  parts <- trimws(strsplit(tags, "\\|")[[1]])
+  hit <- character(0)
+  for (p in parts) {
+    if (grepl("^FTM\\s*\\S+", p, ignore.case = TRUE)) {
+      hit <- c(hit, trimws(sub("^FTM\\s*", "", p, ignore.case = TRUE)))
+    } else if (p %in% ftm_names_from_tags) {
+      hit <- c(hit, p)
+    }
+  }
+  if (length(hit) == 0) {
+    NA_character_
+  } else {
+    paste(unique(hit), collapse = "; ")
+  }
+}
+
+
 # One participant row from each Ripple cohort, with a common age-band key
 # and FTM field. The event columns are retained for task evaluation below.
 participant_base_6_35 <- ripple_data_6_35_month %>%
@@ -1614,19 +1346,36 @@ participant_base_6_35 <- ripple_data_6_35_month %>%
     `Participant ID` = str_squish(str_remove(globalId, "\\s*\\([^)]*\\)$")),
     PIN = str_extract(globalId, "(?<=\\()[^)]*(?=\\)$)"),
     `Participant Cohort` = "6-35 month",
-    `IPA Age Band` = case_when(
+    `Age Group` = case_when(
+      str_detect(statusId, regex("^6-11 Month", ignore_case = TRUE)) ~
+        "6_11_month",
       str_detect(statusId, regex("^12-23 Month", ignore_case = TRUE)) ~
         "12_23_month",
       str_detect(statusId, regex("^24-35 Month", ignore_case = TRUE)) ~
         "24_35_month",
-      TRUE ~ NA_character_
+      str_detect(statusId, regex("^Potential Participants?$", ignore_case = TRUE)) ~
+        "potential",
+      TRUE ~ "needs_review"
+    ),
+    `IPA Age Band` = if_else(
+      `Age Group` %in% c("12_23_month", "24_35_month"),
+      `Age Group`,
+      NA_character_
+    ),
+    `Task Eligible` = !is.na(`IPA Age Band`),
+    `Eligibility Status` = case_when(
+      `Task Eligible` ~ "Task eligible",
+      `Age Group` == "6_11_month" ~ "6-11 months",
+      `Age Group` == "potential" ~ "Potential participants",
+      TRUE ~ "Needs review"
     ),
     FTM = map_chr(tags, extract_ftm_from_tags)
   ) %>%
   filter(!statusId %in% c("Withdrawn", "ECHO 2 Refusal")) %>%
   select(
     `Participant ID`, PIN, customId, familyId, firstName, lastName,
-    birthday, statusId, `Participant Cohort`, `IPA Age Band`, FTM,
+    birthday, statusId, `Participant Cohort`, `Age Group`, `IPA Age Band`,
+    `Task Eligible`, `Eligibility Status`, FTM,
     starts_with("event.")
   )
 
@@ -1642,12 +1391,25 @@ participant_base_3_20 <- ripple_data_3_20_year %>%
     `Participant ID` = str_squish(str_remove(globalId, "\\s*\\([^)]*\\)$")),
     PIN = str_extract(globalId, "(?<=\\()[^)]*(?=\\)$)"),
     `Participant Cohort` = "3-20 year",
-    `IPA Age Band` = case_when(
+    `Age Group` = case_when(
       str_detect(statusId, regex("^3-5 Year", ignore_case = TRUE)) ~ "3_5yr",
       str_detect(statusId, regex("^6-10 Year", ignore_case = TRUE)) ~ "6_10yr",
       str_detect(statusId, regex("^11-17 Year", ignore_case = TRUE)) ~ "11_17yr",
       str_detect(statusId, regex("^18-20 Year", ignore_case = TRUE)) ~ "18_20yr",
-      TRUE ~ NA_character_
+      str_detect(statusId, regex("^Potential Participants?$", ignore_case = TRUE)) ~
+        "potential",
+      TRUE ~ "needs_review"
+    ),
+    `IPA Age Band` = if_else(
+      `Age Group` %in% c("3_5yr", "6_10yr", "11_17yr", "18_20yr"),
+      `Age Group`,
+      NA_character_
+    ),
+    `Task Eligible` = !is.na(`IPA Age Band`),
+    `Eligibility Status` = case_when(
+      `Task Eligible` ~ "Task eligible",
+      `Age Group` == "potential" ~ "Potential participants",
+      TRUE ~ "Needs review"
     ),
     FTM_from_tags = map_chr(tags, extract_ftm_from_tags)
   ) %>%
@@ -1662,17 +1424,23 @@ participant_base_3_20 <- ripple_data_3_20_year %>%
   mutate(FTM = coalesce(staff, FTM_from_tags)) %>%
   select(
     `Participant ID`, PIN, customId, familyId, firstName, lastName,
-    birthday, statusId, `Participant Cohort`, `IPA Age Band`, FTM,
+    birthday, statusId, `Participant Cohort`, `Age Group`, `IPA Age Band`,
+    `Task Eligible`, `Eligibility Status`, FTM,
     starts_with("event.")
   )
 
 
-participant_task_base <- bind_rows(
+participant_roster <- bind_rows(
   participant_base_6_35,
   participant_base_3_20
 ) %>%
-  filter(!is.na(`IPA Age Band`)) %>%
   distinct(`Participant ID`, `Participant Cohort`, .keep_all = TRUE)
+
+
+# The full roster retains 6-11 month and potential participants for optional
+# dashboard review. Only task-eligible participants enter the task denominator.
+participant_task_base <- participant_roster %>%
+  filter(`Task Eligible`, !is.na(`IPA Age Band`))
 
 
 # Calendly is already one row per participant and IPA age band. This second
@@ -1973,17 +1741,36 @@ normalize_dashboard_ftm <- function(x) {
   if_else(is.na(value) | value == "", "Unassigned", value)
 }
 
-current_ftm_assignments <- participant_task_checklist_long %>%
+participant_roster_export <- participant_roster %>%
   transmute(
-    `Participant ID`,
-    `Participant Cohort`,
-    `IPA Age Band`,
     FTM = normalize_dashboard_ftm(FTM),
+    `Participant ID`,
+    PIN,
+    firstName,
+    lastName,
+    birthday,
+    `Participant Cohort`,
+    statusId,
+    `Age Group`,
+    `IPA Age Band`,
+    `Task Eligible`,
+    `Eligibility Status`,
     `Assignment Source` = if_else(
       `Participant Cohort` == "6-35 month",
       "Ripple",
       "Call List"
-    ),
+    )
+  ) %>%
+  arrange(FTM, `Participant Cohort`, `Age Group`, `Participant ID`)
+
+
+current_ftm_assignments <- participant_roster_export %>%
+  transmute(
+    `Participant ID`,
+    `Participant Cohort`,
+    `Age Group`,
+    FTM,
+    `Assignment Source`,
     `Observed Date` = Sys.Date()
   ) %>%
   distinct(`Participant ID`, `Participant Cohort`, .keep_all = TRUE)
@@ -2045,8 +1832,8 @@ for (assignment_row in seq_len(nrow(current_ftm_assignments))) {
         transmute(
           `Participant ID`,
           `Participant Cohort`,
-          `Age Band at Start` = `IPA Age Band`,
-          `Age Band at Last Observation` = `IPA Age Band`,
+          `Age Band at Start` = `Age Group`,
+          `Age Band at Last Observation` = `Age Group`,
           FTM,
           `Effective Start` = `Observed Date`,
           `Effective End` = as.Date(NA),
@@ -2064,14 +1851,14 @@ for (assignment_row in seq_len(nrow(current_ftm_assignments))) {
   if (identical(active_ftm, current$FTM[[1]])) {
     ftm_assignment_history$`Last Observed`[active_index] <- Sys.Date()
     ftm_assignment_history$`Age Band at Last Observation`[active_index] <-
-      current$`IPA Age Band`[[1]]
+      current$`Age Group`[[1]]
   } else if (ftm_assignment_history$`Effective Start`[active_index] == Sys.Date()) {
     # Multiple refreshes on the baseline day are treated as corrections.
     ftm_assignment_history$FTM[active_index] <- current$FTM[[1]]
     ftm_assignment_history$`Age Band at Start`[active_index] <-
-      current$`IPA Age Band`[[1]]
+      current$`Age Group`[[1]]
     ftm_assignment_history$`Age Band at Last Observation`[active_index] <-
-      current$`IPA Age Band`[[1]]
+      current$`Age Group`[[1]]
     ftm_assignment_history$`Last Observed`[active_index] <- Sys.Date()
     ftm_assignment_history$`Assignment Source`[active_index] <-
       current$`Assignment Source`[[1]]
@@ -2083,8 +1870,8 @@ for (assignment_row in seq_len(nrow(current_ftm_assignments))) {
         transmute(
           `Participant ID`,
           `Participant Cohort`,
-          `Age Band at Start` = `IPA Age Band`,
-          `Age Band at Last Observation` = `IPA Age Band`,
+          `Age Band at Start` = `Age Group`,
+          `Age Band at Last Observation` = `Age Group`,
           FTM,
           `Effective Start` = `Observed Date`,
           `Effective End` = as.Date(NA),
@@ -2381,6 +2168,7 @@ ftm_task_summary <- participant_task_checklist_long %>%
 
 
 dashboard_exports <- list(
+  "participant_roster.csv" = participant_roster_export,
   "task_checklist_long.csv" = participant_task_checklist_long,
   "task_checklist_wide.csv" = participant_task_checklist_wide,
   "ftm_task_summary.csv" = ftm_task_summary
@@ -2402,7 +2190,11 @@ dashboard_export_manifest <- tibble(
   generated_at = format(dashboard_run_time, "%Y-%m-%d %H:%M:%S %Z"),
   snapshot_id = dashboard_snapshot_id,
   snapshot_date = format(Sys.Date(), "%Y-%m-%d"),
-  participant_rows = n_distinct(participant_task_checklist_long$`Participant ID`),
+  participant_rows = nrow(participant_roster_export),
+  task_eligible_participants = sum(participant_roster_export$`Task Eligible`),
+  potential_participants = sum(
+    participant_roster_export$`Eligibility Status` == "Potential participants"
+  ),
   task_rows = nrow(participant_task_checklist_long)
 )
 

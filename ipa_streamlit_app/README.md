@@ -9,7 +9,11 @@ Running `../IPA Data.R` writes dashboard-ready files to:
 - `data/latest/`: replaced after every refresh
 - `data/snapshots/YYYY-MM-DD_HHMMSS/`: one immutable time point per successful refresh
 
-The dashboard uses `task_checklist_long.csv`. The wide checklist and FTM summary are also exported for downstream use.
+The dashboard uses `task_checklist_long.csv` for task metrics and
+`participant_roster.csv` for the complete current roster. The roster retains
+6–11 month and potential participants even though they do not yet have
+applicable IPA task rows. The wide checklist and FTM summary are also exported
+for downstream use.
 
 The refresh also maintains two persistent audit tables:
 
@@ -27,7 +31,7 @@ python3 -m pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-The sidebar lets users choose Latest, a timestamped snapshot, or a manually uploaded checklist CSV. `Task responsibility` includes current and historical age-band tasks under their locked responsible FTM. `Current caseload` shows only currently applicable tasks under the participant's current FTM. Filters are available for FTM, task, age group, outcome, and participant cohort. The Snapshot trend tab applies those filters to every saved refresh, draws one series per FTM, and supports weighted progress, completion rate, task counts, and follow-up volume.
+The sidebar lets users choose Latest, a timestamped snapshot, or a manually uploaded checklist CSV. `Task responsibility` includes current and historical age-band tasks under their locked responsible FTM. `Current caseload` shows only currently applicable tasks under the participant's current FTM. Filters are available for participant scope, FTM, task, age group, outcome, and participant cohort. The Participant roster tab lets FTMs explicitly open Potential participants or 6–11 month participants without adding them to task-progress denominators. The Snapshot trend tab applies task filters to every saved refresh, draws one series per FTM, and supports weighted progress, completion rate, task counts, and follow-up volume.
 
 ## Metric definitions
 

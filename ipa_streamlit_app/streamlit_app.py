@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+import os
 from pathlib import Path
 
 import numpy as np
@@ -14,15 +15,21 @@ import streamlit as st
 from dashboard_data import (
     AGE_GROUP_ORDER,
     OUTCOME_ORDER,
+    PARTICIPANT_SCOPE_ORDER,
     DataVersion,
     apply_filters,
+    apply_roster_filters,
     build_snapshot_trend,
     calculate_kpis,
     discover_data_versions,
     prepare_detail_table,
+    prepare_roster_table,
     read_dashboard_csv,
+    read_roster_csv,
+    roster_from_task_data,
     safe_unique,
     standardize_dashboard_data,
+    standardize_participant_roster,
     summarize_outcomes,
     summarize_progress,
 )
@@ -30,8 +37,9 @@ from dashboard_data import (
 
 APP_TITLE = "CHARM IPA Task Dashboard"
 BASE_DIR = Path(__file__).resolve().parent
-LATEST_PATH = BASE_DIR / "data" / "latest" / "task_checklist_long.csv"
-SNAPSHOT_DIR = BASE_DIR / "data" / "snapshots"
+DATA_DIR = Path(os.getenv("IPA_DASHBOARD_DATA_DIR", BASE_DIR / "data"))
+LATEST_PATH = DATA_DIR / "latest" / "task_checklist_long.csv"
+SNAPSHOT_DIR = DATA_DIR / "snapshots"
 
 BLUE = "#2F6B9A"
 BLUE_DARK = "#234E70"
@@ -80,6 +88,13 @@ def load_version(path: str, modified_time_ns: int) -> pd.DataFrame:
 def load_upload(uploaded_file) -> pd.DataFrame:
     """Load and validate a user-uploaded checklist."""
     return standardize_dashboard_data(pd.read_csv(uploaded_file))
+
+
+@st.cache_data(show_spinner=False)
+def load_roster_version(path: str, modified_time_ns: int) -> pd.DataFrame:
+    """Load the complete participant roster; mtime invalidates the cache."""
+    del modified_time_ns
+    return standardize_participant_roster(read_roster_csv(Path(path)))
 
 
 def format_percent(value: float) -> str:
@@ -301,6 +316,8 @@ with st.sidebar:
         except (ValueError, pd.errors.ParserError) as exc:
             st.error(str(exc))
             st.stop()
+        roster = roster_from_task_data(df)
+        roster_detail = "Eligible participants reconstructed from uploaded tasks"
         source_detail = "Uploaded CSV"
     else:
         selected_version: DataVersion = version_lookup[source_label]
@@ -311,6 +328,19 @@ with st.sidebar:
         except (OSError, ValueError, pd.errors.ParserError) as exc:
             st.error(str(exc))
             st.stop()
+        roster_path = selected_version.path.parent / "participant_roster.csv"
+        if roster_path.exists():
+            try:
+                roster = load_roster_version(
+                    str(roster_path), roster_path.stat().st_mtime_ns
+                )
+                roster_detail = "Complete participant roster"
+            except (OSError, ValueError, pd.errors.ParserError) as exc:
+                st.error(str(exc))
+                st.stop()
+        else:
+            roster = roster_from_task_data(df)
+            roster_detail = "Eligible participants only; refresh R data to add the complete roster"
         modified = datetime.fromtimestamp(selected_version.path.stat().st_mtime)
         source_detail = f"{selected_version.label} · updated {modified:%b %d, %Y %I:%M %p}"
 
@@ -336,15 +366,38 @@ with st.sidebar:
         df = df[df["Task Stage"] == "Current"].copy()
 
     st.subheader("Filters")
-    selected_ftms = st.multiselect("FTM", safe_unique(df["FTM"]))
+    ftm_options = sorted(set(safe_unique(df["FTM"])) | set(safe_unique(roster["FTM"])))
+    selected_ftms = st.multiselect("FTM", ftm_options)
+    available_scopes = [
+        scope
+        for scope in PARTICIPANT_SCOPE_ORDER
+        if scope in roster["Eligibility Status"].astype("string").values
+    ]
+    default_scopes = ["Task eligible"] if "Task eligible" in available_scopes else []
+    selected_scopes = st.multiselect(
+        "Participant scope",
+        available_scopes,
+        default=default_scopes,
+        help=(
+            "Potential participants and 6–11 month participants remain visible "
+            "in the roster but do not create task records or enter progress denominators."
+        ),
+    )
     selected_tasks = st.multiselect("Task", safe_unique(df["Task"]))
     available_ages = [
-        age for age in AGE_GROUP_ORDER if age in df["Age Group"].astype("string").values
+        age
+        for age in AGE_GROUP_ORDER
+        if age in set(df["Age Group"].astype("string").values)
+        | set(roster["Age Group"].astype("string").values)
     ]
     selected_age_groups = st.multiselect("Age group", available_ages)
     selected_outcomes = st.multiselect("Outcome", OUTCOME_ORDER)
     selected_cohorts = st.multiselect(
-        "Cohort", safe_unique(df["Participant Cohort"])
+        "Cohort",
+        sorted(
+            set(safe_unique(df["Participant Cohort"]))
+            | set(safe_unique(roster["Participant Cohort"]))
+        ),
     )
     st.caption("Leave a filter blank to include all values.")
 
@@ -357,19 +410,37 @@ filtered = apply_filters(
     selected_cohorts,
 )
 
-st.caption(f"Data source: **{source_detail}** · FTM view: **{ftm_view_label}**")
+# Participant scope controls roster inclusion and whether task rows are eligible
+# to appear; it never adds non-applicable rows to the task denominator.
+scope_roster = apply_roster_filters(roster, [], [], [], selected_scopes)
+scope_keys = scope_roster[["Participant ID", "Participant Cohort"]].drop_duplicates()
+filtered = filtered.merge(
+    scope_keys,
+    on=["Participant ID", "Participant Cohort"],
+    how="inner",
+)
 
-if filtered.empty:
-    st.warning("No records match the selected filters.")
-    st.stop()
+filtered_roster = apply_roster_filters(
+    roster,
+    selected_ftms,
+    selected_age_groups,
+    selected_cohorts,
+    selected_scopes,
+)
+
+st.caption(
+    f"Data source: **{source_detail}** · FTM view: **{ftm_view_label}** · "
+    f"Roster: **{roster_detail}**"
+)
 
 metrics = calculate_kpis(filtered)
 follow_up = metrics["incomplete"] + metrics["no_record"]
 
-kpi_top = st.columns(3)
-kpi_top[0].metric("Participants", f"{metrics['participants']:,}")
-kpi_top[1].metric("Applicable task records", f"{metrics['task_rows']:,}")
-kpi_top[2].metric("Weighted progress", format_percent(metrics["weighted_progress"]))
+kpi_top = st.columns(4)
+kpi_top[0].metric("Roster participants", f"{filtered_roster['Participant ID'].nunique():,}")
+kpi_top[1].metric("Participants with tasks", f"{metrics['participants']:,}")
+kpi_top[2].metric("Applicable task records", f"{metrics['task_rows']:,}")
+kpi_top[3].metric("Weighted progress", format_percent(metrics["weighted_progress"]))
 kpi_bottom = st.columns(3)
 kpi_bottom[0].metric("Complete", f"{metrics['complete']:,}")
 kpi_bottom[1].metric("No-Show", f"{metrics['no_show']:,}")
@@ -380,41 +451,47 @@ st.caption(
     "and No record = 0 in the denominator."
 )
 
-overview_tab, trend_tab, participant_tab = st.tabs(
-    ["Overview", "Snapshot trend", "Participant details"]
+overview_tab, trend_tab, roster_tab, participant_tab = st.tabs(
+    ["Overview", "Snapshot trend", "Participant roster", "Task details"]
 )
 
 with overview_tab:
-    st.plotly_chart(make_task_progress_chart(filtered), width="stretch")
-    st.plotly_chart(make_outcome_chart(filtered), width="stretch")
+    if filtered.empty:
+        st.info(
+            "The selected participant scope has no applicable task records. "
+            "Open Participant roster to review these participants."
+        )
+    else:
+        st.plotly_chart(make_task_progress_chart(filtered), width="stretch")
+        st.plotly_chart(make_outcome_chart(filtered), width="stretch")
 
-    st.plotly_chart(make_heatmap(filtered), width="stretch")
+        st.plotly_chart(make_heatmap(filtered), width="stretch")
 
-    summary = summarize_progress(filtered, ["FTM", "Age Group", "Task"])
-    summary["Progress"] = summary["progress"].map(format_percent)
-    summary["Weighted points"] = summary["weighted_points"].map(format_number)
-    summary = summary.rename(
-        columns={
-            "task_rows": "Task records",
-            "participants": "Participants",
-        }
-    )
-    st.subheader("Filtered summary")
-    st.dataframe(
-        summary[
-            [
-                "FTM",
-                "Age Group",
-                "Task",
-                "Participants",
-                "Task records",
-                "Weighted points",
-                "Progress",
-            ]
-        ],
-        width="stretch",
-        hide_index=True,
-    )
+        summary = summarize_progress(filtered, ["FTM", "Age Group", "Task"])
+        summary["Progress"] = summary["progress"].map(format_percent)
+        summary["Weighted points"] = summary["weighted_points"].map(format_number)
+        summary = summary.rename(
+            columns={
+                "task_rows": "Task records",
+                "participants": "Participants",
+            }
+        )
+        st.subheader("Filtered summary")
+        st.dataframe(
+            summary[
+                [
+                    "FTM",
+                    "Age Group",
+                    "Task",
+                    "Participants",
+                    "Task records",
+                    "Weighted points",
+                    "Progress",
+                ]
+            ],
+            width="stretch",
+            hide_index=True,
+        )
 
 with trend_tab:
     trend_metric = st.selectbox(
@@ -429,15 +506,20 @@ with trend_tab:
             "Task Records",
         ],
     )
-    trend = build_snapshot_trend(
-        versions,
-        selected_ftms,
-        selected_tasks,
-        selected_age_groups,
-        selected_outcomes,
-        selected_cohorts,
-        ftm_column,
-        current_tasks_only,
+    task_scope_selected = not selected_scopes or "Task eligible" in selected_scopes
+    trend = (
+        build_snapshot_trend(
+            versions,
+            selected_ftms,
+            selected_tasks,
+            selected_age_groups,
+            selected_outcomes,
+            selected_cohorts,
+            ftm_column,
+            current_tasks_only,
+        )
+        if task_scope_selected
+        else pd.DataFrame()
     )
     snapshot_count = trend["Snapshot Date"].nunique() if not trend.empty else 0
     if snapshot_count >= 2:
@@ -458,8 +540,27 @@ with trend_tab:
         st.dataframe(trend_display, width="stretch", hide_index=True)
     else:
         st.info(
-            "No compatible snapshots are available yet. Each R update will add a "
-            "dated snapshot automatically."
+            "No task trend is available for this selection. Potential and 6–11 "
+            "month participants do not enter task-progress denominators."
+        )
+
+with roster_tab:
+    st.subheader("Filtered participant roster")
+    st.caption(
+        "Participant scope, FTM, age group, and cohort filters apply here. "
+        "Task and outcome filters apply only to task-based views."
+    )
+    roster_detail_table = prepare_roster_table(filtered_roster)
+    if roster_detail_table.empty:
+        st.info("No participants match the selected roster filters.")
+    else:
+        st.dataframe(roster_detail_table, width="stretch", hide_index=True, height=520)
+        st.download_button(
+            "Download filtered participant roster",
+            data=csv_bytes(roster_detail_table),
+            file_name="ipa_participant_roster_filtered.csv",
+            mime="text/csv",
+            width="stretch",
         )
 
 with participant_tab:
@@ -484,6 +585,8 @@ with st.expander("Metric definitions"):
     st.markdown(
         """
         - **Applicable tasks:** participant-task-age-band rows created when the participant enters an eligible age group.
+        - **Participant scope:** the complete roster includes task-eligible participants, 6–11 month participants, potential participants, and records needing review.
+        - **Non-task participants:** potential and 6–11 month participants are visible in the roster but do not enter task counts, progress, or completion-rate denominators.
         - **Weighted progress:** total task score divided by applicable task rows.
         - **Needs follow-up:** `Incomplete` plus `No record` task rows.
         - **Task responsibility:** every task—including Complete, No-Show, Incomplete, and No record—stays with the FTM responsible when that age-band task first became applicable.
