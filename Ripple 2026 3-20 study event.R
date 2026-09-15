@@ -10,9 +10,13 @@ library(openxlsx)
 
 ## 1.1. Set up parameters ----------------------------------------------------
 base_url <- "https://echocharm.ripplescience.com/v1/export"
-auth_key <- "Basic dGlhbmppYWhAbXN1LmVkdTpUamg2MTI0MjUyMDAwMDEwNCoq"
+auth_key <- "Basic dGlhbmppYWhAbXN1LmVkdTpUamg2MTI0MjUyMDAwMDEwNCE="
 
-study_id <- "QhZZT24wtWCpGkKdE"   # 2026 3-20 Year Study
+# export-type from DevTools payload
+study_id <- "QhZZT24wtWCpGkKdE" # 2026 3-20 year study
+
+team_id <- "pze6EXgGw6hLwhhRy"
+
 timezone <- "America/New_York"
 
 # Variables
@@ -29,10 +33,11 @@ vars <- c(
 
 # Build Body
 body_list <- list(
-  "teamId" = "pze6EXgGw6hLwhhRy",         
-  "export-type" = "QhZZT24wtWCpGkKdE",
-  "export-timezone" = "America/New_York",
-  "surveyExportSince" = ""               
+  "access_token" = "",
+  "teamId" = team_id,
+  "export-type" = study_id,
+  "export-timezone" = timezone,
+  "surveyExportSince" = ""
 )
 
 # Add selected variables
@@ -45,10 +50,16 @@ for (v in vars) {
 
 # Send Request
 resp <- request(base_url) %>%
-  req_headers(Authorization = auth_key) %>%
+  req_headers(
+    Authorization = auth_key
+  ) %>%
   req_body_form(!!!body_list) %>%
+  # Retry transient failures (HTTP 429/503) with exponential backoff
+  req_retry(max_tries = 5, max_seconds = 300) %>%
   req_perform()
 
+
+# Check status
 resp_status(resp)
 
 # Get CSV text
@@ -76,13 +87,13 @@ selected_data <- ripple_data %>%
     starts_with("event.2026")
   ) %>%
   filter(!(globalId %in% c("iri0LoVJXJ734mKYy","54jpojzH4AVzTJoPD")))  %>% # delete Anna and Mallory from the result
-  filter(statusId != "Withdrawn") %>%
-  extract(
-    globalId, 
-    into = c("child_echo_id", "PIN"), 
-    regex = "(.*)\\s\\((.*)\\)",
-    remove = TRUE 
-  ) %>% 
+  # filter(!(statusId %in% c("Withdrawn","ECHO 2 Refusal"))) %>%
+  # globalId looks like "ECHOID (PIN)"; if no PIN is present, keep child_echo_id and set PIN to NA
+  mutate(
+    child_echo_id = str_trim(str_remove(globalId, "\\s*\\(.*\\)$")),
+    PIN = str_trim(str_match(globalId, "\\((.*)\\)$")[, 2])
+  ) %>%
+  select(-globalId) %>%
   relocate(child_echo_id, PIN)
 
 # reshape data to long format
@@ -178,7 +189,7 @@ filtered_long_data <- filtered_long_data %>%
       # caregiver_survey and ipa_scheduled use direct completion status
       event_short %in% c("caregiver_survey", "ipa_scheduled") & completed_flag ~ "Complete",
       event_short %in% c("caregiver_survey", "ipa_scheduled") & !completed_flag ~ "Incomplete",
-      
+
       # child_survey outside 6-10 Year also uses direct completion status
       event_short == "child_survey" & statusId != "6-10 Year" & completed_flag ~ "Complete",
       event_short == "child_survey" & statusId != "6-10 Year" & !completed_flag ~ "Incomplete",
@@ -213,7 +224,7 @@ if (Sys.info()["sysname"] == "Windows") {
 # Construct file path
 pr_path <- file.path(
   BASE_PATH,
-  "Data/Reports/Participant Registration/ParticipantRegistration_Export_09012026.xlsx"
+  "Data/Reports/Participant Registration/ParticipantRegistration_Export_09152026.xlsx"
 )
 
 # Import data
@@ -686,6 +697,10 @@ staff_event_denominator_base <- staff_event_denominator_base %>%
     
     eligible_flag = case_when(
       
+      # participants who never joined the study are never eligible,
+      # regardless of event
+      is.na(statusId) | statusId %in% c("Withdrawn", "ECHO 2 Refusal") ~ 0,
+
       # caregiver_survey: all assigned participants are eligible
       event_short == "caregiver_survey" ~ 1,
       
@@ -815,8 +830,9 @@ APP_DIR <- '/Users/tianjiah/Library/CloudStorage/OneDrive-MichiganStateUniversit
 
 # Output folders
 latest_dir <- file.path(APP_DIR, "data", "latest")
-snapshot_date <- format(Sys.Date(), "%Y-%m-%d")
-snapshot_dir <- file.path(APP_DIR, "data", "snapshots", snapshot_date)
+snapshot_time <- Sys.time()
+snapshot_id <- format(snapshot_time, "%Y-%m-%d_%H%M%S", tz = "America/Detroit")
+snapshot_dir <- file.path(APP_DIR, "data", "snapshots", snapshot_id)
 
 dir_create(latest_dir)
 dir_create(snapshot_dir)
@@ -838,6 +854,21 @@ write_csv(
 write_csv(
   dashboard_detail,
   file.path(snapshot_dir, "detail.csv"),
+  na = ""
+)
+
+# Record the actual refresh time so the dashboard can use every successful
+# update as a separate historical data point.
+write_csv(
+  tibble(
+    snapshot_id = snapshot_id,
+    snapshot_time = format(
+      snapshot_time,
+      "%Y-%m-%dT%H:%M:%S%z",
+      tz = "America/Detroit"
+    )
+  ),
+  file.path(snapshot_dir, "manifest.csv"),
   na = ""
 )
 
@@ -868,4 +899,3 @@ openxlsx::saveWorkbook(
   file.path(snapshot_dir, "summary.xlsx"),
   overwrite = TRUE
 )
-

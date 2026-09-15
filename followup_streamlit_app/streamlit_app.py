@@ -10,9 +10,10 @@ followup_streamlit_app/
     ├── latest/
     │   └── dashboard_detail.csv
     └── snapshots/
-        ├── 2026-04-28/
+        ├── 2026-04-28_103000/
         │   ├── detail.csv
-        │   └── summary.csv   # optional; app recomputes summary from detail.csv
+        │   ├── manifest.csv
+        │   └── summary.xlsx  # optional; app recomputes summary from detail.csv
         └── ...
 
 The app can also run without committed data by using the sidebar CSV uploader.
@@ -81,6 +82,33 @@ def find_snapshot_detail_files(snapshot_dir: Path = SNAPSHOT_DIR) -> dict[str, P
     return snapshots
 
 
+def get_snapshot_timestamp(snapshot_folder: Path) -> pd.Timestamp:
+    """Read a snapshot timestamp, falling back to the folder name."""
+    manifest_path = snapshot_folder / "manifest.csv"
+    if manifest_path.exists():
+        try:
+            manifest = pd.read_csv(manifest_path)
+            if "snapshot_time" in manifest.columns and not manifest.empty:
+                timestamp = pd.to_datetime(manifest.loc[0, "snapshot_time"], errors="coerce")
+                if not pd.isna(timestamp):
+                    if timestamp.tzinfo is not None:
+                        timestamp = timestamp.tz_convert("America/Detroit").tz_localize(None)
+                    return timestamp
+        except (OSError, pd.errors.ParserError):
+            pass
+
+    for date_format in ("%Y-%m-%d_%H%M%S", "%Y-%m-%d"):
+        timestamp = pd.to_datetime(
+            snapshot_folder.name,
+            format=date_format,
+            errors="coerce",
+        )
+        if not pd.isna(timestamp):
+            return timestamp
+
+    return pd.Timestamp(snapshot_folder.stat().st_mtime, unit="s")
+
+
 @st.cache_data(show_spinner=False)
 def load_csv_from_path(path: str, modified_time: int) -> pd.DataFrame:
     """Load a CSV and refresh the cache whenever the file changes."""
@@ -91,6 +119,32 @@ def load_csv_from_path(path: str, modified_time: int) -> pd.DataFrame:
 def load_csv_from_upload(uploaded_file) -> pd.DataFrame:
     """Load a CSV uploaded through the Streamlit sidebar."""
     return pd.read_csv(uploaded_file)
+
+
+@st.cache_data(show_spinner=False)
+def load_snapshot_history(
+    snapshot_items: tuple[tuple[str, str, int, str], ...],
+) -> tuple[pd.DataFrame, tuple[str, ...]]:
+    """Load and standardize all saved snapshots for historical analysis."""
+    frames: list[pd.DataFrame] = []
+    issues: list[str] = []
+
+    for snapshot_id, path, _modified_time, timestamp_iso in snapshot_items:
+        try:
+            frame = standardize_dashboard_data(pd.read_csv(path))
+        except (OSError, pd.errors.ParserError, ValueError) as exc:
+            issues.append(f"{snapshot_id}: {exc}")
+            continue
+
+        frame["snapshot_id"] = snapshot_id
+        frame["snapshot_time"] = pd.Timestamp(timestamp_iso)
+        frames.append(frame)
+
+    if not frames:
+        return pd.DataFrame(), tuple(issues)
+
+    history = pd.concat(frames, ignore_index=True)
+    return history, tuple(issues)
 
 
 def standardize_dashboard_data(data: pd.DataFrame) -> pd.DataFrame:
@@ -234,6 +288,76 @@ def summarize_staff_event(data: pd.DataFrame, add_overall: bool = True) -> pd.Da
     return out.sort_values(["staff", "event_short"])
 
 
+def summarize_history(
+    history: pd.DataFrame,
+    staff_value: str,
+    event_value: str,
+    status_value: str,
+    include_potential: bool,
+    compare_by: str,
+) -> pd.DataFrame:
+    """Calculate the dashboard KPIs independently for every saved snapshot."""
+    if history.empty:
+        return pd.DataFrame()
+
+    rows: list[dict[str, object]] = []
+    for (snapshot_id, snapshot_time), snapshot in history.groupby(
+        ["snapshot_id", "snapshot_time"],
+        sort=True,
+        dropna=False,
+    ):
+        status_filter_col = get_status_filter_col(snapshot)
+        filtered = apply_filters(
+            data=snapshot,
+            staff_value=staff_value,
+            event_value=event_value,
+            status_value=status_value,
+            include_potential=include_potential,
+            status_filter_col=status_filter_col,
+        )
+
+        # A snapshot with no matching records is unavailable for this filtered
+        # view, not a measured zero.
+        if filtered.empty:
+            continue
+
+        if compare_by == "Staff":
+            groups = filtered.groupby("staff", dropna=False)
+        elif compare_by == "Event":
+            groups = filtered.groupby("event_short", dropna=False)
+        else:
+            groups = [("Overall", filtered)]
+
+        for series, group in groups:
+            denominator, numerator, progress = calculate_metrics(group)
+            rows.append(
+                {
+                    "snapshot_id": snapshot_id,
+                    "snapshot_time": snapshot_time,
+                    "series": str(series) if not pd.isna(series) else "Missing",
+                    "denominator": denominator,
+                    "numerator": numerator,
+                    "progress": progress,
+                    "detail_records": len(group),
+                }
+            )
+
+    if not rows:
+        return pd.DataFrame(
+            columns=[
+                "snapshot_id",
+                "snapshot_time",
+                "series",
+                "denominator",
+                "numerator",
+                "progress",
+                "detail_records",
+            ]
+        )
+
+    return pd.DataFrame(rows).sort_values(["snapshot_time", "series"])
+
+
 def pct(x: float) -> str:
     """Format a numeric value as a percentage."""
     if pd.isna(x):
@@ -369,6 +493,54 @@ def make_heatmap(data: pd.DataFrame):
     return apply_chart_typography(fig)
 
 
+def make_trend_chart(data: pd.DataFrame, metric: str):
+    """Create a historical line chart for one selected dashboard metric."""
+    metric_config = {
+        "Progress": ("progress", "Progress", ".1%"),
+        "Denominator": ("denominator", "Denominator", ",.0f"),
+        "Numerator": ("numerator", "Numerator", ",.1f"),
+        "Detail records": ("detail_records", "Detail records", ",.0f"),
+    }
+    metric_col, axis_title, tick_format = metric_config[metric]
+
+    fig = px.line(
+        data,
+        x="snapshot_time",
+        y=metric_col,
+        color="series",
+        markers=True,
+        custom_data=[
+            "snapshot_id",
+            "denominator",
+            "numerator",
+            "progress",
+            "detail_records",
+        ],
+        title=f"{metric} over time",
+    )
+    fig.update_traces(
+        hovertemplate=(
+            "<b>%{fullData.name}</b><br>"
+            "Snapshot: %{customdata[0]}<br>"
+            "Denominator: %{customdata[1]:,.0f}<br>"
+            "Numerator: %{customdata[2]:,.1f}<br>"
+            "Progress: %{customdata[3]:.1%}<br>"
+            "Detail records: %{customdata[4]:,.0f}<extra></extra>"
+        )
+    )
+    fig.update_layout(
+        template="plotly_white",
+        xaxis_title="Snapshot date",
+        yaxis_title=axis_title,
+        height=540,
+        margin=dict(l=20, r=20, t=70, b=30),
+        legend_title_text="Series",
+        hovermode="x unified" if data["series"].nunique() > 1 else "closest",
+    )
+    fig.update_yaxes(tickformat=tick_format)
+    return apply_chart_typography(fig)
+
+
 def dataframe_to_csv_bytes(data: pd.DataFrame) -> bytes:
     """Convert a data frame to UTF-8 CSV bytes for download buttons."""
     return data.to_csv(index=False).encode("utf-8")
@@ -486,40 +658,162 @@ st.caption(
     "Event = Overall calculates metrics across all event rows after other filters are applied."
 )
 
-# KPI cards
-kpi1, kpi2, kpi3, kpi4 = st.columns(4)
-kpi1.metric("Denominator", f"{denominator:,}")
-kpi2.metric("Numerator", format_number(numerator))
-kpi3.metric("Progress", pct(progress))
-kpi4.metric("Detail records", f"{len(filtered_df):,}")
+current_tab, trend_tab = st.tabs(["Current status", "Historical trends"])
 
-# Charts
-chart_col1, chart_col2 = st.columns(2)
-with chart_col1:
-    st.plotly_chart(make_bar_staff(filtered_df), use_container_width=True)
-with chart_col2:
-    st.plotly_chart(make_bar_event(filtered_df), use_container_width=True)
+with current_tab:
+    # KPI cards
+    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+    kpi1.metric("Denominator", f"{denominator:,}")
+    kpi2.metric("Numerator", format_number(numerator))
+    kpi3.metric("Progress", pct(progress))
+    kpi4.metric("Detail records", f"{len(filtered_df):,}")
 
-st.plotly_chart(make_heatmap(filtered_df), use_container_width=True)
+    # Charts
+    chart_col1, chart_col2 = st.columns(2)
+    with chart_col1:
+        st.plotly_chart(make_bar_staff(filtered_df), width="stretch")
+    with chart_col2:
+        st.plotly_chart(make_bar_event(filtered_df), width="stretch")
 
-# Tables and downloads
-st.subheader("Summary Table")
-st.dataframe(summary_table, use_container_width=True, hide_index=True)
-st.download_button(
-    label="Download summary CSV",
-    data=dataframe_to_csv_bytes(summary_raw),
-    file_name="dashboard_summary_filtered.csv",
-    mime="text/csv",
-)
+    st.plotly_chart(make_heatmap(filtered_df), width="stretch")
 
-st.subheader("Detail Data")
-st.dataframe(detail_table, use_container_width=True, hide_index=True)
-st.download_button(
-    label="Download detail CSV",
-    data=dataframe_to_csv_bytes(detail_table),
-    file_name="dashboard_detail_filtered.csv",
-    mime="text/csv",
-)
+    # Tables and downloads
+    st.subheader("Summary Table")
+    st.dataframe(summary_table, width="stretch", hide_index=True)
+    st.download_button(
+        label="Download summary CSV",
+        data=dataframe_to_csv_bytes(summary_raw),
+        file_name="dashboard_summary_filtered.csv",
+        mime="text/csv",
+    )
+
+    st.subheader("Detail Data")
+    st.dataframe(detail_table, width="stretch", hide_index=True)
+    st.download_button(
+        label="Download detail CSV",
+        data=dataframe_to_csv_bytes(detail_table),
+        file_name="dashboard_detail_filtered.csv",
+        mime="text/csv",
+    )
+
+with trend_tab:
+    snapshots = find_snapshot_detail_files()
+    snapshot_items = tuple(
+        (
+            snapshot_id,
+            str(path),
+            path.stat().st_mtime_ns,
+            get_snapshot_timestamp(path.parent).isoformat(),
+        )
+        for snapshot_id, path in snapshots.items()
+    )
+    history_df, history_issues = load_snapshot_history(snapshot_items)
+
+    if history_issues:
+        st.warning(
+            "Some snapshots could not be loaded: " + "; ".join(history_issues)
+        )
+
+    if history_df.empty:
+        st.info(
+            "No historical snapshots are available yet. Run the R update script to "
+            "create the first saved data point."
+        )
+    else:
+        control_col1, control_col2 = st.columns(2)
+        with control_col1:
+            trend_metric = st.selectbox(
+                "Metric",
+                ["Progress", "Denominator", "Numerator", "Detail records"],
+                key="trend_metric",
+            )
+        with control_col2:
+            compare_by = st.selectbox(
+                "Compare by",
+                ["Overall", "Staff", "Event"],
+                key="trend_compare_by",
+                help="Show one combined line or separate lines for each staff member or event.",
+            )
+
+        trend_event_value = event_value
+        if compare_by == "Staff":
+            event_control_col, _ = st.columns(2)
+            with event_control_col:
+                trend_event_value = st.selectbox(
+                    "Event",
+                    ["Overall"] + safe_unique(history_df["event_short"]),
+                    key="trend_event_value",
+                    help=(
+                        "This Event filter applies only to the historical Staff "
+                        "comparison and is independent of the sidebar Event filter."
+                    ),
+                )
+
+        available_dates = history_df["snapshot_time"].dt.date
+        min_snapshot_date = available_dates.min()
+        max_snapshot_date = available_dates.max()
+        selected_dates = st.date_input(
+            "Snapshot date range",
+            value=(min_snapshot_date, max_snapshot_date),
+            min_value=min_snapshot_date,
+            max_value=max_snapshot_date,
+            key="trend_date_range",
+        )
+
+        if isinstance(selected_dates, (tuple, list)) and len(selected_dates) == 2:
+            start_date, end_date = selected_dates
+        else:
+            start_date = end_date = selected_dates
+
+        history_in_range = history_df[
+            history_df["snapshot_time"].dt.date.between(start_date, end_date)
+        ]
+        trend_df = summarize_history(
+            history=history_in_range,
+            staff_value=staff_value,
+            event_value=trend_event_value,
+            status_value=status_value,
+            include_potential=include_potential,
+            compare_by=compare_by,
+        )
+
+        if compare_by == "Staff":
+            st.caption(
+                "Each point recalculates the selected metric from that saved snapshot. "
+                "The Event control above applies only to this historical Staff "
+                "comparison; Staff, Status, and Potential Participant filters come "
+                "from the sidebar."
+            )
+        else:
+            st.caption(
+                "Each point recalculates the selected metric from that saved snapshot "
+                "using the same Staff, Event, Status, and Potential Participant filters "
+                "shown in the sidebar."
+            )
+
+        if trend_df.empty:
+            st.info("No historical records match the current filters and date range.")
+        else:
+            st.plotly_chart(
+                make_trend_chart(trend_df, trend_metric),
+                width="stretch",
+            )
+
+            trend_table = trend_df.copy()
+            trend_table["snapshot_time"] = trend_table["snapshot_time"].dt.strftime(
+                "%Y-%m-%d %H:%M:%S"
+            )
+            trend_table["progress"] = trend_table["progress"].map(pct)
+            trend_table["numerator"] = trend_table["numerator"].map(format_number)
+
+            st.subheader("Historical metric table")
+            st.dataframe(trend_table, width="stretch", hide_index=True)
+            st.download_button(
+                label="Download historical metrics CSV",
+                data=dataframe_to_csv_bytes(trend_df),
+                file_name="dashboard_history_filtered.csv",
+                mime="text/csv",
+            )
 
 with st.expander("Recommended PDF export workflow"):
     st.markdown(

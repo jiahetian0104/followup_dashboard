@@ -14,7 +14,11 @@ followup_streamlit_app/
     └── snapshots/
         ├── YYYY-MM-DD/
         │   ├── detail.csv
-        │   └── summary.csv
+        │   └── summary.xlsx
+        ├── YYYY-MM-DD_HHMMSS/
+        │   ├── detail.csv
+        │   ├── manifest.csv
+        │   └── summary.xlsx
         └── ...
 ```
 
@@ -68,7 +72,17 @@ data/latest/dashboard_detail.csv
 For historical tracking, add a new folder:
 
 ```text
-data/snapshots/YYYY-MM-DD/detail.csv
+data/snapshots/YYYY-MM-DD_HHMMSS/detail.csv
 ```
 
-The dashboard will automatically show available snapshot dates in the sidebar.
+The R update script creates a unique timestamped folder and `manifest.csv` after
+each successful refresh. Older `YYYY-MM-DD` snapshot folders remain supported.
+
+The dashboard automatically shows available snapshots in the sidebar. The
+**Historical trends** tab recalculates Progress, Denominator, Numerator, and
+Detail records for every snapshot using the same Staff, Event, Status, and
+Potential Participant filters as the current-status view. It can show one
+overall series or compare Staff and Event series, and the filtered history can
+be downloaded as CSV. When comparing by Staff, the trends tab displays its own
+Event selector; this local control does not change the Event selected for the
+current-status view.
