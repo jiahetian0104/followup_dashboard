@@ -1,0 +1,321 @@
+ECHO_ID,Age Window at Start,Age Window at Last Observation,staff,Effective Start,Effective End,First Observed,Last Observed,Assignment Source
+BBS494-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+BHB279-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+BLK940-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+BNJ340-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+BPM036-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+BPQ270-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+BRL402-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+BSM142-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+BVD945-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+BWJ550-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+BXJ770-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+BZW702-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+CBP644-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+CCC242-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CFD249-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+CJF735-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CKJ511-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+CKL621-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CKX033-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+CLC701-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CNJ952-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+CNJ952-01-B,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+CPN600-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+CPP633-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+CPS604-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CSS863-02-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CTK424-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+CTT657-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CVH892-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CXB725-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CYS167-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+CZK707-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+CZX247-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+CZY180-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+CZY408-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+DCP767-01-A,24_35_month,24_35_month,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+DDF581-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+DFB473-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+DFB473-01-B,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+DHH526-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+DHM804-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+DLW793-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+DRG492-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+DTQ848-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+DXH431-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+DYK248-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+FBF788-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+FGC147-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+FGD590-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+FGL622-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+FJQ036-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+FKJ961-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+FKT089-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+FNC054-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+FNC855-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+FNV012-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+FQF816-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+FQH249-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+FRJ675-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+FVG772-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+FVG772-01-N,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+FZV796-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+GBH901-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+GDJ477-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+GDN788-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+GGF358-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+GHD547-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+GJB876-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+GMB721-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+GNX561-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+GRM073-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+GWN222-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+GXM057-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+GXN388-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+GYL243-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+GZD028-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+GZR716-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+HFT023-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+HHW537-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+HKC783-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+HKG602-01-A,,,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+HKN599-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+HPX087-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+HQK219-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+HRG544-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+HVB288-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+HWV734-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+HYH412-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+HZM174-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+JBM041-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JBV363-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+JCX999-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JFL342-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JJT668-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JLN021-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JNL946-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+JNW534-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JQN133-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JTM922-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+JWP930-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JXP185-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JYR948-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+JYT448-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+JZC874-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+KBB279-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+KFX637-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+KGN694-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+KJR619-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+KKK768-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+KLZ533-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+KML208-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+KNM839-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+KPV524-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+KQD426-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+KQM140-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+KRK077-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+KRK077-01-B,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+KRR544-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+KRS023-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+KWL832-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+KWV665-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+KXF530-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+KYL770-01-A,,,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LBZ361-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LFW850-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+LGG437-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LGT156-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LGZ547-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+LHC177-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LJD486-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+LLZ021-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LMP796-01-A,,,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LMX568-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LNT397-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LQV674-01-A,24_35_month,24_35_month,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LRJ642-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LSF764-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+LSH641-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LTS268-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LVK846-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+LYM038-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+LZQ650-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+LZV055-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MCV334-01-A,,,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MFH339-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MFH557-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+MFY505-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MGV078-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MGW204-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MJX352-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+MJZ709-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MLG277-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+MMJ680-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+MMQ065-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+MMV961-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MNR068-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MVK292-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MXD932-01-A,,,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+MZB982-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+NBF593-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+NCD314-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+NCG882-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+NCS144-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+NDG495-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+NDP128-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+NGV392-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+NJW296-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+NKQ202-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+NPM662-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+NQW810-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+NSQ870-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+NWN510-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+Needs 3.01 Consent for ECHO Registration,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+Needs 3.01 Consent to register,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+PBG543-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+PCF029-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+PFJ108-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+PGM615-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+PGR160-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+PHM086-01-A,,,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+PHN877-02-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+PJV818-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+PLD055-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+PLT854-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+PPF902-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+PPF902-01-B,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+PSQ576-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+PTG182-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+PTL466-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+PVP473-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+PWK021-01-A,24_35_month,24_35_month,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+PYH842-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+PZJ271-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+PZP220-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+QDZ468-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+QHF620-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+QHL554-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+QHS933-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+QJL577-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+QQL383-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+QRD096-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+QRK467-02-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+QST675-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+QTD282-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+QTD282-01-B,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+QVW747-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+RDC147-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+RDK869-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+RDL710-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+RGP420-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+RMH180-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+RRB727-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+RSZ202-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+RTW198-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+RZR609-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+RZS580-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+RZV201-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+RZY993-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+SBH525-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+SBW730-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+SFV056-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+SJB279-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+SJH036-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+SLF955-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+SMB785-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+SMQ889-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+SMZ551-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+SND172-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+SQP406-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+SWX219-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+SYW884-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+TCL637-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+TDX359-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+TGT068-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+THQ829-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+TJJ345-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+TJN635-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+TKN820-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+TKX611-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+TPW315-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+TTY851-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+TVZ168-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+TZB922-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+TZC873-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+VCJ373-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+VDW899-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+VDW899-01-B,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+VFC610-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+VGK107-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+VHD766-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+VJH812-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+VKD996-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+VLJ473-01-A,,,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+VLQ825-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+VQF882-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+VQH840-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+VRZ404-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+VWT853-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+VXZ462-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+VZB299-01-A,,,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+VZC888-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+VZN005-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+VZY119-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+WCN217-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+WCV960-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+WGL767-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+WRD249-01-A,6_11_month,6_11_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+WSG161-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+WSS824-01-A,,,Cassie,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+WWS790-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+WWW781-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+XFC529-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+XFH617-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+XGN391-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+XGT144-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+XKQ019-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+XMZ967-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+XNV726-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+XPJ670-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+XPK044-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+XRB073-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+XRJ821-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+XSP178-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+XTM558-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+XXW266-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+XYN414-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YBC948-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YGQ976-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YHK945-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YJQ442-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+YMF346-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YMP799-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YND734-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YNF452-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YNF452-01-B,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YPB464-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YRC466-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+YRM458-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YRM458-01-B,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YSL869-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+YVD652-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+YXJ085-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YYB078-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+YYX721-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+YYX721-01-N,,,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+ZBM618-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+ZCR636-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+ZCS109-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+ZGC044-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+ZJK924-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+ZKL165-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+ZLX499-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+ZMK813-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+ZQN091-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Age-window fallback
+ZQR455-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+ZRH064-01-A,6_11_month,6_11_month,Anna,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+ZTS569-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+ZVD237-01-A,12_23_month,12_23_month,Jody,2026-09-15,,2026-09-15,2026-09-15,Ripple tag
+ZVN905-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
+ZVX093-01-A,,,Unassigned,2026-09-15,,2026-09-15,2026-09-15,Unassigned
