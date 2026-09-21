@@ -1,0 +1,92 @@
+{"kind":"deck","id":"pr/4y9siz","name":"Deck"}
+{"kind":"layout","layoutId":"b5481527-5ee4-48c4-a43b-8c37f31333d2","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"6a401b29-fa8e-41b8-aec5-4984c3aeb130","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/htu9sc","slide":1,"title":"IPA Dashboard Logic","textShapes":3}
+{"kind":"shape","id":"sh/ipozetwz","slide":1,"bbox":[0,0,1280,720]}
+{"kind":"shape","id":"sh/5sfy98fa","slide":1,"bbox":[0,0,22,720]}
+{"kind":"textbox","id":"sh/4r6hg3ep","slide":1,"text":"IPA Dashboard Logic","textPreview":"IPA Dashboard Logic","textChars":19,"textLines":1,"bbox":[94,205,1040,86]}
+{"kind":"textbox","id":"sh/vmdgjyx8","slide":1,"text":"FTM assignment and task eligibility","textPreview":"FTM assignment and task eligibility","textChars":35,"textLines":1,"bbox":[98,304,900,44]}
+{"kind":"textbox","id":"sh/ul4zatwn","slide":1,"text":"CHARM follow-up dashboard","textPreview":"CHARM follow-up dashboard","textChars":25,"textLines":1,"bbox":[98,570,600,30]}
+{"kind":"notes","id":"nt/htu9sc","slide":1,"text":"Source: Internal IPA dashboard methodology implemented in IPA Data.R, refreshed September 20, 2026."}
+{"kind":"slide","id":"sl/4knou6","slide":2,"title":"Task eligibility","textShapes":18}
+{"kind":"textbox","id":"sh/5k7258zy","slide":2,"text":"Task eligibility","textPreview":"Task eligibility","textChars":16,"textLines":1,"bbox":[68,40,1144,56]}
+{"kind":"textbox","id":"sh/ihgjudg7","slide":2,"text":"Only participants in an active IPA age band enter task counts and progress denominators","textPreview":"Only participants in an active IPA age band enter task counts and progress denominators","textChars":87,"textLines":1,"bbox":[70,101,1110,34]}
+{"kind":"shape","id":"sh/jipk3ihs","slide":2,"bbox":[70,142,1140,0]}
+{"kind":"textbox","id":"sh/wfy1s3yh","slide":2,"text":"Visible in roster only","textPreview":"Visible in roster only","textChars":22,"textLines":1,"bbox":[76,190,235,34]}
+{"kind":"textbox","id":"sh/hg7218z2","slide":2,"text":"6–11 months","textPreview":"6–11 months","textChars":11,"textLines":1,"bbox":[76,248,225,62]}
+{"kind":"textbox","id":"sh/udwjqtgb","slide":2,"text":"Potential participants","textPreview":"Potential participants","textChars":22,"textLines":1,"bbox":[76,328,225,62]}
+{"kind":"textbox","id":"sh/ve5kzyhw","slide":2,"text":"These participants remain filterable, but they do not add tasks to the denominator.","textPreview":"These participants remain filterable, but they do not add tasks to the denominator.","textChars":83,"textLines":1,"bbox":[76,414,235,105]}
+{"kind":"textbox","id":"sh/8be1ojy5","slide":2,"text":"Task eligible","textPreview":"Task eligible","textChars":13,"textLines":1,"bbox":[370,190,760,34]}
+{"kind":"textbox","id":"sh/9cn2xozq","slide":2,"text":"12–23\nmonths","textPreview":"12–23 | months","textChars":12,"textLines":2,"bbox":[370,248,116,84]}
+{"kind":"shape","id":"sh/t07mxgru","slide":2,"bbox":[486,290,17,0]}
+{"kind":"textbox","id":"sh/8zel4vq9","slide":2,"text":"24–35\nmonths","textPreview":"24–35 | months","textChars":12,"textLines":2,"bbox":[503,248,116,84]}
+{"kind":"shape","id":"sh/7y54vq9o","slide":2,"bbox":[619,290,17,0]}
+{"kind":"textbox","id":"sh/6dw32l83","slide":2,"text":"3–5\nyears","textPreview":"3–5 | years","textChars":9,"textLines":2,"bbox":[636,248,116,84]}
+{"kind":"shape","id":"sh/lcnmtgri","slide":2,"bbox":[752,290,17,0]}
+{"kind":"textbox","id":"sh/kbel0bqx","slide":2,"text":"6–10\nyears","textPreview":"6–10 | years","textChars":10,"textLines":2,"bbox":[769,248,116,84]}
+{"kind":"shape","id":"sh/ja54r69c","slide":2,"bbox":[885,290,17,0]}
+{"kind":"textbox","id":"sh/y9w3y187","slide":2,"text":"11–17\nyears","textPreview":"11–17 | years","textChars":11,"textLines":2,"bbox":[902,248,116,84]}
+{"kind":"shape","id":"sh/x8nmpwrm","slide":2,"bbox":[1018,290,17,0]}
+{"kind":"textbox","id":"sh/c7ulwbq1","slide":2,"text":"18–20\nyears","textPreview":"18–20 | years","textChars":11,"textLines":2,"bbox":[1035,248,116,84]}
+{"kind":"textbox","id":"sh/ory5cbix","slide":2,"text":"Task rows are created from the participant's current statusId age band.","textPreview":"Task rows are created from the participant's current statusId age band.","textChars":71,"textLines":1,"bbox":[370,365,790,42]}
+{"kind":"textbox","id":"sh/ps7mlgzi","slide":2,"text":"Withdrawn and ECHO 2 Refusal records are excluded before the roster is built.","textPreview":"Withdrawn and ECHO 2 Refusal records are excluded before the roster is built.","textChars":77,"textLines":1,"bbox":[370,432,790,54]}
+{"kind":"textbox","id":"sh/2pg3a10r","slide":2,"text":"Denominator","textPreview":"Denominator","textChars":11,"textLines":1,"bbox":[370,535,150,32]}
+{"kind":"textbox","id":"sh/3qp4j6hc","slide":2,"text":"One row for every applicable participant × task × age band","textPreview":"One row for every applicable participant × task × age band","textChars":58,"textLines":1,"bbox":[520,526,620,52]}
+{"kind":"textbox","id":"sh/gnyl8ril","slide":2,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[1190,680,28,18]}
+{"kind":"notes","id":"nt/4knou6","slide":2,"text":"Source: participant roster and task eligibility logic in IPA Data.R. Potential participants and 6–11 month participants remain visible but do not enter task denominators."}
+{"kind":"slide","id":"sl/slxr0k","slide":3,"title":"Calendly FTM assignment","textShapes":12}
+{"kind":"textbox","id":"sh/6907u9gr","slide":3,"text":"Calendly FTM assignment","textPreview":"Calendly FTM assignment","textChars":23,"textLines":1,"bbox":[68,40,1144,56]}
+{"kind":"textbox","id":"sh/tcr65ozi","slide":3,"text":"Calendly host or inviter is the authoritative source for IPA responsibility","textPreview":"Calendly host or inviter is the authoritative source for IPA responsibility","textChars":75,"textLines":1,"bbox":[70,101,1110,34]}
+{"kind":"shape","id":"sh/sbipwjyx","slide":3,"bbox":[70,142,1140,0]}
+{"kind":"shape","id":"sh/jmpozuh0","slide":3,"bbox":[70,245,220,110]}
+{"kind":"textbox","id":"sh/ilg7qpgv","slide":3,"text":"Participant + current\nIPA age band","textPreview":"Participant + current | IPA age band","textChars":34,"textLines":2,"bbox":[85,267,190,66]}
+{"kind":"shape","id":"sh/58r614z6","slide":3,"bbox":[370,190,260,110]}
+{"kind":"textbox","id":"sh/k7ipszyl","slide":3,"text":"Same age band\nCalendly FTM found","textPreview":"Same age band | Calendly FTM found","textChars":32,"textLines":2,"bbox":[390,212,220,64]}
+{"kind":"shape","id":"sh/3it8byxk","slide":3,"bbox":[370,385,260,125]}
+{"kind":"textbox","id":"sh/2hk72tgz","slide":3,"text":"No same-band match\nCheck the immediately\nprevious age band","textPreview":"No same-band match | Check the immediately | previous age band","textChars":58,"textLines":3,"bbox":[390,401,220,91]}
+{"kind":"shape","id":"sh/kbqp4r25","slide":3,"bbox":[760,190,350,110]}
+{"kind":"textbox","id":"sh/5czqdcjq","slide":3,"text":"Assigned\nSame age band","textPreview":"Assigned | Same age band","textChars":22,"textLines":2,"bbox":[790,214,290,62]}
+{"kind":"shape","id":"sh/i9872hkf","slide":3,"bbox":[760,385,350,125]}
+{"kind":"textbox","id":"sh/jah8bm10","slide":3,"text":"Assigned\nPrevious age band fallback","textPreview":"Assigned | Previous age band fallback","textChars":35,"textLines":2,"bbox":[790,410,290,76]}
+{"kind":"shape","id":"sh/w7qp0729","slide":3,"bbox":[760,565,350,80]}
+{"kind":"textbox","id":"sh/x8zq9cju","slide":3,"text":"No match: Unassigned","textPreview":"No match: Unassigned","textChars":20,"textLines":1,"bbox":[790,586,290,38]}
+{"kind":"shape","id":"sh/a5o7yxk3","slide":3,"bbox":[290,245,80,55]}
+{"kind":"shape","id":"sh/v6h8721o","slide":3,"bbox":[290,300,80,147.5]}
+{"kind":"shape","id":"sh/8j6pw72d","slide":3,"bbox":[630,245,130,0]}
+{"kind":"shape","id":"sh/9kfq5sji","slide":3,"bbox":[630,447.5,130,0]}
+{"kind":"shape","id":"sh/poned47a","slide":3,"bbox":[935,510,0,55]}
+{"kind":"textbox","id":"sh/onexkzqp","slide":3,"text":"YES","textPreview":"YES","textChars":3,"textLines":1,"bbox":[664,213,65,28]}
+{"kind":"textbox","id":"sh/325wbup4","slide":3,"text":"NO","textPreview":"NO","textChars":2,"textLines":1,"bbox":[300,373,56,28]}
+{"kind":"textbox","id":"sh/21wfip8j","slide":3,"text":"NO","textPreview":"NO","textChars":2,"textLines":1,"bbox":[885,525,60,25]}
+{"kind":"textbox","id":"sh/10ne9kry","slide":3,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[1190,680,28,18]}
+{"kind":"notes","id":"nt/slxr0k","slide":3,"text":"Source: participant Calendly assignment lookup in IPA Data.R. Ripple and Call List FTM fields are excluded from IPA credit assignment."}
+{"kind":"slide","id":"sl/1pyht8","slide":4,"title":"Previous age band lookup","textShapes":4}
+{"kind":"textbox","id":"sh/m9s7qtwr","slide":4,"text":"Previous age band lookup","textPreview":"Previous age band lookup","textChars":24,"textLines":1,"bbox":[68,40,1144,56]}
+{"kind":"textbox","id":"sh/9wjq18f2","slide":4,"text":"Fallback uses one adjacent age band only","textPreview":"Fallback uses one adjacent age band only","textChars":40,"textLines":1,"bbox":[70,101,1110,34]}
+{"kind":"shape","id":"sh/8vaps3eh","slide":4,"bbox":[70,142,1140,0]}
+{"kind":"textbox","id":"sh/y587mtwf","slide":4,"text":"A 6–10 year participant can use a 3–5 year Calendly FTM, but never a 24–35 month FTM.","textPreview":"A 6–10 year participant can use a 3–5 year Calendly FTM, but never a 24–35 month FTM.","textChars":85,"textLines":1,"bbox":[180,625,920,42]}
+{"kind":"textbox","id":"sh/l8z6xof6","slide":4,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[1190,680,28,18]}
+{"kind":"table","id":"tb/eh47y9kv","slide":4,"name":"","rows":8,"cols":3,"preview":"Current IPA age band | Previous age band checked | Fallback available","bbox":[145,185,990,420]}
+{"kind":"notes","id":"nt/1pyht8","slide":4,"text":"Source: ipa_previous_age_band_map in IPA Data.R. The fallback never skips an age band."}
+{"kind":"slide","id":"sl/he63ku","slide":5,"title":"Task responsibility and history","textShapes":16}
+{"kind":"textbox","id":"sh/ud4jex8b","slide":5,"text":"Task responsibility and history","textPreview":"Task responsibility and history","textChars":31,"textLines":1,"bbox":[68,40,1144,56]}
+{"kind":"textbox","id":"sh/hgv2pcr2","slide":5,"text":"Credit follows the FTM responsible for that participant's task and age band","textPreview":"Credit follows the FTM responsible for that participant's task and age band","textChars":75,"textLines":1,"bbox":[70,101,1110,34]}
+{"kind":"shape","id":"sh/wfm1g7qh","slide":5,"bbox":[70,142,1140,0]}
+{"kind":"textbox","id":"sh/7qt0ji90","slide":5,"text":"Earlier age band","textPreview":"Earlier age band","textChars":16,"textLines":1,"bbox":[90,190,245,34]}
+{"kind":"shape","id":"sh/mpkjqx8f","slide":5,"bbox":[90,245,310,150]}
+{"kind":"textbox","id":"sh/9sv2lsr6","slide":5,"text":"FTM A","textPreview":"FTM A","textChars":5,"textLines":1,"bbox":[120,270,250,42]}
+{"kind":"textbox","id":"sh/8rm1cnql","slide":5,"text":"Complete, No-Show, Incomplete,\nand No record tasks stay here","textPreview":"Complete, No-Show, Incomplete, | and No record tasks stay here","textChars":60,"textLines":2,"bbox":[120,324,250,54]}
+{"kind":"textbox","id":"sh/rmxkvm94","slide":5,"text":"Later age band","textPreview":"Later age band","textChars":14,"textLines":1,"bbox":[485,190,245,34]}
+{"kind":"shape","id":"sh/6lojmh8j","slide":5,"bbox":[485,245,310,150]}
+{"kind":"textbox","id":"sh/czutgfq5","slide":5,"text":"FTM B","textPreview":"FTM B","textChars":5,"textLines":1,"bbox":[515,270,250,42]}
+{"kind":"textbox","id":"sh/d0napk7q","slide":5,"text":"New age-band tasks belong to\nthe later responsible FTM","textPreview":"New age-band tasks belong to | the later responsible FTM","textChars":54,"textLines":2,"bbox":[515,324,250,54]}
+{"kind":"shape","id":"sh/qxcbe58z","slide":5,"bbox":[400,320,85,0]}
+{"kind":"textbox","id":"sh/bylsnapk","slide":5,"text":"Dashboard fields","textPreview":"Dashboard fields","textChars":16,"textLines":1,"bbox":[875,190,285,34]}
+{"kind":"textbox","id":"sh/ovutcfqt","slide":5,"text":"Current FTM","textPreview":"Current FTM","textChars":11,"textLines":1,"bbox":[875,246,280,42]}
+{"kind":"textbox","id":"sh/pw3alk7e","slide":5,"text":"Responsible FTM","textPreview":"Responsible FTM","textChars":15,"textLines":1,"bbox":[875,305,280,42]}
+{"kind":"textbox","id":"sh/2tcba583","slide":5,"text":"Assignment Rule","textPreview":"Assignment Rule","textChars":15,"textLines":1,"bbox":[875,364,280,42]}
+{"kind":"textbox","id":"sh/3ulsjap8","slide":5,"text":"Matched Age Band","textPreview":"Matched Age Band","textChars":16,"textLines":1,"bbox":[875,423,280,42]}
+{"kind":"textbox","id":"sh/grat8vqx","slide":5,"text":"Fallback assignments remain clearly labeled. A direct same-age Calendly match can replace a provisional fallback when it becomes available.","textPreview":"Fallback assignments remain clearly labeled. A direct same-age Calendly match can replace a provisional fallback when it becomes available.","textChars":139,"textLines":1,"bbox":[90,495,705,92]}
+{"kind":"textbox","id":"sh/1s3ah07i","slide":5,"text":"FTMs can filter by staff, task, age group, participant scope, outcome, and data snapshot.","textPreview":"FTMs can filter by staff, task, age group, participant scope, outcome, and data snapshot.","textChars":89,"textLines":1,"bbox":[90,615,1065,36]}
+{"kind":"textbox","id":"sh/hcbi5svu","slide":5,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[1190,680,28,18]}
+{"kind":"notes","id":"nt/he63ku","slide":5,"text":"Source: FTM assignment history and task responsibility ledger logic in IPA Data.R, plus dashboard field definitions in streamlit_app.py."}

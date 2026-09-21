@@ -426,210 +426,15 @@ read_protected_excel <- function(path, sheet) {
   XLConnect::readWorksheet(wb, sheet = sheet, header = TRUE)
 }
 
-# File paths (UPDATED)
-# =========================
-
-amy_path <- get_path(
-  "Breanna/2026 Call List Copies/2026 Call List - Amy.xlsx"
+# The 3-20 call lists are no longer an input to IPA responsibility. Calendly
+# owns IPA FTM assignment, and Ripple statusId owns the participant's current
+# age band and task eligibility. Keep an empty compatibility table so the
+# downstream roster code can retain the audit field without reading call-list
+# workbooks or blocking a refresh when the shared drive is unavailable.
+staff_assignment_main <- tibble(
+  child_echo_id = character(),
+  staff = character()
 )
-
-cassie_path <- get_path(
-  "Breanna/2026 Call List Copies/2026 Call List - Cassie (18-20yr).xlsx"
-)
-
-jo_path <- get_path(
-  "Breanna/2026 Call List Copies/2026 Call List - Jo.xlsx"
-)
-
-jody_path <- get_path(
-  "Breanna/2026 Call List Copies/2026 Call List - Jody.xlsx"
-)
-
-nicole_23_path <- get_path(
-  "Breanna/2026 Call List Copies/2026 Call List - Nicole (2,3yr).xlsx"
-)
-
-nicole_34_path <- get_path(
-  "Breanna/2026 Call List Copies/2026 Call List - Nicole (3,4yr).xlsx"
-)
-
-toye_path <- get_path(
-  "Breanna/2026 Call List Copies/2026 Call List - Toye.xlsx"
-)
-
-# Import all call lists
-# =========================
-
-call_lists <- list(
-  
-  # No password
-  amy = read_protected_excel(amy_path, sheet = 1),
-  # cassie = read_protected_excel(cassie_path, sheet = 1),
-  toye = read_protected_excel(toye_path, sheet = 1),
-  
-  # Password protected
-  jo = read_protected_excel(jo_path, sheet = 1),
-  
-  # Jody (sheet 2)
-  jody = read_protected_excel(jody_path, sheet = 2),
-  
-  # Nicole split
-  nicole_23 = read_protected_excel(nicole_23_path, sheet = 1) %>%
-    filter(status_2026 == "3-5 Year"),
-  nicole_34 = read_protected_excel(nicole_34_path, sheet = 1)
-)
-
-
-# summarize call lists
-call_list_summary <- imap_dfr(call_lists, ~ tibble(
-  dataset = .y,
-  n_rows = nrow(.x),
-  n_cols = ncol(.x),
-  colnames = paste(colnames(.x), collapse = ", ")
-))
-
-call_list_summary
-
-# check columns and first few rows of each dataset
-purrr::iwalk(call_lists, ~ {
-  cat("\n============================\n")
-  cat("Dataset:", .y, "\n")
-  cat("Columns:\n")
-  print(colnames(.x))
-})
-
-purrr::iwalk(call_lists, ~ {
-  cat("\n============================\n")
-  cat("Dataset:", .y, "\n")
-  print(head(.x, 3))
-})
-
-process_call_list <- function(df, id_col, status_col, staff_name, source_name, split_pin = TRUE) {
-  
-  df <- df %>%
-    mutate(
-      raw_id = as.character(.data[[id_col]]),
-      status_2026_raw = as.character(.data[[status_col]])
-    ) %>%
-    filter(!is.na(raw_id), raw_id != "") %>%
-    mutate(
-      status_2026_raw = str_trim(status_2026_raw),
-      status_2026_std = case_when(
-        is.na(status_2026_raw) | status_2026_raw == "" ~ NA_character_,
-        
-        str_detect(str_to_lower(status_2026_raw), "3-5") ~ "3-5 Year",
-        str_detect(str_to_lower(status_2026_raw), "2-3") ~ "2-3 Year",
-        str_detect(str_to_lower(status_2026_raw), "18-20") ~ "18-20 Year",
-        str_detect(str_to_lower(status_2026_raw), "potential") ~ "Potential Participants",
-        str_detect(str_to_lower(status_2026_raw), "updated consent") ~ "Updated Consent",
-        str_detect(str_to_lower(status_2026_raw), "survey complete") ~ "Survey Complete",
-        str_detect(str_to_lower(status_2026_raw), "survey") ~ "Survey",
-        
-        TRUE ~ status_2026_raw
-      )
-    )
-  
-  if (split_pin) {
-    df <- df %>%
-      extract(
-        raw_id,
-        into = c("child_echo_id", "PIN"),
-        regex = "^(.*)\\s*\\((.*)\\)$",
-        remove = FALSE
-      ) %>%
-      mutate(
-        child_echo_id = if_else(is.na(child_echo_id), raw_id, child_echo_id),
-        child_echo_id = str_trim(child_echo_id),
-        PIN = str_trim(PIN)
-      )
-  } else {
-    df <- df %>%
-      mutate(
-        child_echo_id = str_trim(raw_id),
-        PIN = NA_character_
-      )
-  }
-  
-  df %>%
-    transmute(
-      child_echo_id,
-      PIN,
-      status_2026_raw,
-      status_2026_std,
-      staff = staff_name,
-      source_sheet = source_name
-    )
-}
-
-staff_assignment_main <- bind_rows(
-  process_call_list(
-    call_lists$amy,
-    id_col = "ECHO.ID",
-    status_col = "X2026.Status.",
-    staff_name = "Amy",
-    source_name = "amy",
-    split_pin = TRUE
-  ),
-  # process_call_list(
-  #   call_lists$cassie,
-  #   id_col = "ECHO.ID.",
-  #   status_col = "X2026.Status.",
-  #   staff_name = "Cassie",
-  #   source_name = "cassie",
-  #   split_pin = TRUE
-  # ),
-  process_call_list(
-    call_lists$toye,
-    id_col = "ECHO.ID",
-    status_col = "X2026.Status.",
-    staff_name = "Toye",
-    source_name = "toye",
-    split_pin = TRUE
-  ),
-  process_call_list(
-    call_lists$jo,
-    id_col = "globalId",
-    status_col = "X2026.Status.",
-    staff_name = "Jo",
-    source_name = "jo",
-    split_pin = TRUE
-  ),
-  process_call_list(
-    call_lists$jody,
-    id_col = "ECHO.ID.",
-    status_col = "Next.2026.Status.",
-    staff_name = "Jody",
-    source_name = "jody",
-    split_pin = TRUE
-  ),
-  process_call_list(
-    call_lists$nicole_23,
-    id_col = "globalId",
-    status_col = "status_2026",
-    staff_name = "Nicole",
-    source_name = "nicole_23",
-    split_pin = TRUE
-  ),
-  process_call_list(
-    call_lists$nicole_34,
-    id_col = "ECHO.ID..pin.",
-    status_col = "X2026.Status.",
-    staff_name = "Nicole",
-    source_name = "nicole_34",
-    split_pin = TRUE
-  )
-) %>%
-  distinct()
-
-staff_assignment_main %>%
-  count(source_sheet, status_2026_raw, status_2026_std, sort = TRUE)
-
-# check duplicate
-dup_id <- staff_assignment_main %>%
-  count(child_echo_id) %>%
-  filter(n > 1)
-
-dup_id # n = 0
 
 
 
@@ -724,7 +529,9 @@ organization_uri <- user_info$resource$current_organization
 # all scheduled events
 get_all_calendly_events <- function(
     organization_uri,
-    token
+    token,
+    min_start_time,
+    max_start_time
 ) {
   
   next_url <- paste0(
@@ -746,6 +553,9 @@ get_all_calendly_events <- function(
       req <- req %>%
         req_url_query(
           organization = organization_uri,
+          min_start_time = min_start_time,
+          max_start_time = max_start_time,
+          sort = "start_time:asc",
           count = 100
         )
     }
@@ -773,7 +583,9 @@ get_all_calendly_events <- function(
 
 events_raw <- get_all_calendly_events(
   organization_uri = organization_uri,
-  token = calendly_token
+  token = calendly_token,
+  min_start_time = "2025-01-01T00:00:00Z",
+  max_start_time = "2027-01-01T00:00:00Z"
 )
 
 length(events_raw)
@@ -896,6 +708,51 @@ get_event_host_name <- function(event) {
   } else {
     paste(host_names, collapse = "; ")
   }
+}
+
+
+# Convert the Calendly host/inviter name into the stable short FTM labels used
+# by the dashboard. The patterns cover the full Calendly display names as well
+# as existing short labels, so one staff member is not split across two rows.
+# An unrecognized host is retained as written for review.
+ipa_ftm_name_patterns <- c(
+  Amy = "\\bAmy\\b",
+  Andrew = "\\bAndrew\\b",
+  Anna = "\\bAnna\\b",
+  Breanna = "\\bBreanna\\b",
+  Cassie = "\\bCassie\\b",
+  Jo = "\\b(?:Jo|Jolyn)\\b",
+  Jody = "\\bJody\\b",
+  Kowlini = "\\bKowlini\\b",
+  Nicole = "\\bNicole\\b",
+  Toye = "\\b(?:Toye|Shetoye)\\b"
+)
+
+normalize_calendly_ftm <- function(host_name) {
+  if (is.na(host_name) || str_squish(host_name) == "") {
+    return(NA_character_)
+  }
+
+  host_members <- str_split(host_name, ";", simplify = FALSE)[[1]] %>%
+    str_squish() %>%
+    discard(~ .x == "")
+
+  normalized_members <- map_chr(host_members, function(member) {
+    known_hits <- names(ipa_ftm_name_patterns)[
+      map_lgl(
+        ipa_ftm_name_patterns,
+        ~ str_detect(member, regex(.x, ignore_case = TRUE))
+      )
+    ]
+
+    if (length(known_hits) == 1) {
+      known_hits[[1]]
+    } else {
+      member
+    }
+  })
+
+  paste(unique(normalized_members), collapse = "; ") %>% na_if("")
 }
 
 
@@ -1126,8 +983,10 @@ calendly_assessment_rows <- calendly_export %>%
       ))
   ) %>%
   # The IPA year is determined by the appointment date, not the date on
-  # which the booking happened (a 2026 IPA may have been booked in 2025).
-  filter(year(`Event Start Date`) == 2026)
+  # which the booking happened. Keep 2025 as last-known FTM evidence while
+  # 2026 remains the only year used to evaluate current IPA outcomes.
+  mutate(`IPA Year` = year(`Event Start Date`)) %>%
+  filter(`IPA Year` %in% c(2025L, 2026L))
 
 
 # Resolve participant identity before cleaning age. IDs confirmed in the
@@ -1195,6 +1054,13 @@ calendly_export_clean <- calendly_participant_resolved %>%
       `Canceled` %in% TRUE ~ "Canceled",
       TRUE ~ "Not canceled/no-show"
     ),
+    `Calendly FTM` = map_chr(`Meeting Host`, normalize_calendly_ftm),
+    `Calendly FTM QA Flag` = case_when(
+      is.na(`Calendly FTM`) ~ "Calendly host/inviter missing",
+      str_detect(`Calendly FTM`, fixed(";")) ~
+        "Multiple Calendly hosts; combined assignment retained",
+      TRUE ~ NA_character_
+    ),
     `Calendly QA Flag` = case_when(
       is.na(`Participant ID`) ~ "Participant ID unresolved; name key used",
       is.na(`Child Age`) ~ "Child age unresolved",
@@ -1230,7 +1096,7 @@ calendly_export_clean <- calendly_participant_resolved %>%
   # earlier canceled/no-show appointment when a later appointment exists,
   # while retaining the newest canceled/no-show record when there is no
   # later booking.
-  group_by(.participant_key, .age_band_key) %>%
+  group_by(.participant_key, .age_band_key, `IPA Year`) %>%
   arrange(
     desc(`Event Start Date & Time Parsed`),
     desc(`Event Created Date & Time Parsed`),
@@ -1245,6 +1111,8 @@ calendly_export_clean <- calendly_participant_resolved %>%
     `Event Type Name`,
     `Meeting Notes Plain`,
     `Meeting Host`,
+    `Calendly FTM`,
+    `Calendly FTM QA Flag`,
     `Invitee Name`,
     `Child Name`,
     `Child First Name`,
@@ -1257,6 +1125,7 @@ calendly_export_clean <- calendly_participant_resolved %>%
     `Child Age Calculated`,
     `Child Age Difference`,
     `IPA Age Band`,
+    `IPA Year`,
     `Participant ID`,
     `Participant Custom ID`,
     `Participant Family ID`,
@@ -1312,10 +1181,9 @@ column_or_na <- function(data, column_name) {
 }
 
 
-# Tags are pipe-separated (e.g., "St. Joe|FTM Nicole"). A participant's FTM
-# appears either as an "FTM <first name>" tag or, for Jody, as a bare
-# "<first name>" tag. Keep this helper here because the final participant base
-# uses it for both Ripple cohorts.
+# Tags are pipe-separated (e.g., "St. Joe|FTM Nicole"). These former roster
+# assignments are retained for migration QC only; Calendly host is the
+# authoritative IPA assignment below.
 ftm_names_from_tags <- c("Jody", "Nicole", "Anna", "Cassie")
 
 extract_ftm_from_tags <- function(tags) {
@@ -1339,8 +1207,9 @@ extract_ftm_from_tags <- function(tags) {
 }
 
 
-# One participant row from each Ripple cohort, with a common age-band key
-# and FTM field. The event columns are retained for task evaluation below.
+# One participant row from each Ripple cohort, with a common age-band key.
+# The old Ripple/Call List FTM is retained temporarily and later renamed to
+# Previous Roster FTM. Event columns are retained for task evaluation below.
 participant_base_6_35 <- ripple_data_6_35_month %>%
   mutate(
     `Participant ID` = str_squish(str_remove(globalId, "\\s*\\([^)]*\\)$")),
@@ -1434,19 +1303,19 @@ participant_roster <- bind_rows(
   participant_base_6_35,
   participant_base_3_20
 ) %>%
+  rename(`Previous Roster FTM` = FTM) %>%
   distinct(`Participant ID`, `Participant Cohort`, .keep_all = TRUE)
 
 
-# The full roster retains 6-11 month and potential participants for optional
-# dashboard review. Only task-eligible participants enter the task denominator.
-participant_task_base <- participant_roster %>%
-  filter(`Task Eligible`, !is.na(`IPA Age Band`))
-
-
-# Calendly is already one row per participant and IPA age band. This second
-# defensive check guarantees a single latest row before the Ripple join.
+# Calendly is already one row per participant, IPA age band, and appointment
+# year. Current task outcomes use 2026 only. The 2025 records are retained
+# separately as last-known FTM evidence and never affect 2026 outcomes.
 calendly_ipa_latest <- calendly_export_clean %>%
-  filter(!is.na(`Participant ID`), !is.na(`IPA Age Band`)) %>%
+  filter(
+    `IPA Year` == 2026L,
+    !is.na(`Participant ID`),
+    !is.na(`IPA Age Band`)
+  ) %>%
   arrange(
     `Participant ID`,
     `IPA Age Band`,
@@ -1459,6 +1328,11 @@ calendly_ipa_latest <- calendly_export_clean %>%
   transmute(
     `Participant ID`,
     `IPA Age Band`,
+    Calendly_FTM = `Calendly FTM`,
+    Calendly_Host_Raw = `Meeting Host`,
+    Calendly_FTM_QA = `Calendly FTM QA Flag`,
+    Calendly_Assignment_Date = `Event Created Date`,
+    Calendly_Event_UUID = `Event UUID`,
     Calendly_No_Show = `No Show`,
     Calendly_Canceled = `Canceled`,
     Calendly_Status = `Calendly Record Status`,
@@ -1467,6 +1341,245 @@ calendly_ipa_latest <- calendly_export_clean %>%
     Calendly_Match_Method = `Participant Match Method`,
     Calendly_Invitee_UUID = `Invitee UUID`
   )
+
+
+# Build a year-specific assignment lookup. Explicit twin IDs have already been
+# expanded upstream; mother/family IDs have already been restricted by the
+# child's full name.
+build_calendly_ftm_lookup <- function(
+    calendly_data,
+    ipa_year,
+    require_age_band = TRUE
+) {
+  year_rows <- calendly_data %>%
+    filter(
+      `IPA Year` == ipa_year,
+      !is.na(`Participant ID`)
+    )
+
+  if (require_age_band) {
+    year_rows <- year_rows %>% filter(!is.na(`IPA Age Band`))
+  }
+
+  year_rows %>%
+    arrange(
+      `Participant ID`, `IPA Age Band`,
+      desc(`Event Start Date`), desc(`Event Created Date`)
+    ) %>%
+    group_by(`Participant ID`, `IPA Age Band`) %>%
+    slice(1) %>%
+    ungroup() %>%
+    transmute(
+      `Participant ID`,
+      `IPA Age Band`,
+      `Calendly Year` = ipa_year,
+      FTM = `Calendly FTM`,
+      `Calendly Host Raw` = `Meeting Host`,
+      `Calendly Appointment Date` = `Event Start Date`,
+      `Calendly Assignment Date` = `Event Created Date`,
+      `Calendly Event UUID` = `Event UUID`,
+      `Calendly Invitee UUID` = `Invitee UUID`,
+      `Calendly Match Method` = `Participant Match Method`,
+      `Calendly FTM QA Flag` = `Calendly FTM QA Flag`,
+      `Assignment Source` = if_else(
+        !is.na(FTM) & str_squish(FTM) != "",
+        paste0("Calendly host - ", ipa_year),
+        paste0("Calendly host unavailable - ", ipa_year)
+      )
+    ) %>%
+    distinct(`Participant ID`, `IPA Age Band`, .keep_all = TRUE)
+}
+
+
+calendly_ftm_lookup_2026 <- build_calendly_ftm_lookup(
+  calendly_export_clean,
+  2026L,
+  require_age_band = TRUE
+)
+
+calendly_ftm_lookup_2025 <- build_calendly_ftm_lookup(
+  calendly_export_clean,
+  2025L,
+  require_age_band = FALSE
+)
+
+# Exportable evidence table at participant × appointment year × age-band
+# grain. Assignment decisions below apply an explicit year and age priority.
+calendly_ftm_lookup <- bind_rows(
+  calendly_ftm_lookup_2026,
+  calendly_ftm_lookup_2025
+) %>%
+  arrange(desc(`Calendly Year`), `Participant ID`, `IPA Age Band`)
+
+
+# Latest usable 2025 Calendly FTM for each participant. This is a last-resort
+# supplement after both 2026 same-age and 2026 previous-age searches fail.
+calendly_ftm_2025_latest <- calendly_ftm_lookup_2025 %>%
+  filter(!is.na(FTM), str_squish(FTM) != "") %>%
+  arrange(
+    `Participant ID`,
+    desc(`Calendly Appointment Date`),
+    desc(`Calendly Assignment Date`)
+  ) %>%
+  group_by(`Participant ID`) %>%
+  slice(1) %>%
+  ungroup() %>%
+  rename_with(~ paste0("2025 ", .x), -`Participant ID`)
+
+
+# Current-year Calendly lookup for outcome and assignment priority.
+calendly_ftm_lookup_current <- calendly_ftm_lookup_2026 %>%
+  distinct(`Participant ID`, `IPA Age Band`, .keep_all = TRUE)
+
+
+# Rows that cannot safely enter the assignment lookup remain available for
+# manual review instead of being matched to a participant or FTM by guesswork.
+calendly_ftm_lookup_qc <- calendly_export_clean %>%
+  filter(
+    is.na(`Participant ID`) |
+      is.na(`IPA Age Band`) |
+      is.na(`Calendly FTM`) |
+      str_squish(`Calendly FTM`) == ""
+  ) %>%
+  transmute(
+    `Event UUID`,
+    `Invitee UUID`,
+    `Event Start Date`,
+    `IPA Year`,
+    `Participant ID`,
+    `IPA Age Band`,
+    `Meeting Host`,
+    `Calendly FTM`,
+    `Participant Match Method`,
+    `Calendly QA Flag`,
+    `Calendly FTM QA Flag`,
+    `Meeting Notes Plain`,
+    `Child Name`
+  )
+
+
+# Assignment preference: 2026 same age band, 2026 immediately preceding age
+# band, then the participant's latest usable 2025 Calendly FTM. The 2025 level
+# supplies responsibility only and never enters 2026 outcome evaluation.
+ipa_previous_age_band_map <- tribble(
+  ~`IPA Age Band`, ~`Previous IPA Age Band`,
+  "12_23_month", "6_11_month",
+  "24_35_month", "12_23_month",
+  "3_5yr", "24_35_month",
+  "6_10yr", "3_5yr",
+  "11_17yr", "6_10yr",
+  "18_20yr", "11_17yr"
+)
+
+calendly_ftm_exact <- calendly_ftm_lookup_current %>%
+  rename_with(~ paste0("Exact ", .x), -c(`Participant ID`, `IPA Age Band`))
+
+calendly_ftm_previous <- calendly_ftm_lookup_current %>%
+  rename(
+    `Previous IPA Age Band` = `IPA Age Band`
+  ) %>%
+  rename_with(
+    ~ paste0("Previous ", .x),
+    -c(`Participant ID`, `Previous IPA Age Band`)
+  )
+
+participant_calendly_assignment_lookup <- participant_roster %>%
+  select(
+    `Participant ID`, `Participant Cohort`, `IPA Age Band`, `Task Eligible`
+  ) %>%
+  left_join(ipa_previous_age_band_map, by = "IPA Age Band") %>%
+  left_join(
+    calendly_ftm_exact,
+    by = c("Participant ID", "IPA Age Band")
+  ) %>%
+  left_join(
+    calendly_ftm_previous,
+    by = c("Participant ID", "Previous IPA Age Band")
+  ) %>%
+  left_join(
+    calendly_ftm_2025_latest,
+    by = "Participant ID"
+  ) %>%
+  transmute(
+    `Participant ID`,
+    `Participant Cohort`,
+    `IPA Age Band`,
+    `Task Eligible`,
+    FTM = coalesce(`Exact FTM`, `Previous FTM`, `2025 FTM`),
+    `Calendly FTM Matched Age Band` = case_when(
+      !is.na(`Exact FTM`) ~ `IPA Age Band`,
+      !is.na(`Previous FTM`) ~ `Previous IPA Age Band`,
+      !is.na(`2025 FTM`) ~ `2025 IPA Age Band`,
+      TRUE ~ NA_character_
+    ),
+    `Calendly Assignment Year` = case_when(
+      !is.na(`Exact FTM`) ~ 2026L,
+      !is.na(`Previous FTM`) ~ 2026L,
+      !is.na(`2025 FTM`) ~ 2025L,
+      TRUE ~ NA_integer_
+    ),
+    `Calendly Assignment Rule` = case_when(
+      !is.na(`Exact FTM`) ~ "2026 same age band",
+      !is.na(`Previous FTM`) ~ "2026 previous age band fallback",
+      !is.na(`2025 FTM`) ~ "2025 latest Calendly FTM fallback",
+      TRUE ~ "Unmatched"
+    ),
+    `Calendly Host Raw` = coalesce(
+      `Exact Calendly Host Raw`, `Previous Calendly Host Raw`,
+      `2025 Calendly Host Raw`
+    ),
+    `Calendly Appointment Date` = coalesce(
+      `Exact Calendly Appointment Date`, `Previous Calendly Appointment Date`,
+      `2025 Calendly Appointment Date`
+    ),
+    `Calendly Assignment Date` = coalesce(
+      `Exact Calendly Assignment Date`, `Previous Calendly Assignment Date`,
+      `2025 Calendly Assignment Date`
+    ),
+    `Calendly Event UUID` = coalesce(
+      `Exact Calendly Event UUID`, `Previous Calendly Event UUID`,
+      `2025 Calendly Event UUID`
+    ),
+    `Calendly Invitee UUID` = coalesce(
+      `Exact Calendly Invitee UUID`, `Previous Calendly Invitee UUID`,
+      `2025 Calendly Invitee UUID`
+    ),
+    `Calendly Match Method` = coalesce(
+      `Exact Calendly Match Method`, `Previous Calendly Match Method`,
+      `2025 Calendly Match Method`
+    ),
+    `Calendly FTM QA Flag` = coalesce(
+      `Exact Calendly FTM QA Flag`, `Previous Calendly FTM QA Flag`,
+      `2025 Calendly FTM QA Flag`
+    ),
+    `Assignment Source` = case_when(
+      !is.na(`Exact FTM`) ~ "Calendly host - 2026 same age band",
+      !is.na(`Previous FTM`) ~
+        "Calendly host - 2026 previous age band fallback",
+      !is.na(`2025 FTM`) ~
+        "Calendly host - 2025 latest FTM fallback",
+      TRUE ~ "Calendly host unavailable"
+    )
+  ) %>%
+  distinct(
+    `Participant ID`, `Participant Cohort`, `IPA Age Band`, .keep_all = TRUE
+  )
+
+
+# The former Ripple/Call List FTM remains available only for QC. Dashboard FTM
+# comes from the same-age Calendly host or the labeled previous-band fallback.
+participant_roster <- participant_roster %>%
+  left_join(
+    participant_calendly_assignment_lookup %>%
+      select(-`Task Eligible`),
+    by = c("Participant ID", "Participant Cohort", "IPA Age Band")
+  )
+
+
+# The full roster retains 6-11 month and potential participants for optional
+# dashboard review. Only task-eligible participants enter the task denominator.
+participant_task_base <- participant_roster %>%
+  filter(`Task Eligible`, !is.na(`IPA Age Band`))
 
 
 ipa_event_map <- tribble(
@@ -1528,7 +1641,15 @@ build_ipa_task_rows <- function(participant_data, calendly_data, event_map) {
       participant_subset %>%
         select(
           `Participant ID`, `Participant Cohort`, FTM, firstName, lastName,
-          birthday, statusId, `IPA Age Band`
+          birthday, statusId, `IPA Age Band`,
+          any_of(c(
+            "Previous Roster FTM", "Assignment Source",
+            "Calendly FTM Matched Age Band", "Calendly Assignment Year",
+            "Calendly Assignment Rule", "Calendly Host Raw",
+            "Calendly Appointment Date", "Calendly Assignment Date",
+            "Calendly Event UUID", "Calendly Invitee UUID",
+            "Calendly Match Method", "Calendly FTM QA Flag"
+          ))
         ) %>%
         left_join(
           calendly_data %>% filter(`IPA Age Band` == age_band),
@@ -1643,11 +1764,23 @@ build_ripple_task_rows <- function(participant_data, task_map) {
           `Participant ID`,
           `Participant Cohort`,
           FTM,
+          `Previous Roster FTM`,
           firstName,
           lastName,
           birthday,
           statusId,
           `IPA Age Band`,
+          `Assignment Source`,
+          `Calendly FTM Matched Age Band`,
+          `Calendly Assignment Year`,
+          `Calendly Assignment Rule`,
+          `Calendly Host Raw`,
+          `Calendly Appointment Date`,
+          `Calendly Assignment Date`,
+          `Calendly Event UUID`,
+          `Calendly Invitee UUID`,
+          `Calendly Match Method`,
+          `Calendly FTM QA Flag`,
           Task = Task,
           Outcome = case_when(
             complete_flag %in% TRUE ~ "Complete",
@@ -1710,9 +1843,9 @@ participant_task_checklist_long <- bind_rows(
   )
 
 
-# Preserve FTM assignment history and lock credit when a task first reaches a
-# terminal outcome. On the first dashboard run, current assignments become the
-# baseline for all existing Complete and No-Show records.
+# Preserve Calendly-based FTM assignment history and task responsibility.
+# Existing Ripple/Call List history remains visible as legacy evidence, but a
+# new Calendly interval is opened when the assignment source changes.
 ipa_dashboard_app_dir <- Sys.getenv("IPA_DASHBOARD_APP_DIR", unset = "")
 
 if (ipa_dashboard_app_dir == "") {
@@ -1744,6 +1877,7 @@ normalize_dashboard_ftm <- function(x) {
 participant_roster_export <- participant_roster %>%
   transmute(
     FTM = normalize_dashboard_ftm(FTM),
+    `Previous Roster FTM` = normalize_dashboard_ftm(`Previous Roster FTM`),
     `Participant ID`,
     PIN,
     firstName,
@@ -1755,22 +1889,43 @@ participant_roster_export <- participant_roster %>%
     `IPA Age Band`,
     `Task Eligible`,
     `Eligibility Status`,
-    `Assignment Source` = if_else(
-      `Participant Cohort` == "6-35 month",
-      "Ripple",
-      "Call List"
+    `Calendly FTM Matched Age Band`,
+    `Calendly Assignment Year`,
+    `Calendly Assignment Rule`,
+    `Calendly Host Raw`,
+    `Calendly Appointment Date`,
+    `Calendly Assignment Date`,
+    `Calendly Event UUID`,
+    `Calendly Invitee UUID`,
+    `Calendly Match Method`,
+    `Calendly FTM QA Flag`,
+    `Assignment Source` = case_when(
+      !is.na(`Assignment Source`) ~ `Assignment Source`,
+      !`Task Eligible` ~ "Not applicable - no IPA age band",
+      TRUE ~ "Calendly host unavailable"
     )
   ) %>%
   arrange(FTM, `Participant Cohort`, `Age Group`, `Participant ID`)
 
 
 current_ftm_assignments <- participant_roster_export %>%
+  filter(`Task Eligible`) %>%
   transmute(
     `Participant ID`,
     `Participant Cohort`,
     `Age Group`,
     FTM,
     `Assignment Source`,
+    `Calendly FTM Matched Age Band`,
+    `Calendly Assignment Year`,
+    `Calendly Assignment Rule`,
+    `Calendly Host Raw`,
+    `Calendly Appointment Date`,
+    `Calendly Assignment Date`,
+    `Calendly Event UUID`,
+    `Calendly Invitee UUID`,
+    `Calendly Match Method`,
+    `Calendly FTM QA Flag`,
     `Observed Date` = Sys.Date()
   ) %>%
   distinct(`Participant ID`, `Participant Cohort`, .keep_all = TRUE)
@@ -1817,6 +1972,26 @@ ftm_assignment_history <- if (file.exists(assignment_history_path)) {
   empty_assignment_history
 }
 
+# Calendly is now the authoritative IPA assignment source. Close every still-
+# open legacy Ripple/Call List interval at the methodology cutover, including
+# potential participants that do not yet create a current IPA assignment row.
+# This prevents the audit history from implying that a legacy owner is still
+# active after the dashboard has switched to Calendly-based attribution.
+legacy_open_index <- which(
+  is.na(ftm_assignment_history$`Effective End`) &
+    (
+      is.na(ftm_assignment_history$`Assignment Source`) |
+        !str_detect(
+          ftm_assignment_history$`Assignment Source`,
+          regex("^Calendly", ignore_case = TRUE)
+        )
+    )
+)
+
+if (length(legacy_open_index) > 0) {
+  ftm_assignment_history$`Effective End`[legacy_open_index] <- Sys.Date() - 1
+}
+
 for (assignment_row in seq_len(nrow(current_ftm_assignments))) {
   current <- current_ftm_assignments[assignment_row, ]
   open_index <- which(
@@ -1847,8 +2022,12 @@ for (assignment_row in seq_len(nrow(current_ftm_assignments))) {
 
   active_index <- tail(open_index, 1)
   active_ftm <- ftm_assignment_history$FTM[active_index]
+  active_source <- ftm_assignment_history$`Assignment Source`[active_index]
+  same_assignment <-
+    identical(active_ftm, current$FTM[[1]]) &&
+    identical(active_source, current$`Assignment Source`[[1]])
 
-  if (identical(active_ftm, current$FTM[[1]])) {
+  if (same_assignment) {
     ftm_assignment_history$`Last Observed`[active_index] <- Sys.Date()
     ftm_assignment_history$`Age Band at Last Observation`[active_index] <-
       current$`Age Group`[[1]]
@@ -1929,6 +2108,89 @@ task_responsibility_ledger <- if (file.exists(task_responsibility_path)) {
   empty_task_responsibility_ledger
 }
 
+# One-time source migration: responsibility previously initialized from Ripple
+# or the 3-20 call list is replaced by the preferred Calendly host. The same
+# age band is authoritative; only an immediately preceding age band can fill an
+# otherwise unresolved assignment. When neither has a usable host, the task is
+# explicitly Unassigned rather than silently retaining the old source.
+calendly_ledger_assignments <- participant_calendly_assignment_lookup %>%
+  transmute(
+    `Participant ID`,
+    `Participant Cohort`,
+    `IPA Age Band`,
+    `Calendly Responsible FTM` = normalize_dashboard_ftm(FTM),
+    `Calendly Assignment Source` = `Assignment Source`
+  )
+
+calendly_assignment_priority <- function(source) {
+  source <- coalesce(as.character(source), "")
+  case_when(
+    str_detect(source, regex("2026 same age band|same age band", ignore_case = TRUE)) ~ 4L,
+    str_detect(source, regex("2026 previous age band|previous age band fallback", ignore_case = TRUE)) ~ 3L,
+    str_detect(source, regex("2025 latest", ignore_case = TRUE)) ~ 2L,
+    str_detect(source, regex("unavailable", ignore_case = TRUE)) ~ 1L,
+    TRUE ~ 0L
+  )
+}
+
+task_responsibility_ledger <- task_responsibility_ledger %>%
+  left_join(
+    calendly_ledger_assignments,
+    by = c("Participant ID", "Participant Cohort", "IPA Age Band")
+  ) %>%
+  mutate(
+    .legacy_assignment_source =
+      is.na(`Assignment Source`) |
+      !str_detect(`Assignment Source`, regex("^Calendly", ignore_case = TRUE)),
+    .fill_resolved_calendly_host =
+      coalesce(`Responsible FTM`, "Unassigned") == "Unassigned" &
+      !is.na(`Calendly Responsible FTM`) &
+      `Calendly Responsible FTM` != "Unassigned",
+    .upgrade_to_higher_priority =
+      calendly_assignment_priority(`Calendly Assignment Source`) >
+        calendly_assignment_priority(`Assignment Source`) &
+      !is.na(`Calendly Responsible FTM`) &
+      `Calendly Responsible FTM` != "Unassigned",
+    .clarify_2026_source_label =
+      calendly_assignment_priority(`Calendly Assignment Source`) ==
+        calendly_assignment_priority(`Assignment Source`) &
+      str_detect(
+        coalesce(`Calendly Assignment Source`, ""),
+        regex("Calendly host - 2026", ignore_case = TRUE)
+      ) &
+      !str_detect(
+        coalesce(`Assignment Source`, ""),
+        regex("Calendly host - 2026", ignore_case = TRUE)
+      ) &
+      coalesce(`Responsible FTM`, "Unassigned") ==
+        coalesce(`Calendly Responsible FTM`, "Unassigned"),
+    .update_from_calendly =
+      .legacy_assignment_source | .fill_resolved_calendly_host |
+      .upgrade_to_higher_priority | .clarify_2026_source_label,
+    `Responsible FTM` = if_else(
+      .update_from_calendly,
+      coalesce(`Calendly Responsible FTM`, "Unassigned"),
+      `Responsible FTM`
+    ),
+    `Assignment Source` = if_else(
+      .update_from_calendly,
+      if_else(
+        !is.na(`Calendly Responsible FTM`) &
+          `Calendly Responsible FTM` != "Unassigned",
+        paste0(`Calendly Assignment Source`, " (source migration)"),
+        "Calendly host unavailable (source migration)"
+      ),
+      `Assignment Source`
+    )
+  ) %>%
+  select(
+    -`Calendly Responsible FTM`, -`Calendly Assignment Source`,
+    -.legacy_assignment_source,
+    -.fill_resolved_calendly_host, -.upgrade_to_higher_priority,
+    -.clarify_2026_source_label,
+    -.update_from_calendly
+  )
+
 current_task_responsibilities <- participant_task_checklist_long %>%
   transmute(
     `Participant ID`,
@@ -1936,10 +2198,9 @@ current_task_responsibilities <- participant_task_checklist_long %>%
     `IPA Age Band`,
     Task,
     `Current FTM` = normalize_dashboard_ftm(FTM),
-    `Assignment Source` = if_else(
-      `Participant Cohort` == "6-35 month",
-      "Ripple",
-      "Call List"
+    `Assignment Source` = coalesce(
+      `Assignment Source`,
+      "Calendly host unavailable"
     )
   ) %>%
   distinct(`Participant ID`, `Participant Cohort`, `IPA Age Band`, Task, .keep_all = TRUE)
@@ -2167,8 +2428,85 @@ ftm_task_summary <- participant_task_checklist_long %>%
   arrange(FTM, `Participant Cohort`, Task, Outcome)
 
 
+# Operational QA exports are refreshed with the dashboard so previously
+# generated review lists never become stale after assignment logic changes.
+completed_participants_without_calendly_ftm <-
+  participant_task_checklist_long %>%
+  filter(`Responsible FTM` == "Unassigned", Outcome == "Complete") %>%
+  group_by(
+    `Participant ID`, firstName, lastName, birthday,
+    `Participant Cohort`, statusId, `IPA Age Band`, `Task Stage`
+  ) %>%
+  summarise(
+    `Completed Task Count` = n(),
+    `Completed Tasks` = str_c(sort(unique(Task)), collapse = "; "),
+    `Completion Dates` = str_c(
+      sort(unique(na.omit(as.character(Outcome_Date)))), collapse = "; "
+    ),
+    `Task Sources` = str_c(sort(unique(Source)), collapse = "; "),
+    `Calendly FTM Match Status` =
+      paste(
+        "No 2026 Calendly FTM in the same or immediately previous age band",
+        "and no usable 2025 Calendly FTM"
+      ),
+    .groups = "drop"
+  )
+
+completed_unassigned_with_other_age_calendly_ftm <-
+  completed_participants_without_calendly_ftm %>%
+  select(
+    `Participant ID`, firstName, lastName, `Participant Cohort`, statusId,
+    `Current Unmatched Age Band` = `IPA Age Band`,
+    `Completed Tasks`, `Completion Dates`
+  ) %>%
+  left_join(
+    calendly_ftm_lookup %>%
+      transmute(
+        `Participant ID`,
+        `Other Matched Age Band` = `IPA Age Band`,
+        `Other Calendly Year` = `Calendly Year`,
+        `Other Age Band FTM` = FTM,
+        `Other Age Band Appointment Date` = `Calendly Appointment Date`,
+        `Other Age Band Assignment Date` = `Calendly Assignment Date`,
+        `Calendly Host Raw`,
+        `Calendly Match Method`
+      ),
+    by = "Participant ID"
+  ) %>%
+  filter(
+    !is.na(`Other Age Band FTM`),
+    `Other Matched Age Band` != `Current Unmatched Age Band`
+  )
+
+calendly_previous_age_fallback_assignments <-
+  participant_calendly_assignment_lookup %>%
+  filter(
+    `Calendly Assignment Rule` == "2026 previous age band fallback"
+  ) %>%
+  arrange(`Participant Cohort`, `IPA Age Band`, FTM, `Participant ID`)
+
+calendly_2025_fallback_assignments <-
+  participant_calendly_assignment_lookup %>%
+  filter(
+    `Calendly Assignment Rule` == "2025 latest Calendly FTM fallback"
+  ) %>%
+  arrange(`Participant Cohort`, `IPA Age Band`, FTM, `Participant ID`)
+
+
 dashboard_exports <- list(
+  "calendly_ftm_lookup.csv" = calendly_ftm_lookup,
+  "participant_calendly_assignment_lookup.csv" =
+    participant_calendly_assignment_lookup,
+  "calendly_ftm_lookup_qc.csv" = calendly_ftm_lookup_qc,
   "participant_roster.csv" = participant_roster_export,
+  "calendly_previous_age_fallback_assignments.csv" =
+    calendly_previous_age_fallback_assignments,
+  "calendly_2025_fallback_assignments.csv" =
+    calendly_2025_fallback_assignments,
+  "completed_participants_without_calendly_ftm.csv" =
+    completed_participants_without_calendly_ftm,
+  "completed_unassigned_with_other_age_calendly_ftm.csv" =
+    completed_unassigned_with_other_age_calendly_ftm,
   "task_checklist_long.csv" = participant_task_checklist_long,
   "task_checklist_wide.csv" = participant_task_checklist_wide,
   "ftm_task_summary.csv" = ftm_task_summary
@@ -2194,6 +2532,27 @@ dashboard_export_manifest <- tibble(
   task_eligible_participants = sum(participant_roster_export$`Task Eligible`),
   potential_participants = sum(
     participant_roster_export$`Eligibility Status` == "Potential participants"
+  ),
+  calendly_assignment_rows = nrow(calendly_ftm_lookup),
+  calendly_2026_same_age_assignments = sum(
+    participant_roster_export$`Calendly Assignment Rule` ==
+      "2026 same age band",
+    na.rm = TRUE
+  ),
+  calendly_2026_previous_age_fallbacks = sum(
+    participant_roster_export$`Calendly Assignment Rule` ==
+      "2026 previous age band fallback",
+    na.rm = TRUE
+  ),
+  calendly_2025_fallbacks = sum(
+    participant_roster_export$`Calendly Assignment Rule` ==
+      "2025 latest Calendly FTM fallback",
+    na.rm = TRUE
+  ),
+  calendly_assignment_qc_rows = nrow(calendly_ftm_lookup_qc),
+  task_eligible_unassigned = sum(
+    participant_roster_export$`Task Eligible` &
+      participant_roster_export$FTM == "Unassigned"
   ),
   task_rows = nrow(participant_task_checklist_long)
 )

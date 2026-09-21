@@ -1,0 +1,2 @@
+generated_at,snapshot_id,snapshot_date,participant_rows,task_eligible_participants,potential_participants,calendly_assignment_rows,calendly_same_age_assignments,calendly_previous_age_fallbacks,calendly_assignment_qc_rows,task_eligible_unassigned,task_rows
+2026-09-20 13:20:03 EDT,2026-09-20_132003,2026-09-20,1784,1145,538,441,428,11,60,706,5202

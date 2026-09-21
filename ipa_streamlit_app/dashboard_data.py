@@ -162,6 +162,14 @@ def standardize_dashboard_data(data: pd.DataFrame) -> pd.DataFrame:
         "Task",
         "Outcome",
         "Source",
+        "Previous Roster FTM",
+        "Assignment Source",
+        "Calendly FTM Matched Age Band",
+        "Calendly Assignment Year",
+        "Calendly Assignment Rule",
+        "Calendly Host Raw",
+        "Calendly Match Method",
+        "Calendly FTM QA Flag",
     ]
     for column in text_columns:
         if column in df.columns:
@@ -179,7 +187,13 @@ def standardize_dashboard_data(data: pd.DataFrame) -> pd.DataFrame:
         df["Outcome"], categories=OUTCOME_ORDER, ordered=True
     )
 
-    for column in ["birthday", "Outcome_Date", "Calendly_Appointment_Date"]:
+    for column in [
+        "birthday",
+        "Outcome_Date",
+        "Calendly_Appointment_Date",
+        "Calendly Appointment Date",
+        "Calendly Assignment Date",
+    ]:
         if column in df.columns:
             df[column] = pd.to_datetime(df[column], errors="coerce")
 
@@ -210,6 +224,7 @@ def standardize_participant_roster(data: pd.DataFrame) -> pd.DataFrame:
 
     text_columns = [
         "FTM",
+        "Previous Roster FTM",
         "Participant ID",
         "firstName",
         "lastName",
@@ -219,6 +234,12 @@ def standardize_participant_roster(data: pd.DataFrame) -> pd.DataFrame:
         "IPA Age Band",
         "Eligibility Status",
         "Assignment Source",
+        "Calendly FTM Matched Age Band",
+        "Calendly Assignment Year",
+        "Calendly Assignment Rule",
+        "Calendly Host Raw",
+        "Calendly Match Method",
+        "Calendly FTM QA Flag",
     ]
     for column in text_columns:
         if column in df.columns:
@@ -235,8 +256,13 @@ def standardize_participant_roster(data: pd.DataFrame) -> pd.DataFrame:
     df["Age Group"] = pd.Categorical(
         df["Age Group"], categories=AGE_GROUP_ORDER, ordered=True
     )
-    if "birthday" in df.columns:
-        df["birthday"] = pd.to_datetime(df["birthday"], errors="coerce")
+    for column in [
+        "birthday",
+        "Calendly Appointment Date",
+        "Calendly Assignment Date",
+    ]:
+        if column in df.columns:
+            df[column] = pd.to_datetime(df[column], errors="coerce")
 
     duplicate_key = ["Participant ID", "Participant Cohort"]
     duplicates = df.duplicated(duplicate_key, keep=False)
@@ -391,8 +417,15 @@ def build_snapshot_trend(
     cohorts: list[str],
     ftm_column: str = "FTM",
     current_tasks_only: bool = False,
+    calendly_assignment_only: bool = True,
 ) -> pd.DataFrame:
-    """Apply filters to every snapshot and calculate one metric row per FTM."""
+    """Apply filters to comparable snapshots and calculate one row per FTM.
+
+    FTM attribution changed from Ripple/Call List to Calendly host in September
+    2026 and later added a 2025 Calendly fallback. By default, snapshots without
+    the current assignment-year field are excluded so a trend line never mixes
+    different ownership definitions.
+    """
     records: list[dict[str, object]] = []
     for version in versions:
         if version.is_latest or version.snapshot_date is None:
@@ -401,6 +434,16 @@ def build_snapshot_trend(
             snapshot = standardize_dashboard_data(read_dashboard_csv(version.path))
         except (OSError, ValueError, pd.errors.ParserError):
             continue
+        if calendly_assignment_only:
+            if "Assignment Source" not in snapshot.columns:
+                continue
+            if "Calendly Assignment Year" not in snapshot.columns:
+                continue
+            assignment_sources = (
+                snapshot["Assignment Source"].astype("string").dropna().str.strip()
+            )
+            if not assignment_sources.str.startswith("Calendly").any():
+                continue
         if ftm_column in snapshot.columns:
             snapshot["FTM"] = snapshot[ftm_column].fillna("Unassigned")
         if current_tasks_only and "Task Stage" in snapshot.columns:
@@ -451,12 +494,26 @@ def prepare_detail_table(data: pd.DataFrame) -> pd.DataFrame:
         "Participant Cohort",
         "statusId",
         "Source",
+        "Assignment Source",
+        "Calendly FTM Matched Age Band",
+        "Calendly Assignment Year",
+        "Calendly Assignment Rule",
+        "Calendly Host Raw",
+        "Calendly Appointment Date",
+        "Calendly Assignment Date",
+        "Calendly Match Method",
+        "Calendly FTM QA Flag",
         "Calendly_Status",
         "Calendly_Appointment_Date",
     ]
     columns = [column for column in preferred if column in data.columns]
     result = data[columns].copy()
-    for column in ["Outcome_Date", "Calendly_Appointment_Date"]:
+    for column in [
+        "Outcome_Date",
+        "Calendly_Appointment_Date",
+        "Calendly Appointment Date",
+        "Calendly Assignment Date",
+    ]:
         if column in result.columns:
             result[column] = result[column].dt.strftime("%Y-%m-%d").fillna("")
     return result
@@ -476,11 +533,25 @@ def prepare_roster_table(data: pd.DataFrame) -> pd.DataFrame:
         "Eligibility Status",
         "Task Eligible",
         "Assignment Source",
+        "Calendly FTM Matched Age Band",
+        "Calendly Assignment Year",
+        "Calendly Assignment Rule",
+        "Calendly Host Raw",
+        "Calendly Appointment Date",
+        "Calendly Assignment Date",
+        "Calendly Match Method",
+        "Calendly FTM QA Flag",
     ]
     columns = [column for column in preferred if column in data.columns]
     result = data[columns].copy()
-    if "birthday" in result.columns:
-        result["birthday"] = result["birthday"].dt.strftime("%Y-%m-%d").fillna("")
+    for column in [
+        "birthday",
+        "Calendly Appointment Date",
+        "Calendly Assignment Date",
+    ]:
+        if column in result.columns:
+            values = pd.to_datetime(result[column], errors="coerce")
+            result[column] = values.dt.strftime("%Y-%m-%d").fillna("")
     return result.sort_values(
         [column for column in ["FTM", "Participant Cohort", "Age Group", "Participant ID"] if column in result.columns]
     )

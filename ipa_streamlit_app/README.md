@@ -17,10 +17,13 @@ for downstream use.
 
 The refresh also maintains two persistent audit tables:
 
-- `data/latest/ftm_assignment_history.csv`: effective-dated FTM history. It records the age band at assignment start and at the latest observation, but only an administrator's actual FTM change opens a new assignment interval. For 6–35 months the assignment source is Ripple; for 3–20 years it is the current Call List.
-- `data/latest/task_responsibility_ledger.csv`: locks every participant-age-band-task row to the FTM responsible when that task first becomes applicable, regardless of outcome.
+- `data/latest/calendly_ftm_lookup.csv`: one latest host/inviter record per participant, appointment year, and IPA age band for 2025–2026, with the source appointment and matching method retained for audit.
+- `data/latest/participant_calendly_assignment_lookup.csv`: the current assignment decision for every participant-age-band row. Priority is 2026 same age band, 2026 immediately preceding age band, then the participant's latest usable 2025 Calendly FTM.
+- `data/latest/calendly_ftm_lookup_qc.csv`: Calendly records whose participant, age band, or host could not be resolved confidently.
+- `data/latest/ftm_assignment_history.csv`: effective-dated IPA assignment history by participant and age band. Calendly is the authoritative source; Ripple and the Call List remain available only as comparison fields.
+- `data/latest/task_responsibility_ledger.csv`: locks every participant-age-band-task row to the matched Calendly FTM for that age band, regardless of outcome. A lower-priority fallback is upgraded when higher-priority Calendly evidence becomes available.
 
-The first run is the baseline: every existing task is attributed to each participant's current FTM. When a participant enters a later age band, prior Complete, No-Show, Incomplete, and No record rows remain with the prior FTM; newly applicable tasks are assigned to the new current FTM.
+The September 20, 2026 refresh is the Calendly-assignment baseline. A participant can have a different Calendly host in a later age band; prior Complete, No-Show, Incomplete, and No record rows remain with the FTM recorded for the earlier age band. Current assignment priority is 2026 same age band, 2026 immediately preceding age band, then latest usable 2025 Calendly FTM. If none exists, the task remains `Unassigned`; Ripple and Call List owners are never used for IPA credit. The 2025 Calendly fallback supplies responsibility only and never changes a 2026 IPA outcome.
 
 ## Run locally
 
@@ -31,7 +34,7 @@ python3 -m pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-The sidebar lets users choose Latest, a timestamped snapshot, or a manually uploaded checklist CSV. `Task responsibility` includes current and historical age-band tasks under their locked responsible FTM. `Current caseload` shows only currently applicable tasks under the participant's current FTM. Filters are available for participant scope, FTM, task, age group, outcome, and participant cohort. The Participant roster tab lets FTMs explicitly open Potential participants or 6–11 month participants without adding them to task-progress denominators. The Snapshot trend tab applies task filters to every saved refresh, draws one series per FTM, and supports weighted progress, completion rate, task counts, and follow-up volume.
+The sidebar lets users choose Latest, a timestamped snapshot, or a manually uploaded checklist CSV. `Task responsibility` includes current and historical age-band tasks under their locked responsible FTM. `Current caseload` shows only currently applicable tasks under the participant's current Calendly FTM. Filters are available for participant scope, FTM, task, age group, outcome, and participant cohort. The Participant roster tab lets FTMs explicitly open Potential participants or 6–11 month participants without adding them to task-progress denominators. The Assignment QA tab shows host matching coverage, source appointments, and unresolved records. The Snapshot trend tab starts with the Calendly-assignment baseline and excludes older Ripple/Call List snapshots so the series does not mix ownership definitions.
 
 ## Metric definitions
 

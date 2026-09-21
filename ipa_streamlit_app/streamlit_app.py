@@ -105,6 +105,13 @@ def load_roster_version(path: str, modified_time_ns: int) -> pd.DataFrame:
     return standardize_participant_roster(read_roster_csv(Path(path)))
 
 
+@st.cache_data(show_spinner=False)
+def load_optional_csv(path: str, modified_time_ns: int) -> pd.DataFrame:
+    """Load a dashboard audit export when it is available for this version."""
+    del modified_time_ns
+    return pd.read_csv(path, dtype={"Participant ID": "string"})
+
+
 def format_percent(value: float) -> str:
     return "—" if pd.isna(value) else f"{value:.1%}"
 
@@ -209,6 +216,17 @@ def make_outcome_chart(data: pd.DataFrame) -> go.Figure:
 def make_heatmap(data: pd.DataFrame) -> go.Figure:
     summary = summarize_progress(data, ["FTM", "Task"])
     pivot = summary.pivot(index="FTM", columns="Task", values="progress")
+    numerator = (
+        summary.pivot(index="FTM", columns="Task", values="weighted_points")
+        .reindex(index=pivot.index, columns=pivot.columns)
+    )
+    denominator = (
+        summary.pivot(index="FTM", columns="Task", values="task_rows")
+        .reindex(index=pivot.index, columns=pivot.columns)
+    )
+    hover_values = np.stack(
+        [numerator.to_numpy(), denominator.to_numpy()], axis=-1
+    )
     text = pivot.map(lambda value: "" if pd.isna(value) else f"{value:.0%}")
     fig = go.Figure(
         data=go.Heatmap(
@@ -223,10 +241,16 @@ def make_heatmap(data: pd.DataFrame) -> go.Figure:
                 [1.0, BLUE_DARK],
             ],
             text=text.to_numpy(),
+            customdata=hover_values,
             texttemplate="%{text}",
             textfont=dict(size=13),
             colorbar=dict(title="Progress", tickformat=".0%"),
-            hovertemplate="FTM: %{y}<br>Task: %{x}<br>Progress: %{z:.1%}<extra></extra>",
+            hovertemplate=(
+                "FTM: %{y}<br>Task: %{x}<br>Progress: %{z:.1%}"
+                "<br>Numerator (weighted points): %{customdata[0]:.2f}"
+                "<br>Denominator (task records): %{customdata[1]:,.0f}"
+                "<extra></extra>"
+            ),
             hoverongaps=False,
         )
     )
@@ -327,6 +351,7 @@ with st.sidebar:
         roster = roster_from_task_data(df)
         roster_detail = "Eligible participants reconstructed from uploaded tasks"
         source_detail = "Uploaded CSV"
+        source_dir = None
     else:
         selected_version: DataVersion = version_lookup[source_label]
         try:
@@ -351,6 +376,36 @@ with st.sidebar:
             roster_detail = "Eligible participants only; refresh R data to add the complete roster"
         modified = datetime.fromtimestamp(selected_version.path.stat().st_mtime)
         source_detail = f"{selected_version.label} · updated {modified:%b %d, %Y %I:%M %p}"
+        source_dir = selected_version.path.parent
+
+    assignment_lookup = pd.DataFrame()
+    assignment_qc = pd.DataFrame()
+    manifest = pd.DataFrame()
+    if source_dir is not None:
+        assignment_file = (
+            "participant_calendly_assignment_lookup.csv"
+            if (source_dir / "participant_calendly_assignment_lookup.csv").exists()
+            else "calendly_ftm_lookup.csv"
+        )
+        for file_name, target_name in [
+            (assignment_file, "assignment_lookup"),
+            ("calendly_ftm_lookup_qc.csv", "assignment_qc"),
+            ("manifest.csv", "manifest"),
+        ]:
+            audit_path = source_dir / file_name
+            if audit_path.exists():
+                try:
+                    loaded = load_optional_csv(
+                        str(audit_path), audit_path.stat().st_mtime_ns
+                    )
+                    if target_name == "assignment_lookup":
+                        assignment_lookup = loaded
+                    elif target_name == "assignment_qc":
+                        assignment_qc = loaded
+                    else:
+                        manifest = loaded
+                except (OSError, pd.errors.ParserError):
+                    pass
 
     st.divider()
     ftm_view_options = {"Task responsibility": "Responsible FTM"}
@@ -441,11 +496,21 @@ st.caption(
     f"Roster: **{roster_detail}**"
 )
 
+eligible_roster = filtered_roster[filtered_roster["Task Eligible"]].copy()
+assigned_roster = eligible_roster[
+    eligible_roster["FTM"].astype("string").fillna("Unassigned") != "Unassigned"
+]
+unassigned_roster = eligible_roster[
+    eligible_roster["FTM"].astype("string").fillna("Unassigned") == "Unassigned"
+]
+
 metrics = calculate_kpis(filtered)
 follow_up = metrics["incomplete"] + metrics["no_record"]
 
 kpi_top = st.columns(4)
-kpi_top[0].metric("Roster participants", f"{filtered_roster['Participant ID'].nunique():,}")
+kpi_top[0].metric(
+    "Current roster participants", f"{filtered_roster['Participant ID'].nunique():,}"
+)
 kpi_top[1].metric("Participants with tasks", f"{metrics['participants']:,}")
 kpi_top[2].metric("Applicable task records", f"{metrics['task_rows']:,}")
 kpi_top[3].metric("Weighted progress", format_percent(metrics["weighted_progress"]))
@@ -459,8 +524,22 @@ st.caption(
     "and No record = 0 in the denominator."
 )
 
-overview_tab, trend_tab, roster_tab, participant_tab = st.tabs(
-    ["Overview", "Snapshot trend", "Participant roster", "Task details"]
+if not eligible_roster.empty and not unassigned_roster.empty:
+    st.warning(
+        f"{unassigned_roster['Participant ID'].nunique():,} selected task-eligible "
+        "participants have no 2026 Calendly host in either their current IPA "
+        "age band or the immediately preceding age band, and no usable 2025 "
+        "Calendly FTM. Their tasks remain Unassigned."
+    )
+
+overview_tab, trend_tab, roster_tab, participant_tab, assignment_tab = st.tabs(
+    [
+        "Overview",
+        "Snapshot trend",
+        "Participant roster",
+        "Task details",
+        "Assignment QA",
+    ]
 )
 
 with overview_tab:
@@ -502,6 +581,11 @@ with overview_tab:
         )
 
 with trend_tab:
+    st.caption(
+        "FTM trend lines include only snapshots created under the current "
+        "Calendly hierarchy, including the 2025 last-known-FTM fallback. Older "
+        "ownership methods are excluded so the chart does not mix credit rules."
+    )
     trend_metric = st.selectbox(
         "Trend metric",
         [
@@ -589,6 +673,114 @@ with participant_tab:
         width="stretch",
     )
 
+with assignment_tab:
+    st.subheader("Calendly assignment coverage")
+    coverage_columns = st.columns(4)
+    eligible_count = eligible_roster["Participant ID"].nunique()
+    assigned_count = assigned_roster["Participant ID"].nunique()
+    unassigned_count = unassigned_roster["Participant ID"].nunique()
+    coverage = np.nan if eligible_count == 0 else assigned_count / eligible_count
+    coverage_columns[0].metric("Task-eligible participants", f"{eligible_count:,}")
+    coverage_columns[1].metric("Matched to Calendly host", f"{assigned_count:,}")
+    coverage_columns[2].metric("Unassigned", f"{unassigned_count:,}")
+    coverage_columns[3].metric("Assignment coverage", format_percent(coverage))
+    st.caption(
+        "Assignment priority is: 2026 same IPA age band, 2026 immediately "
+        "previous age band, then the participant's latest usable 2025 Calendly "
+        "FTM. Ripple and the Call List are not used for IPA credit."
+    )
+
+    if assignment_lookup.empty:
+        st.info(
+            "This data version predates the Calendly assignment audit export. "
+            "Choose Latest or a newer snapshot to review assignment evidence."
+        )
+    else:
+        lookup_display = assignment_lookup.copy()
+        if selected_ftms:
+            lookup_display = lookup_display[lookup_display["FTM"].isin(selected_ftms)]
+        if selected_age_groups and "IPA Age Band" in lookup_display.columns:
+            age_labels = lookup_display["IPA Age Band"].map(
+                {
+                    "6_11_month": "6–11 months",
+                    "12_23_month": "12–23 months",
+                    "24_35_month": "24–35 months",
+                    "3_5yr": "3–5 years",
+                    "6_10yr": "6–10 years",
+                    "11_17yr": "11–17 years",
+                    "18_20yr": "18–20 years",
+                }
+            )
+            lookup_display = lookup_display[age_labels.isin(selected_age_groups)]
+        if selected_cohorts or selected_scopes:
+            visible_ids = set(filtered_roster["Participant ID"].dropna().astype(str))
+            lookup_display = lookup_display[
+                lookup_display["Participant ID"].astype(str).isin(visible_ids)
+            ]
+
+        st.markdown("#### Participant assignment decisions")
+        lookup_columns = [
+            "FTM",
+            "Participant ID",
+            "IPA Age Band",
+            "Calendly FTM Matched Age Band",
+            "Calendly Assignment Year",
+            "Calendly Assignment Rule",
+            "Calendly Appointment Date",
+            "Calendly Assignment Date",
+            "Calendly Host Raw",
+            "Calendly Match Method",
+            "Calendly FTM QA Flag",
+            "Assignment Source",
+        ]
+        lookup_columns = [
+            column for column in lookup_columns if column in lookup_display.columns
+        ]
+        st.dataframe(
+            lookup_display[lookup_columns], width="stretch", hide_index=True, height=420
+        )
+        st.download_button(
+            "Download filtered assignment lookup",
+            data=csv_bytes(lookup_display[lookup_columns]),
+            file_name="ipa_calendly_ftm_lookup_filtered.csv",
+            mime="text/csv",
+            width="stretch",
+        )
+
+        st.markdown("#### Calendly records needing review")
+        st.caption(
+            "These records were not used to assign credit because the participant, "
+            "age band, or host could not be resolved confidently."
+        )
+        if assignment_qc.empty:
+            st.success("No unresolved Calendly assignment records in this version.")
+        else:
+            qc_columns = [
+                "Event Start Date",
+                "Participant ID",
+                "IPA Age Band",
+                "Meeting Host",
+                "Calendly FTM",
+                "Participant Match Method",
+                "Calendly QA Flag",
+                "Calendly FTM QA Flag",
+                "Child Name",
+                "Meeting Notes Plain",
+            ]
+            qc_columns = [
+                column for column in qc_columns if column in assignment_qc.columns
+            ]
+            st.dataframe(
+                assignment_qc[qc_columns], width="stretch", hide_index=True, height=420
+            )
+            st.download_button(
+                "Download assignment QA records",
+                data=csv_bytes(assignment_qc[qc_columns]),
+                file_name="ipa_calendly_assignment_qc.csv",
+                mime="text/csv",
+                width="stretch",
+            )
+
 with st.expander("Metric definitions"):
     st.markdown(
         """
@@ -597,9 +789,11 @@ with st.expander("Metric definitions"):
         - **Non-task participants:** potential and 6–11 month participants are visible in the roster but do not enter task counts, progress, or completion-rate denominators.
         - **Weighted progress:** total task score divided by applicable task rows.
         - **Needs follow-up:** `Incomplete` plus `No record` task rows.
-        - **Task responsibility:** every task—including Complete, No-Show, Incomplete, and No record—stays with the FTM responsible when that age-band task first became applicable.
-        - **Current caseload:** only currently applicable age-band tasks are grouped under the participant's current FTM.
-        - **IPA source:** Ripple completion/scheduling fields plus the latest matching Calendly record for the same participant and age group.
+        - **Current IPA owner:** assignment priority is the latest 2026 Calendly host in the current IPA age band, the 2026 host in the immediately preceding age band, and then the participant's latest usable 2025 Calendly FTM. Ripple and Call List owners are not used for IPA credit.
+        - **Task responsibility:** every task—including Complete, No-Show, Incomplete, and No record—stays with the Calendly FTM recorded for that participant and age band. A later age band can have a different FTM without moving earlier credit. Lower-priority fallback evidence is upgraded when a higher-priority Calendly match becomes available.
+        - **Unassigned:** no confident 2026 same-band or previous-band Calendly host exists and no usable 2025 Calendly FTM exists. These records stay visible without an FTM credit assignment.
+        - **Current caseload:** only currently applicable age-band tasks are grouped under the participant's current Calendly FTM.
+        - **IPA outcome source:** Ripple completion/scheduling fields plus the latest matching 2026 Calendly record for the same participant and age group. A 2025 Calendly record can supply FTM responsibility only; it never changes the 2026 task outcome.
         - **Other task source:** Ripple only.
         """
     )

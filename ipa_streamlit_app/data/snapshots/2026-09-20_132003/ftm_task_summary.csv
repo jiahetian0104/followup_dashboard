@@ -4,19 +4,17 @@ Amy,3-20 year,11-17yr Child Hair,Incomplete,11
 Amy,3-20 year,3yrs+ Tooth 1,Incomplete,35
 Amy,3-20 year,3yrs+ Tooth 2,Incomplete,35
 Amy,3-20 year,3yrs+ Tooth 3,Incomplete,35
-Amy,3-20 year,In-Person Assessments,Complete,28
-Amy,3-20 year,In-Person Assessments,Incomplete,3
+Amy,3-20 year,In-Person Assessments,Complete,27
+Amy,3-20 year,In-Person Assessments,Incomplete,4
 Amy,3-20 year,In-Person Assessments,No record,3
 Amy,3-20 year,In-Person Assessments,No-Show,1
 Andrew,3-20 year,3-5yr Child Saliva,Complete,7
 Andrew,3-20 year,3-5yr Child Saliva,Incomplete,18
-Andrew,3-20 year,3yrs+ Tooth 1,Complete,1
-Andrew,3-20 year,3yrs+ Tooth 1,Incomplete,53
-Andrew,3-20 year,3yrs+ Tooth 2,Complete,1
-Andrew,3-20 year,3yrs+ Tooth 2,Incomplete,53
+Andrew,3-20 year,3yrs+ Tooth 1,Incomplete,54
+Andrew,3-20 year,3yrs+ Tooth 2,Incomplete,54
 Andrew,3-20 year,3yrs+ Tooth 3,Incomplete,54
-Andrew,3-20 year,In-Person Assessments,Complete,25
-Andrew,3-20 year,In-Person Assessments,Incomplete,14
+Andrew,3-20 year,In-Person Assessments,Complete,24
+Andrew,3-20 year,In-Person Assessments,Incomplete,15
 Andrew,3-20 year,In-Person Assessments,No record,6
 Andrew,3-20 year,In-Person Assessments,No-Show,9
 Andrew,6-35 month,12-23mo Child Bloodspot,Complete,2
@@ -39,11 +37,10 @@ Anna,3-20 year,3yrs+ Tooth 2,Incomplete,32
 Anna,3-20 year,3yrs+ Tooth 3,Incomplete,32
 Anna,3-20 year,In-Person Assessments,Complete,31
 Anna,3-20 year,In-Person Assessments,No-Show,1
-Breanna,3-20 year,3yrs+ Tooth 1,Incomplete,5
-Breanna,3-20 year,3yrs+ Tooth 2,Incomplete,5
-Breanna,3-20 year,3yrs+ Tooth 3,Incomplete,5
+Breanna,3-20 year,3yrs+ Tooth 1,Incomplete,3
+Breanna,3-20 year,3yrs+ Tooth 2,Incomplete,3
+Breanna,3-20 year,3yrs+ Tooth 3,Incomplete,3
 Breanna,3-20 year,In-Person Assessments,Complete,2
-Breanna,3-20 year,In-Person Assessments,No record,2
 Breanna,3-20 year,In-Person Assessments,No-Show,1
 Breanna,6-35 month,12-23mo Child Bloodspot,Complete,1
 Breanna,6-35 month,12-23mo Child Bloodspot,Incomplete,1
@@ -80,8 +77,8 @@ Jody,3-20 year,3yrs+ Tooth 1,Incomplete,28
 Jody,3-20 year,3yrs+ Tooth 2,Incomplete,28
 Jody,3-20 year,3yrs+ Tooth 3,Incomplete,28
 Jody,3-20 year,In-Person Assessments,Complete,22
-Jody,3-20 year,In-Person Assessments,Incomplete,1
-Jody,3-20 year,In-Person Assessments,No record,5
+Jody,3-20 year,In-Person Assessments,Incomplete,3
+Jody,3-20 year,In-Person Assessments,No record,3
 Jody,6-35 month,12-23mo Child Bloodspot,Complete,2
 Jody,6-35 month,12-23mo Child Bloodspot,Incomplete,6
 Jody,6-35 month,12-23mo Child Urine,Complete,1
@@ -95,11 +92,10 @@ Jody,6-35 month,In-Person Assessments,Incomplete,1
 Jody,6-35 month,In-Person Assessments,No record,1
 Kowlini,3-20 year,3-5yr Child Saliva,Complete,2
 Kowlini,3-20 year,3-5yr Child Saliva,Incomplete,1
-Kowlini,3-20 year,3yrs+ Tooth 1,Incomplete,18
-Kowlini,3-20 year,3yrs+ Tooth 2,Incomplete,18
-Kowlini,3-20 year,3yrs+ Tooth 3,Incomplete,18
+Kowlini,3-20 year,3yrs+ Tooth 1,Incomplete,17
+Kowlini,3-20 year,3yrs+ Tooth 2,Incomplete,17
+Kowlini,3-20 year,3yrs+ Tooth 3,Incomplete,17
 Kowlini,3-20 year,In-Person Assessments,Complete,14
-Kowlini,3-20 year,In-Person Assessments,No record,1
 Kowlini,3-20 year,In-Person Assessments,No-Show,3
 Kowlini,6-35 month,12-23mo Child Bloodspot,Complete,4
 Kowlini,6-35 month,12-23mo Child Bloodspot,Incomplete,8
@@ -113,13 +109,12 @@ Kowlini,6-35 month,In-Person Assessments,Complete,8
 Kowlini,6-35 month,In-Person Assessments,Incomplete,2
 Kowlini,6-35 month,In-Person Assessments,No-Show,2
 Nicole,3-20 year,3yrs+ Tooth 1,Complete,5
-Nicole,3-20 year,3yrs+ Tooth 1,Incomplete,55
+Nicole,3-20 year,3yrs+ Tooth 1,Incomplete,54
 Nicole,3-20 year,3yrs+ Tooth 2,Complete,2
-Nicole,3-20 year,3yrs+ Tooth 2,Incomplete,58
-Nicole,3-20 year,3yrs+ Tooth 3,Incomplete,60
+Nicole,3-20 year,3yrs+ Tooth 2,Incomplete,57
+Nicole,3-20 year,3yrs+ Tooth 3,Incomplete,59
 Nicole,3-20 year,In-Person Assessments,Complete,52
 Nicole,3-20 year,In-Person Assessments,Incomplete,7
-Nicole,3-20 year,In-Person Assessments,No record,1
 Nicole,6-35 month,12-23mo Child Bloodspot,Complete,13
 Nicole,6-35 month,12-23mo Child Bloodspot,Incomplete,22
 Nicole,6-35 month,12-23mo Child Urine,Complete,16
@@ -142,8 +137,8 @@ Toye,3-20 year,3yrs+ Tooth 2,Incomplete,50
 Toye,3-20 year,3yrs+ Tooth 3,Complete,2
 Toye,3-20 year,3yrs+ Tooth 3,Incomplete,51
 Toye,3-20 year,In-Person Assessments,Complete,44
-Toye,3-20 year,In-Person Assessments,Incomplete,2
-Toye,3-20 year,In-Person Assessments,No record,5
+Toye,3-20 year,In-Person Assessments,Incomplete,1
+Toye,3-20 year,In-Person Assessments,No record,6
 Toye,3-20 year,In-Person Assessments,No-Show,2
 Toye,6-35 month,12-23mo Child Bloodspot,Incomplete,3
 Toye,6-35 month,12-23mo Child Urine,Incomplete,3
@@ -156,17 +151,17 @@ Unassigned,3-20 year,11-17yr Child Hair,Incomplete,126
 Unassigned,3-20 year,3-5yr Child Saliva,Complete,3
 Unassigned,3-20 year,3-5yr Child Saliva,Incomplete,176
 Unassigned,3-20 year,3yrs+ Tooth 1,Complete,5
-Unassigned,3-20 year,3yrs+ Tooth 1,Incomplete,624
+Unassigned,3-20 year,3yrs+ Tooth 1,Incomplete,628
 Unassigned,3-20 year,3yrs+ Tooth 1,No record,13
 Unassigned,3-20 year,3yrs+ Tooth 2,Complete,2
-Unassigned,3-20 year,3yrs+ Tooth 2,Incomplete,627
+Unassigned,3-20 year,3yrs+ Tooth 2,Incomplete,631
 Unassigned,3-20 year,3yrs+ Tooth 2,No record,13
 Unassigned,3-20 year,3yrs+ Tooth 3,Complete,1
-Unassigned,3-20 year,3yrs+ Tooth 3,Incomplete,628
+Unassigned,3-20 year,3yrs+ Tooth 3,Incomplete,632
 Unassigned,3-20 year,3yrs+ Tooth 3,No record,13
 Unassigned,3-20 year,In-Person Assessments,Complete,32
 Unassigned,3-20 year,In-Person Assessments,Incomplete,1
-Unassigned,3-20 year,In-Person Assessments,No record,609
+Unassigned,3-20 year,In-Person Assessments,No record,613
 Unassigned,6-35 month,12-23mo Child Bloodspot,Complete,1
 Unassigned,6-35 month,12-23mo Child Bloodspot,Incomplete,57
 Unassigned,6-35 month,12-23mo Child Urine,Complete,1
