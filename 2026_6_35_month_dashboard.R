@@ -18,7 +18,7 @@ get_path <- function(relative_path) {
 }
 
 participant_registration <- read_excel(
-  get_path("Data/Reports/Participant Registration/ParticipantRegistration_Export_09152026.xlsx")
+  get_path("Data/Reports/Participant Registration/ParticipantRegistration_Export_09222026.xlsx")
 )
 
 ## 2.1. Set up parameters ----------------------------------------------------
