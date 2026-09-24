@@ -18,12 +18,15 @@ for downstream use.
 The refresh also maintains two persistent audit tables:
 
 - `data/latest/calendly_ftm_lookup.csv`: one latest host/inviter record per participant, appointment year, and IPA age band for 2025–2026, with the source appointment and matching method retained for audit.
-- `data/latest/participant_calendly_assignment_lookup.csv`: the current assignment decision for every participant-age-band row. Priority is 2026 same age band, 2026 immediately preceding age band, then the participant's latest usable 2025 Calendly FTM.
+- `data/latest/participant_calendly_assignment_lookup.csv`: the current assignment decision for every participant-age-band row. Priority is direct 2026 same-age evidence, Invitee name/email evidence, direct 2026 previous-age evidence, then direct 2025 Calendly evidence.
 - `data/latest/calendly_ftm_lookup_qc.csv`: Calendly records whose participant, age band, or host could not be resolved confidently.
+- `data/latest/calendly_participant_match_audit.csv`: every retained Calendly participant match with the invitee, child-name answer, matching method, age band, host, and QA result.
+- `data/latest/participant_contact_name_aliases.csv`: active Ripple Participant/Mother/Alternate name and email relationships used for Invitee fallback matching.
+- `data/latest/calendly_invitee_fallback_assignments.csv`: participant-age-band assignments supplied by the Invitee name/email evidence tier.
 - `data/latest/ftm_assignment_history.csv`: effective-dated IPA assignment history by participant and age band. Calendly is the authoritative source; Ripple and the Call List remain available only as comparison fields.
 - `data/latest/task_responsibility_ledger.csv`: locks every participant-age-band-task row to the matched Calendly FTM for that age band, regardless of outcome. A lower-priority fallback is upgraded when higher-priority Calendly evidence becomes available.
 
-The September 20, 2026 refresh is the Calendly-assignment baseline. A participant can have a different Calendly host in a later age band; prior Complete, No-Show, Incomplete, and No record rows remain with the FTM recorded for the earlier age band. Current assignment priority is 2026 same age band, 2026 immediately preceding age band, then latest usable 2025 Calendly FTM. If none exists, the task remains `Unassigned`; Ripple and Call List owners are never used for IPA credit. The 2025 Calendly fallback supplies responsibility only and never changes a 2026 IPA outcome.
+The September 20, 2026 refresh is the Calendly-assignment baseline. A participant can have a different Calendly host in a later age band; prior Complete, No-Show, Incomplete, and No record rows remain with the FTM recorded for the earlier age band. Participant identity is resolved using explicit IDs, child-name answers, Invitee child names, and active Ripple Participant/Mother/Alternate name or email relationships. Email can bridge contact surname changes. If one contact maps to siblings, a child first name can distinguish the participant; otherwise the event remains unresolved rather than assigning credit arbitrarily. Current assignment priority is direct 2026 same-age evidence, Invitee name/email evidence, direct 2026 previous-age evidence, then direct 2025 Calendly evidence. If none exists, the task remains `Unassigned`; Ripple and Call List owners are never used for IPA credit. The 2025 Calendly fallback supplies responsibility only and never changes a 2026 IPA outcome.
 
 ## Run locally
 

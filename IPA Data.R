@@ -33,6 +33,7 @@ vars <- c(
   "birthday",
   "tags",
   "statusId",
+  "Participant Contacts",
   "Events (All or None)"
 )
 
@@ -109,6 +110,7 @@ vars <- c(
   "race",
   "tags",
   "statusId",
+  "Participant Contacts",
   "Events (All or None)"
 )
 
@@ -158,15 +160,30 @@ ripple_data_3_20_year <- read_csv(
   guess_max = 2000
 ) 
 
+# delete the test user
+ripple_data_3_20_year <- ripple_data_3_20_year %>%
+  filter(
+    !globalId %in% c('54jpojzH4AVzTJoPD', 'iri0LoVJXJ734mKYy')
+  )
+
 
 # 3. Participant ID Dictionary and Note ID Extraction --------------------
 
 # Build a one-row-per-participant dictionary from both Ripple exports.
 # globalId is parsed into the ECHO child ID and PIN, e.g.
 # "LTS268-01-A (680)" -> child_echo_id = "LTS268-01-A", PIN = "680".
+participant_identity_fields <- c(
+  "globalId", "customId", "familyId", "firstName", "lastName",
+  "birthday", "statusId"
+)
+
 participant_id_catalog <- bind_rows(
-    ripple_data_6_35_month %>% mutate(cohort = "6-35 month"),
-    ripple_data_3_20_year %>% mutate(cohort = "3-20 year")
+    ripple_data_6_35_month %>%
+      select(any_of(participant_identity_fields)) %>%
+      mutate(cohort = "6-35 month"),
+    ripple_data_3_20_year %>%
+      select(any_of(participant_identity_fields)) %>%
+      mutate(cohort = "3-20 year")
   ) %>%
   mutate(
     globalId = trimws(globalId),
@@ -196,10 +213,176 @@ normalize_person_name <- function(x) {
     as.character() %>%
     str_to_lower() %>%
     iconv(from = "", to = "ASCII//TRANSLIT") %>%
+    # Apostrophes inside a name do not create a new token: A'Mya = Amya.
+    str_replace_all("['’`]", "") %>%
     str_replace_all("[^a-z0-9]+", " ") %>%
     str_squish() %>%
     na_if("")
 }
+
+
+normalize_email <- function(x) {
+  x %>%
+    as.character() %>%
+    str_to_lower() %>%
+    str_squish() %>%
+    na_if("")
+}
+
+
+# Split a person name into normalized first and last tokens. Calendly invitee
+# names and Ripple contact names are both free text, so middle names are
+# ignored and common generational suffixes are removed before matching.
+person_name_parts <- function(full_name) {
+  if (is.na(full_name) || str_squish(as.character(full_name)) == "") {
+    return(list(first = NA_character_, last = NA_character_))
+  }
+
+  cleaned <- as.character(full_name) %>%
+    str_squish() %>%
+    str_remove(regex("\\s+(Jr|Sr|II|III|IV)\\.?$", ignore_case = TRUE))
+  parts <- str_split(cleaned, "\\s+", simplify = FALSE)[[1]]
+  parts <- parts[parts != ""]
+
+  if (length(parts) == 0) {
+    return(list(first = NA_character_, last = NA_character_))
+  }
+  if (length(parts) < 2) {
+    return(list(
+      first = normalize_person_name(parts[[1]] %||% NA_character_),
+      last = NA_character_
+    ))
+  }
+
+  list(
+    first = normalize_person_name(parts[[1]]),
+    last = normalize_person_name(parts[[length(parts)]])
+  )
+}
+
+
+# Create the participant-to-contact relationship needed for Calendly matching.
+# Active Participant, Mother, and Alternate names and emails are retained;
+# phone and address fields are never imported into the IPA pipeline.
+extract_ripple_contact_name_aliases <- function(data) {
+  contact_slots <- names(data) %>%
+    str_subset("^contact\\.[0-9]+\\.contactName$") %>%
+    str_extract("(?<=^contact\\.)[0-9]+(?=\\.contactName$)") %>%
+    as.integer() %>%
+    unique() %>%
+    sort()
+
+  if (length(contact_slots) == 0) {
+    return(tibble(
+      child_echo_id = character(),
+      contact_role = character(),
+      contact_name = character(),
+      contact_first_key = character(),
+      contact_last_key = character(),
+      contact_email = character(),
+      contact_email_key = character()
+    ))
+  }
+
+  row_value <- function(row, field) {
+    if (!field %in% names(row)) return(NA_character_)
+    value <- as.character(row[[field]][[1]]) %>% str_squish()
+    if (is.na(value) || value == "") NA_character_ else value
+  }
+
+  is_true_text <- function(value) {
+    !is.na(value) && str_to_lower(value) %in% c("true", "1", "yes")
+  }
+
+  map_dfr(seq_len(nrow(data)), function(row_number) {
+    row <- data[row_number, , drop = FALSE]
+    child_echo_id <- row_value(row, "globalId") %>%
+      str_remove("\\s*\\([^)]*\\)$") %>%
+      str_squish()
+    if (is.na(child_echo_id) || child_echo_id == "") return(tibble())
+
+
+    map_dfr(contact_slots, function(slot) {
+      prefix <- paste0("contact.", slot, ".")
+      archived <- row_value(row, paste0(prefix, "archived"))
+      archived_at <- row_value(row, paste0(prefix, "archivedAt"))
+      if (is_true_text(archived) || !is.na(archived_at)) return(tibble())
+
+      title <- row_value(row, paste0(prefix, "contactTitle"))
+      title_key <- str_to_lower(title %||% "") %>% str_squish()
+      contact_role <- case_when(
+        title_key == "participant" ~ "Participant",
+        title_key %in% c(
+          "biological mother", "biological mom", "mother", "mom"
+        ) ~ "Mother",
+        str_detect(title_key, "^alternate") ~ "Alternate",
+        TRUE ~ NA_character_
+      )
+      if (is.na(contact_role)) return(tibble())
+
+      contact_name <- row_value(row, paste0(prefix, "contactName"))
+      if (is.na(contact_name) && contact_role == "Participant") {
+        contact_name <- str_c(
+          row_value(row, "firstName"), row_value(row, "lastName"),
+          sep = " "
+        ) %>% str_squish() %>% na_if("")
+      }
+
+      name_parts <- person_name_parts(contact_name)
+      info_slots <- names(row) %>%
+        str_subset(paste0(
+          "^contact\\.", slot, "\\.infos\\.[0-9]+\\.contactType$"
+        )) %>%
+        str_extract(paste0(
+          "(?<=^contact\\.", slot, "\\.infos\\.)[0-9]+",
+          "(?=\\.contactType$)"
+        )) %>%
+        as.integer() %>%
+        unique() %>%
+        sort()
+
+      contact_emails <- map_chr(info_slots, function(info_slot) {
+        info_prefix <- paste0(prefix, "infos.", info_slot, ".")
+        info_archived <- row_value(row, paste0(info_prefix, "archived"))
+        info_archived_at <- row_value(row, paste0(info_prefix, "archivedAt"))
+        if (is_true_text(info_archived) || !is.na(info_archived_at)) {
+          return(NA_character_)
+        }
+        contact_type <- row_value(row, paste0(info_prefix, "contactType"))
+        if (is.na(contact_type) || str_to_lower(contact_type) != "email") {
+          return(NA_character_)
+        }
+        row_value(row, paste0(info_prefix, "information"))
+      }) %>%
+        discard(is.na) %>%
+        unique()
+
+      if (length(contact_emails) == 0) contact_emails <- NA_character_
+      if (
+        (is.na(name_parts$first) || is.na(name_parts$last)) &&
+          all(is.na(contact_emails))
+      ) return(tibble())
+
+      tibble(
+        child_echo_id,
+        contact_role,
+        contact_name,
+        contact_first_key = name_parts$first,
+        contact_last_key = name_parts$last,
+        contact_email = contact_emails,
+        contact_email_key = normalize_email(contact_emails)
+      )
+    })
+  }) %>%
+    distinct()
+}
+
+
+participant_contact_name_aliases <- bind_rows(
+  extract_ripple_contact_name_aliases(ripple_data_6_35_month),
+  extract_ripple_contact_name_aliases(ripple_data_3_20_year)
+) %>%
+  distinct()
 
 
 # Extract all confirmed IDs (customId, familyId, child_echo_id) that appear
@@ -260,7 +443,15 @@ extract_note_ids <- function(note, catalog) {
 # meeting notes are tried first and may return multiple children. A mother or
 # family ID is only used together with the child's full name. When no usable
 # ID is found, a unique full-name match across the catalog is the fallback.
-match_cal_row_to_cohort <- function(note, cal_fn, cal_ln, catalog) {
+match_cal_row_to_cohort <- function(
+    note,
+    cal_fn,
+    cal_ln,
+    invitee_fn,
+    invitee_ln,
+    invitee_email,
+    catalog
+) {
   empty <- tibble(
     res_fn = NA_character_,
     res_ln = NA_character_,
@@ -269,7 +460,8 @@ match_cal_row_to_cohort <- function(note, cal_fn, cal_ln, catalog) {
     matched_custom_id = NA_character_,
     matched_family_id = NA_character_,
     matched_birthday = NA_character_,
-    matched_cohort = NA_character_
+    matched_cohort = NA_character_,
+    participant_match_qa = NA_character_
   )
   if (nrow(catalog) == 0) {
     return(empty)
@@ -283,6 +475,16 @@ match_cal_row_to_cohort <- function(note, cal_fn, cal_ln, catalog) {
   if (!"mom_id" %in% names(catalog)) catalog$mom_id <- NA_character_
   if (!"mom_echo_id" %in% names(catalog)) catalog$mom_echo_id <- NA_character_
   if (!"child_id" %in% names(catalog)) catalog$child_id <- NA_character_
+  if (!"contact_role" %in% names(catalog)) catalog$contact_role <- NA_character_
+  if (!"contact_first_key" %in% names(catalog)) {
+    catalog$contact_first_key <- NA_character_
+  }
+  if (!"contact_last_key" %in% names(catalog)) {
+    catalog$contact_last_key <- NA_character_
+  }
+  if (!"contact_email_key" %in% names(catalog)) {
+    catalog$contact_email_key <- NA_character_
+  }
 
   catalog <- catalog %>%
     mutate(across(
@@ -305,7 +507,8 @@ match_cal_row_to_cohort <- function(note, cal_fn, cal_ln, catalog) {
         matched_custom_id = as.character(child_custom_id),
         matched_family_id = as.character(familyId),
         matched_birthday = as.character(birthday),
-        matched_cohort = as.character(cohort)
+        matched_cohort = as.character(cohort),
+        participant_match_qa = NA_character_
       )
   }
 
@@ -367,7 +570,107 @@ match_cal_row_to_cohort <- function(note, cal_fn, cal_ln, catalog) {
     ) %>%
     distinct(child_echo_id, .keep_all = TRUE)
   if (nrow(hit) == 1) {
-    return(format_matches(hit, "name"))
+    return(format_matches(hit, "child_name"))
+  }
+
+  invitee_email <- normalize_email(invitee_email)
+  invitee_email_hit <- catalog %>%
+    filter(
+      !is.na(invitee_email),
+      !is.na(contact_email_key),
+      contact_email_key == invitee_email
+    ) %>%
+    distinct(child_echo_id, .keep_all = TRUE)
+
+  # A shared family email cannot identify one child without child information.
+  # This rule intentionally keeps the two ambiguous 2025 Ross appointments
+  # unresolved even though the Invitee Name resembles one sister's name.
+  if (nrow(invitee_email_hit) > 1 && is.na(cal_fn)) {
+    return(empty %>% mutate(
+      participant_match_qa =
+        "Invitee email maps to multiple participants and child name is missing"
+    ))
+  }
+
+  # When the booking did not supply a usable child ID, the invitee may be the
+  # participant. Require a unique full-name match and honor the shared-email
+  # safeguard above.
+  if (!is.na(invitee_fn) && !is.na(invitee_ln)) {
+    invitee_child_hit <- catalog %>%
+      filter(
+        normalize_person_name(firstName) == invitee_fn,
+        normalize_person_name(lastName) == invitee_ln
+      ) %>%
+      distinct(child_echo_id, .keep_all = TRUE)
+    if (nrow(invitee_child_hit) == 1) {
+      return(format_matches(invitee_child_hit, "invitee_child_name"))
+    }
+  }
+
+  # Email is stable when a contact's surname changes. If the email belongs to
+  # siblings, the child first name from the booking question may safely select
+  # one child within that already identified family.
+  if (nrow(invitee_email_hit) > 0) {
+    email_child_hit <- invitee_email_hit
+    if (nrow(email_child_hit) > 1 && !is.na(cal_fn)) {
+      email_child_hit <- email_child_hit %>%
+        filter(normalize_person_name(firstName) == cal_fn) %>%
+        distinct(child_echo_id, .keep_all = TRUE)
+    }
+    if (nrow(email_child_hit) == 1) {
+      match_method <- if_else(
+        nrow(invitee_email_hit) > 1,
+        "invitee_email+child_first_name",
+        "invitee_email"
+      )
+      return(format_matches(email_child_hit, match_method))
+    }
+    return(empty %>% mutate(
+      participant_match_qa =
+        "Invitee email maps to multiple participants; child first name did not resolve one"
+    ))
+  }
+
+  if (!is.na(invitee_fn) && !is.na(invitee_ln)) {
+    # Otherwise the invitee may be a Participant, Mother, or Alternate contact
+    # stored in Ripple. Within a shared family contact, child first name may
+    # disambiguate siblings even when the supplied child surname has changed.
+    invitee_contact_hit <- catalog %>%
+      filter(
+        !is.na(contact_role),
+        contact_first_key == invitee_fn,
+        contact_last_key == invitee_ln
+      ) %>%
+      arrange(factor(
+        contact_role,
+        levels = c("Participant", "Mother", "Alternate")
+      )) %>%
+      distinct(child_echo_id, .keep_all = TRUE)
+    original_contact_hit_count <- nrow(invitee_contact_hit)
+    if (nrow(invitee_contact_hit) > 1 && !is.na(cal_fn)) {
+      invitee_contact_hit <- invitee_contact_hit %>%
+        filter(normalize_person_name(firstName) == cal_fn) %>%
+        distinct(child_echo_id, .keep_all = TRUE)
+    }
+    if (nrow(invitee_contact_hit) == 1) {
+      match_method <- paste0(
+        "invitee_",
+        str_to_lower(invitee_contact_hit$contact_role[[1]]),
+        "_name",
+        if_else(
+          original_contact_hit_count > 1,
+          "+child_first_name",
+          ""
+        )
+      )
+      return(format_matches(invitee_contact_hit, match_method))
+    }
+    if (nrow(invitee_contact_hit) > 1) {
+      return(empty %>% mutate(
+        participant_match_qa =
+          "Invitee contact name maps to multiple participants; child first name did not resolve one"
+      ))
+    }
   }
 
   empty
@@ -380,11 +683,16 @@ resolve_calendly_cohort <- function(cal_data, catalog) {
   cal_data %>%
     mutate(
       cal_fn = normalize_person_name(`Child First Name`),
-      cal_ln = normalize_person_name(`Child Last Name`)
+      cal_ln = normalize_person_name(`Child Last Name`),
+      invitee_name_parts = map(`Invitee Name`, person_name_parts),
+      invitee_fn = map_chr(invitee_name_parts, "first"),
+      invitee_ln = map_chr(invitee_name_parts, "last"),
+      invitee_email = normalize_email(`Invitee Email`)
     ) %>%
     rowwise() %>%
     mutate(res = list(match_cal_row_to_cohort(
-      `Meeting Notes Plain`, cal_fn, cal_ln, catalog
+      `Meeting Notes Plain`, cal_fn, cal_ln, invitee_fn, invitee_ln,
+      invitee_email, catalog
     ))) %>%
     ungroup() %>%
     unnest(res) %>%
@@ -392,7 +700,11 @@ resolve_calendly_cohort <- function(cal_data, catalog) {
       join_fn = coalesce(res_fn, `Child First Name`),
       join_ln = coalesce(res_ln, `Child Last Name`)
     ) %>%
-    select(-cal_fn, -cal_ln, -res_fn, -res_ln)
+    select(
+      -cal_fn, -cal_ln, -invitee_name_parts, -invitee_fn, -invitee_ln,
+      -invitee_email,
+      -res_fn, -res_ln
+    )
 }
 
 
@@ -503,7 +815,12 @@ calendly_participant_catalog <- participant_id_catalog %>%
     mom_id,
     child_id
   ) %>%
-  distinct()
+  distinct() %>%
+  left_join(
+    participant_contact_name_aliases,
+    by = "child_echo_id",
+    relationship = "many-to-many"
+  )
 
 
 calendly_token <- "eyJraWQiOiIxY2UxZTEzNjE3ZGNmNzY2YjNjZWJjY2Y4ZGM1YmFmYThhNjVlNjg0MDIzZjdjMzJiZTgzNDliMjM4MDEzNWI0IiwidHlwIjoiUEFUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNzg4MzY0NzkzLCJqdGkiOiI3YmRlNGQxMS01NDVjLTRlYjgtYTM0Yy03MzM1MmU5MWUxMzUiLCJ1c2VyX3V1aWQiOiJiM2M3NWI1Ni05OWE3LTQ0NGQtYWFhMi00NzgzMzI0MDM3OWIiLCJzY29wZSI6ImF2YWlsYWJpbGl0eTpyZWFkIGF2YWlsYWJpbGl0eTp3cml0ZSBldmVudF90eXBlczpyZWFkIGV2ZW50X3R5cGVzOndyaXRlIGxvY2F0aW9uczpyZWFkIHJvdXRpbmdfZm9ybXM6cmVhZCBzaGFyZXM6d3JpdGUgc2NoZWR1bGVkX2V2ZW50czpyZWFkIHNjaGVkdWxlZF9ldmVudHM6d3JpdGUgc2NoZWR1bGluZ19saW5rczp3cml0ZSBncm91cHM6cmVhZCBvcmdhbml6YXRpb25zOnJlYWQgb3JnYW5pemF0aW9uczp3cml0ZSB1c2VyczpyZWFkIGNvbnRhY3RzOnJlYWQgY29udGFjdHM6d3JpdGUgbWVldGluZ19yZWNhcHM6cmVhZCBtZWV0aW5nX3JlY2Fwczp3cml0ZSBhY3Rpdml0eV9sb2c6cmVhZCBkYXRhX2NvbXBsaWFuY2U6d3JpdGUgb3V0Z29pbmdfY29tbXVuaWNhdGlvbnM6cmVhZCB3ZWJob29rczpyZWFkIHdlYmhvb2tzOndyaXRlIn0.9sebF0Tr0Q4BsdvunTLk6g3uRXRfkVz9V17-yB1RVwGWtgzdxm-v9oG0x9FzbjbijlDK-di-hCx5zAS4oWCOqQ"
@@ -947,6 +1264,7 @@ assessment_types <- c(
   "Detroit Assessment",
   "East Lansing Assessment",
   "ECHO In-Person Assessment",
+  "ECHO Remote Spirometry",
   "Flint Assessment",
   "Grand Rapids Assessments",
   "Nicole - Traverse City",
@@ -1003,7 +1321,8 @@ calendly_participant_resolved <- resolve_calendly_cohort(
     `Participant Family ID` = matched_family_id,
     `Participant Birthday Raw` = matched_birthday,
     `Participant Cohort` = matched_cohort,
-    `Participant Match Method` = matched_by
+    `Participant Match Method` = matched_by,
+    `Participant Match QA` = participant_match_qa
   )
 
 
@@ -1062,6 +1381,7 @@ calendly_export_clean <- calendly_participant_resolved %>%
       TRUE ~ NA_character_
     ),
     `Calendly QA Flag` = case_when(
+      !is.na(`Participant Match QA`) ~ `Participant Match QA`,
       is.na(`Participant ID`) ~ "Participant ID unresolved; name key used",
       is.na(`Child Age`) ~ "Child age unresolved",
       is.na(`IPA Age Band`) ~ "Child age outside IPA bands",
@@ -1092,19 +1412,17 @@ calendly_export_clean <- calendly_participant_resolved %>%
       )
     )
   ) %>%
-  # One Calendly row per participant per IPA age band. This removes an
-  # earlier canceled/no-show appointment when a later appointment exists,
-  # while retaining the newest canceled/no-show record when there is no
-  # later booking.
-  group_by(.participant_key, .age_band_key, `IPA Year`) %>%
+  # Retain all resolved assessment events here. Outcome logic selects the
+  # latest appointment, while assignment logic separately ranks direct and
+  # Invitee-contact evidence before selecting an FTM.
   arrange(
+    .participant_key,
+    .age_band_key,
+    `IPA Year`,
     desc(`Event Start Date & Time Parsed`),
     desc(`Event Created Date & Time Parsed`),
-    desc(`Invitee UUID`),
-    .by_group = TRUE
+    desc(`Invitee UUID`)
   ) %>%
-  slice(1) %>%
-  ungroup() %>%
   select(
     `Event UUID`,
     `Invitee UUID`,
@@ -1114,6 +1432,7 @@ calendly_export_clean <- calendly_participant_resolved %>%
     `Calendly FTM`,
     `Calendly FTM QA Flag`,
     `Invitee Name`,
+    `Invitee Email`,
     `Child Name`,
     `Child First Name`,
     `Child Last Name`,
@@ -1131,6 +1450,7 @@ calendly_export_clean <- calendly_participant_resolved %>%
     `Participant Family ID`,
     `Participant Cohort`,
     `Participant Match Method`,
+    `Participant Match QA`,
     `Participant Birthday`,
     `Calendly Record Status`,
     `Calendly QA Flag`,
@@ -1391,16 +1711,75 @@ build_calendly_ftm_lookup <- function(
 }
 
 
-calendly_ftm_lookup_2026 <- build_calendly_ftm_lookup(
-  calendly_export_clean,
+is_invitee_contact_method <- function(match_method) {
+  str_detect(coalesce(as.character(match_method), ""), "^invitee_")
+}
+
+
+calendly_direct_records <- calendly_export_clean %>%
+  filter(!is_invitee_contact_method(`Participant Match Method`))
+
+calendly_invitee_records <- calendly_export_clean %>%
+  filter(is_invitee_contact_method(`Participant Match Method`))
+
+
+calendly_ftm_lookup_2026_direct <- build_calendly_ftm_lookup(
+  calendly_direct_records,
   2026L,
   require_age_band = TRUE
-)
+) %>%
+  mutate(`Calendly Evidence Tier` = "Direct participant evidence")
 
-calendly_ftm_lookup_2025 <- build_calendly_ftm_lookup(
-  calendly_export_clean,
+calendly_ftm_lookup_2025_direct <- build_calendly_ftm_lookup(
+  calendly_direct_records,
   2025L,
   require_age_band = FALSE
+) %>%
+  mutate(`Calendly Evidence Tier` = "Direct participant evidence")
+
+calendly_ftm_lookup_2026_invitee <- build_calendly_ftm_lookup(
+  calendly_invitee_records,
+  2026L,
+  require_age_band = FALSE
+) %>%
+  mutate(`Calendly Evidence Tier` = "Invitee name/email evidence")
+
+calendly_ftm_lookup_2025_invitee <- build_calendly_ftm_lookup(
+  calendly_invitee_records,
+  2025L,
+  require_age_band = FALSE
+) %>%
+  mutate(`Calendly Evidence Tier` = "Invitee name/email evidence")
+
+
+# Backward-compatible, one-row-per-participant/year/age-band audit lookup.
+# Direct evidence is retained when both direct and Invitee evidence exist for
+# the same period; the separate Invitee lookup below remains available for the
+# second assignment tier.
+select_preferred_period_evidence <- function(direct_lookup, invitee_lookup) {
+  bind_rows(
+    direct_lookup %>% mutate(.evidence_priority = 1L),
+    invitee_lookup %>% mutate(.evidence_priority = 2L)
+  ) %>%
+    arrange(
+      `Participant ID`, `IPA Age Band`, .evidence_priority,
+      desc(`Calendly Appointment Date`), desc(`Calendly Assignment Date`)
+    ) %>%
+    group_by(`Participant ID`, `IPA Age Band`) %>%
+    slice(1) %>%
+    ungroup() %>%
+    select(-.evidence_priority)
+}
+
+
+calendly_ftm_lookup_2026 <- select_preferred_period_evidence(
+  calendly_ftm_lookup_2026_direct,
+  calendly_ftm_lookup_2026_invitee
+)
+
+calendly_ftm_lookup_2025 <- select_preferred_period_evidence(
+  calendly_ftm_lookup_2025_direct,
+  calendly_ftm_lookup_2025_invitee
 )
 
 # Exportable evidence table at participant × appointment year × age-band
@@ -1412,9 +1791,28 @@ calendly_ftm_lookup <- bind_rows(
   arrange(desc(`Calendly Year`), `Participant ID`, `IPA Age Band`)
 
 
-# Latest usable 2025 Calendly FTM for each participant. This is a last-resort
-# supplement after both 2026 same-age and 2026 previous-age searches fail.
-calendly_ftm_2025_latest <- calendly_ftm_lookup_2025 %>%
+# Latest usable Invitee-linked Calendly FTM for each participant. This tier is
+# evaluated after direct 2026 same-age evidence and before previous-age FTM.
+calendly_ftm_invitee_latest <- bind_rows(
+  calendly_ftm_lookup_2026_invitee,
+  calendly_ftm_lookup_2025_invitee
+) %>%
+  filter(!is.na(FTM), str_squish(FTM) != "") %>%
+  arrange(
+    `Participant ID`,
+    desc(`Calendly Year`),
+    desc(`Calendly Appointment Date`),
+    desc(`Calendly Assignment Date`)
+  ) %>%
+  group_by(`Participant ID`) %>%
+  slice(1) %>%
+  ungroup() %>%
+  rename_with(~ paste0("Invitee ", .x), -`Participant ID`)
+
+
+# Latest usable direct 2025 Calendly FTM is retained only as the final
+# historical supplement after the three requested priority levels.
+calendly_ftm_2025_latest <- calendly_ftm_lookup_2025_direct %>%
   filter(!is.na(FTM), str_squish(FTM) != "") %>%
   arrange(
     `Participant ID`,
@@ -1428,7 +1826,7 @@ calendly_ftm_2025_latest <- calendly_ftm_lookup_2025 %>%
 
 
 # Current-year Calendly lookup for outcome and assignment priority.
-calendly_ftm_lookup_current <- calendly_ftm_lookup_2026 %>%
+calendly_ftm_lookup_current <- calendly_ftm_lookup_2026_direct %>%
   distinct(`Participant ID`, `IPA Age Band`, .keep_all = TRUE)
 
 
@@ -1451,16 +1849,46 @@ calendly_ftm_lookup_qc <- calendly_export_clean %>%
     `Meeting Host`,
     `Calendly FTM`,
     `Participant Match Method`,
+    `Participant Match QA`,
     `Calendly QA Flag`,
     `Calendly FTM QA Flag`,
     `Meeting Notes Plain`,
-    `Child Name`
+    `Child Name`,
+    `Invitee Name`,
+    `Invitee Email`
   )
 
 
-# Assignment preference: 2026 same age band, 2026 immediately preceding age
-# band, then the participant's latest usable 2025 Calendly FTM. The 2025 level
-# supplies responsibility only and never enters 2026 outcome evaluation.
+# Participant-level audit for every retained Calendly age-band/year record.
+# This makes the lower-confidence invitee-name fallback inspectable without
+# exposing unrelated Ripple contact details in the dashboard datasets.
+calendly_participant_match_audit <- calendly_export_clean %>%
+  transmute(
+    `Event UUID`,
+    `Invitee UUID`,
+    `Event Type Name`,
+    `Event Start Date`,
+    `IPA Year`,
+    `Invitee Name`,
+    `Invitee Email`,
+    `Child Name`,
+    `Meeting Notes Plain`,
+    `Participant ID`,
+    `Participant Cohort`,
+    `Participant Match Method`,
+    `Participant Match QA`,
+    `IPA Age Band`,
+    `Meeting Host`,
+    `Calendly FTM`,
+    `Calendly QA Flag`
+  ) %>%
+  arrange(desc(`IPA Year`), desc(`Event Start Date`), `Participant ID`)
+
+
+# Assignment preference: direct 2026 same-age IPA evidence, Invitee name/email
+# evidence, direct 2026 immediately preceding age band, then direct 2025
+# historical evidence. Historical levels supply responsibility only and never
+# enter 2026 outcome evaluation.
 ipa_previous_age_band_map <- tribble(
   ~`IPA Age Band`, ~`Previous IPA Age Band`,
   "12_23_month", "6_11_month",
@@ -1497,6 +1925,10 @@ participant_calendly_assignment_lookup <- participant_roster %>%
     by = c("Participant ID", "Previous IPA Age Band")
   ) %>%
   left_join(
+    calendly_ftm_invitee_latest,
+    by = "Participant ID"
+  ) %>%
+  left_join(
     calendly_ftm_2025_latest,
     by = "Participant ID"
   ) %>%
@@ -1505,55 +1937,71 @@ participant_calendly_assignment_lookup <- participant_roster %>%
     `Participant Cohort`,
     `IPA Age Band`,
     `Task Eligible`,
-    FTM = coalesce(`Exact FTM`, `Previous FTM`, `2025 FTM`),
+    FTM = coalesce(
+      `Exact FTM`, `Invitee FTM`, `Previous FTM`, `2025 FTM`
+    ),
     `Calendly FTM Matched Age Band` = case_when(
       !is.na(`Exact FTM`) ~ `IPA Age Band`,
+      !is.na(`Invitee FTM`) ~ `Invitee IPA Age Band`,
       !is.na(`Previous FTM`) ~ `Previous IPA Age Band`,
       !is.na(`2025 FTM`) ~ `2025 IPA Age Band`,
       TRUE ~ NA_character_
     ),
     `Calendly Assignment Year` = case_when(
       !is.na(`Exact FTM`) ~ 2026L,
+      !is.na(`Invitee FTM`) ~ as.integer(`Invitee Calendly Year`),
       !is.na(`Previous FTM`) ~ 2026L,
       !is.na(`2025 FTM`) ~ 2025L,
       TRUE ~ NA_integer_
     ),
     `Calendly Assignment Rule` = case_when(
       !is.na(`Exact FTM`) ~ "2026 same age band",
+      !is.na(`Invitee FTM`) ~ "Invitee name/email fallback",
       !is.na(`Previous FTM`) ~ "2026 previous age band fallback",
       !is.na(`2025 FTM`) ~ "2025 latest Calendly FTM fallback",
       TRUE ~ "Unmatched"
     ),
     `Calendly Host Raw` = coalesce(
-      `Exact Calendly Host Raw`, `Previous Calendly Host Raw`,
+      `Exact Calendly Host Raw`, `Invitee Calendly Host Raw`,
+      `Previous Calendly Host Raw`,
       `2025 Calendly Host Raw`
     ),
     `Calendly Appointment Date` = coalesce(
-      `Exact Calendly Appointment Date`, `Previous Calendly Appointment Date`,
+      `Exact Calendly Appointment Date`,
+      `Invitee Calendly Appointment Date`,
+      `Previous Calendly Appointment Date`,
       `2025 Calendly Appointment Date`
     ),
     `Calendly Assignment Date` = coalesce(
-      `Exact Calendly Assignment Date`, `Previous Calendly Assignment Date`,
+      `Exact Calendly Assignment Date`,
+      `Invitee Calendly Assignment Date`,
+      `Previous Calendly Assignment Date`,
       `2025 Calendly Assignment Date`
     ),
     `Calendly Event UUID` = coalesce(
-      `Exact Calendly Event UUID`, `Previous Calendly Event UUID`,
+      `Exact Calendly Event UUID`, `Invitee Calendly Event UUID`,
+      `Previous Calendly Event UUID`,
       `2025 Calendly Event UUID`
     ),
     `Calendly Invitee UUID` = coalesce(
-      `Exact Calendly Invitee UUID`, `Previous Calendly Invitee UUID`,
+      `Exact Calendly Invitee UUID`, `Invitee Calendly Invitee UUID`,
+      `Previous Calendly Invitee UUID`,
       `2025 Calendly Invitee UUID`
     ),
     `Calendly Match Method` = coalesce(
-      `Exact Calendly Match Method`, `Previous Calendly Match Method`,
+      `Exact Calendly Match Method`, `Invitee Calendly Match Method`,
+      `Previous Calendly Match Method`,
       `2025 Calendly Match Method`
     ),
     `Calendly FTM QA Flag` = coalesce(
-      `Exact Calendly FTM QA Flag`, `Previous Calendly FTM QA Flag`,
+      `Exact Calendly FTM QA Flag`, `Invitee Calendly FTM QA Flag`,
+      `Previous Calendly FTM QA Flag`,
       `2025 Calendly FTM QA Flag`
     ),
     `Assignment Source` = case_when(
       !is.na(`Exact FTM`) ~ "Calendly host - 2026 same age band",
+      !is.na(`Invitee FTM`) ~
+        "Calendly host - Invitee name/email fallback",
       !is.na(`Previous FTM`) ~
         "Calendly host - 2026 previous age band fallback",
       !is.na(`2025 FTM`) ~
@@ -2125,7 +2573,8 @@ calendly_ledger_assignments <- participant_calendly_assignment_lookup %>%
 calendly_assignment_priority <- function(source) {
   source <- coalesce(as.character(source), "")
   case_when(
-    str_detect(source, regex("2026 same age band|same age band", ignore_case = TRUE)) ~ 4L,
+    str_detect(source, regex("2026 same age band|same age band", ignore_case = TRUE)) ~ 5L,
+    str_detect(source, regex("Invitee name/email", ignore_case = TRUE)) ~ 4L,
     str_detect(source, regex("2026 previous age band|previous age band fallback", ignore_case = TRUE)) ~ 3L,
     str_detect(source, regex("2025 latest", ignore_case = TRUE)) ~ 2L,
     str_detect(source, regex("unavailable", ignore_case = TRUE)) ~ 1L,
@@ -2446,8 +2895,8 @@ completed_participants_without_calendly_ftm <-
     `Task Sources` = str_c(sort(unique(Source)), collapse = "; "),
     `Calendly FTM Match Status` =
       paste(
-        "No 2026 Calendly FTM in the same or immediately previous age band",
-        "and no usable 2025 Calendly FTM"
+        "No direct 2026 same-age FTM, no usable Invitee name/email FTM,",
+        "no direct 2026 previous-age FTM, and no direct 2025 FTM"
       ),
     .groups = "drop"
   )
@@ -2485,6 +2934,11 @@ calendly_previous_age_fallback_assignments <-
   ) %>%
   arrange(`Participant Cohort`, `IPA Age Band`, FTM, `Participant ID`)
 
+calendly_invitee_fallback_assignments <-
+  participant_calendly_assignment_lookup %>%
+  filter(`Calendly Assignment Rule` == "Invitee name/email fallback") %>%
+  arrange(`Participant Cohort`, `IPA Age Band`, FTM, `Participant ID`)
+
 calendly_2025_fallback_assignments <-
   participant_calendly_assignment_lookup %>%
   filter(
@@ -2498,9 +2952,15 @@ dashboard_exports <- list(
   "participant_calendly_assignment_lookup.csv" =
     participant_calendly_assignment_lookup,
   "calendly_ftm_lookup_qc.csv" = calendly_ftm_lookup_qc,
+  "calendly_participant_match_audit.csv" =
+    calendly_participant_match_audit,
+  "participant_contact_name_aliases.csv" =
+    participant_contact_name_aliases,
   "participant_roster.csv" = participant_roster_export,
   "calendly_previous_age_fallback_assignments.csv" =
     calendly_previous_age_fallback_assignments,
+  "calendly_invitee_fallback_assignments.csv" =
+    calendly_invitee_fallback_assignments,
   "calendly_2025_fallback_assignments.csv" =
     calendly_2025_fallback_assignments,
   "completed_participants_without_calendly_ftm.csv" =
@@ -2544,12 +3004,65 @@ dashboard_export_manifest <- tibble(
       "2026 previous age band fallback",
     na.rm = TRUE
   ),
+  calendly_invitee_fallbacks = sum(
+    participant_roster_export$`Calendly Assignment Rule` ==
+      "Invitee name/email fallback",
+    na.rm = TRUE
+  ),
   calendly_2025_fallbacks = sum(
     participant_roster_export$`Calendly Assignment Rule` ==
       "2025 latest Calendly FTM fallback",
     na.rm = TRUE
   ),
   calendly_assignment_qc_rows = nrow(calendly_ftm_lookup_qc),
+  calendly_invitee_child_name_matches = sum(
+    calendly_participant_match_audit$`Participant Match Method` ==
+      "invitee_child_name",
+    na.rm = TRUE
+  ),
+  calendly_invitee_mother_name_matches = sum(
+    str_detect(
+      coalesce(
+        calendly_participant_match_audit$`Participant Match Method`, ""
+      ),
+      "^invitee_mother_name"
+    ),
+    na.rm = TRUE
+  ),
+  calendly_invitee_alternate_name_matches = sum(
+    str_detect(
+      coalesce(
+        calendly_participant_match_audit$`Participant Match Method`, ""
+      ),
+      "^invitee_alternate_name"
+    ),
+    na.rm = TRUE
+  ),
+  calendly_invitee_email_matches = sum(
+    str_detect(
+      coalesce(
+        calendly_participant_match_audit$`Participant Match Method`, ""
+      ),
+      "^invitee_email"
+    ),
+    na.rm = TRUE
+  ),
+  calendly_invitee_participant_name_matches = sum(
+    str_detect(
+      coalesce(
+        calendly_participant_match_audit$`Participant Match Method`, ""
+      ),
+      "^invitee_participant_name"
+    ),
+    na.rm = TRUE
+  ),
+  calendly_ambiguous_contact_name_rows = sum(
+    str_detect(
+      coalesce(calendly_participant_match_audit$`Participant Match QA`, ""),
+      "maps to multiple participants"
+    ),
+    na.rm = TRUE
+  ),
   task_eligible_unassigned = sum(
     participant_roster_export$`Task Eligible` &
       participant_roster_export$FTM == "Unassigned"

@@ -527,9 +527,9 @@ st.caption(
 if not eligible_roster.empty and not unassigned_roster.empty:
     st.warning(
         f"{unassigned_roster['Participant ID'].nunique():,} selected task-eligible "
-        "participants have no 2026 Calendly host in either their current IPA "
-        "age band or the immediately preceding age band, and no usable 2025 "
-        "Calendly FTM. Their tasks remain Unassigned."
+        "participants have no direct 2026 same-age Calendly host, usable "
+        "Invitee name/email match, direct 2026 previous-age host, or direct "
+        "2025 Calendly host. Their tasks remain Unassigned."
     )
 
 overview_tab, trend_tab, roster_tab, participant_tab, assignment_tab = st.tabs(
@@ -583,8 +583,9 @@ with overview_tab:
 with trend_tab:
     st.caption(
         "FTM trend lines include only snapshots created under the current "
-        "Calendly hierarchy, including the 2025 last-known-FTM fallback. Older "
-        "ownership methods are excluded so the chart does not mix credit rules."
+        "Calendly hierarchy, including Invitee name/email and direct 2025 "
+        "fallback evidence. Older ownership methods are excluded so the chart "
+        "does not mix credit rules."
     )
     trend_metric = st.selectbox(
         "Trend metric",
@@ -685,9 +686,10 @@ with assignment_tab:
     coverage_columns[2].metric("Unassigned", f"{unassigned_count:,}")
     coverage_columns[3].metric("Assignment coverage", format_percent(coverage))
     st.caption(
-        "Assignment priority is: 2026 same IPA age band, 2026 immediately "
-        "previous age band, then the participant's latest usable 2025 Calendly "
-        "FTM. Ripple and the Call List are not used for IPA credit."
+        "Assignment priority is: direct 2026 Calendly evidence in the same IPA "
+        "age band, Invitee name/email evidence, direct 2026 evidence in the "
+        "immediately previous age band, then direct 2025 Calendly evidence. "
+        "Ripple and the Call List are not used for IPA credit."
     )
 
     if assignment_lookup.empty:
@@ -789,9 +791,9 @@ with st.expander("Metric definitions"):
         - **Non-task participants:** potential and 6–11 month participants are visible in the roster but do not enter task counts, progress, or completion-rate denominators.
         - **Weighted progress:** total task score divided by applicable task rows.
         - **Needs follow-up:** `Incomplete` plus `No record` task rows.
-        - **Current IPA owner:** assignment priority is the latest 2026 Calendly host in the current IPA age band, the 2026 host in the immediately preceding age band, and then the participant's latest usable 2025 Calendly FTM. Ripple and Call List owners are not used for IPA credit.
+        - **Current IPA owner:** assignment priority is direct 2026 Calendly evidence in the current IPA age band, Invitee name/email evidence, direct 2026 evidence in the immediately preceding age band, and then direct 2025 Calendly evidence. Ripple and Call List owners are not used for IPA credit.
         - **Task responsibility:** every task—including Complete, No-Show, Incomplete, and No record—stays with the Calendly FTM recorded for that participant and age band. A later age band can have a different FTM without moving earlier credit. Lower-priority fallback evidence is upgraded when a higher-priority Calendly match becomes available.
-        - **Unassigned:** no confident 2026 same-band or previous-band Calendly host exists and no usable 2025 Calendly FTM exists. These records stay visible without an FTM credit assignment.
+        - **Unassigned:** no confident direct 2026 same-band, Invitee name/email, direct 2026 previous-band, or direct 2025 Calendly host evidence exists. These records stay visible without an FTM credit assignment. Shared-contact evidence remains unassigned unless child information distinguishes one participant.
         - **Current caseload:** only currently applicable age-band tasks are grouped under the participant's current Calendly FTM.
         - **IPA outcome source:** Ripple completion/scheduling fields plus the latest matching 2026 Calendly record for the same participant and age group. A 2025 Calendly record can supply FTM responsibility only; it never changes the 2026 task outcome.
         - **Other task source:** Ripple only.

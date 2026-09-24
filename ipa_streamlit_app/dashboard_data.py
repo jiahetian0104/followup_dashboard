@@ -484,8 +484,6 @@ def prepare_detail_table(data: pd.DataFrame) -> pd.DataFrame:
         "Responsible FTM",
         "Task Stage",
         "Participant ID",
-        "firstName",
-        "lastName",
         "Age Group",
         "Task",
         "Outcome",
@@ -524,8 +522,6 @@ def prepare_roster_table(data: pd.DataFrame) -> pd.DataFrame:
     preferred = [
         "FTM",
         "Participant ID",
-        "firstName",
-        "lastName",
         "birthday",
         "Participant Cohort",
         "statusId",
