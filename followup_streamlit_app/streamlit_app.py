@@ -474,6 +474,15 @@ def make_heatmap(data: pd.DataFrame, include_potential: bool):
         return apply_chart_typography(fig)
 
     pivot = sdf.pivot(index="staff", columns="event_short", values="progress")
+    numerator_pivot = sdf.pivot(index="staff", columns="event_short", values="numerator")
+    denominator_pivot = sdf.pivot(index="staff", columns="event_short", values="denominator")
+    hover_counts = np.stack(
+        [
+            numerator_pivot.reindex_like(pivot).to_numpy(),
+            denominator_pivot.reindex_like(pivot).to_numpy(),
+        ],
+        axis=-1,
+    )
     if not include_potential and "ECHO 2 Re-Consent" in pivot.columns:
         # Keep the column visible but leave its cells blank in the heatmap only.
         pivot["ECHO 2 Re-Consent"] = np.nan
@@ -489,8 +498,19 @@ def make_heatmap(data: pd.DataFrame, include_potential: bool):
         height=600,
         margin=dict(l=30, r=30, t=70, b=80),
     )
-    fig.update_traces(textfont=dict(size=HEATMAP_VALUE_FONT_SIZE))
-    fig.update_traces(hoverongaps=False)
+    fig.update_traces(
+        textfont=dict(size=HEATMAP_VALUE_FONT_SIZE),
+        customdata=hover_counts,
+        hoverongaps=False,
+        hovertemplate=(
+            "Staff: %{y}<br>"
+            "Event: %{x}<br>"
+            "Progress: %{z:.0%}<br>"
+            "Numerator: %{customdata[0]:,.0f}<br>"
+            "Denominator: %{customdata[1]:,.0f}"
+            "<extra></extra>"
+        ),
+    )
     fig.update_coloraxes(
         colorbar_tickfont=dict(size=AXIS_TICK_FONT_SIZE),
     )
