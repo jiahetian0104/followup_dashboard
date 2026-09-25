@@ -466,7 +466,7 @@ def make_bar_event(data: pd.DataFrame):
     return apply_chart_typography(fig)
 
 
-def make_heatmap(data: pd.DataFrame):
+def make_heatmap(data: pd.DataFrame, include_potential: bool):
     """Create the staff-by-event progress heatmap."""
     sdf = summarize_staff_event(data, add_overall=False)
     if sdf.empty:
@@ -474,6 +474,9 @@ def make_heatmap(data: pd.DataFrame):
         return apply_chart_typography(fig)
 
     pivot = sdf.pivot(index="staff", columns="event_short", values="progress")
+    if not include_potential and "ECHO 2 Re-Consent" in pivot.columns:
+        # Keep the column visible but leave its cells blank in the heatmap only.
+        pivot["ECHO 2 Re-Consent"] = np.nan
     fig = px.imshow(
         pivot,
         aspect="auto",
@@ -487,6 +490,7 @@ def make_heatmap(data: pd.DataFrame):
         margin=dict(l=30, r=30, t=70, b=80),
     )
     fig.update_traces(textfont=dict(size=HEATMAP_VALUE_FONT_SIZE))
+    fig.update_traces(hoverongaps=False)
     fig.update_coloraxes(
         colorbar_tickfont=dict(size=AXIS_TICK_FONT_SIZE),
     )
@@ -675,7 +679,7 @@ with current_tab:
     with chart_col2:
         st.plotly_chart(make_bar_event(filtered_df), width="stretch")
 
-    st.plotly_chart(make_heatmap(filtered_df), width="stretch")
+    st.plotly_chart(make_heatmap(filtered_df, include_potential), width="stretch")
 
     # Tables and downloads
     st.subheader("Summary Table")
