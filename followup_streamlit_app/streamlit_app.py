@@ -165,8 +165,8 @@ def standardize_dashboard_data(data: pd.DataFrame) -> pd.DataFrame:
         if col in df.columns:
             df[col] = df[col].astype("string")
 
-    # Prefer call-list standardized status because Potential Participants are
-    # defined from the R call-list standardization logic.
+    # Keep the call-list status for display. Filters use statusId when available
+    # so they match the R eligibility and "Without Potential" calculations.
     if "status_2026_std" in df.columns:
         df["participant_status"] = df["status_2026_std"].astype("string")
     elif "statusId" in df.columns:
@@ -201,8 +201,8 @@ def apply_filters(
 
     if not include_potential:
         out = out[
-            out["participant_status"].ne(POTENTIAL_LABEL)
-            | out["participant_status"].isna()
+            out[status_filter_col].ne(POTENTIAL_LABEL)
+            | out[status_filter_col].isna()
         ]
 
     if staff_value != "All":
@@ -620,7 +620,7 @@ st.sidebar.subheader("Filters")
 include_potential = st.sidebar.toggle(
     "Include Potential Participants",
     value=True,
-    help="Turn this off to exclude records where participant_status is Potential Participants.",
+    help="Turn this off to exclude records where Ripple statusId is Potential Participants (or the available status column if statusId is missing).",
 )
 
 staff_value = st.sidebar.selectbox(
