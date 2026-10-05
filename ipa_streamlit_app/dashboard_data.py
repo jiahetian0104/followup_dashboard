@@ -44,6 +44,8 @@ AGE_GROUP_LABELS = {
 
 AGE_GROUP_ORDER = list(AGE_GROUP_LABELS.values())
 OUTCOME_ORDER = ["Complete", "No-Show", "Incomplete", "No record"]
+IPA_METRICS = ["Complete Count", "No-show Count", "Cancel Count", "Reschedule Count"]
+IPA_COUNTS = ["Appointment Count", *IPA_METRICS]
 PARTICIPANT_SCOPE_ORDER = [
     "Task eligible",
     "6-11 months",
@@ -303,6 +305,70 @@ def roster_from_task_data(data: pd.DataFrame) -> pd.DataFrame:
 def safe_unique(values: Iterable) -> list[str]:
     """Return sorted non-missing values as strings."""
     return sorted(str(value) for value in pd.Series(values).dropna().unique())
+
+
+def standardize_ipa_records(data: pd.DataFrame, *, ftm_records: bool = False) -> pd.DataFrame:
+    """Validate activity exports; missing counts stay unknown rather than zero."""
+    df = data.drop(columns=["firstName", "lastName"], errors="ignore").copy()
+    keys = ["Participant ID", "Participant Cohort", "IPA Age Band"]
+    required = {*keys, "IPA Year", "IPA Complete", "Appointment Count",
+                "No-show Count", "Cancel Count", "Reschedule Count"}
+    if ftm_records:
+        required |= {"FTM", "Complete Count"}
+        keys.append("FTM")
+    missing = sorted(required - set(df.columns))
+    if missing:
+        raise ValueError("Missing IPA column(s): " + ", ".join(missing))
+    for column in [*keys, "Completion FTM", "Completion Attribution"]:
+        if column in df:
+            df[column] = df[column].astype("string").str.strip()
+    if df[keys].isna().any().any() or df.duplicated(keys).any():
+        raise ValueError("IPA records must have complete, unique participant/age-band keys.")
+    for column in IPA_COUNTS:
+        if column in df:
+            df[column] = pd.to_numeric(df[column], errors="raise").astype("Int64")
+            if df[column].dropna().lt(0).any():
+                raise ValueError(f"Negative IPA counts in {column}.")
+    df["IPA Year"] = pd.to_numeric(df["IPA Year"], errors="raise").astype("Int64")
+    df["IPA Complete"] = df["IPA Complete"].astype("string").str.lower().isin(
+        ["true", "1", "yes"]
+    )
+    df["Age Group"] = df["IPA Age Band"].map(AGE_GROUP_LABELS).fillna(df["IPA Age Band"])
+    return df
+
+
+def filter_ipa_records(
+    data: pd.DataFrame, ftms: list[str], age_groups: list[str], cohorts: list[str]
+) -> pd.DataFrame:
+    """IPA filters apply to event-host/credit attribution, never current owners."""
+    df = data.copy()
+    if ftms:
+        df = df[df["FTM"].isin(ftms)]
+    if age_groups:
+        df = df[df["Age Group"].isin(age_groups)]
+    if cohorts:
+        df = df[df["Participant Cohort"].isin(cohorts)]
+    return df
+
+
+def summarize_ipa_activity(data: pd.DataFrame) -> pd.DataFrame:
+    """Sum actions and credited completions at participant-age-band-FTM grain."""
+    columns = ["FTM", *IPA_METRICS, "Appointment Count", "Participants", "Participant Age Bands",
+               "Weighted Points", "Weighted IPA Performance"]
+    if data.empty:
+        return pd.DataFrame(columns=columns)
+    grouped = data.groupby("FTM", observed=True, dropna=False)
+    counts = grouped[IPA_COUNTS].agg(
+        lambda values: pd.NA if values.isna().any() else int(values.sum())
+    )
+    counts["Participants"] = grouped["Participant ID"].nunique()
+    counts["Participant Age Bands"] = grouped.size()
+    counts["Weighted Points"] = counts["Complete Count"] + 0.25 * counts["No-show Count"]
+    counts["Weighted IPA Performance"] = counts["Weighted Points"] / counts["Participant Age Bands"]
+    unresolved = (counts.index.isin(["Unassigned", "Pending verification"])
+                  | counts.index.astype(str).str.startswith("Shared hosts:"))
+    counts.loc[unresolved, "Weighted IPA Performance"] = np.nan
+    return counts.reset_index()[columns]
 
 
 def apply_filters(

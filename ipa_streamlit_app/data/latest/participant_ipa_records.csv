@@ -1,0 +1,505 @@
+Participant ID,Participant Cohort,IPA Age Band,Appointment Count,No-show Count,Cancel Count,Reschedule Count,IPA Complete,Completion Date,Completion FTM,Completion Attribution,Completion Fallback Appointment Date,IPA Year
+BBB555-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-04-27,Anna,Matched completion date,,2026
+BBD445-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-10-03,Jo,Matched completion date,,2026
+BGB558-01-A,3-20 year,6_10yr,3,0,1,1,FALSE,,,Not complete,,2026
+BGT851-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-09,Toye,Matched completion date,,2026
+BJH083-01-A,3-20 year,6_10yr,3,0,3,0,FALSE,,,Not complete,,2026
+BKK569-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-02,Kowlini,Matched completion date,,2026
+BKV315-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-12,Anna,Matched completion date,,2026
+BKX774-01-A,3-20 year,11_17yr,2,0,0,0,TRUE,2026-06-06,Jo,Matched completion date,,2026
+BKX774-01-B,3-20 year,11_17yr,0,0,0,0,TRUE,2026-06-06,Pending verification,No same/previous-age-band booking in reporting or prior year,,2026
+BNH325-01-A,3-20 year,3_5yr,4,0,0,3,TRUE,2026-07-02,Anna,Matched completion date,,2026
+BPT625-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-03,Andrew,Matched completion date,,2026
+BPZ685-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-03,Jo,Matched completion date,,2026
+BQW274-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-06-03,Jo,Matched completion date,,2026
+BTK197-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-30,Nicole,Matched completion date,,2026
+BZP492-01-A,3-20 year,3_5yr,4,0,0,3,FALSE,,,Not complete,,2026
+CBL718-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-13,Nicole,Matched completion date,,2026
+CBW928-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+CBW928-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-05-19,Toye,Previous-age-band completion-date match,,2026
+CDK744-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-08-03,Jo,Matched completion date,,2026
+CGK997-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-05,Nicole,Matched completion date,,2026
+CGT416-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-03-13,Amy,Matched completion date,,2026
+CHL989-01-A,3-20 year,6_10yr,2,0,1,0,TRUE,2026-07-21,Nicole,Matched completion date,,2026
+CKH175-01-A,3-20 year,6_10yr,1,0,1,0,FALSE,,,Not complete,,2026
+CKV256-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+CKV256-01-A,3-20 year,6_10yr,2,0,0,2,TRUE,2026-07-02,Toye,Latest same-age-band Calendly fallback,2026-08-18,2026
+CLP827-01-A,3-20 year,6_10yr,4,0,1,2,FALSE,,,Not complete,,2026
+CLX467-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-22,Amy,Matched completion date,,2026
+CRB612-01-A,3-20 year,3_5yr,3,0,0,2,TRUE,2026-09-10,Andrew,Matched completion date,,2026
+CRN594-01-A,3-20 year,11_17yr,2,0,1,0,TRUE,2026-04-15,Amy,Matched completion date,,2026
+CSC443-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-24,Nicole,Matched completion date,,2026
+CSG043-01-A,3-20 year,11_17yr,2,0,0,1,TRUE,2026-07-20,Cassie,Matched completion date,,2026
+CSS863-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-21,Toye,Matched completion date,,2026
+CVD069-01-A,3-20 year,6_10yr,1,0,1,0,FALSE,,,Not complete,,2026
+CVH085-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-07-13,Jody,Latest same-age-band Calendly fallback,2026-07-11,2026
+CWR588-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-08-27,Andrew,Matched completion date,,2026
+CXM978-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-17,Nicole,Matched completion date,,2026
+CXR904-01-A,3-20 year,6_10yr,3,0,1,1,TRUE,2026-08-30,Kowlini,Matched completion date,,2026
+CZX484-01-A,3-20 year,6_10yr,1,1,0,0,FALSE,,,Not complete,,2026
+DGF778-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-01,Nicole,Matched completion date,,2026
+DJK313-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-27,Nicole,Matched completion date,,2026
+DKC244-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-06-10,Jo,Matched completion date,,2026
+DLC442-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-07,Anna,Matched completion date,,2026
+DNW140-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-01,Andrew,Matched completion date,,2026
+DQZ583-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+DQZ583-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-09-17,Andrew,Previous-age-band completion-date match,,2026
+DRW841-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-10,Amy,Matched completion date,,2026
+DSN848-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-08-13,Kowlini,Matched completion date,,2026
+DWB641-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+DWJ555-01-A,3-20 year,6_10yr,2,1,0,0,TRUE,2026-09-09,Kowlini,Matched completion date,,2026
+DYN462-01-A,3-20 year,3_5yr,1,0,1,0,FALSE,,,Not complete,,2026
+FFC134-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-23,Kowlini,Matched completion date,,2026
+FFM260-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-04-24,Breanna,Latest previous-age-band Calendly fallback,2025-09-25,2026
+FHJ625-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-17,Toye,Matched completion date,,2026
+FKD843-01-A,3-20 year,11_17yr,2,0,0,1,FALSE,,,Not complete,,2026
+FNS996-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-26,Amy,Matched completion date,,2026
+FTC406-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-04-09,Toye,Matched completion date,,2026
+FWH545-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-06-03,Jo,Matched completion date,,2026
+FWL830-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-13,Nicole,Matched completion date,,2026
+FYB626-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-07,Cassie,Matched completion date,,2026
+FYC718-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-31,Andrew,Matched completion date,,2026
+FYG871-01-A,3-20 year,6_10yr,1,1,0,0,FALSE,,,Not complete,,2026
+FYN107-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-20,Toye,Matched completion date,,2026
+GBB029-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-17,Andrew,Matched completion date,,2026
+GCP510-02-A,3-20 year,3_5yr,3,0,2,0,TRUE,2026-08-31,Kowlini,Matched completion date,,2026
+GDY251-01-A,3-20 year,3_5yr,1,1,0,0,FALSE,,,Not complete,,2026
+GFK818-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-14,Anna,Matched completion date,,2026
+GFP154-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-10,Anna,Matched completion date,,2026
+GHR496-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-04,Andrew,Matched completion date,,2026
+GKZ718-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-04-30,Anna,Matched completion date,,2026
+GMK178-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-25,Nicole,Matched completion date,,2026
+GMS994-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-10,Jo,Latest same-age-band Calendly fallback,2026-04-08,2026
+GRN392-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-25,Cassie,Matched completion date,,2026
+GVZ320-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-11,Andrew,Matched completion date,,2026
+GWP690-01-A,3-20 year,11_17yr,3,0,0,2,TRUE,2026-04-22,Jo,Matched completion date,,2026
+GYQ941-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-15,Toye,Matched completion date,,2026
+GZM171-01-A,3-20 year,11_17yr,2,0,0,1,TRUE,2026-05-11,Cassie,Matched completion date,,2026
+HBN403-01-A,3-20 year,6_10yr,2,1,0,1,FALSE,,,Not complete,,2026
+HBX436-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-06,Amy,Matched completion date,,2026
+HCG894-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+HGX059-01-A,3-20 year,11_17yr,2,0,1,0,TRUE,2026-04-18,Jo,Matched completion date,,2026
+HGZ645-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-22,Nicole,Matched completion date,,2026
+HHL079-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-14,Jody,Matched completion date,,2026
+HJC838-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-26,Amy,Matched completion date,,2026
+HKF151-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-13,Cassie,Matched completion date,,2026
+HKF151-02-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-13,Cassie,Matched completion date,,2026
+HKY684-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-07-15,Pending verification,No same/previous-age-band booking in reporting or prior year,,2026
+HLW497-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-28,Jody,Matched completion date,,2026
+HMP017-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+HMP636-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-03,Andrew,Matched completion date,,2026
+HQB638-01-A,3-20 year,11_17yr,2,0,0,1,TRUE,2026-09-28,Jo,Matched completion date,,2026
+HQX076-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-16,Nicole,Matched completion date,,2026
+HQY396-01-A,3-20 year,6_10yr,2,0,1,0,TRUE,2026-08-27,Nicole,Matched completion date,,2026
+HRF525-01-A,3-20 year,11_17yr,2,0,0,1,TRUE,2026-08-23,Toye,Matched completion date,,2026
+HSD339-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+HSD339-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-04-30,Toye,Previous-age-band completion-date match,,2026
+HSV917-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-04,Jo,Matched completion date,,2026
+HSX501-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-02,Toye,Matched completion date,,2026
+HTW595-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-06-03,Anna,Matched completion date,,2026
+HXK737-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-08-10,Anna,Matched completion date,,2026
+HYP683-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-02,Amy,Matched completion date,,2026
+HYQ752-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-06-28,Cassie,Matched completion date,,2026
+HZD623-01-A,3-20 year,11_17yr,2,0,2,0,FALSE,,,Not complete,,2026
+HZT648-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-16,Jo,Matched completion date,,2026
+JDH761-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-04-21,Anna,Matched completion date,,2026
+JFG039-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-20,Andrew,Matched completion date,,2026
+JFP288-01-A,3-20 year,6_10yr,1,1,0,0,FALSE,,,Not complete,,2026
+JJK068-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-24,Jody,Matched completion date,,2026
+JJV437-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-10-01,Nicole,Matched completion date,,2026
+JKF839-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-05,Andrew,Matched completion date,,2026
+JKZ989-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-03,Nicole,Matched completion date,,2026
+JMR655-01-A,3-20 year,11_17yr,0,0,0,0,TRUE,2026-06-09,Jo,Latest previous-age-band Calendly fallback,2026-06-09,2026
+JMR655-01-A,3-20 year,6_10yr,4,0,0,2,FALSE,,,Not complete,,2026
+JNT771-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-10,Cassie,Matched completion date,,2026
+JQF218-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-20,Amy,Matched completion date,,2026
+JQZ496-01-A,3-20 year,11_17yr,3,0,1,1,TRUE,2026-07-24,Jo,Matched completion date,,2026
+JSF732-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-07,Cassie,Matched completion date,,2026
+JSS418-01-A,3-20 year,6_10yr,2,0,0,1,FALSE,,,Not complete,,2026
+JTC719-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-26,Amy,Matched completion date,,2026
+JTV110-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-09-19,Andrew,Matched completion date,,2026
+JVW695-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-08-11,Andrew,Matched completion date,,2026
+JWJ589-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-26,Kowlini,Matched completion date,,2026
+JWP176-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-10-02,Andrew,Matched completion date,,2026
+JYK203-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+JYP178-01-A,3-20 year,3_5yr,1,1,0,0,FALSE,,,Not complete,,2026
+JYP178-01-N,3-20 year,3_5yr,1,1,0,0,FALSE,,,Not complete,,2026
+JZM106-01-A,3-20 year,6_10yr,2,0,0,1,FALSE,,,Not complete,,2026
+JZP660-01-A,3-20 year,3_5yr,1,1,0,0,FALSE,,,Not complete,,2026
+KBQ321-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-03,Jody,Matched completion date,,2026
+KCT927-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+KCT927-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-07-01,Toye,Previous-age-band completion-date match,,2026
+KDH192-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+KDS985-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-06-15,Cassie,Matched completion date,,2026
+KFH643-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-27,Anna,Matched completion date,,2026
+KFQ955-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-07,Cassie,Matched completion date,,2026
+KGL651-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-27,Jo,Matched completion date,,2026
+KJR698-01-A,3-20 year,3_5yr,2,0,0,1,TRUE,2026-05-01,Anna,Matched completion date,,2026
+KKR431-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-13,Nicole,Matched completion date,,2026
+KKT953-01-A,3-20 year,6_10yr,1,1,0,0,FALSE,,,Not complete,,2026
+KKW154-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-14,Nicole,Matched completion date,,2026
+KLK075-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-26,Toye,Matched completion date,,2026
+KPJ294-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-28,Amy,Matched completion date,,2026
+KPV565-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-10,Amy,Matched completion date,,2026
+KRC117-01-A,3-20 year,6_10yr,1,0,1,0,TRUE,2026-07-16,Toye,Latest same-age-band Calendly fallback,2026-07-14,2026
+KRY635-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-18,Jo,Matched completion date,,2026
+KSZ066-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-09-19,Andrew,Matched completion date,,2026
+KXH001-01-A,3-20 year,6_10yr,1,1,0,0,FALSE,,,Not complete,,2026
+KZC694-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-01,Toye,Matched completion date,,2026
+KZP212-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-18,Kowlini,Matched completion date,,2026
+LBG473-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+LBG473-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-04-14,Toye,Previous-age-band completion-date match,,2026
+LCR073-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-27,Nicole,Matched completion date,,2026
+LGF333-01-A,3-20 year,6_10yr,2,0,2,0,FALSE,,,Not complete,,2026
+LKY497-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-22,Jo,Matched completion date,,2026
+LMR839-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-08-31,Andrew,Matched completion date,,2026
+LNP424-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-04-07,Cassie,Matched completion date,,2026
+LPT526-01-A,3-20 year,3_5yr,0,0,0,0,TRUE,2026-05-18,Pending verification,No same/previous-age-band booking in reporting or prior year,,2026
+LQY206-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-30,Cassie,Matched completion date,,2026
+LSV069-01-A,3-20 year,6_10yr,1,0,1,0,FALSE,,,Not complete,,2026
+LSZ581-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-04,Anna,Matched completion date,,2026
+LVN615-01-M,3-20 year,6_10yr,2,0,0,1,TRUE,2026-07-30,Nicole,Matched completion date,,2026
+LVN615-01-N,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-30,Nicole,Matched completion date,,2026
+LVR036-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-21,Toye,Matched completion date,,2026
+LWN054-01-M,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+LWN054-01-N,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+LXZ862-01-A,3-20 year,3_5yr,2,0,0,1,TRUE,2026-08-11,Anna,Latest same-age-band Calendly fallback,2026-08-10,2026
+LYC422-01-A,3-20 year,3_5yr,4,1,0,1,TRUE,2026-08-04,Toye,Matched completion date,,2026
+LYY018-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+LZJ787-01-A,3-20 year,3_5yr,1,1,0,0,FALSE,,,Not complete,,2026
+MBB404-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-29,Toye,Matched completion date,,2026
+MBC594-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-08-02,Jo,Matched completion date,,2026
+MBS013-01-A,3-20 year,3_5yr,2,1,1,0,FALSE,,,Not complete,,2026
+MCC047-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+MCV210-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-23,Jo,Matched completion date,,2026
+MFB544-01-A,3-20 year,6_10yr,4,0,1,3,FALSE,,,Not complete,,2026
+MFH216-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-08-16,Toye,Matched completion date,,2026
+MHS537-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+MHS537-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-05-07,Anna,Previous-age-band completion-date match,,2026
+MLW298-01-A,3-20 year,3_5yr,2,0,0,1,TRUE,2026-07-15,Anna,Latest same-age-band Calendly fallback,2026-07-14,2026
+MMK311-01-A,3-20 year,3_5yr,2,0,0,1,TRUE,2026-06-03,Jody,Matched completion date,,2026
+MMK311-01-N,3-20 year,3_5yr,2,0,1,0,TRUE,2026-06-03,Jody,Matched completion date,,2026
+MMK829-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-08-14,Kowlini,Matched completion date,,2026
+MNN095-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-06-16,Toye,Latest same-age-band Calendly fallback,2025-10-09,2026
+MPX757-01-A,3-20 year,3_5yr,2,0,0,1,FALSE,,,Not complete,,2026
+MQJ796-01-M,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-01,Cassie,Matched completion date,,2026
+MQJ796-01-N,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-01,Cassie,Matched completion date,,2026
+MQM950-01-A,3-20 year,11_17yr,4,0,1,2,TRUE,2026-10-03,Jo,Matched completion date,,2026
+MRX335-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-24,Nicole,Matched completion date,,2026
+MXB539-01-A,3-20 year,6_10yr,2,0,0,1,FALSE,,,Not complete,,2026
+MYL231-01-A,3-20 year,3_5yr,2,0,0,1,FALSE,,,Not complete,,2026
+MYL231-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-07-14,Jody,Previous-age-band completion-date match,,2026
+MYN399-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-27,Jo,Matched completion date,,2026
+MYP897-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-28,Jody,Matched completion date,,2026
+MYY891-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-06-22,Nicole,Matched completion date,,2026
+NBV813-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-03-30,Cassie,Matched completion date,,2026
+NDN427-01-A,3-20 year,6_10yr,4,0,2,2,FALSE,,,Not complete,,2026
+NDX702-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-26,Andrew,Matched completion date,,2026
+NGT839-01-A,3-20 year,11_17yr,1,0,0,0,FALSE,,,Not complete,,2026
+NGX536-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-19,Amy,Matched completion date,,2026
+NHR264-01-A,3-20 year,6_10yr,2,0,1,0,TRUE,2026-06-10,Nicole,Matched completion date,,2026
+NKG127-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-02,Jo,Matched completion date,,2026
+NMF407-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-11,Cassie,Matched completion date,,2026
+NMT952-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-10-01,Jo,Matched completion date,,2026
+NNF727-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+NRK711-01-A,3-20 year,6_10yr,3,0,0,2,TRUE,2026-05-03,Toye,Matched completion date,,2026
+NVB331-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-28,Nicole,Matched completion date,,2026
+NZV696-01-A,3-20 year,3_5yr,1,1,0,0,FALSE,,,Not complete,,2026
+PBC879-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-10-04,Andrew,Matched completion date,,2026
+PBF223-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-02,Cassie,Matched completion date,,2026
+PDV195-01-A,3-20 year,11_17yr,2,0,2,0,FALSE,,,Not complete,,2026
+PDW328-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-15,Jo,Matched completion date,,2026
+PFD674-01-A,3-20 year,3_5yr,3,0,1,1,FALSE,,,Not complete,,2026
+PHN877-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-16,Nicole,Matched completion date,,2026
+PHT777-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-06-09,Jo,Matched completion date,,2026
+PMY376-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-30,Toye,Matched completion date,,2026
+PND524-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-24,Nicole,Matched completion date,,2026
+PPK451-01-A,3-20 year,3_5yr,1,0,1,0,FALSE,,,Not complete,,2026
+PPM461-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-01,Jody,Matched completion date,,2026
+PRD929-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-26,Kowlini,Matched completion date,,2026
+PRH159-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+PRT334-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-24,Jo,Matched completion date,,2026
+PTN126-01-A,3-20 year,6_10yr,6,0,1,4,TRUE,2026-07-21,Nicole,Matched completion date,,2026
+PXV115-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-17,Nicole,Matched completion date,,2026
+PXZ071-01-A,3-20 year,3_5yr,1,0,1,0,FALSE,,,Not complete,,2026
+QFN151-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-07,Amy,Matched completion date,,2026
+QGX254-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-08-19,Toye,Matched completion date,,2026
+QHC467-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-07,Toye,Matched completion date,,2026
+QHG535-01-A,3-20 year,6_10yr,3,1,1,0,TRUE,2026-09-30,Andrew,Matched completion date,,2026
+QHJ854-01-A,3-20 year,11_17yr,2,0,1,0,TRUE,2026-09-29,Jo,Matched completion date,,2026
+QHM041-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-29,Toye,Matched completion date,,2026
+QJJ178-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-16,Nicole,Matched completion date,,2026
+QKS362-01-A,3-20 year,6_10yr,1,1,0,0,FALSE,,,Not complete,,2026
+QLS775-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-06-29,Anna,Latest same-age-band Calendly fallback,2026-06-26,2026
+QMG495-01-A,3-20 year,3_5yr,2,0,1,1,TRUE,2026-08-11,Andrew,Latest same-age-band Calendly fallback,2026-08-24,2026
+QMT063-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-01,Jo,Matched completion date,,2026
+QNB666-01-A,3-20 year,3_5yr,1,1,0,0,FALSE,,,Not complete,,2026
+QPF716-01-A,3-20 year,3_5yr,2,2,0,0,FALSE,,,Not complete,,2026
+QRD285-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-09-02,Amy,Matched completion date,,2026
+QRK467-01-M,3-20 year,6_10yr,1,0,1,0,TRUE,2026-07-26,Toye,Latest same-age-band Calendly fallback,2026-07-22,2026
+QRK467-01-N,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-26,Toye,Matched completion date,,2026
+QTN450-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-07,Anna,Matched completion date,,2026
+QTQ022-01-A,3-20 year,6_10yr,2,0,1,0,TRUE,2026-09-21,Kowlini,Matched completion date,,2026
+QWF984-01-A,3-20 year,11_17yr,2,0,0,1,TRUE,2026-07-27,Anna,Matched completion date,,2026
+QYF906-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-02,Amy,Matched completion date,,2026
+QZD360-01-A,3-20 year,6_10yr,1,0,1,0,TRUE,2026-09-01,Toye,Latest same-age-band Calendly fallback,2026-09-01,2026
+QZP255-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-19,Amy,Matched completion date,,2026
+RBR931-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-09-21,Cassie,Matched completion date,,2026
+RBR931-02-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-09-21,Cassie,Matched completion date,,2026
+RCH363-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-27,Jo,Matched completion date,,2026
+RCJ118-01-A,3-20 year,3_5yr,4,1,1,1,FALSE,,,Not complete,,2026
+RDJ491-01-A,3-20 year,11_17yr,4,2,2,0,FALSE,,,Not complete,,2026
+RGM456-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-27,Nicole,Matched completion date,,2026
+RGQ821-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-31,Kowlini,Matched completion date,,2026
+RGV560-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-01,Jo,Matched completion date,,2026
+RGV560-01-B,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-01,Jo,Matched completion date,,2026
+RMX477-01-A,3-20 year,6_10yr,1,1,0,0,FALSE,,,Not complete,,2026
+RNV741-01-A,3-20 year,11_17yr,3,0,0,2,TRUE,2026-06-30,Cassie,Matched completion date,,2026
+RPS818-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-20,Amy,Matched completion date,,2026
+RQS085-01-A,3-20 year,3_5yr,1,1,0,0,FALSE,,,Not complete,,2026
+RQT437-01-A,3-20 year,6_10yr,2,0,1,0,TRUE,2026-10-04,Jody,Matched completion date,,2026
+RQY432-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-08-10,Andrew,Matched completion date,,2026
+RVT795-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-25,Nicole,Matched completion date,,2026
+RWC339-01-M,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-12,Amy,Matched completion date,,2026
+RWP288-01-A,3-20 year,3_5yr,2,1,0,0,TRUE,2026-06-03,Toye,Matched completion date,,2026
+RWP821-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-26,Kowlini,Matched completion date,,2026
+RWR771-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-09-16,Amy,Matched completion date,,2026
+RYB389-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-09-28,Andrew,Matched completion date,,2026
+RYB389-01-N,3-20 year,3_5yr,1,0,0,0,TRUE,2026-09-28,Andrew,Matched completion date,,2026
+RYF448-01-A,3-20 year,6_10yr,1,0,1,0,FALSE,,,Not complete,,2026
+SBB001-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+SBS453-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-21,Cassie,Matched completion date,,2026
+SCB433-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-02,Jo,Matched completion date,,2026
+SDT653-01-A,3-20 year,6_10yr,2,0,1,0,TRUE,2026-08-27,Andrew,Matched completion date,,2026
+SGS765-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-23,Nicole,Matched completion date,,2026
+SJJ920-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-31,Nicole,Matched completion date,,2026
+SJZ725-01-A,3-20 year,6_10yr,2,1,0,1,FALSE,,,Not complete,,2026
+SKD083-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-14,Anna,Matched completion date,,2026
+SKR563-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-23,Nicole,Matched completion date,,2026
+SNJ492-01-N,3-20 year,11_17yr,1,0,1,0,FALSE,,,Not complete,,2026
+SNV833-01-A,3-20 year,11_17yr,2,0,0,1,TRUE,2026-08-10,Cassie,Matched completion date,,2026
+SPR662-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-26,Nicole,Matched completion date,,2026
+SSN103-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-03,Nicole,Matched completion date,,2026
+SSX741-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-07-29,Breanna,Matched completion date,,2026
+STQ126-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-22,Jo,Matched completion date,,2026
+STZ858-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-27,Anna,Matched completion date,,2026
+SYJ996-01-M,3-20 year,6_10yr,2,0,0,1,TRUE,2026-04-01,Toye,Matched completion date,,2026
+SYJ996-01-N,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-01,Toye,Matched completion date,,2026
+SZF435-01-A,3-20 year,11_17yr,2,0,1,0,TRUE,2026-09-01,Amy,Matched completion date,,2026
+TCH588-01-A,3-20 year,3_5yr,2,0,0,1,TRUE,2026-08-12,Jody,Matched completion date,,2026
+TDY935-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-09,Jody,Latest same-age-band Calendly fallback,2026-03-08,2026
+TFH187-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-06,Kowlini,Matched completion date,,2026
+TGD969-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-07,Amy,Matched completion date,,2026
+TGY183-01-A,3-20 year,11_17yr,0,0,0,0,TRUE,2026-03-15,Amy,Previous-age-band completion-date match,,2026
+TGY183-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+THL624-01-A,3-20 year,11_17yr,4,0,0,3,TRUE,2026-07-12,Cassie,Matched completion date,,2026
+TKF056-01-A,3-20 year,6_10yr,1,1,0,0,FALSE,,,Not complete,,2026
+TKY175-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-27,Breanna,Matched completion date,,2026
+TLP747-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-11,Nicole,Matched completion date,,2026
+TMB738-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-05-15,Nicole,Matched completion date,,2026
+TNZ700-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-21,Nicole,Matched completion date,,2026
+TPN036-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+TPN036-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-04-28,Toye,Previous-age-band completion-date match,,2026
+TQC990-01-A,3-20 year,11_17yr,2,0,0,0,TRUE,2026-07-08,Cassie,Matched completion date,,2026
+TQW013-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-05-05,Amy,Matched completion date,,2026
+TQW993-01-A,3-20 year,3_5yr,3,0,1,1,TRUE,2026-08-23,Andrew,Matched completion date,,2026
+TSC574-01-A,3-20 year,6_10yr,3,0,2,0,TRUE,2026-03-26,Nicole,Matched completion date,,2026
+TSN328-01-M,3-20 year,6_10yr,7,1,1,2,TRUE,2026-09-08,Kowlini,Matched completion date,,2026
+TSN328-01-N,3-20 year,6_10yr,3,1,0,0,TRUE,2026-08-29,Kowlini,Matched completion date,,2026
+TTG223-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-30,Andrew,Matched completion date,,2026
+TWK336-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-27,Cassie,Matched completion date,,2026
+TWT305-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-05,Nicole,Matched completion date,,2026
+TXF197-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-12,Amy,Matched completion date,,2026
+TXR417-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-20,Cassie,Matched completion date,,2026
+TYJ533-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-06-10,Amy,Matched completion date,,2026
+VBK954-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-02,Toye,Matched completion date,,2026
+VBZ802-01-A,3-20 year,11_17yr,1,0,1,0,FALSE,,,Not complete,,2026
+VCK629-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-20,Amy,Matched completion date,,2026
+VCL006-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+VCT498-01-A,3-20 year,3_5yr,0,0,0,0,TRUE,2026-07-29,Pending verification,No same/previous-age-band booking in reporting or prior year,,2026
+VDF655-01-A,3-20 year,3_5yr,1,0,1,0,FALSE,,,Not complete,,2026
+VDW156-01-A,3-20 year,3_5yr,2,0,0,0,TRUE,2026-05-22,Anna,Matched completion date,,2026
+VFR138-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-17,Cassie,Matched completion date,,2026
+VHC022-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-03,Jody,Matched completion date,,2026
+VHR109-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-15,Jody,Matched completion date,,2026
+VHR369-01-A,3-20 year,6_10yr,1,1,0,0,FALSE,,,Not complete,,2026
+VKF111-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-09-22,Andrew,Matched completion date,,2026
+VKG640-01-A,3-20 year,3_5yr,2,0,0,1,TRUE,2026-09-04,Andrew,Matched completion date,,2026
+VKP009-01-A,3-20 year,11_17yr,1,0,1,0,FALSE,,,Not complete,,2026
+VKY771-01-A,3-20 year,6_10yr,1,0,1,0,FALSE,,,Not complete,,2026
+VLD311-01-A,3-20 year,3_5yr,2,0,0,1,TRUE,2026-05-01,Anna,Matched completion date,,2026
+VLZ486-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+VMF570-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-16,Toye,Matched completion date,,2026
+VNC365-01-A,3-20 year,3_5yr,2,0,0,1,TRUE,2026-04-21,Toye,Matched completion date,,2026
+VQJ770-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-22,Jo,Matched completion date,,2026
+VQX210-01-A,3-20 year,6_10yr,4,0,0,3,TRUE,2026-03-13,Nicole,Matched completion date,,2026
+VRN902-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-15,Anna,Latest same-age-band Calendly fallback,2026-07-24,2026
+VRS810-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-26,Jo,Matched completion date,,2026
+VST318-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-03-31,Cassie,Matched completion date,,2026
+VVL844-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-08-05,Jody,Matched completion date,,2026
+VWP009-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-07,Toye,Matched completion date,,2026
+VXC743-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-31,Nicole,Matched completion date,,2026
+VXN541-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-05,Toye,Matched completion date,,2026
+VZB638-01-A,3-20 year,11_17yr,2,0,2,0,TRUE,2026-08-16,Cassie,Latest same-age-band Calendly fallback,2026-08-17,2026
+VZB638-02-A,3-20 year,11_17yr,2,0,1,0,TRUE,2026-08-16,Cassie,Matched completion date,,2026
+WBH589-01-A,3-20 year,11_17yr,2,0,0,1,FALSE,,,Not complete,,2026
+WDM136-01-A,3-20 year,3_5yr,1,0,1,0,FALSE,,,Not complete,,2026
+WDS605-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-08-06,Nicole,Matched completion date,,2026
+WDV681-01-A,3-20 year,11_17yr,3,0,0,2,FALSE,,,Not complete,,2026
+WDV681-02-A,3-20 year,11_17yr,3,0,1,2,FALSE,,,Not complete,,2026
+WFB144-01-A,3-20 year,3_5yr,1,0,0,0,FALSE,,,Not complete,,2026
+WFB144-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-03-29,Toye,Previous-age-band completion-date match,,2026
+WFK499-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-12,Cassie,Matched completion date,,2026
+WFY450-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-26,Toye,Matched completion date,,2026
+WGH698-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-28,Anna,Matched completion date,,2026
+WGJ956-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-28,Amy,Matched completion date,,2026
+WGX824-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-24,Andrew,Matched completion date,,2026
+WHW151-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-27,Cassie,Matched completion date,,2026
+WKB507-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-31,Toye,Matched completion date,,2026
+WKM586-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-23,Jo,Matched completion date,,2026
+WKR328-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-03-13,Amy,Matched completion date,,2026
+WKW938-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-09-08,Kowlini,Matched completion date,,2026
+WLB161-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-17,Anna,Matched completion date,,2026
+WMJ798-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-31,Cassie,Matched completion date,,2026
+WMX146-01-A,3-20 year,11_17yr,4,0,3,1,FALSE,,,Not complete,,2026
+WTN483-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-07-01,Jody,Matched completion date,,2026
+WTX564-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-08-18,Toye,Matched completion date,,2026
+WVD031-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-09-02,Amy,Matched completion date,,2026
+WXD665-01-A,3-20 year,6_10yr,2,0,1,0,TRUE,2026-08-05,Jody,Matched completion date,,2026
+WYG353-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-04-02,Cassie,Matched completion date,,2026
+WYL000-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-06,Jody,Matched completion date,,2026
+WYN485-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-13,Jody,Matched completion date,,2026
+WYR002-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-27,Nicole,Matched completion date,,2026
+WYZ100-01-A,3-20 year,11_17yr,2,0,0,1,TRUE,2026-04-03,Cassie,Matched completion date,,2026
+WZT929-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-19,Jody,Matched completion date,,2026
+XDF604-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-04-27,Cassie,Matched completion date,,2026
+XDR789-01-A,3-20 year,11_17yr,3,0,0,2,TRUE,2026-09-27,Jo,Matched completion date,,2026
+XFN825-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-09-22,Amy,Matched completion date,,2026
+XFQ902-01-A,3-20 year,11_17yr,1,1,0,0,FALSE,,,Not complete,,2026
+XGT908-01-A,3-20 year,3_5yr,1,0,1,0,FALSE,,,Not complete,,2026
+XHC521-01-A,3-20 year,11_17yr,1,0,0,0,FALSE,,,Not complete,,2026
+XHP409-01-A,3-20 year,6_10yr,3,0,1,1,TRUE,2026-09-01,Nicole,Matched completion date,,2026
+XKF863-01-A,3-20 year,11_17yr,2,0,0,1,TRUE,2026-05-04,Cassie,Matched completion date,,2026
+XMH232-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-24,Jo,Matched completion date,,2026
+XMR094-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-06-10,Toye,Matched completion date,,2026
+XQD155-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-29,Nicole,Matched completion date,,2026
+XRM042-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-03-16,Cassie,Matched completion date,,2026
+XRZ528-01-A,3-20 year,11_17yr,2,0,0,1,TRUE,2026-04-20,Cassie,Matched completion date,,2026
+XSQ553-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-09-29,Andrew,Matched completion date,,2026
+XTH804-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-07-07,Toye,Matched completion date,,2026
+XTP134-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-30,Nicole,Matched completion date,,2026
+XTR824-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-22,Anna,Matched completion date,,2026
+XVF774-01-A,3-20 year,6_10yr,2,0,1,0,TRUE,2026-04-19,Jody,Matched completion date,,2026
+XVL743-01-A,3-20 year,6_10yr,3,0,1,1,TRUE,2026-05-14,Jody,Matched completion date,,2026
+XXW639-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-27,Nicole,Matched completion date,,2026
+XYW274-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-18,Toye,Latest same-age-band Calendly fallback,2026-06-17,2026
+XZN379-01-A,3-20 year,3_5yr,6,1,0,5,FALSE,,,Not complete,,2026
+YDC739-01-A,3-20 year,6_10yr,3,0,1,2,FALSE,,,Not complete,,2026
+YDD017-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-19,Jody,Matched completion date,,2026
+YDW028-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-12,Anna,Matched completion date,,2026
+YGB645-01-A,3-20 year,3_5yr,2,0,0,1,TRUE,2026-08-13,Andrew,Matched completion date,,2026
+YHF868-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-31,Cassie,Matched completion date,,2026
+YJD781-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-30,Nicole,Matched completion date,,2026
+YLG694-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-25,Jo,Matched completion date,,2026
+YLV944-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-31,Toye,Matched completion date,,2026
+YMS783-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-07-01,Jody,Matched completion date,,2026
+YNQ580-01-A,3-20 year,3_5yr,4,0,0,3,TRUE,2026-05-29,Anna,Matched completion date,,2026
+YNZ000-01-A,3-20 year,11_17yr,0,0,0,0,TRUE,2026-03-09,Cassie,Previous-age-band completion-date match,,2026
+YNZ000-01-A,3-20 year,6_10yr,2,0,0,1,FALSE,,,Not complete,,2026
+YNZ445-01-A,3-20 year,6_10yr,6,4,0,1,FALSE,,,Not complete,,2026
+YSL489-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-31,Cassie,Matched completion date,,2026
+YWL484-01-A,3-20 year,11_17yr,4,2,1,1,FALSE,,,Not complete,,2026
+YWZ475-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-06-05,Anna,Matched completion date,,2026
+YWZ529-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-05-14,Toye,Matched completion date,,2026
+YXL848-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-03-25,Jo,Matched completion date,,2026
+YXY517-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-03,Jody,Matched completion date,,2026
+YYJ169-01-A,3-20 year,11_17yr,0,0,0,0,TRUE,2026-03-19,Toye,Previous-age-band completion-date match,,2026
+YYJ169-01-A,3-20 year,6_10yr,1,0,0,0,FALSE,,,Not complete,,2026
+ZBF912-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-30,Cassie,Matched completion date,,2026
+ZCR636-01-A,3-20 year,3_5yr,0,0,0,0,TRUE,2026-06-25,Anna,Matched completion date,,2026
+ZDZ857-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-05-26,Amy,Matched completion date,,2026
+ZFP512-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-19,Toye,Matched completion date,,2026
+ZGB387-01-A,3-20 year,6_10yr,4,1,0,2,FALSE,,,Not complete,,2026
+ZGQ068-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-06-07,Jody,Matched completion date,,2026
+ZHQ218-01-A,3-20 year,6_10yr,3,1,0,1,TRUE,2026-06-03,Toye,Matched completion date,,2026
+ZHX342-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-04-22,Toye,Matched completion date,,2026
+ZND119-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-30,Nicole,Matched completion date,,2026
+ZNQ676-01-A,3-20 year,11_17yr,2,0,1,0,TRUE,2026-05-17,Cassie,Matched completion date,,2026
+ZPR445-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-03-30,Cassie,Matched completion date,,2026
+ZPX220-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-08-03,Jo,Matched completion date,,2026
+ZQT032-01-A,3-20 year,11_17yr,1,0,0,0,TRUE,2026-07-14,Jody,Matched completion date,,2026
+ZRD863-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-05-14,Toye,Matched completion date,,2026
+ZVQ878-01-A,3-20 year,3_5yr,1,0,0,0,TRUE,2026-08-05,Toye,Matched completion date,,2026
+ZVV604-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-03-31,Nicole,Matched completion date,,2026
+ZVX302-01-A,3-20 year,6_10yr,1,0,0,0,TRUE,2026-06-22,Nicole,Matched completion date,,2026
+ZZZ654-01-A,3-20 year,6_10yr,2,0,0,1,TRUE,2026-08-08,Andrew,Matched completion date,,2026
+BPM036-01-A,6-35 month,12_23_month,1,1,0,0,FALSE,,,Not complete,,2026
+BRL402-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-09-17,Andrew,Matched completion date,,2026
+BXJ770-01-A,6-35 month,12_23_month,1,0,1,0,FALSE,,,Not complete,,2026
+CCC242-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-03-26,Nicole,Matched completion date,,2026
+CLC701-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-05-06,Jody,Latest same-age-band Calendly fallback,2026-05-07,2026
+CPS604-01-A,6-35 month,12_23_month,1,0,1,0,FALSE,,,Not complete,,2026
+CSS863-02-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-06-16,Breanna,Matched completion date,,2026
+CXB725-01-A,6-35 month,12_23_month,5,2,2,1,TRUE,2026-07-16,Toye,Latest same-age-band Calendly fallback,2026-09-01,2026
+DTQ848-01-A,6-35 month,12_23_month,2,0,1,1,TRUE,2026-08-12,Andrew,Latest same-age-band Calendly fallback,2026-08-24,2026
+FNC855-01-A,6-35 month,12_23_month,2,1,0,0,TRUE,2026-08-04,Jody,Latest same-age-band Calendly fallback,2026-08-03,2026
+GBH901-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-05-15,Nicole,Matched completion date,,2026
+GDJ477-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-03-27,Nicole,Latest same-age-band Calendly fallback,2026-03-28,2026
+GDN788-01-A,6-35 month,12_23_month,2,0,0,1,TRUE,2026-06-22,Nicole,Matched completion date,,2026
+GMB721-01-A,6-35 month,12_23_month,3,2,0,0,FALSE,,,Not complete,,2026
+GRM073-01-A,6-35 month,12_23_month,2,0,1,1,FALSE,,,Not complete,,2026
+GZR716-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-09-01,Nicole,Matched completion date,,2026
+HHW537-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-04-03,Jody,Matched completion date,,2026
+JBM041-01-A,6-35 month,12_23_month,3,0,0,2,TRUE,2026-06-17,Nicole,Matched completion date,,2026
+JLN021-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-05-18,Nicole,Matched completion date,,2026
+JQN133-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-07-27,Breanna,Matched completion date,,2026
+JWP930-01-A,6-35 month,12_23_month,3,0,2,1,FALSE,,,Not complete,,2026
+JXP185-01-A,6-35 month,12_23_month,2,0,0,1,TRUE,2026-08-14,Kowlini,Matched completion date,,2026
+KJR619-01-A,6-35 month,12_23_month,4,2,0,1,TRUE,2026-08-26,Kowlini,Matched completion date,,2026
+KRR544-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-06-02,Jody,Latest same-age-band Calendly fallback,2026-06-01,2026
+KXF530-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-09-02,Kowlini,Matched completion date,,2026
+LBZ361-01-A,6-35 month,12_23_month,4,2,1,1,FALSE,,,Not complete,,2026
+LNT397-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-08-25,Kowlini,Matched completion date,,2026
+LTS268-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-05-19,Nicole,Matched completion date,,2026
+LZQ650-01-A,6-35 month,12_23_month,1,0,0,0,FALSE,,,Not complete,,2026
+LZV055-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-05-19,Nicole,Matched completion date,,2026
+MMV961-01-A,6-35 month,12_23_month,3,1,0,1,TRUE,2026-08-27,Kowlini,Matched completion date,,2026
+NCG882-01-A,6-35 month,12_23_month,2,0,1,1,TRUE,2026-08-11,Andrew,Latest same-age-band Calendly fallback,2026-08-24,2026
+NDG495-01-A,6-35 month,12_23_month,3,1,1,0,TRUE,2026-06-10,Nicole,Matched completion date,,2026
+NDP128-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-04-03,Nicole,Matched completion date,,2026
+NPM662-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-07-13,Jody,Latest same-age-band Calendly fallback,2026-07-11,2026
+NSQ870-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-05-08,Nicole,Matched completion date,,2026
+PGM615-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-08-14,Kowlini,Matched completion date,,2026
+PHN877-02-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-04-06,Nicole,Matched completion date,,2026
+PLD055-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-06-29,Nicole,Matched completion date,,2026
+QHF620-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-03-31,Nicole,Matched completion date,,2026
+QQL383-01-A,6-35 month,12_23_month,1,1,0,0,FALSE,,,Not complete,,2026
+QVW747-01-A,6-35 month,12_23_month,3,0,1,2,TRUE,2026-09-24,Kowlini,Latest same-age-band Calendly fallback,2026-09-28,2026
+RDC147-01-A,6-35 month,12_23_month,1,0,1,0,FALSE,,,Not complete,,2026
+RMH180-01-A,6-35 month,12_23_month,3,0,1,1,TRUE,2026-06-04,Nicole,Matched completion date,,2026
+RRB727-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-09-15,Nicole,Matched completion date,,2026
+RZS580-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-04-04,Nicole,Matched completion date,,2026
+SBH525-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-04-18,Nicole,Latest same-age-band Calendly fallback,2026-04-28,2026
+SJH036-01-A,6-35 month,12_23_month,2,0,0,1,TRUE,2026-09-18,Kowlini,Matched completion date,,2026
+SMQ889-01-A,6-35 month,12_23_month,2,0,0,1,TRUE,2026-08-10,Kowlini,Matched completion date,,2026
+SYW884-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-09-03,Nicole,Matched completion date,,2026
+TDX359-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-04-27,Nicole,Matched completion date,,2026
+TPW315-01-A,6-35 month,12_23_month,5,2,0,3,FALSE,,,Not complete,,2026
+TZB922-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-06-07,Jody,Matched completion date,,2026
+VDW899-01-A,6-35 month,12_23_month,2,0,2,0,FALSE,,,Not complete,,2026
+VDW899-01-B,6-35 month,12_23_month,2,0,2,0,FALSE,,,Not complete,,2026
+VLQ825-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-07-15,Nicole,Matched completion date,,2026
+VZY119-01-A,6-35 month,12_23_month,1,0,1,0,FALSE,,,Not complete,,2026
+WSG161-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-05-06,Nicole,Matched completion date,,2026
+XKQ019-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-05-15,Nicole,Matched completion date,,2026
+XSP178-01-A,6-35 month,12_23_month,1,0,0,0,FALSE,,,Not complete,,2026
+XYN414-01-A,6-35 month,12_23_month,1,0,1,0,FALSE,,,Not complete,,2026
+YGQ976-01-A,6-35 month,12_23_month,1,0,1,0,FALSE,,,Not complete,,2026
+YMF346-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-03-25,Nicole,Latest same-age-band Calendly fallback,2026-04-06,2026
+YMP799-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-03-26,Nicole,Latest same-age-band Calendly fallback,2026-04-06,2026
+YND734-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-04-28,Nicole,Matched completion date,,2026
+YPB464-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-04-27,Jody,Matched completion date,,2026
+YYB078-01-A,6-35 month,12_23_month,1,0,0,0,TRUE,2026-08-23,Kowlini,Matched completion date,,2026
+ZCR636-01-A,6-35 month,3_5yr,2,0,0,1,FALSE,,,Not complete,,2026
+ZQN091-01-A,6-35 month,6_11_month,3,0,0,2,FALSE,,,Not complete,,2026
+ZVD237-01-A,6-35 month,12_23_month,2,1,0,0,TRUE,2026-09-11,Jody,Matched completion date,,2026

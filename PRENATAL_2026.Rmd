@@ -1,0 +1,200 @@
+---
+title: "PRENATAL_2026"
+author: "Anna VanTubergen"
+date: "2026-06-29"
+output: html_document
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(openxlsx)
+library(eeptools)
+library(kableExtra)
+library(lubridate)
+library(DBI)
+library(zipcodeR)
+library(tidycensus)
+library(maps)
+library(viridis)
+library(plotly)
+library(ggpubr)
+library(RColorBrewer)
+library(httr2)
+library(readr)
+library(htmltools)
+library(ggplot2)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r, include=FALSE}
+#Ripple API
+convert_to_dataframe <- function(resp_body_string, content_type) {
+  if (content_type == "text/csv") {
+    # Use read_csv from readr to read the CSV string directly into a data frame
+    df <- readr::read_csv(response_body_string)
+  } else if (content_type == "text/plain") {
+    # Split the plain text by lines and then by commas (or other delimiters)
+    lines <- strsplit(resp_body_string, "\n", fixed = TRUE)[[1]]
+    data <- lapply(lines, function(line) {
+      strsplit(line, ",", fixed = TRUE)[[1]]
+    })
+    
+       df <- as.data.frame(do.call(rbind, data), stringsAsFactors = FALSE)
+    colnames(df) <- c("Column1", "Column2", "statusId")  # Replace with appropriate column names
+  } else {
+    stop("Unsupported content type")
+  }
+  
+  return(df)
+}
+
+#Global
+request<- request("https://echocharm.ripplescience.com")%>%
+  req_url_path("/v1/export")%>%
+  req_headers( "Content-Type" = "application/x-www-form-urlencoded",  "Authorization" = "Basic dmFudHViZTRAbXN1LmVkVTpyTyRJRVJPTzIy")%>%
+  req_body_form(
+  export_type = "global",
+  globalId = "globalId",
+  firstName="firstName",
+  lastName="lastName",
+  sex="sex",
+  birthday="birthday",
+  #"Participant Contacts"=""
+  )%>%
+  req_method("GET")
+
+response <- tryCatch(
+ req_perform(request),
+  error = function(e) {
+   message("Request failed: ", e)
+   NULL
+  }
+)
+
+ if (!is.null(response)) {
+   data<- resp_body_string(response)
+  print(data)
+
+}
+
+response_body_string <- resp_body_string(response)
+content_type<-"text/csv"
+study_global <- convert_to_dataframe(resp_body_string, content_type)
+
+since_date <- format(Sys.Date() - 7, "%Y-%m-%d")
+
+#Prenatal
+request<- request("https://echocharm.ripplescience.com")%>%
+  req_url_path("/v1/export")%>%
+  req_headers( "Content-Type" = "application/x-www-form-urlencoded",  "Authorization" = "Basic dmFudHViZTRAbXN1LmVkVTpyTyRJRVJPTzIy", )%>%
+  req_body_form(
+  "export-type"="hsGq26e46PfHRofdJ",
+  statusId="",
+  globalId = "globalId",
+  customId="",
+  familyId="",
+  firstName="",
+  lastName="",
+  race="",
+  ethnicity="",
+  birthday="",
+  cv.last_menstral_period="",
+  cv.estimated_due_date="",
+  cv.consent_genetics="",
+  cv.consent_birth_certificate="",
+  cv.permission_for_placenta="",
+  cv.permission_for_cord_blood="",
+  dateSignedConsentForm="",
+  "Events (All or None)"="")%>%
+  req_method("GET")
+
+response<- tryCatch(
+ req_perform(request),
+  error = function(e) {
+   message("Request failed: ", e)
+   NULL
+  }
+)
+
+ if (!is.null(response)) {
+   data<- resp_body_string(response)
+  print(data)
+
+}
+
+response_body_string<- resp_body_string(response)
+content_type<-"text/csv"
+study_prenatal <- convert_to_dataframe(resp_body_string, content_type)
+```
+
+```{r echo = FALSE}
+# Create Dataframe for Report
+prenatal_2026 <- study_prenatal %>%
+  select(globalId, customId, statusId, `event.consent_into_study.completedDate`, `event.dmc_enrollment_form.completedDate`, `event.estimated_due_date.completedDate`, `event.actigraphy_sleep_diary.completedDate`, `event.household_water.completedDate`, `event.first_visit_survey.completedDate`, `event.first_visit_anthropometrics.completedDate`, `event.cord_blood_collection.completedDate`, `event.first_prenatal_urine.completedDate`, `event.first_prenatal_blood.completedDate`, `event.second_visit_survey.completedDate`, `event.second_visit_anthropometrics.completedDate`, `event.second_prenatal_urine.completedDate`, `event.second_prenatal_blood.completedDate`, `event.child_is_born.completedDate`, `event.cord_blood_collection.completedDate`, `event.maternal_medical_record_abstraction.completedDate`, `event.date_of_pregnancy_loss.completedDate`) %>%
+  rename("consent_date" = "event.consent_into_study.completedDate",
+         "estduedate" = "event.estimated_due_date.completedDate",
+         "dmc_enroll" = "event.dmc_enrollment_form.completedDate",
+         "pn1_survey" = "event.first_visit_survey.completedDate",
+         "pn1_anthro" = "event.first_visit_anthropometrics.completedDate",
+         "pn1_urine" = "event.first_prenatal_urine.completedDate",
+         "pn1_blood" = "event.first_prenatal_blood.completedDate",
+         "actigraphy" = "event.actigraphy_sleep_diary.completedDate",
+         "pn2_survey" = "event.second_visit_survey.completedDate",
+         "pn2_anthro" = "event.second_visit_anthropometrics.completedDate",
+         "pn2_urine" = "event.second_prenatal_urine.completedDate",
+         "pn2_blood" = "event.second_prenatal_blood.completedDate",
+         "cordblood" = "event.cord_blood_collection.completedDate",
+         "mmra" = "event.maternal_medical_record_abstraction.completedDate",
+         "child_dob" = "event.child_is_born.completedDate",
+         "pregnancy_loss" = "event.date_of_pregnancy_loss.completedDate") %>%
+  mutate(consent_date = as.Date(consent_date, format="%m/%d/%Y"),
+         estduedate = as.Date(estduedate, format="%m/%d/%Y"),
+         dmc_enroll = as.Date(dmc_enroll, format="%m/%d/%Y"),
+         pn1_survey = as.Date(pn1_survey, format="%m/%d/%Y"),
+         pn1_anthro = as.Date(pn1_anthro, format="%m/%d/%Y"),
+         pn1_urine = as.Date(pn1_urine, format="%m/%d/%Y"),
+         pn1_blood = as.Date(pn1_blood, format="%m/%d/%Y"),
+         actigraphy = as.Date(actigraphy, format="%m/%d/%Y"),
+         pn2_anthro = as.Date(pn2_anthro, format="%m/%d/%Y"),
+         pn2_survey = as.Date(pn2_survey, format="%m/%d/%Y"),
+         pn2_urine = as.Date(pn2_urine, format="%m/%d/%Y"),
+         pn2_blood = as.Date(pn2_blood, format="%m/%d/%Y"),
+         cordblood = as.Date(cordblood, format="%m/%d/%Y"),
+         mmra = as.Date(mmra, format="%m/%d/%Y"),
+         pregnancy_loss = as.Date(pregnancy_loss, format="%m/%d/%Y"),
+         child_dob = as.Date(child_dob, format="%m/%d/%Y"))
+write.csv(prenatal_2026, "Z:/ECHO/CHARM/Data/Reports/2026/Prenatal Report/CSVs/prenatal_2026.csv", row.names = FALSE)
+```
+
+```{r, include = FALSE}
+study_0to5 <- study_prenatal %>%
+  select(globalId, customId, statusId, birthday, `event.0_5_month_visit_scheduled.completedDate`, `event.vib_request_submitted.completedDate`, `event.diaper_kit_sent.completedDate`, `event.0_5_month_survey.completedDate`, `event.child_anthropometrics.completedDate`, `event.maternal_anthropometrics.completedDate`, `event.postnatal_consent.completedDate`, `event.partner_contact_info_requested.completedDate`, `event.child_urine.completedDate`, `event.child_stool.completedDate`, `event.maternal_hair.completedDate`, `event.maternal_bloodspot.completedDate`, `event.breast_milk.completedDate`) %>%
+  rename("visit_scheduled" = "event.0_5_month_visit_scheduled.completedDate",
+         "vib_request" = "event.vib_request_submitted.completedDate",
+         "diaper_sent" = "event.diaper_kit_sent.completedDate",
+         "survey" = "event.0_5_month_survey.completedDate",
+         "child_anthro" = "event.child_anthropometrics.completedDate",
+         "mom_anthro" = "event.maternal_anthropometrics.completedDate",
+         "postnatal_consent" = "event.postnatal_consent.completedDate",
+         "partner_contact" = "event.partner_contact_info_requested.completedDate",
+         "child_urine" = "event.child_urine.completedDate",
+         "child_stool" = "event.child_stool.completedDate",
+         "mom_hair" = "event.maternal_hair.completedDate",
+         "mom_bs" = "event.maternal_bloodspot.completedDate",
+         "breast_milk" = "event.breast_milk.completedDate") %>%
+   mutate(visit_scheduled = as.Date(visit_scheduled, format="%m/%d/%Y"),
+          vib_request = as.Date(vib_request, format="%m/%d/%Y"),
+          diaper_sent = as.Date(diaper_sent, format="%m/%d/%Y"),
+          survey = as.Date(survey, format="%m/%d/%Y"),
+          child_anthro = as.Date(visit_scheduled, format="%m/%d/%Y"),
+          mom_anthro = as.Date(mom_anthro, format="%m/%d/%Y"),
+          postnatal_consent = as.Date(postnatal_consent, format="%m/%d/%Y"),
+          partner_contact = as.Date(partner_contact, format="%m/%d/%Y"),
+          child_urine = as.Date(child_urine, format="%m/%d/%Y"),
+          child_stool = as.Date(child_stool, format="%m/%d/%Y"),
+          mom_hair = as.Date(mom_hair, format="%m/%d/%Y"),
+          mom_bs = as.Date(mom_bs, format="%m/%d/%Y"),
+          breast_milk = as.Date(breast_milk, format = "%m/%d/%Y"))
+         
+write.csv(study_0to5, "Z:/ECHO/CHARM/Data/Reports/2026/Prenatal Report/CSVs/study_0to5.csv", row.names = FALSE)
+```

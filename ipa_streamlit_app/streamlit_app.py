@@ -22,6 +22,7 @@ importlib.reload(dashboard_data_module)
 
 from dashboard_data import (
     AGE_GROUP_ORDER,
+    IPA_METRICS,
     OUTCOME_ORDER,
     PARTICIPANT_SCOPE_ORDER,
     DataVersion,
@@ -40,6 +41,9 @@ from dashboard_data import (
     standardize_participant_roster,
     summarize_outcomes,
     summarize_progress,
+    standardize_ipa_records,
+    filter_ipa_records,
+    summarize_ipa_activity,
 )
 
 
@@ -265,6 +269,51 @@ def make_heatmap(data: pd.DataFrame) -> go.Figure:
     return chart_layout(fig, max(430, 48 * max(len(pivot.index), 4) + 190))
 
 
+def make_ipa_heatmap(summary: pd.DataFrame) -> go.Figure:
+    """FTM names horizontally; four absolute activity counts vertically."""
+    values = summary.set_index("FTM")[IPA_METRICS].T
+    z = values.apply(pd.to_numeric, errors="coerce").to_numpy(dtype=float, na_value=np.nan)
+    fig = go.Figure(go.Heatmap(
+        x=values.columns.tolist(),
+        y=["Complete", "No-show", "Cancel", "Reschedule"],
+        z=z, zmin=0,
+        colorscale=[[0, "#EEF4F8"], [0.5, "#8DB5D1"], [1, BLUE_DARK]],
+        text=np.where(np.isnan(z), "", np.char.mod("%.0f", z)),
+        texttemplate="%{text}", textfont=dict(size=16),
+        colorbar=dict(title="Count"), hoverongaps=False,
+        hovertemplate="FTM: %{x}<br>%{y}: %{z:,.0f}<extra></extra>",
+    ))
+    fig.update_layout(title="IPA completion and appointment activity by FTM")
+    fig.update_xaxes(title=None, tickangle=30 if len(values.columns) > 7 else 0)
+    fig.update_yaxes(title=None, autorange="reversed")
+    return chart_layout(fig, 390)
+
+
+def make_ipa_performance_chart(summary: pd.DataFrame) -> go.Figure:
+    """Weighted outcomes per distinct participant-age-band served by each FTM."""
+    scores = summary.dropna(subset=["Weighted IPA Performance"]).copy()
+    fig = go.Figure(go.Bar(
+        x=scores["FTM"], y=scores["Weighted IPA Performance"], marker_color=BLUE,
+        text=scores["Weighted IPA Performance"].map(format_percent), textposition="outside",
+        cliponaxis=False,
+        customdata=scores[["Complete Count", "No-show Count", "Weighted Points",
+                           "Participant Age Bands"]].to_numpy(),
+        hovertemplate=(
+            "FTM: %{x}<br>Weighted IPA performance: %{y:.1%}"
+            "<br>Complete: %{customdata[0]:,.0f}<br>No-show: %{customdata[1]:,.0f}"
+            "<br>Weighted points: %{customdata[2]:.2f}"
+            "<br>Participant age bands: %{customdata[3]:,.0f}<extra></extra>"
+        ),
+    ))
+    maximum = scores["Weighted IPA Performance"].max() if not scores.empty else 0
+    fig.update_layout(title="Weighted IPA performance by FTM")
+    fig.update_xaxes(title=None, tickangle=30 if len(scores) > 7 else 0)
+    # Repeat no-shows can legitimately push this score above 100%; do not cap.
+    fig.update_yaxes(title="Weighted IPA performance", tickformat=".0%",
+                     range=[0, max(1.05, float(maximum) * 1.15)])
+    return chart_layout(fig, 410)
+
+
 def make_trend_chart(trend: pd.DataFrame, metric: str) -> go.Figure:
     is_percent = metric in {"Weighted Progress", "Completion Rate"}
     fig = px.line(
@@ -428,7 +477,10 @@ with st.sidebar:
     if current_tasks_only and "Task Stage" in df.columns:
         df = df[df["Task Stage"] == "Current"].copy()
 
-    st.subheader("Filters")
+    # IPA activity has its own event-based filters in the IPA tab. The other
+    # tabs continue to use task responsibility and current-caseload filters.
+    df = df[df["Task"] != "In-Person Assessments"].copy()
+    st.subheader("Other task / roster filters")
     ftm_options = sorted(set(safe_unique(df["FTM"])) | set(safe_unique(roster["FTM"])))
     selected_ftms = st.multiselect("FTM", ftm_options)
     available_scopes = [
@@ -492,8 +544,7 @@ filtered_roster = apply_roster_filters(
 )
 
 st.caption(
-    f"Data source: **{source_detail}** · FTM view: **{ftm_view_label}** · "
-    f"Roster: **{roster_detail}**"
+    f"Data source: **{source_detail}**"
 )
 
 eligible_roster = filtered_roster[filtered_roster["Task Eligible"]].copy()
@@ -507,43 +558,163 @@ unassigned_roster = eligible_roster[
 metrics = calculate_kpis(filtered)
 follow_up = metrics["incomplete"] + metrics["no_record"]
 
-kpi_top = st.columns(4)
-kpi_top[0].metric(
-    "Current roster participants", f"{filtered_roster['Participant ID'].nunique():,}"
-)
-kpi_top[1].metric("Participants with tasks", f"{metrics['participants']:,}")
-kpi_top[2].metric("Applicable task records", f"{metrics['task_rows']:,}")
-kpi_top[3].metric("Weighted progress", format_percent(metrics["weighted_progress"]))
-kpi_bottom = st.columns(3)
-kpi_bottom[0].metric("Complete", f"{metrics['complete']:,}")
-kpi_bottom[1].metric("No-Show", f"{metrics['no_show']:,}")
-kpi_bottom[2].metric("Needs follow-up", f"{follow_up:,}")
-
-st.caption(
-    "Weighted progress uses Complete = 1, No-Show = 0.25, Incomplete = 0, "
-    "and No record = 0 in the denominator."
-)
-
-if not eligible_roster.empty and not unassigned_roster.empty:
-    st.warning(
-        f"{unassigned_roster['Participant ID'].nunique():,} selected task-eligible "
-        "participants have no direct 2026 same-age Calendly host, usable "
-        "Invitee name/email match, direct 2026 previous-age host, or direct "
-        "2025 Calendly host, and no staff-verified recent IPA FTM. Their tasks "
-        "remain Unassigned."
-    )
-
-overview_tab, trend_tab, roster_tab, participant_tab, assignment_tab = st.tabs(
+ipa_tab, overview_tab, trend_tab, roster_tab, participant_tab, assignment_tab = st.tabs(
     [
-        "Overview",
-        "Snapshot trend",
+        "IPA activity",
+        "Other tasks",
+        "Other task trend",
         "Participant roster",
         "Task details",
         "Assignment QA",
     ]
 )
 
+with ipa_tab:
+    records_path = source_dir / "participant_ipa_records.csv" if source_dir else None
+    ftm_records_path = source_dir / "participant_ipa_ftm_records.csv" if source_dir else None
+    if not records_path or not records_path.exists() or not ftm_records_path.exists():
+        st.info(
+            "IPA appointment history is not available for this data version. "
+            "Run the updated IPA Data.R to export participant IPA records and FTM activity. "
+            "Latest-task records cannot reconstruct historical cancellations or reschedules."
+        )
+    else:
+        try:
+            ipa_records = standardize_ipa_records(load_optional_csv(
+                str(records_path), records_path.stat().st_mtime_ns
+            ))
+            ipa_ftm_records = standardize_ipa_records(load_optional_csv(
+                str(ftm_records_path), ftm_records_path.stat().st_mtime_ns
+            ), ftm_records=True)
+        except (OSError, ValueError, pd.errors.ParserError) as exc:
+            st.error(f"Cannot load IPA activity: {exc}")
+        else:
+            st.caption(
+                "Appointment-year scope: 2026. All recorded age bands are included. "
+                "IPA filters below are independent of the sidebar's other-task and roster filters."
+            )
+            controls = st.columns(3)
+            ipa_ftms = controls[0].multiselect(
+                "IPA FTM", safe_unique(ipa_ftm_records["FTM"]), key="ipa_ftms"
+            )
+            ipa_ages = controls[1].multiselect(
+                "IPA age band", [age for age in AGE_GROUP_ORDER
+                                 if age in set(ipa_records["Age Group"])], key="ipa_ages"
+            )
+            ipa_cohorts = controls[2].multiselect(
+                "IPA cohort", safe_unique(ipa_records["Participant Cohort"]), key="ipa_cohorts"
+            )
+            activity = filter_ipa_records(ipa_ftm_records, ipa_ftms, ipa_ages, ipa_cohorts)
+            participant_records = ipa_records.copy()
+            if ipa_ages:
+                participant_records = participant_records[participant_records["Age Group"].isin(ipa_ages)]
+            if ipa_cohorts:
+                participant_records = participant_records[participant_records["Participant Cohort"].isin(ipa_cohorts)]
+            if ipa_ftms:
+                keys = ["Participant ID", "Participant Cohort", "IPA Age Band"]
+                participant_records = participant_records.merge(activity[keys].drop_duplicates(), on=keys)
+            if activity.empty:
+                st.info("No IPA activity matches these filters.")
+            else:
+                ipa_summary = summarize_ipa_activity(activity)
+                columns = st.columns(4)
+                for column, metric, label in zip(columns, IPA_METRICS,
+                                                ["Complete", "No-show", "Cancel", "Reschedule"]):
+                    total = activity[metric].sum() if activity[metric].notna().all() else np.nan
+                    column.metric(label, format_number(total))
+                st.plotly_chart(make_ipa_heatmap(ipa_summary), width="stretch")
+                st.caption(
+                    "Cancel excludes reschedules. Reschedule counts actions on the old booking. "
+                    "Appointment activity stays with that booking's host. Complete is credited once "
+                    "per participant and age band to the single eligible host on the Ripple completion date. "
+                    "Cohort differences do not block completion matching. Bookings from 2025 and 2026 can supply "
+                    "completion credit. Prefer the same age band; if it has no bookings, use the immediately "
+                    "preceding age band, preferring a completion-date match and then the latest booking. "
+                    "The latest booking supplies "
+                    "fallback completion credit, regardless of booking cancellation/no-show status. "
+                    "A booking covering multiple children counts once for each child. "
+                    "Blank counts mean missing evidence; darker cells mean more activity."
+                )
+                pending = activity.loc[activity["FTM"] == "Pending verification", "Complete Count"].sum()
+                if pending:
+                    st.warning(f"{pending:,} completed IPA records need completion-host verification.")
+                if activity["FTM"].str.startswith("Shared hosts:").any():
+                    st.info("Bookings with multiple hosts stay together under Shared hosts; they are not duplicated across FTMs.")
+                st.subheader("FTM IPA work summary")
+                summary_display = ipa_summary.copy()
+                summary_display["Weighted IPA Performance"] = summary_display["Weighted IPA Performance"].map(format_percent)
+                st.dataframe(summary_display, hide_index=True, width="stretch")
+                st.download_button("Download FTM IPA summary", csv_bytes(ipa_summary),
+                                   "ftm_ipa_summary.csv", "text/csv", key="ipa_summary_download")
+                if ipa_summary["Weighted IPA Performance"].notna().any():
+                    st.plotly_chart(make_ipa_performance_chart(ipa_summary), width="stretch")
+                else:
+                    st.info("No individual FTM has a defined weighted IPA performance for these filters.")
+                st.caption(
+                    "Weighted IPA performance = (Complete + 0.25 × No-show) ÷ participant age bands. "
+                    "Each participant and age band counts once within each FTM's attributed activity, "
+                    "including records with only cancellations or reschedules. Counts and denominator "
+                    "use the same filters. Repeated no-shows can produce a score above 100%; this is "
+                    "a weighted performance score, not a completion rate. Pending verification, "
+                    "Unassigned, and Shared hosts do not receive an individual FTM percentage."
+                )
+                fallback_keys = activity.loc[
+                    (activity["Complete Count"] > 0) &
+                    (activity["Completion Attribution"].str.contains("fallback|Previous-age-band", na=False)),
+                    ["Participant ID", "Participant Cohort", "IPA Age Band"]
+                ].drop_duplicates()
+                if not fallback_keys.empty:
+                    st.caption(f"{len(fallback_keys):,} completions use fallback booking evidence or a previous-age-band match.")
+                with st.expander("Activity attributed to each FTM"):
+                    st.dataframe(activity, hide_index=True, width="stretch")
+                    st.download_button("Download participant × age band × FTM activity", csv_bytes(activity),
+                                       "participant_ipa_ftm_records.csv", "text/csv", key="ipa_ftm_download")
+
+            st.subheader("Participant IPA records")
+            st.caption(
+                "One row per participant and recorded age band. Counts include the entire appointment "
+                "history for the selected age bands and cohorts, including bookings with other FTMs."
+            )
+            participant_records = participant_records.drop(columns=["firstName", "lastName"], errors="ignore")
+            record_order = ["Participant ID", "Age Group", "IPA Complete", "No-show Count",
+                            "Cancel Count", "Reschedule Count", "Completion FTM",
+                            "Completion Date", "Completion Attribution", "Completion Fallback Appointment Date", "Appointment Count",
+                            "Participant Cohort", "IPA Age Band", "IPA Year"]
+            record_order = [column for column in record_order if column in participant_records]
+            record_order += [column for column in participant_records if column not in record_order]
+            st.dataframe(participant_records, hide_index=True, width="stretch", column_order=record_order)
+            st.download_button("Download participant IPA records", csv_bytes(participant_records),
+                               "participant_ipa_records.csv", "text/csv", key="ipa_records_download")
+            history_path = source_dir / "ipa_appointment_history.csv"
+            if history_path.exists():
+                history = load_optional_csv(str(history_path), history_path.stat().st_mtime_ns)
+                unresolved = history[["Participant ID", "Participant Cohort", "IPA Age Band", "Invitee UUID"]].isna().any(axis=1)
+                if unresolved.any():
+                    st.caption(
+                        f"{unresolved.sum():,} appointment rows in this version have unresolved identity "
+                        "or age-band information and are excluded from participant and FTM totals."
+                    )
+                history["Age Group"] = history["IPA Age Band"].map(dashboard_data_module.AGE_GROUP_LABELS)
+                visible_history = filter_ipa_records(history, ipa_ftms, ipa_ages, ipa_cohorts)
+                with st.expander("Appointment history and reschedule links"):
+                    st.dataframe(visible_history, hide_index=True, width="stretch")
+                    st.download_button("Download IPA appointment history", csv_bytes(visible_history),
+                                       "ipa_appointment_history.csv", "text/csv", key="ipa_history_download")
+
 with overview_tab:
+    st.caption("IPA completion and appointment activity are reported separately in IPA activity.")
+    st.caption(f"FTM view: {ftm_view_label} · Roster: {roster_detail}")
+    if not eligible_roster.empty and not unassigned_roster.empty:
+        st.warning(
+            f"{unassigned_roster['Participant ID'].nunique():,} selected task-eligible "
+            "participants have no resolved owner. Their other tasks remain Unassigned."
+        )
+    kpi_top = st.columns(4)
+    kpi_top[0].metric("Participants with other tasks", f"{metrics['participants']:,}")
+    kpi_top[1].metric("Other task records", f"{metrics['task_rows']:,}")
+    kpi_top[2].metric("Complete", f"{metrics['complete']:,}")
+    kpi_top[3].metric("Weighted progress", format_percent(metrics["weighted_progress"]))
+    st.caption("Other-task progress: Complete = 1; Incomplete and No record = 0.")
     if filtered.empty:
         st.info(
             "The selected participant scope has no applicable task records. "
@@ -606,7 +777,7 @@ with trend_tab:
         build_snapshot_trend(
             versions,
             selected_ftms,
-            selected_tasks,
+            selected_tasks or safe_unique(df["Task"]),
             selected_age_groups,
             selected_outcomes,
             selected_cohorts,
@@ -792,13 +963,19 @@ with st.expander("Metric definitions"):
         - **Applicable tasks:** participant-task-age-band rows created when the participant enters an eligible age group.
         - **Participant scope:** the complete roster includes task-eligible participants, 6–11 month participants, potential participants, and records needing review.
         - **Non-task participants:** potential and 6–11 month participants are visible in the roster but do not enter task counts, progress, or completion-rate denominators.
-        - **Weighted progress:** total task score divided by applicable task rows.
+        - **Weighted progress:** total task score divided by applicable other-task rows; IPA is excluded.
         - **Needs follow-up:** `Incomplete` plus `No record` task rows.
         - **Current IPA owner:** assignment priority is direct 2026 Calendly evidence in the current IPA age band, Invitee name/email evidence, direct 2026 evidence in the immediately preceding age band, direct 2025 Calendly evidence, and finally a staff-verified recent IPA FTM fallback. Ripple and Call List owners are not used for IPA credit.
-        - **Task responsibility:** every task—including Complete, No-Show, Incomplete, and No record—stays with the assigned IPA FTM for that participant and age band. A later age band can have a different FTM without moving earlier credit. Lower-priority fallback evidence is upgraded when a higher-priority Calendly match becomes available.
+        - **Other-task responsibility:** the existing responsibility ledger is used for non-IPA tasks. It does not determine IPA appointment activity or completion credit.
         - **Unassigned:** no confident direct 2026 same-band, Invitee name/email, direct 2026 previous-band, direct 2025 Calendly host, or staff-verified recent IPA FTM evidence exists. These records stay visible without an FTM credit assignment. Shared-contact evidence remains unassigned unless child information distinguishes one participant.
         - **Current caseload:** only currently applicable age-band tasks are grouped under the participant's current Calendly FTM.
-        - **IPA outcome source:** Ripple completion/scheduling fields plus the latest matching 2026 Calendly record for the same participant and age group. A 2025 Calendly record can supply FTM responsibility only; it never changes the 2026 task outcome.
+        - **IPA records:** one row per participant and recorded age band, using all 2026 Calendly appointments and Ripple completion/scheduling evidence. Historical counts remain after completion.
+        - **IPA No-show:** distinct participant/invitee bookings marked No Show.
+        - **IPA Cancel:** canceled bookings with Rescheduled = FALSE. Rescheduled cancellations are excluded; missing rescheduling evidence stays unknown.
+        - **IPA Reschedule:** each old booking marked Rescheduled = TRUE counts as one action, including intermediate bookings in a reschedule chain.
+        - **IPA completion credit:** Ripple proves completion. Prefer the single eligible Calendly host on the completion date (not canceled or no-show). Ignore cohort differences when matching completion hosts. Use 2025 and 2026 bookings, preferring the same age band: completion-date match first, then latest booking. Only if the same age band has no bookings, try the immediately preceding age band with the same date-first priority. Latest-booking fallbacks may include canceled/no-show bookings and are labeled. Latest is ordered by appointment time then booking creation time. Conflicting latest hosts, missing hosts, or no usable same/previous-band booking remain Pending verification. Older bookings supply completion evidence only; appointment workload remains in the reporting year.
+        - **Weighted IPA performance:** (Complete + 0.25 × No-show) divided by distinct participant/cohort/age-band records attributed to each FTM. Cancel/reschedule-only records enter the denominator. Repeated no-shows can push the score above 100%; the score is not a completion rate.
+        - **Shared IPA hosts:** appointment activity is retained once under a combined Shared hosts label, without duplicating counts across individual FTMs.
         - **Other task source:** Ripple only.
         """
     )

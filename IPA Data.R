@@ -1132,6 +1132,17 @@ calendly_export <- map_dfr(
           
           `Canceled` =
             invitee$status == "canceled",
+
+          # A reschedule cancels the old invitee and creates a linked new one.
+          # Keep the original flag and both links for counting actions/chains.
+          `Rescheduled` =
+            if (is.null(invitee$rescheduled)) NA else isTRUE(invitee$rescheduled),
+
+          `Old Invitee URI` =
+            if (is.null(invitee$old_invitee)) NA_character_ else invitee$old_invitee,
+
+          `New Invitee URI` =
+            if (is.null(invitee$new_invitee)) NA_character_ else invitee$new_invitee,
           
           `No Show` =
             !is.null(invitee$no_show),
@@ -1460,6 +1471,9 @@ calendly_export_clean <- calendly_participant_resolved %>%
     `Event Created Date & Time`,
     `Event Created Date`,
     `Canceled`,
+    `Rescheduled`,
+    `Old Invitee URI`,
+    `New Invitee URI`,
     `No Show`,
     `No Show Created Date & Time`,
     `No Show Created Date`
@@ -1627,8 +1641,8 @@ participant_roster <- bind_rows(
   distinct(`Participant ID`, `Participant Cohort`, .keep_all = TRUE)
 
 
-# Calendly is already one row per participant, IPA age band, and appointment
-# year. Current task outcomes use 2026 only. The 2025 records are retained
+# The legacy task checklist selects one record per participant and age band.
+# Current task outcomes use 2026 only. The 2025 records are retained
 # separately as last-known FTM evidence and never affect 2026 outcomes.
 calendly_ipa_latest <- calendly_export_clean %>%
   filter(
@@ -2914,6 +2928,7 @@ participant_task_checklist_wide <- participant_task_checklist_wide %>%
 
 # FTM-level monitoring table for quick workload and completion review.
 ftm_task_summary <- participant_task_checklist_long %>%
+  filter(Task != "In-Person Assessments") %>%
   mutate(FTM = coalesce(FTM, "Unassigned")) %>%
   count(FTM, `Participant Cohort`, Task, Outcome, name = "Participants") %>%
   arrange(FTM, `Participant Cohort`, Task, Outcome)
@@ -2998,7 +3013,19 @@ manual_verified_fallback_assignments <-
   arrange(`Participant Cohort`, `IPA Age Band`, FTM, `Participant ID`)
 
 
-dashboard_exports <- list(
+# IPA workload uses all appointments, independently of the latest-outcome
+# task ledger. Source completion flags for every age band, including older
+# bands still present in Ripple, and retain historical completion evidence.
+source(file.path(dirname(ipa_dashboard_app_dir), "ipa_activity.R"))
+ipa_activity_exports <- build_ipa_activity_exports(
+  calendly_export_clean,
+  participant_roster,
+  ipa_event_map,
+  participant_task_checklist_long,
+  report_year = 2026L
+)
+
+dashboard_exports <- c(ipa_activity_exports, list(
   "calendly_ftm_lookup.csv" = calendly_ftm_lookup,
   "participant_calendly_assignment_lookup.csv" =
     participant_calendly_assignment_lookup,
@@ -3023,7 +3050,7 @@ dashboard_exports <- list(
   "task_checklist_long.csv" = participant_task_checklist_long,
   "task_checklist_wide.csv" = participant_task_checklist_wide,
   "ftm_task_summary.csv" = ftm_task_summary
-)
+))
 
 walk2(
   dashboard_exports,

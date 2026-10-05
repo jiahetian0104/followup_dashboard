@@ -1,0 +1,21 @@
+Participant ID,Participant Cohort,IPA Age Band,Appointment Count,No-show Count,Cancel Count,Reschedule Count,IPA Complete,Completion Date,Completion FTM,Completion Fallback Appointment Date,Completion Attribution,IPA Year,firstName,lastName,Reason,2026 Calendly rows,2026 Calendly age bands,2026 Calendly cohorts,Same-day eligible host count,Same-day eligible hosts,2025–2026 All linked rows
+BKX774-01-B,3-20 year,11_17yr,0,0,0,0,TRUE,2026-06-06,Pending verification,,No eligible host on completion date,2026,Antonio,Harris,No participant-linked 2025–2026 assessment record,0,,,0,,0
+CBW928-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-05-19,Pending verification,,No eligible host on completion date,2026,Zora,Howard,2026 age-band mismatch,1,3_5yr,3-20 year,1,Toye,1
+DQZ583-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-09-17,Pending verification,,No eligible host on completion date,2026,Damiko,Lawson,2026 age-band mismatch,1,3_5yr,3-20 year,1,Andrew,2
+FFM260-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-04-24,Pending verification,,No eligible host on completion date,2026,Londyn,Dubose,Only 2025 other-band record,0,,,0,,1
+HKY684-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-07-15,Pending verification,,No eligible host on completion date,2026,Iszella,Meeks,No participant-linked 2025–2026 assessment record,0,,,0,,0
+HSD339-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-04-30,Pending verification,,No eligible host on completion date,2026,Lucian,Wizinsky,2026 age-band mismatch,1,3_5yr,3-20 year,1,Toye,3
+JMR655-01-A,3-20 year,11_17yr,0,0,0,0,TRUE,2026-06-09,Pending verification,,No eligible host on completion date,2026,Summer,Sanders,2026 age-band mismatch,4,6_10yr,3-20 year,2,"Amy, Jo",5
+KCT927-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-07-01,Pending verification,,No eligible host on completion date,2026,Delando,Yarbrough,2026 age-band mismatch,1,3_5yr,3-20 year,1,Toye,1
+LBG473-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-04-14,Pending verification,,No eligible host on completion date,2026,Alahni,Eason,2026 age-band mismatch,1,3_5yr,3-20 year,1,Toye,2
+LPT526-01-A,3-20 year,3_5yr,0,0,0,0,TRUE,2026-05-18,Pending verification,,No eligible host on completion date,2026,Amelia,Malone,No participant-linked 2025–2026 assessment record,0,,,0,,0
+MHS537-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-05-07,Pending verification,,No eligible host on completion date,2026,Samuel,Neuhoff,2026 age-band mismatch,1,3_5yr,3-20 year,1,Anna,2
+MNN095-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-06-16,Pending verification,,No eligible host on completion date,2026,Balthazar,Edwards,Only 2025 same-band record,0,,,0,,1
+MYL231-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-07-14,Pending verification,,No eligible host on completion date,2026,Henry,Pathic,2026 age-band mismatch,2,3_5yr,3-20 year,1,Jody,2
+TGY183-01-A,3-20 year,11_17yr,0,0,0,0,TRUE,2026-03-15,Pending verification,,No eligible host on completion date,2026,Pantera,Wilkins,2026 age-band mismatch,1,6_10yr,3-20 year,1,Amy,2
+TPN036-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-04-28,Pending verification,,No eligible host on completion date,2026,Nevaeh,Jackson,2026 age-band mismatch,1,3_5yr,3-20 year,1,Toye,1
+VCT498-01-A,3-20 year,3_5yr,0,0,0,0,TRUE,2026-07-29,Pending verification,,No eligible host on completion date,2026,Kolsyn,Spitzley,No participant-linked 2025–2026 assessment record,0,,,0,,0
+WFB144-01-A,3-20 year,6_10yr,0,0,0,0,TRUE,2026-03-29,Pending verification,,No eligible host on completion date,2026,Odin,Spears,2026 age-band mismatch,1,3_5yr,3-20 year,1,Toye,1
+YNZ000-01-A,3-20 year,11_17yr,0,0,0,0,TRUE,2026-03-09,Pending verification,,No eligible host on completion date,2026,Gregory,Cole,2026 age-band mismatch,2,6_10yr,3-20 year,1,Cassie,2
+YYJ169-01-A,3-20 year,11_17yr,0,0,0,0,TRUE,2026-03-19,Pending verification,,No eligible host on completion date,2026,Jesus,Soto,2026 age-band mismatch,1,6_10yr,3-20 year,1,Toye,2
+ZCR636-01-A,3-20 year,3_5yr,0,0,0,0,TRUE,2026-06-25,Pending verification,,No eligible host on completion date,2026,Ellie,Peake,2026 cohort mismatch,2,3_5yr,6-35 month,1,Anna,2

@@ -2,6 +2,19 @@
 
 This Streamlit app gives FTM staff a filterable participant-level view of IPA and Ripple task progress.
 
+IPA activity is a separate tab from biospecimens and other Ripple tasks. Its
+heatmap places FTM names horizontally and Complete, No-show, Cancel, and
+Reschedule counts vertically. Below the work summary, a percentage bar chart
+shows `(Complete + 0.25 * No-show) / participant age bands` for each individual
+FTM. Participant age bands are unique within each FTM, include cancel/reschedule-only
+records, and use the same filters as the numerator. Transferred tasks can enter
+more than one FTM's denominator. Repeated no-shows can yield a score above 100%:
+this weighted performance score is not a completion rate and is not capped.
+Unassigned, Pending verification and Shared hosts do not receive individual
+performance percentages. The other-task charts, metrics, details and
+trends exclude In-Person Assessments. IPA controls are independent of the
+sidebar's roster/current-caseload/task filters and include all recorded age bands.
+
 ## Data flow
 
 Running `../IPA Data.R` writes dashboard-ready files to:
@@ -16,6 +29,13 @@ applicable IPA task rows. The wide checklist and FTM summary are also exported
 for downstream use.
 
 The refresh also maintains two persistent audit tables:
+
+- `data/latest/ipa_appointment_history.csv`: all 2026 assessment bookings, with participant/age-band matching, booking host, canceled/no-show/rescheduled flags and old/new invitee links. Repeated reschedules are counted on each old booking, not on the new booking.
+- `data/latest/ipa_appointment_history_qc.csv`: unresolved participant/age-band bookings, missing status evidence, missing hosts and shared-host bookings.
+- `data/latest/participant_ipa_records.csv`: one row per participant/cohort/recorded age band, with completion, appointment counts, historical no-show/true cancellation/reschedule counts and completion attribution.
+- `data/latest/participant_ipa_ftm_records.csv`: participant × age band × FTM activity. Each booking stays with its host; completion credit can belong to a different FTM.
+- `data/latest/ftm_ipa_summary.csv`: FTM activity totals, separate from `ftm_task_summary.csv` (other tasks only).
+- `data/latest/ipa_completion_evidence.csv`: retained Ripple completion/date evidence for replaying attribution rules without a new API refresh.
 
 - `data/latest/calendly_ftm_lookup.csv`: one latest host/inviter record per participant, appointment year, and IPA age band for 2025–2026, with the source appointment and matching method retained for audit.
 - `data/latest/participant_calendly_assignment_lookup.csv`: the current assignment decision for every participant-age-band row. Priority is direct 2026 same-age evidence, Invitee name/email evidence, direct 2026 previous-age evidence, direct 2025 Calendly evidence, then the staff-verified recent IPA FTM fallback.
@@ -48,7 +68,43 @@ The sidebar lets users choose Latest, a timestamped snapshot, or a manually uplo
 - **No record:** no source record; displayed separately and counted as 0 in weighted progress
 - **Weighted progress:** sum of task scores divided by the number of applicable participant-task rows
 
-For IPA tasks, a participant's latest Calendly appointment within the same IPA age band controls the outcome. A completed latest appointment remains Complete even if an earlier appointment was a no-show. Non-IPA task outcomes come from Ripple.
+IPA activity uses every matching appointment, rather than the legacy checklist's
+latest appointment. Cancel counts only `Canceled = TRUE` with `Rescheduled = FALSE`;
+Reschedule counts each `Rescheduled = TRUE` old booking, including repeated actions
+in a chain. New/old invitee links are exported for tracing the chain. A successor
+link is also accepted as positive rescheduling evidence. Missing flags remain
+unknown, including in summaries, rather than becoming zero.
+
+Ripple completion is counted once per participant/age band. Completion credit first
+goes to a single distinct individual Calendly host on the Ripple completion date,
+from a booking that is neither canceled nor no-show. If that host cannot be resolved,
+credit falls back to the latest booking in the same age band. Cohort differences
+are ignored for completion attribution; the credited task retains its Ripple cohort.
+Bookings in 2025 and 2026 may supply completion evidence. Only when no same-band
+booking exists, try the immediately preceding age band, preferring an eligible
+completion-date host and then the latest booking. Latest fallbacks include canceled
+or no-show bookings and use appointment time, then booking creation time.
+`Completion Attribution` and `Completion Fallback Appointment Date` identify
+inferred credit. Missing/shared hosts or conflicting latest hosts remain
+**Pending verification**. Older bookings do not enter the 2026 workload counts.
+`ipa_completion_booking_evidence.csv` retains both years for attribution replay.
+Participant IPA exports, displays and downloads exclude first and last names,
+including displays loaded from older snapshots. Shared-host bookings are counted
+once under a combined label. Dated 2025 completion evidence is excluded.
+Undated completion flags remain visible for verification. Unmatched participant or
+age-band appointments remain in the history QA export and do not get FTM credit.
+
+The full legacy checklist remains available for responsibility audit and historical
+completion evidence; its latest-record IPA outcome is not used by the new IPA
+heatmap. Older snapshots without the new exports explicitly show that IPA activity
+history is unavailable. They are not reconstructed from latest-task records.
+
+Run the focused calculation checks from the workspace root:
+
+```bash
+Rscript followup_dashboard/ipa_streamlit_app/tests/test_ipa_activity.R
+python3 -m unittest discover -s followup_dashboard/ipa_streamlit_app/tests
+```
 
 ## Optional path override
 
