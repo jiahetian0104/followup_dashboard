@@ -1,0 +1,961 @@
+site,month_number,event_code,event_count,event_label,stage,is_biospecimen,is_prenatal_element,year,month_name,month_start,report_as_of
+Detroit,1,actigraphy,2,Actigraphy,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Detroit,1,child_dob,5,Births,Milestone,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Detroit,1,child_stool,3,Child Stool,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Detroit,1,child_urine,1,Child Urine,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Detroit,1,consent_date,2,Enrollments,Milestone,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Detroit,1,cordblood,2,Cord Blood,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Detroit,1,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,mom_bs,3,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Detroit,1,mom_hair,3,Maternal Hair,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Detroit,1,pn1_anthro,2,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,pn1_blood,3,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,pn1_survey,2,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,pn1_urine,2,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,pn2_anthro,3,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,pn2_blood,3,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,pn2_survey,2,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,pn2_urine,3,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,1,water,0,Water,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Flint,1,child_dob,5,Births,Milestone,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Flint,1,child_stool,1,Child Stool,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Flint,1,child_urine,1,Child Urine,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Flint,1,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Flint,1,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Flint,1,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,mom_bs,1,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Flint,1,mom_hair,1,Maternal Hair,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Flint,1,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,pn2_anthro,3,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,pn2_blood,3,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,pn2_survey,5,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,pn2_urine,2,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Flint,1,water,0,Water,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,child_dob,2,Births,Milestone,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,child_stool,3,Child Stool,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,child_urine,3,Child Urine,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,mom_bs,1,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,mom_hair,5,Maternal Hair,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,pn2_anthro,8,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,pn2_blood,9,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,pn2_survey,12,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,pn2_urine,8,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Traverse City,1,water,0,Water,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Unknown,1,child_dob,0,Births,Milestone,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Unknown,1,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Unknown,1,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Unknown,1,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Unknown,1,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,January,2026-01-01,2026-10-08
+Unknown,1,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Unknown,1,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,January,2026-01-01,2026-10-08
+Unknown,1,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Unknown,1,water,0,Water,Prenatal,TRUE,TRUE,2026,January,2026-01-01,2026-10-08
+Detroit,2,actigraphy,2,Actigraphy,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Detroit,2,child_dob,3,Births,Milestone,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Detroit,2,child_stool,1,Child Stool,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Detroit,2,child_urine,2,Child Urine,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Detroit,2,consent_date,4,Enrollments,Milestone,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Detroit,2,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Detroit,2,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,mom_bs,1,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Detroit,2,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Detroit,2,pn1_anthro,4,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,pn1_blood,2,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,pn1_survey,3,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,pn1_urine,3,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,pn2_anthro,1,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,pn2_blood,1,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,pn2_survey,2,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,pn2_urine,1,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,2,water,0,Water,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,actigraphy,1,Actigraphy,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Flint,2,child_dob,3,Births,Milestone,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Flint,2,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Flint,2,child_urine,1,Child Urine,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Flint,2,consent_date,4,Enrollments,Milestone,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Flint,2,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Flint,2,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,mom_bs,1,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Flint,2,mom_hair,1,Maternal Hair,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Flint,2,pn1_anthro,3,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,pn1_blood,3,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,pn1_survey,3,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,pn1_urine,2,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,pn2_anthro,9,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,pn2_blood,8,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,pn2_survey,4,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,pn2_urine,6,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Flint,2,water,0,Water,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,child_dob,7,Births,Milestone,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,child_stool,10,Child Stool,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,child_urine,8,Child Urine,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,mom_bs,5,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,mom_hair,5,Maternal Hair,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,pn2_anthro,10,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,pn2_blood,10,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,pn2_survey,7,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,pn2_urine,10,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Traverse City,2,water,0,Water,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Unknown,2,child_dob,0,Births,Milestone,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Unknown,2,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Unknown,2,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Unknown,2,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Unknown,2,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,February,2026-02-01,2026-10-08
+Unknown,2,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Unknown,2,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,February,2026-02-01,2026-10-08
+Unknown,2,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Unknown,2,water,0,Water,Prenatal,TRUE,TRUE,2026,February,2026-02-01,2026-10-08
+Detroit,3,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Detroit,3,child_dob,1,Births,Milestone,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Detroit,3,child_stool,1,Child Stool,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Detroit,3,child_urine,3,Child Urine,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Detroit,3,consent_date,5,Enrollments,Milestone,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Detroit,3,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Detroit,3,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,mom_bs,3,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Detroit,3,mom_hair,2,Maternal Hair,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Detroit,3,pn1_anthro,5,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,pn1_blood,2,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,pn1_survey,4,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,pn1_urine,2,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,pn2_anthro,2,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,pn2_blood,2,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,pn2_survey,1,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,pn2_urine,2,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,3,water,2,Water,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,actigraphy,5,Actigraphy,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Flint,3,child_dob,5,Births,Milestone,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Flint,3,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Flint,3,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Flint,3,consent_date,5,Enrollments,Milestone,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Flint,3,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Flint,3,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Flint,3,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Flint,3,pn1_anthro,6,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,pn1_blood,6,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,pn1_survey,6,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,pn1_urine,5,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,pn2_anthro,1,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,pn2_blood,1,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,pn2_survey,6,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,pn2_urine,1,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Flint,3,water,0,Water,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,child_dob,11,Births,Milestone,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,child_stool,4,Child Stool,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,child_urine,3,Child Urine,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,consent_date,1,Enrollments,Milestone,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,mom_bs,3,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,mom_hair,2,Maternal Hair,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,pn1_anthro,1,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,pn1_blood,1,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,pn1_survey,1,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,pn1_urine,1,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,pn2_anthro,1,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,pn2_blood,1,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,pn2_survey,2,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,pn2_urine,1,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Traverse City,3,water,0,Water,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Unknown,3,child_dob,0,Births,Milestone,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Unknown,3,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Unknown,3,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Unknown,3,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Unknown,3,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,March,2026-03-01,2026-10-08
+Unknown,3,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Unknown,3,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,March,2026-03-01,2026-10-08
+Unknown,3,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Unknown,3,water,0,Water,Prenatal,TRUE,TRUE,2026,March,2026-03-01,2026-10-08
+Detroit,4,actigraphy,4,Actigraphy,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,breast_milk,1,Breast Milk,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Detroit,4,child_dob,2,Births,Milestone,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Detroit,4,child_stool,1,Child Stool,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Detroit,4,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Detroit,4,consent_date,5,Enrollments,Milestone,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Detroit,4,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Detroit,4,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,mom_bs,1,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Detroit,4,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Detroit,4,pn1_anthro,5,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,pn1_blood,2,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,pn1_survey,3,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,pn1_urine,7,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,pn2_anthro,3,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,pn2_blood,2,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,pn2_survey,3,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,pn2_urine,1,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,4,water,3,Water,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,actigraphy,2,Actigraphy,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,breast_milk,3,Breast Milk,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Flint,4,child_dob,3,Births,Milestone,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Flint,4,child_stool,7,Child Stool,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Flint,4,child_urine,9,Child Urine,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Flint,4,consent_date,1,Enrollments,Milestone,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Flint,4,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Flint,4,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,mom_bs,9,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Flint,4,mom_hair,9,Maternal Hair,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Flint,4,pn1_anthro,1,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,pn1_blood,1,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,pn1_urine,1,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,pn2_anthro,2,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,pn2_blood,2,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,pn2_survey,1,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,pn2_urine,2,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Flint,4,water,1,Water,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,actigraphy,1,Actigraphy,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,breast_milk,5,Breast Milk,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,child_dob,8,Births,Milestone,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,child_stool,7,Child Stool,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,child_urine,7,Child Urine,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,consent_date,6,Enrollments,Milestone,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,mom_bs,6,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,mom_hair,7,Maternal Hair,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,pn1_anthro,6,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,pn1_blood,5,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,pn1_survey,6,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,pn1_urine,5,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,pn2_anthro,3,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,pn2_blood,3,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,pn2_survey,2,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,pn2_urine,3,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Traverse City,4,water,5,Water,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Unknown,4,child_dob,0,Births,Milestone,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Unknown,4,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Unknown,4,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Unknown,4,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Unknown,4,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,April,2026-04-01,2026-10-08
+Unknown,4,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Unknown,4,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,April,2026-04-01,2026-10-08
+Unknown,4,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Unknown,4,water,0,Water,Prenatal,TRUE,TRUE,2026,April,2026-04-01,2026-10-08
+Detroit,5,actigraphy,3,Actigraphy,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Detroit,5,child_dob,3,Births,Milestone,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Detroit,5,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Detroit,5,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Detroit,5,consent_date,4,Enrollments,Milestone,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Detroit,5,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Detroit,5,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Detroit,5,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Detroit,5,pn1_anthro,4,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,pn1_blood,1,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,pn1_survey,4,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,pn1_urine,4,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,pn2_anthro,2,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,pn2_blood,1,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,pn2_survey,2,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,pn2_urine,4,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,5,water,2,Water,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,actigraphy,1,Actigraphy,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Flint,5,child_dob,8,Births,Milestone,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Flint,5,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Flint,5,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Flint,5,consent_date,3,Enrollments,Milestone,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Flint,5,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Flint,5,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Flint,5,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Flint,5,pn1_anthro,3,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,pn1_blood,2,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,pn1_survey,2,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,pn1_urine,3,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,pn2_blood,2,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,pn2_survey,1,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,pn2_urine,2,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Flint,5,water,0,Water,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,actigraphy,11,Actigraphy,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,breast_milk,4,Breast Milk,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,child_dob,2,Births,Milestone,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,child_stool,4,Child Stool,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,child_urine,4,Child Urine,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,consent_date,12,Enrollments,Milestone,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,mom_bs,4,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,mom_hair,4,Maternal Hair,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,pn1_anthro,12,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,pn1_blood,10,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,pn1_survey,10,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,pn1_urine,10,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Traverse City,5,water,4,Water,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Unknown,5,child_dob,0,Births,Milestone,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Unknown,5,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Unknown,5,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Unknown,5,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Unknown,5,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,May,2026-05-01,2026-10-08
+Unknown,5,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Unknown,5,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,May,2026-05-01,2026-10-08
+Unknown,5,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Unknown,5,water,0,Water,Prenatal,TRUE,TRUE,2026,May,2026-05-01,2026-10-08
+Detroit,6,actigraphy,3,Actigraphy,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,breast_milk,1,Breast Milk,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Detroit,6,child_dob,2,Births,Milestone,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Detroit,6,child_stool,1,Child Stool,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Detroit,6,child_urine,1,Child Urine,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Detroit,6,consent_date,8,Enrollments,Milestone,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Detroit,6,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Detroit,6,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,mom_bs,1,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Detroit,6,mom_hair,1,Maternal Hair,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Detroit,6,pn1_anthro,8,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,pn1_blood,3,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,pn1_survey,4,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,pn1_urine,5,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,pn2_anthro,9,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,pn2_blood,5,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,pn2_survey,5,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,pn2_urine,8,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,6,water,3,Water,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,actigraphy,1,Actigraphy,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Flint,6,child_dob,2,Births,Milestone,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Flint,6,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Flint,6,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Flint,6,consent_date,5,Enrollments,Milestone,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Flint,6,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Flint,6,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Flint,6,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Flint,6,pn1_anthro,5,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,pn1_blood,5,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,pn1_survey,4,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,pn1_urine,5,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,pn2_anthro,2,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,pn2_blood,1,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,pn2_survey,6,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,pn2_urine,1,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Flint,6,water,1,Water,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,actigraphy,8,Actigraphy,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,breast_milk,2,Breast Milk,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,child_dob,4,Births,Milestone,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,child_stool,4,Child Stool,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,child_urine,4,Child Urine,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,consent_date,3,Enrollments,Milestone,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,mom_bs,4,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,mom_hair,4,Maternal Hair,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,pn1_anthro,3,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,pn1_blood,5,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,pn1_survey,5,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,pn1_urine,5,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,pn2_anthro,1,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,pn2_survey,2,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Traverse City,6,water,2,Water,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Unknown,6,child_dob,0,Births,Milestone,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Unknown,6,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Unknown,6,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Unknown,6,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Unknown,6,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,June,2026-06-01,2026-10-08
+Unknown,6,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Unknown,6,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,June,2026-06-01,2026-10-08
+Unknown,6,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Unknown,6,water,0,Water,Prenatal,TRUE,TRUE,2026,June,2026-06-01,2026-10-08
+Detroit,7,actigraphy,3,Actigraphy,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,breast_milk,1,Breast Milk,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Detroit,7,child_dob,4,Births,Milestone,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Detroit,7,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Detroit,7,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Detroit,7,consent_date,5,Enrollments,Milestone,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Detroit,7,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Detroit,7,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,mom_bs,1,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Detroit,7,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Detroit,7,pn1_anthro,5,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,pn1_blood,3,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,pn1_survey,5,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,pn1_urine,5,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,pn2_anthro,2,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,pn2_blood,2,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,pn2_survey,1,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,pn2_urine,1,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,7,water,3,Water,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,actigraphy,5,Actigraphy,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Flint,7,child_dob,3,Births,Milestone,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Flint,7,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Flint,7,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Flint,7,consent_date,4,Enrollments,Milestone,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Flint,7,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Flint,7,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Flint,7,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Flint,7,pn1_anthro,4,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,pn1_blood,4,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,pn1_survey,4,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,pn1_urine,4,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,pn2_anthro,6,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,pn2_blood,5,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,pn2_survey,2,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,pn2_urine,5,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Flint,7,water,0,Water,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,actigraphy,5,Actigraphy,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,breast_milk,1,Breast Milk,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,child_dob,0,Births,Milestone,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,child_stool,2,Child Stool,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,child_urine,2,Child Urine,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,consent_date,5,Enrollments,Milestone,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,mom_bs,2,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,mom_hair,2,Maternal Hair,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,pn1_anthro,5,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,pn1_blood,4,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,pn1_survey,5,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,pn1_urine,4,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,pn2_anthro,10,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,pn2_blood,10,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,pn2_survey,11,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,pn2_urine,10,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Traverse City,7,water,7,Water,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Unknown,7,child_dob,0,Births,Milestone,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Unknown,7,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Unknown,7,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Unknown,7,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Unknown,7,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,July,2026-07-01,2026-10-08
+Unknown,7,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Unknown,7,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,July,2026-07-01,2026-10-08
+Unknown,7,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Unknown,7,water,0,Water,Prenatal,TRUE,TRUE,2026,July,2026-07-01,2026-10-08
+Detroit,8,actigraphy,3,Actigraphy,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Detroit,8,child_dob,4,Births,Milestone,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Detroit,8,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Detroit,8,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Detroit,8,consent_date,3,Enrollments,Milestone,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Detroit,8,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Detroit,8,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Detroit,8,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Detroit,8,pn1_anthro,3,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,pn1_survey,3,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,pn1_urine,3,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,pn2_anthro,3,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,pn2_blood,2,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,pn2_survey,4,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,pn2_urine,4,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,8,water,2,Water,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,actigraphy,4,Actigraphy,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,breast_milk,1,Breast Milk,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Flint,8,child_dob,5,Births,Milestone,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Flint,8,child_stool,1,Child Stool,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Flint,8,child_urine,2,Child Urine,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Flint,8,consent_date,5,Enrollments,Milestone,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Flint,8,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Flint,8,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,mom_bs,2,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Flint,8,mom_hair,3,Maternal Hair,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Flint,8,pn1_anthro,5,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,pn1_blood,4,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,pn1_survey,5,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,pn1_urine,4,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,pn2_anthro,1,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,pn2_blood,1,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,pn2_survey,1,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,pn2_urine,1,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Flint,8,water,1,Water,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,actigraphy,2,Actigraphy,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,child_dob,3,Births,Milestone,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,mom_hair,1,Maternal Hair,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,pn1_blood,1,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,pn1_urine,1,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,pn2_anthro,5,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,pn2_blood,6,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,pn2_survey,5,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,pn2_urine,6,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Traverse City,8,water,3,Water,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Unknown,8,child_dob,0,Births,Milestone,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Unknown,8,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Unknown,8,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Unknown,8,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Unknown,8,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,August,2026-08-01,2026-10-08
+Unknown,8,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Unknown,8,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,August,2026-08-01,2026-10-08
+Unknown,8,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Unknown,8,water,0,Water,Prenatal,TRUE,TRUE,2026,August,2026-08-01,2026-10-08
+Detroit,9,actigraphy,2,Actigraphy,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Detroit,9,child_dob,5,Births,Milestone,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Detroit,9,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Detroit,9,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Detroit,9,consent_date,2,Enrollments,Milestone,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Detroit,9,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Detroit,9,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,mom_bs,1,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Detroit,9,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Detroit,9,pn1_anthro,2,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,pn1_blood,1,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,pn1_survey,2,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,pn1_urine,2,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,pn2_anthro,6,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,pn2_blood,3,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,pn2_survey,3,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,pn2_urine,5,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,9,water,4,Water,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,actigraphy,1,Actigraphy,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Flint,9,child_dob,0,Births,Milestone,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Flint,9,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Flint,9,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Flint,9,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Flint,9,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Flint,9,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Flint,9,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Flint,9,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Flint,9,water,0,Water,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,actigraphy,2,Actigraphy,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,breast_milk,1,Breast Milk,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,child_dob,3,Births,Milestone,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,child_stool,1,Child Stool,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,child_urine,1,Child Urine,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,consent_date,2,Enrollments,Milestone,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,mom_bs,1,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,mom_hair,1,Maternal Hair,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,pn1_anthro,2,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,pn1_blood,1,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,pn1_survey,2,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,pn1_urine,1,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,pn2_anthro,5,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,pn2_blood,5,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,pn2_survey,6,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,pn2_urine,5,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Traverse City,9,water,4,Water,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Unknown,9,child_dob,0,Births,Milestone,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Unknown,9,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Unknown,9,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Unknown,9,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Unknown,9,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,September,2026-09-01,2026-10-08
+Unknown,9,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Unknown,9,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,September,2026-09-01,2026-10-08
+Unknown,9,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Unknown,9,water,0,Water,Prenatal,TRUE,TRUE,2026,September,2026-09-01,2026-10-08
+Detroit,10,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Detroit,10,child_dob,1,Births,Milestone,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Detroit,10,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Detroit,10,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Detroit,10,consent_date,1,Enrollments,Milestone,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Detroit,10,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,estduedate,1,Projected Births,Projection,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Detroit,10,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Detroit,10,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Detroit,10,pn1_anthro,1,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,pn2_survey,1,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,10,water,0,Water,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Flint,10,child_dob,1,Births,Milestone,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Flint,10,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Flint,10,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Flint,10,consent_date,4,Enrollments,Milestone,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Flint,10,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Flint,10,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Flint,10,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Flint,10,pn1_anthro,1,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Flint,10,water,1,Water,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,child_dob,0,Births,Milestone,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,consent_date,2,Enrollments,Milestone,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,estduedate,7,Projected Births,Projection,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,pn1_anthro,2,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,pn1_survey,1,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,pn2_anthro,4,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,pn2_blood,4,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,pn2_survey,1,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,pn2_urine,4,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Traverse City,10,water,4,Water,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Unknown,10,child_dob,0,Births,Milestone,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Unknown,10,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Unknown,10,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Unknown,10,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Unknown,10,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,October,2026-10-01,2026-10-08
+Unknown,10,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Unknown,10,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,October,2026-10-01,2026-10-08
+Unknown,10,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Unknown,10,water,0,Water,Prenatal,TRUE,TRUE,2026,October,2026-10-01,2026-10-08
+Detroit,11,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Detroit,11,child_dob,0,Births,Milestone,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Detroit,11,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Detroit,11,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Detroit,11,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Detroit,11,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,estduedate,9,Projected Births,Projection,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Detroit,11,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Detroit,11,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Detroit,11,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,11,water,0,Water,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Flint,11,child_dob,0,Births,Milestone,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Flint,11,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Flint,11,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Flint,11,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Flint,11,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,estduedate,1,Projected Births,Projection,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Flint,11,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Flint,11,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Flint,11,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Flint,11,water,0,Water,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,child_dob,0,Births,Milestone,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,estduedate,2,Projected Births,Projection,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Traverse City,11,water,0,Water,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Unknown,11,child_dob,0,Births,Milestone,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Unknown,11,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Unknown,11,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Unknown,11,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Unknown,11,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,November,2026-11-01,2026-10-08
+Unknown,11,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Unknown,11,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,November,2026-11-01,2026-10-08
+Unknown,11,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Unknown,11,water,0,Water,Prenatal,TRUE,TRUE,2026,November,2026-11-01,2026-10-08
+Detroit,12,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Detroit,12,child_dob,0,Births,Milestone,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Detroit,12,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Detroit,12,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Detroit,12,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Detroit,12,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,estduedate,4,Projected Births,Projection,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Detroit,12,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Detroit,12,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Detroit,12,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Detroit,12,water,0,Water,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Flint,12,child_dob,0,Births,Milestone,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Flint,12,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Flint,12,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Flint,12,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Flint,12,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,estduedate,4,Projected Births,Projection,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Flint,12,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Flint,12,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Flint,12,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Flint,12,water,0,Water,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,child_dob,0,Births,Milestone,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,estduedate,7,Projected Births,Projection,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Traverse City,12,water,0,Water,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,actigraphy,0,Actigraphy,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,breast_milk,0,Breast Milk,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Unknown,12,child_dob,0,Births,Milestone,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Unknown,12,child_stool,0,Child Stool,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Unknown,12,child_urine,0,Child Urine,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Unknown,12,consent_date,0,Enrollments,Milestone,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Unknown,12,cordblood,0,Cord Blood,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,estduedate,0,Projected Births,Projection,FALSE,FALSE,2026,December,2026-12-01,2026-10-08
+Unknown,12,mmra,0,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,mom_bs,0,Maternal Bloodspot,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Unknown,12,mom_hair,0,Maternal Hair,0-5 Month,TRUE,FALSE,2026,December,2026-12-01,2026-10-08
+Unknown,12,pn1_anthro,0,Prenatal 1 Anthro,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,pn1_blood,0,Prenatal 1 Blood,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,pn1_survey,0,Prenatal 1 Survey,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,pn1_urine,0,Prenatal 1 Urine,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,pn2_anthro,0,Prenatal 2 Anthro,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,pn2_blood,0,Prenatal 2 Blood,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,pn2_survey,0,Prenatal 2 Survey,Prenatal,FALSE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,pn2_urine,0,Prenatal 2 Urine,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08
+Unknown,12,water,0,Water,Prenatal,TRUE,TRUE,2026,December,2026-12-01,2026-10-08

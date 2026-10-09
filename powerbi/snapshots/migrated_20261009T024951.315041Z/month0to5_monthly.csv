@@ -1,0 +1,625 @@
+site,event_code,completion_month_number,event_count,event_label,is_biospecimen,completion_month_name,completion_month_start,report_year,report_as_of
+Detroit,breast_milk,4,1,Breast Milk,TRUE,April,2026-04-01,2026,2026-10-08
+Detroit,breast_milk,6,1,Breast Milk,TRUE,June,2026-06-01,2026,2026-10-08
+Detroit,breast_milk,7,1,Breast Milk,TRUE,July,2026-07-01,2026,2026-10-08
+Detroit,child_anthro,1,3,Child Anthro,FALSE,January,2026-01-01,2026,2026-10-08
+Detroit,child_anthro,2,2,Child Anthro,FALSE,February,2026-02-01,2026,2026-10-08
+Detroit,child_anthro,3,3,Child Anthro,FALSE,March,2026-03-01,2026,2026-10-08
+Detroit,child_anthro,4,1,Child Anthro,FALSE,April,2026-04-01,2026,2026-10-08
+Detroit,child_anthro,6,1,Child Anthro,FALSE,June,2026-06-01,2026,2026-10-08
+Detroit,child_anthro,7,1,Child Anthro,FALSE,July,2026-07-01,2026,2026-10-08
+Detroit,child_anthro,9,1,Child Anthro,FALSE,September,2026-09-01,2026,2026-10-08
+Detroit,child_stool,1,3,Child Stool,TRUE,January,2026-01-01,2026,2026-10-08
+Detroit,child_stool,2,1,Child Stool,TRUE,February,2026-02-01,2026,2026-10-08
+Detroit,child_stool,3,1,Child Stool,TRUE,March,2026-03-01,2026,2026-10-08
+Detroit,child_stool,4,1,Child Stool,TRUE,April,2026-04-01,2026,2026-10-08
+Detroit,child_stool,6,1,Child Stool,TRUE,June,2026-06-01,2026,2026-10-08
+Detroit,child_urine,1,1,Child Urine,TRUE,January,2026-01-01,2026,2026-10-08
+Detroit,child_urine,2,2,Child Urine,TRUE,February,2026-02-01,2026,2026-10-08
+Detroit,child_urine,3,3,Child Urine,TRUE,March,2026-03-01,2026,2026-10-08
+Detroit,child_urine,6,1,Child Urine,TRUE,June,2026-06-01,2026,2026-10-08
+Detroit,diaper_sent,1,1,Diaper Sent,FALSE,January,2026-01-01,2026,2026-10-08
+Detroit,diaper_sent,2,3,Diaper Sent,FALSE,February,2026-02-01,2026,2026-10-08
+Detroit,diaper_sent,3,2,Diaper Sent,FALSE,March,2026-03-01,2026,2026-10-08
+Detroit,diaper_sent,4,2,Diaper Sent,FALSE,April,2026-04-01,2026,2026-10-08
+Detroit,diaper_sent,5,2,Diaper Sent,FALSE,May,2026-05-01,2026,2026-10-08
+Detroit,diaper_sent,6,2,Diaper Sent,FALSE,June,2026-06-01,2026,2026-10-08
+Detroit,diaper_sent,9,2,Diaper Sent,FALSE,September,2026-09-01,2026,2026-10-08
+Detroit,diaper_sent,10,1,Diaper Sent,FALSE,October,2026-10-01,2026,2026-10-08
+Detroit,mom_anthro,1,3,Mom Anthro,FALSE,January,2026-01-01,2026,2026-10-08
+Detroit,mom_anthro,2,1,Mom Anthro,FALSE,February,2026-02-01,2026,2026-10-08
+Detroit,mom_anthro,3,3,Mom Anthro,FALSE,March,2026-03-01,2026,2026-10-08
+Detroit,mom_anthro,4,1,Mom Anthro,FALSE,April,2026-04-01,2026,2026-10-08
+Detroit,mom_anthro,6,1,Mom Anthro,FALSE,June,2026-06-01,2026,2026-10-08
+Detroit,mom_anthro,7,1,Mom Anthro,FALSE,July,2026-07-01,2026,2026-10-08
+Detroit,mom_anthro,9,1,Mom Anthro,FALSE,September,2026-09-01,2026,2026-10-08
+Detroit,mom_bs,1,3,Mom Bloodspot,TRUE,January,2026-01-01,2026,2026-10-08
+Detroit,mom_bs,2,1,Mom Bloodspot,TRUE,February,2026-02-01,2026,2026-10-08
+Detroit,mom_bs,3,3,Mom Bloodspot,TRUE,March,2026-03-01,2026,2026-10-08
+Detroit,mom_bs,4,1,Mom Bloodspot,TRUE,April,2026-04-01,2026,2026-10-08
+Detroit,mom_bs,6,1,Mom Bloodspot,TRUE,June,2026-06-01,2026,2026-10-08
+Detroit,mom_bs,7,1,Mom Bloodspot,TRUE,July,2026-07-01,2026,2026-10-08
+Detroit,mom_bs,9,1,Mom Bloodspot,TRUE,September,2026-09-01,2026,2026-10-08
+Detroit,mom_hair,1,3,Mom Hair,TRUE,January,2026-01-01,2026,2026-10-08
+Detroit,mom_hair,3,2,Mom Hair,TRUE,March,2026-03-01,2026,2026-10-08
+Detroit,mom_hair,6,1,Mom Hair,TRUE,June,2026-06-01,2026,2026-10-08
+Detroit,partner_contact,4,2,Partner Contact,FALSE,April,2026-04-01,2026,2026-10-08
+Detroit,postnatal_consent,1,3,Postnatal Consent,FALSE,January,2026-01-01,2026,2026-10-08
+Detroit,postnatal_consent,2,5,Postnatal Consent,FALSE,February,2026-02-01,2026,2026-10-08
+Detroit,postnatal_consent,3,3,Postnatal Consent,FALSE,March,2026-03-01,2026,2026-10-08
+Detroit,postnatal_consent,6,3,Postnatal Consent,FALSE,June,2026-06-01,2026,2026-10-08
+Detroit,postnatal_consent,7,1,Postnatal Consent,FALSE,July,2026-07-01,2026,2026-10-08
+Detroit,postnatal_consent,8,2,Postnatal Consent,FALSE,August,2026-08-01,2026,2026-10-08
+Detroit,postnatal_consent,9,4,Postnatal Consent,FALSE,September,2026-09-01,2026,2026-10-08
+Detroit,survey,1,1,Survey,FALSE,January,2026-01-01,2026,2026-10-08
+Detroit,survey,2,5,Survey,FALSE,February,2026-02-01,2026,2026-10-08
+Detroit,survey,3,3,Survey,FALSE,March,2026-03-01,2026,2026-10-08
+Detroit,survey,5,1,Survey,FALSE,May,2026-05-01,2026,2026-10-08
+Detroit,survey,6,2,Survey,FALSE,June,2026-06-01,2026,2026-10-08
+Detroit,survey,8,3,Survey,FALSE,August,2026-08-01,2026,2026-10-08
+Detroit,survey,9,4,Survey,FALSE,September,2026-09-01,2026,2026-10-08
+Detroit,vib_request,2,1,VIB Request,FALSE,February,2026-02-01,2026,2026-10-08
+Detroit,vib_request,4,2,VIB Request,FALSE,April,2026-04-01,2026,2026-10-08
+Detroit,vib_request,9,1,VIB Request,FALSE,September,2026-09-01,2026,2026-10-08
+Detroit,visit_scheduled,1,3,Visit Scheduled,FALSE,January,2026-01-01,2026,2026-10-08
+Detroit,visit_scheduled,2,3,Visit Scheduled,FALSE,February,2026-02-01,2026,2026-10-08
+Detroit,visit_scheduled,3,2,Visit Scheduled,FALSE,March,2026-03-01,2026,2026-10-08
+Detroit,visit_scheduled,4,2,Visit Scheduled,FALSE,April,2026-04-01,2026,2026-10-08
+Detroit,visit_scheduled,5,1,Visit Scheduled,FALSE,May,2026-05-01,2026,2026-10-08
+Detroit,visit_scheduled,6,1,Visit Scheduled,FALSE,June,2026-06-01,2026,2026-10-08
+Detroit,visit_scheduled,7,1,Visit Scheduled,FALSE,July,2026-07-01,2026,2026-10-08
+Detroit,visit_scheduled,9,1,Visit Scheduled,FALSE,September,2026-09-01,2026,2026-10-08
+Detroit,visit_scheduled,10,2,Visit Scheduled,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,breast_milk,4,3,Breast Milk,TRUE,April,2026-04-01,2026,2026-10-08
+Flint,breast_milk,8,1,Breast Milk,TRUE,August,2026-08-01,2026,2026-10-08
+Flint,child_anthro,1,1,Child Anthro,FALSE,January,2026-01-01,2026,2026-10-08
+Flint,child_anthro,2,1,Child Anthro,FALSE,February,2026-02-01,2026,2026-10-08
+Flint,child_anthro,4,10,Child Anthro,FALSE,April,2026-04-01,2026,2026-10-08
+Flint,child_anthro,8,3,Child Anthro,FALSE,August,2026-08-01,2026,2026-10-08
+Flint,child_stool,1,1,Child Stool,TRUE,January,2026-01-01,2026,2026-10-08
+Flint,child_stool,4,7,Child Stool,TRUE,April,2026-04-01,2026,2026-10-08
+Flint,child_stool,8,1,Child Stool,TRUE,August,2026-08-01,2026,2026-10-08
+Flint,child_urine,1,1,Child Urine,TRUE,January,2026-01-01,2026,2026-10-08
+Flint,child_urine,2,1,Child Urine,TRUE,February,2026-02-01,2026,2026-10-08
+Flint,child_urine,4,9,Child Urine,TRUE,April,2026-04-01,2026,2026-10-08
+Flint,child_urine,8,2,Child Urine,TRUE,August,2026-08-01,2026,2026-10-08
+Flint,diaper_sent,4,10,Diaper Sent,FALSE,April,2026-04-01,2026,2026-10-08
+Flint,diaper_sent,6,1,Diaper Sent,FALSE,June,2026-06-01,2026,2026-10-08
+Flint,diaper_sent,8,4,Diaper Sent,FALSE,August,2026-08-01,2026,2026-10-08
+Flint,mom_anthro,1,1,Mom Anthro,FALSE,January,2026-01-01,2026,2026-10-08
+Flint,mom_anthro,2,1,Mom Anthro,FALSE,February,2026-02-01,2026,2026-10-08
+Flint,mom_anthro,4,10,Mom Anthro,FALSE,April,2026-04-01,2026,2026-10-08
+Flint,mom_anthro,8,3,Mom Anthro,FALSE,August,2026-08-01,2026,2026-10-08
+Flint,mom_bs,1,1,Mom Bloodspot,TRUE,January,2026-01-01,2026,2026-10-08
+Flint,mom_bs,2,1,Mom Bloodspot,TRUE,February,2026-02-01,2026,2026-10-08
+Flint,mom_bs,4,9,Mom Bloodspot,TRUE,April,2026-04-01,2026,2026-10-08
+Flint,mom_bs,8,2,Mom Bloodspot,TRUE,August,2026-08-01,2026,2026-10-08
+Flint,mom_hair,1,1,Mom Hair,TRUE,January,2026-01-01,2026,2026-10-08
+Flint,mom_hair,2,1,Mom Hair,TRUE,February,2026-02-01,2026,2026-10-08
+Flint,mom_hair,4,9,Mom Hair,TRUE,April,2026-04-01,2026,2026-10-08
+Flint,mom_hair,8,3,Mom Hair,TRUE,August,2026-08-01,2026,2026-10-08
+Flint,partner_contact,9,1,Partner Contact,FALSE,September,2026-09-01,2026,2026-10-08
+Flint,postnatal_consent,2,1,Postnatal Consent,FALSE,February,2026-02-01,2026,2026-10-08
+Flint,postnatal_consent,4,18,Postnatal Consent,FALSE,April,2026-04-01,2026,2026-10-08
+Flint,postnatal_consent,6,7,Postnatal Consent,FALSE,June,2026-06-01,2026,2026-10-08
+Flint,postnatal_consent,7,1,Postnatal Consent,FALSE,July,2026-07-01,2026,2026-10-08
+Flint,postnatal_consent,8,8,Postnatal Consent,FALSE,August,2026-08-01,2026,2026-10-08
+Flint,postnatal_consent,10,5,Postnatal Consent,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,survey,1,5,Survey,FALSE,January,2026-01-01,2026,2026-10-08
+Flint,survey,2,5,Survey,FALSE,February,2026-02-01,2026,2026-10-08
+Flint,survey,4,2,Survey,FALSE,April,2026-04-01,2026,2026-10-08
+Flint,survey,6,11,Survey,FALSE,June,2026-06-01,2026,2026-10-08
+Flint,survey,8,1,Survey,FALSE,August,2026-08-01,2026,2026-10-08
+Flint,vib_request,6,3,VIB Request,FALSE,June,2026-06-01,2026,2026-10-08
+Flint,vib_request,9,1,VIB Request,FALSE,September,2026-09-01,2026,2026-10-08
+Flint,visit_scheduled,4,10,Visit Scheduled,FALSE,April,2026-04-01,2026,2026-10-08
+Flint,visit_scheduled,6,1,Visit Scheduled,FALSE,June,2026-06-01,2026,2026-10-08
+Flint,visit_scheduled,8,8,Visit Scheduled,FALSE,August,2026-08-01,2026,2026-10-08
+Traverse City,breast_milk,4,5,Breast Milk,TRUE,April,2026-04-01,2026,2026-10-08
+Traverse City,breast_milk,5,4,Breast Milk,TRUE,May,2026-05-01,2026,2026-10-08
+Traverse City,breast_milk,6,2,Breast Milk,TRUE,June,2026-06-01,2026,2026-10-08
+Traverse City,breast_milk,7,1,Breast Milk,TRUE,July,2026-07-01,2026,2026-10-08
+Traverse City,breast_milk,9,1,Breast Milk,TRUE,September,2026-09-01,2026,2026-10-08
+Traverse City,child_anthro,1,6,Child Anthro,FALSE,January,2026-01-01,2026,2026-10-08
+Traverse City,child_anthro,2,10,Child Anthro,FALSE,February,2026-02-01,2026,2026-10-08
+Traverse City,child_anthro,3,3,Child Anthro,FALSE,March,2026-03-01,2026,2026-10-08
+Traverse City,child_anthro,4,10,Child Anthro,FALSE,April,2026-04-01,2026,2026-10-08
+Traverse City,child_anthro,5,6,Child Anthro,FALSE,May,2026-05-01,2026,2026-10-08
+Traverse City,child_anthro,6,5,Child Anthro,FALSE,June,2026-06-01,2026,2026-10-08
+Traverse City,child_anthro,7,1,Child Anthro,FALSE,July,2026-07-01,2026,2026-10-08
+Traverse City,child_anthro,8,1,Child Anthro,FALSE,August,2026-08-01,2026,2026-10-08
+Traverse City,child_anthro,9,1,Child Anthro,FALSE,September,2026-09-01,2026,2026-10-08
+Traverse City,child_stool,1,3,Child Stool,TRUE,January,2026-01-01,2026,2026-10-08
+Traverse City,child_stool,2,10,Child Stool,TRUE,February,2026-02-01,2026,2026-10-08
+Traverse City,child_stool,3,4,Child Stool,TRUE,March,2026-03-01,2026,2026-10-08
+Traverse City,child_stool,4,7,Child Stool,TRUE,April,2026-04-01,2026,2026-10-08
+Traverse City,child_stool,5,4,Child Stool,TRUE,May,2026-05-01,2026,2026-10-08
+Traverse City,child_stool,6,4,Child Stool,TRUE,June,2026-06-01,2026,2026-10-08
+Traverse City,child_stool,7,2,Child Stool,TRUE,July,2026-07-01,2026,2026-10-08
+Traverse City,child_stool,9,1,Child Stool,TRUE,September,2026-09-01,2026,2026-10-08
+Traverse City,child_urine,1,3,Child Urine,TRUE,January,2026-01-01,2026,2026-10-08
+Traverse City,child_urine,2,8,Child Urine,TRUE,February,2026-02-01,2026,2026-10-08
+Traverse City,child_urine,3,3,Child Urine,TRUE,March,2026-03-01,2026,2026-10-08
+Traverse City,child_urine,4,7,Child Urine,TRUE,April,2026-04-01,2026,2026-10-08
+Traverse City,child_urine,5,4,Child Urine,TRUE,May,2026-05-01,2026,2026-10-08
+Traverse City,child_urine,6,4,Child Urine,TRUE,June,2026-06-01,2026,2026-10-08
+Traverse City,child_urine,7,2,Child Urine,TRUE,July,2026-07-01,2026,2026-10-08
+Traverse City,child_urine,9,1,Child Urine,TRUE,September,2026-09-01,2026,2026-10-08
+Traverse City,diaper_sent,1,4,Diaper Sent,FALSE,January,2026-01-01,2026,2026-10-08
+Traverse City,diaper_sent,2,2,Diaper Sent,FALSE,February,2026-02-01,2026,2026-10-08
+Traverse City,diaper_sent,3,4,Diaper Sent,FALSE,March,2026-03-01,2026,2026-10-08
+Traverse City,diaper_sent,4,4,Diaper Sent,FALSE,April,2026-04-01,2026,2026-10-08
+Traverse City,diaper_sent,5,2,Diaper Sent,FALSE,May,2026-05-01,2026,2026-10-08
+Traverse City,diaper_sent,6,1,Diaper Sent,FALSE,June,2026-06-01,2026,2026-10-08
+Traverse City,diaper_sent,9,2,Diaper Sent,FALSE,September,2026-09-01,2026,2026-10-08
+Traverse City,diaper_sent,10,1,Diaper Sent,FALSE,October,2026-10-01,2026,2026-10-08
+Traverse City,mom_anthro,1,6,Mom Anthro,FALSE,January,2026-01-01,2026,2026-10-08
+Traverse City,mom_anthro,2,9,Mom Anthro,FALSE,February,2026-02-01,2026,2026-10-08
+Traverse City,mom_anthro,3,3,Mom Anthro,FALSE,March,2026-03-01,2026,2026-10-08
+Traverse City,mom_anthro,4,9,Mom Anthro,FALSE,April,2026-04-01,2026,2026-10-08
+Traverse City,mom_anthro,5,7,Mom Anthro,FALSE,May,2026-05-01,2026,2026-10-08
+Traverse City,mom_anthro,6,4,Mom Anthro,FALSE,June,2026-06-01,2026,2026-10-08
+Traverse City,mom_anthro,7,1,Mom Anthro,FALSE,July,2026-07-01,2026,2026-10-08
+Traverse City,mom_anthro,8,2,Mom Anthro,FALSE,August,2026-08-01,2026,2026-10-08
+Traverse City,mom_anthro,9,1,Mom Anthro,FALSE,September,2026-09-01,2026,2026-10-08
+Traverse City,mom_bs,1,1,Mom Bloodspot,TRUE,January,2026-01-01,2026,2026-10-08
+Traverse City,mom_bs,2,5,Mom Bloodspot,TRUE,February,2026-02-01,2026,2026-10-08
+Traverse City,mom_bs,3,3,Mom Bloodspot,TRUE,March,2026-03-01,2026,2026-10-08
+Traverse City,mom_bs,4,6,Mom Bloodspot,TRUE,April,2026-04-01,2026,2026-10-08
+Traverse City,mom_bs,5,4,Mom Bloodspot,TRUE,May,2026-05-01,2026,2026-10-08
+Traverse City,mom_bs,6,4,Mom Bloodspot,TRUE,June,2026-06-01,2026,2026-10-08
+Traverse City,mom_bs,7,2,Mom Bloodspot,TRUE,July,2026-07-01,2026,2026-10-08
+Traverse City,mom_bs,9,1,Mom Bloodspot,TRUE,September,2026-09-01,2026,2026-10-08
+Traverse City,mom_hair,1,5,Mom Hair,TRUE,January,2026-01-01,2026,2026-10-08
+Traverse City,mom_hair,2,5,Mom Hair,TRUE,February,2026-02-01,2026,2026-10-08
+Traverse City,mom_hair,3,2,Mom Hair,TRUE,March,2026-03-01,2026,2026-10-08
+Traverse City,mom_hair,4,7,Mom Hair,TRUE,April,2026-04-01,2026,2026-10-08
+Traverse City,mom_hair,5,4,Mom Hair,TRUE,May,2026-05-01,2026,2026-10-08
+Traverse City,mom_hair,6,4,Mom Hair,TRUE,June,2026-06-01,2026,2026-10-08
+Traverse City,mom_hair,7,2,Mom Hair,TRUE,July,2026-07-01,2026,2026-10-08
+Traverse City,mom_hair,8,1,Mom Hair,TRUE,August,2026-08-01,2026,2026-10-08
+Traverse City,mom_hair,9,1,Mom Hair,TRUE,September,2026-09-01,2026,2026-10-08
+Traverse City,partner_contact,1,4,Partner Contact,FALSE,January,2026-01-01,2026,2026-10-08
+Traverse City,partner_contact,2,1,Partner Contact,FALSE,February,2026-02-01,2026,2026-10-08
+Traverse City,partner_contact,3,2,Partner Contact,FALSE,March,2026-03-01,2026,2026-10-08
+Traverse City,partner_contact,4,5,Partner Contact,FALSE,April,2026-04-01,2026,2026-10-08
+Traverse City,partner_contact,5,3,Partner Contact,FALSE,May,2026-05-01,2026,2026-10-08
+Traverse City,partner_contact,9,1,Partner Contact,FALSE,September,2026-09-01,2026,2026-10-08
+Traverse City,postnatal_consent,1,7,Postnatal Consent,FALSE,January,2026-01-01,2026,2026-10-08
+Traverse City,postnatal_consent,2,7,Postnatal Consent,FALSE,February,2026-02-01,2026,2026-10-08
+Traverse City,postnatal_consent,3,13,Postnatal Consent,FALSE,March,2026-03-01,2026,2026-10-08
+Traverse City,postnatal_consent,4,13,Postnatal Consent,FALSE,April,2026-04-01,2026,2026-10-08
+Traverse City,postnatal_consent,5,4,Postnatal Consent,FALSE,May,2026-05-01,2026,2026-10-08
+Traverse City,postnatal_consent,6,1,Postnatal Consent,FALSE,June,2026-06-01,2026,2026-10-08
+Traverse City,postnatal_consent,8,6,Postnatal Consent,FALSE,August,2026-08-01,2026,2026-10-08
+Traverse City,postnatal_consent,9,3,Postnatal Consent,FALSE,September,2026-09-01,2026,2026-10-08
+Traverse City,postnatal_consent,10,2,Postnatal Consent,FALSE,October,2026-10-01,2026,2026-10-08
+Traverse City,survey,1,10,Survey,FALSE,January,2026-01-01,2026,2026-10-08
+Traverse City,survey,2,6,Survey,FALSE,February,2026-02-01,2026,2026-10-08
+Traverse City,survey,3,12,Survey,FALSE,March,2026-03-01,2026,2026-10-08
+Traverse City,survey,4,8,Survey,FALSE,April,2026-04-01,2026,2026-10-08
+Traverse City,survey,5,5,Survey,FALSE,May,2026-05-01,2026,2026-10-08
+Traverse City,survey,6,1,Survey,FALSE,June,2026-06-01,2026,2026-10-08
+Traverse City,survey,8,6,Survey,FALSE,August,2026-08-01,2026,2026-10-08
+Traverse City,survey,9,3,Survey,FALSE,September,2026-09-01,2026,2026-10-08
+Traverse City,survey,10,1,Survey,FALSE,October,2026-10-01,2026,2026-10-08
+Traverse City,vib_request,1,2,VIB Request,FALSE,January,2026-01-01,2026,2026-10-08
+Traverse City,vib_request,2,3,VIB Request,FALSE,February,2026-02-01,2026,2026-10-08
+Traverse City,vib_request,3,11,VIB Request,FALSE,March,2026-03-01,2026,2026-10-08
+Traverse City,vib_request,4,9,VIB Request,FALSE,April,2026-04-01,2026,2026-10-08
+Traverse City,vib_request,5,1,VIB Request,FALSE,May,2026-05-01,2026,2026-10-08
+Traverse City,vib_request,8,2,VIB Request,FALSE,August,2026-08-01,2026,2026-10-08
+Traverse City,vib_request,9,1,VIB Request,FALSE,September,2026-09-01,2026,2026-10-08
+Traverse City,vib_request,10,1,VIB Request,FALSE,October,2026-10-01,2026,2026-10-08
+Traverse City,visit_scheduled,1,5,Visit Scheduled,FALSE,January,2026-01-01,2026,2026-10-08
+Traverse City,visit_scheduled,2,1,Visit Scheduled,FALSE,February,2026-02-01,2026,2026-10-08
+Traverse City,visit_scheduled,3,2,Visit Scheduled,FALSE,March,2026-03-01,2026,2026-10-08
+Traverse City,visit_scheduled,4,4,Visit Scheduled,FALSE,April,2026-04-01,2026,2026-10-08
+Traverse City,visit_scheduled,5,5,Visit Scheduled,FALSE,May,2026-05-01,2026,2026-10-08
+Traverse City,visit_scheduled,6,1,Visit Scheduled,FALSE,June,2026-06-01,2026,2026-10-08
+Traverse City,visit_scheduled,8,1,Visit Scheduled,FALSE,August,2026-08-01,2026,2026-10-08
+Traverse City,visit_scheduled,10,4,Visit Scheduled,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,postnatal_consent,1,0,Postnatal Consent,FALSE,January,2026-01-01,2026,2026-10-08
+Unknown,postnatal_consent,1,0,Postnatal Consent,FALSE,January,2026-01-01,2026,2026-10-08
+Unknown,survey,1,0,Survey,FALSE,January,2026-01-01,2026,2026-10-08
+Unknown,child_anthro,1,0,Child Anthro,FALSE,January,2026-01-01,2026,2026-10-08
+Unknown,mom_anthro,1,0,Mom Anthro,FALSE,January,2026-01-01,2026,2026-10-08
+Flint,visit_scheduled,1,0,Visit Scheduled,FALSE,January,2026-01-01,2026,2026-10-08
+Unknown,visit_scheduled,1,0,Visit Scheduled,FALSE,January,2026-01-01,2026,2026-10-08
+Detroit,vib_request,1,0,VIB Request,FALSE,January,2026-01-01,2026,2026-10-08
+Flint,vib_request,1,0,VIB Request,FALSE,January,2026-01-01,2026,2026-10-08
+Unknown,vib_request,1,0,VIB Request,FALSE,January,2026-01-01,2026,2026-10-08
+Flint,diaper_sent,1,0,Diaper Sent,FALSE,January,2026-01-01,2026,2026-10-08
+Unknown,diaper_sent,1,0,Diaper Sent,FALSE,January,2026-01-01,2026,2026-10-08
+Detroit,partner_contact,1,0,Partner Contact,FALSE,January,2026-01-01,2026,2026-10-08
+Flint,partner_contact,1,0,Partner Contact,FALSE,January,2026-01-01,2026,2026-10-08
+Unknown,partner_contact,1,0,Partner Contact,FALSE,January,2026-01-01,2026,2026-10-08
+Unknown,child_urine,1,0,Child Urine,TRUE,January,2026-01-01,2026,2026-10-08
+Unknown,child_stool,1,0,Child Stool,TRUE,January,2026-01-01,2026,2026-10-08
+Unknown,mom_hair,1,0,Mom Hair,TRUE,January,2026-01-01,2026,2026-10-08
+Unknown,mom_bs,1,0,Mom Bloodspot,TRUE,January,2026-01-01,2026,2026-10-08
+Detroit,breast_milk,1,0,Breast Milk,TRUE,January,2026-01-01,2026,2026-10-08
+Flint,breast_milk,1,0,Breast Milk,TRUE,January,2026-01-01,2026,2026-10-08
+Traverse City,breast_milk,1,0,Breast Milk,TRUE,January,2026-01-01,2026,2026-10-08
+Unknown,breast_milk,1,0,Breast Milk,TRUE,January,2026-01-01,2026,2026-10-08
+Unknown,postnatal_consent,2,0,Postnatal Consent,FALSE,February,2026-02-01,2026,2026-10-08
+Unknown,survey,2,0,Survey,FALSE,February,2026-02-01,2026,2026-10-08
+Unknown,child_anthro,2,0,Child Anthro,FALSE,February,2026-02-01,2026,2026-10-08
+Unknown,mom_anthro,2,0,Mom Anthro,FALSE,February,2026-02-01,2026,2026-10-08
+Flint,visit_scheduled,2,0,Visit Scheduled,FALSE,February,2026-02-01,2026,2026-10-08
+Unknown,visit_scheduled,2,0,Visit Scheduled,FALSE,February,2026-02-01,2026,2026-10-08
+Flint,vib_request,2,0,VIB Request,FALSE,February,2026-02-01,2026,2026-10-08
+Unknown,vib_request,2,0,VIB Request,FALSE,February,2026-02-01,2026,2026-10-08
+Flint,diaper_sent,2,0,Diaper Sent,FALSE,February,2026-02-01,2026,2026-10-08
+Unknown,diaper_sent,2,0,Diaper Sent,FALSE,February,2026-02-01,2026,2026-10-08
+Detroit,partner_contact,2,0,Partner Contact,FALSE,February,2026-02-01,2026,2026-10-08
+Flint,partner_contact,2,0,Partner Contact,FALSE,February,2026-02-01,2026,2026-10-08
+Unknown,partner_contact,2,0,Partner Contact,FALSE,February,2026-02-01,2026,2026-10-08
+Unknown,child_urine,2,0,Child Urine,TRUE,February,2026-02-01,2026,2026-10-08
+Flint,child_stool,2,0,Child Stool,TRUE,February,2026-02-01,2026,2026-10-08
+Unknown,child_stool,2,0,Child Stool,TRUE,February,2026-02-01,2026,2026-10-08
+Detroit,mom_hair,2,0,Mom Hair,TRUE,February,2026-02-01,2026,2026-10-08
+Unknown,mom_hair,2,0,Mom Hair,TRUE,February,2026-02-01,2026,2026-10-08
+Unknown,mom_bs,2,0,Mom Bloodspot,TRUE,February,2026-02-01,2026,2026-10-08
+Detroit,breast_milk,2,0,Breast Milk,TRUE,February,2026-02-01,2026,2026-10-08
+Flint,breast_milk,2,0,Breast Milk,TRUE,February,2026-02-01,2026,2026-10-08
+Traverse City,breast_milk,2,0,Breast Milk,TRUE,February,2026-02-01,2026,2026-10-08
+Unknown,breast_milk,2,0,Breast Milk,TRUE,February,2026-02-01,2026,2026-10-08
+Flint,postnatal_consent,3,0,Postnatal Consent,FALSE,March,2026-03-01,2026,2026-10-08
+Unknown,postnatal_consent,3,0,Postnatal Consent,FALSE,March,2026-03-01,2026,2026-10-08
+Flint,survey,3,0,Survey,FALSE,March,2026-03-01,2026,2026-10-08
+Unknown,survey,3,0,Survey,FALSE,March,2026-03-01,2026,2026-10-08
+Flint,child_anthro,3,0,Child Anthro,FALSE,March,2026-03-01,2026,2026-10-08
+Unknown,child_anthro,3,0,Child Anthro,FALSE,March,2026-03-01,2026,2026-10-08
+Flint,mom_anthro,3,0,Mom Anthro,FALSE,March,2026-03-01,2026,2026-10-08
+Unknown,mom_anthro,3,0,Mom Anthro,FALSE,March,2026-03-01,2026,2026-10-08
+Flint,visit_scheduled,3,0,Visit Scheduled,FALSE,March,2026-03-01,2026,2026-10-08
+Unknown,visit_scheduled,3,0,Visit Scheduled,FALSE,March,2026-03-01,2026,2026-10-08
+Detroit,vib_request,3,0,VIB Request,FALSE,March,2026-03-01,2026,2026-10-08
+Flint,vib_request,3,0,VIB Request,FALSE,March,2026-03-01,2026,2026-10-08
+Unknown,vib_request,3,0,VIB Request,FALSE,March,2026-03-01,2026,2026-10-08
+Flint,diaper_sent,3,0,Diaper Sent,FALSE,March,2026-03-01,2026,2026-10-08
+Unknown,diaper_sent,3,0,Diaper Sent,FALSE,March,2026-03-01,2026,2026-10-08
+Detroit,partner_contact,3,0,Partner Contact,FALSE,March,2026-03-01,2026,2026-10-08
+Flint,partner_contact,3,0,Partner Contact,FALSE,March,2026-03-01,2026,2026-10-08
+Unknown,partner_contact,3,0,Partner Contact,FALSE,March,2026-03-01,2026,2026-10-08
+Flint,child_urine,3,0,Child Urine,TRUE,March,2026-03-01,2026,2026-10-08
+Unknown,child_urine,3,0,Child Urine,TRUE,March,2026-03-01,2026,2026-10-08
+Flint,child_stool,3,0,Child Stool,TRUE,March,2026-03-01,2026,2026-10-08
+Unknown,child_stool,3,0,Child Stool,TRUE,March,2026-03-01,2026,2026-10-08
+Flint,mom_hair,3,0,Mom Hair,TRUE,March,2026-03-01,2026,2026-10-08
+Unknown,mom_hair,3,0,Mom Hair,TRUE,March,2026-03-01,2026,2026-10-08
+Flint,mom_bs,3,0,Mom Bloodspot,TRUE,March,2026-03-01,2026,2026-10-08
+Unknown,mom_bs,3,0,Mom Bloodspot,TRUE,March,2026-03-01,2026,2026-10-08
+Detroit,breast_milk,3,0,Breast Milk,TRUE,March,2026-03-01,2026,2026-10-08
+Flint,breast_milk,3,0,Breast Milk,TRUE,March,2026-03-01,2026,2026-10-08
+Traverse City,breast_milk,3,0,Breast Milk,TRUE,March,2026-03-01,2026,2026-10-08
+Unknown,breast_milk,3,0,Breast Milk,TRUE,March,2026-03-01,2026,2026-10-08
+Detroit,postnatal_consent,4,0,Postnatal Consent,FALSE,April,2026-04-01,2026,2026-10-08
+Unknown,postnatal_consent,4,0,Postnatal Consent,FALSE,April,2026-04-01,2026,2026-10-08
+Detroit,survey,4,0,Survey,FALSE,April,2026-04-01,2026,2026-10-08
+Unknown,survey,4,0,Survey,FALSE,April,2026-04-01,2026,2026-10-08
+Unknown,child_anthro,4,0,Child Anthro,FALSE,April,2026-04-01,2026,2026-10-08
+Unknown,mom_anthro,4,0,Mom Anthro,FALSE,April,2026-04-01,2026,2026-10-08
+Unknown,visit_scheduled,4,0,Visit Scheduled,FALSE,April,2026-04-01,2026,2026-10-08
+Flint,vib_request,4,0,VIB Request,FALSE,April,2026-04-01,2026,2026-10-08
+Unknown,vib_request,4,0,VIB Request,FALSE,April,2026-04-01,2026,2026-10-08
+Unknown,diaper_sent,4,0,Diaper Sent,FALSE,April,2026-04-01,2026,2026-10-08
+Flint,partner_contact,4,0,Partner Contact,FALSE,April,2026-04-01,2026,2026-10-08
+Unknown,partner_contact,4,0,Partner Contact,FALSE,April,2026-04-01,2026,2026-10-08
+Detroit,child_urine,4,0,Child Urine,TRUE,April,2026-04-01,2026,2026-10-08
+Unknown,child_urine,4,0,Child Urine,TRUE,April,2026-04-01,2026,2026-10-08
+Unknown,child_stool,4,0,Child Stool,TRUE,April,2026-04-01,2026,2026-10-08
+Detroit,mom_hair,4,0,Mom Hair,TRUE,April,2026-04-01,2026,2026-10-08
+Unknown,mom_hair,4,0,Mom Hair,TRUE,April,2026-04-01,2026,2026-10-08
+Unknown,mom_bs,4,0,Mom Bloodspot,TRUE,April,2026-04-01,2026,2026-10-08
+Unknown,breast_milk,4,0,Breast Milk,TRUE,April,2026-04-01,2026,2026-10-08
+Detroit,postnatal_consent,5,0,Postnatal Consent,FALSE,May,2026-05-01,2026,2026-10-08
+Flint,postnatal_consent,5,0,Postnatal Consent,FALSE,May,2026-05-01,2026,2026-10-08
+Unknown,postnatal_consent,5,0,Postnatal Consent,FALSE,May,2026-05-01,2026,2026-10-08
+Flint,survey,5,0,Survey,FALSE,May,2026-05-01,2026,2026-10-08
+Unknown,survey,5,0,Survey,FALSE,May,2026-05-01,2026,2026-10-08
+Detroit,child_anthro,5,0,Child Anthro,FALSE,May,2026-05-01,2026,2026-10-08
+Flint,child_anthro,5,0,Child Anthro,FALSE,May,2026-05-01,2026,2026-10-08
+Unknown,child_anthro,5,0,Child Anthro,FALSE,May,2026-05-01,2026,2026-10-08
+Detroit,mom_anthro,5,0,Mom Anthro,FALSE,May,2026-05-01,2026,2026-10-08
+Flint,mom_anthro,5,0,Mom Anthro,FALSE,May,2026-05-01,2026,2026-10-08
+Unknown,mom_anthro,5,0,Mom Anthro,FALSE,May,2026-05-01,2026,2026-10-08
+Flint,visit_scheduled,5,0,Visit Scheduled,FALSE,May,2026-05-01,2026,2026-10-08
+Unknown,visit_scheduled,5,0,Visit Scheduled,FALSE,May,2026-05-01,2026,2026-10-08
+Detroit,vib_request,5,0,VIB Request,FALSE,May,2026-05-01,2026,2026-10-08
+Flint,vib_request,5,0,VIB Request,FALSE,May,2026-05-01,2026,2026-10-08
+Unknown,vib_request,5,0,VIB Request,FALSE,May,2026-05-01,2026,2026-10-08
+Flint,diaper_sent,5,0,Diaper Sent,FALSE,May,2026-05-01,2026,2026-10-08
+Unknown,diaper_sent,5,0,Diaper Sent,FALSE,May,2026-05-01,2026,2026-10-08
+Detroit,partner_contact,5,0,Partner Contact,FALSE,May,2026-05-01,2026,2026-10-08
+Flint,partner_contact,5,0,Partner Contact,FALSE,May,2026-05-01,2026,2026-10-08
+Unknown,partner_contact,5,0,Partner Contact,FALSE,May,2026-05-01,2026,2026-10-08
+Detroit,child_urine,5,0,Child Urine,TRUE,May,2026-05-01,2026,2026-10-08
+Flint,child_urine,5,0,Child Urine,TRUE,May,2026-05-01,2026,2026-10-08
+Unknown,child_urine,5,0,Child Urine,TRUE,May,2026-05-01,2026,2026-10-08
+Detroit,child_stool,5,0,Child Stool,TRUE,May,2026-05-01,2026,2026-10-08
+Flint,child_stool,5,0,Child Stool,TRUE,May,2026-05-01,2026,2026-10-08
+Unknown,child_stool,5,0,Child Stool,TRUE,May,2026-05-01,2026,2026-10-08
+Detroit,mom_hair,5,0,Mom Hair,TRUE,May,2026-05-01,2026,2026-10-08
+Flint,mom_hair,5,0,Mom Hair,TRUE,May,2026-05-01,2026,2026-10-08
+Unknown,mom_hair,5,0,Mom Hair,TRUE,May,2026-05-01,2026,2026-10-08
+Detroit,mom_bs,5,0,Mom Bloodspot,TRUE,May,2026-05-01,2026,2026-10-08
+Flint,mom_bs,5,0,Mom Bloodspot,TRUE,May,2026-05-01,2026,2026-10-08
+Unknown,mom_bs,5,0,Mom Bloodspot,TRUE,May,2026-05-01,2026,2026-10-08
+Detroit,breast_milk,5,0,Breast Milk,TRUE,May,2026-05-01,2026,2026-10-08
+Flint,breast_milk,5,0,Breast Milk,TRUE,May,2026-05-01,2026,2026-10-08
+Unknown,breast_milk,5,0,Breast Milk,TRUE,May,2026-05-01,2026,2026-10-08
+Unknown,postnatal_consent,6,0,Postnatal Consent,FALSE,June,2026-06-01,2026,2026-10-08
+Unknown,survey,6,0,Survey,FALSE,June,2026-06-01,2026,2026-10-08
+Flint,child_anthro,6,0,Child Anthro,FALSE,June,2026-06-01,2026,2026-10-08
+Unknown,child_anthro,6,0,Child Anthro,FALSE,June,2026-06-01,2026,2026-10-08
+Flint,mom_anthro,6,0,Mom Anthro,FALSE,June,2026-06-01,2026,2026-10-08
+Unknown,mom_anthro,6,0,Mom Anthro,FALSE,June,2026-06-01,2026,2026-10-08
+Unknown,visit_scheduled,6,0,Visit Scheduled,FALSE,June,2026-06-01,2026,2026-10-08
+Detroit,vib_request,6,0,VIB Request,FALSE,June,2026-06-01,2026,2026-10-08
+Traverse City,vib_request,6,0,VIB Request,FALSE,June,2026-06-01,2026,2026-10-08
+Unknown,vib_request,6,0,VIB Request,FALSE,June,2026-06-01,2026,2026-10-08
+Unknown,diaper_sent,6,0,Diaper Sent,FALSE,June,2026-06-01,2026,2026-10-08
+Detroit,partner_contact,6,0,Partner Contact,FALSE,June,2026-06-01,2026,2026-10-08
+Flint,partner_contact,6,0,Partner Contact,FALSE,June,2026-06-01,2026,2026-10-08
+Traverse City,partner_contact,6,0,Partner Contact,FALSE,June,2026-06-01,2026,2026-10-08
+Unknown,partner_contact,6,0,Partner Contact,FALSE,June,2026-06-01,2026,2026-10-08
+Flint,child_urine,6,0,Child Urine,TRUE,June,2026-06-01,2026,2026-10-08
+Unknown,child_urine,6,0,Child Urine,TRUE,June,2026-06-01,2026,2026-10-08
+Flint,child_stool,6,0,Child Stool,TRUE,June,2026-06-01,2026,2026-10-08
+Unknown,child_stool,6,0,Child Stool,TRUE,June,2026-06-01,2026,2026-10-08
+Flint,mom_hair,6,0,Mom Hair,TRUE,June,2026-06-01,2026,2026-10-08
+Unknown,mom_hair,6,0,Mom Hair,TRUE,June,2026-06-01,2026,2026-10-08
+Flint,mom_bs,6,0,Mom Bloodspot,TRUE,June,2026-06-01,2026,2026-10-08
+Unknown,mom_bs,6,0,Mom Bloodspot,TRUE,June,2026-06-01,2026,2026-10-08
+Flint,breast_milk,6,0,Breast Milk,TRUE,June,2026-06-01,2026,2026-10-08
+Unknown,breast_milk,6,0,Breast Milk,TRUE,June,2026-06-01,2026,2026-10-08
+Traverse City,postnatal_consent,7,0,Postnatal Consent,FALSE,July,2026-07-01,2026,2026-10-08
+Unknown,postnatal_consent,7,0,Postnatal Consent,FALSE,July,2026-07-01,2026,2026-10-08
+Detroit,survey,7,0,Survey,FALSE,July,2026-07-01,2026,2026-10-08
+Flint,survey,7,0,Survey,FALSE,July,2026-07-01,2026,2026-10-08
+Traverse City,survey,7,0,Survey,FALSE,July,2026-07-01,2026,2026-10-08
+Unknown,survey,7,0,Survey,FALSE,July,2026-07-01,2026,2026-10-08
+Flint,child_anthro,7,0,Child Anthro,FALSE,July,2026-07-01,2026,2026-10-08
+Unknown,child_anthro,7,0,Child Anthro,FALSE,July,2026-07-01,2026,2026-10-08
+Flint,mom_anthro,7,0,Mom Anthro,FALSE,July,2026-07-01,2026,2026-10-08
+Unknown,mom_anthro,7,0,Mom Anthro,FALSE,July,2026-07-01,2026,2026-10-08
+Flint,visit_scheduled,7,0,Visit Scheduled,FALSE,July,2026-07-01,2026,2026-10-08
+Traverse City,visit_scheduled,7,0,Visit Scheduled,FALSE,July,2026-07-01,2026,2026-10-08
+Unknown,visit_scheduled,7,0,Visit Scheduled,FALSE,July,2026-07-01,2026,2026-10-08
+Detroit,vib_request,7,0,VIB Request,FALSE,July,2026-07-01,2026,2026-10-08
+Flint,vib_request,7,0,VIB Request,FALSE,July,2026-07-01,2026,2026-10-08
+Traverse City,vib_request,7,0,VIB Request,FALSE,July,2026-07-01,2026,2026-10-08
+Unknown,vib_request,7,0,VIB Request,FALSE,July,2026-07-01,2026,2026-10-08
+Detroit,diaper_sent,7,0,Diaper Sent,FALSE,July,2026-07-01,2026,2026-10-08
+Flint,diaper_sent,7,0,Diaper Sent,FALSE,July,2026-07-01,2026,2026-10-08
+Traverse City,diaper_sent,7,0,Diaper Sent,FALSE,July,2026-07-01,2026,2026-10-08
+Unknown,diaper_sent,7,0,Diaper Sent,FALSE,July,2026-07-01,2026,2026-10-08
+Detroit,partner_contact,7,0,Partner Contact,FALSE,July,2026-07-01,2026,2026-10-08
+Flint,partner_contact,7,0,Partner Contact,FALSE,July,2026-07-01,2026,2026-10-08
+Traverse City,partner_contact,7,0,Partner Contact,FALSE,July,2026-07-01,2026,2026-10-08
+Unknown,partner_contact,7,0,Partner Contact,FALSE,July,2026-07-01,2026,2026-10-08
+Detroit,child_urine,7,0,Child Urine,TRUE,July,2026-07-01,2026,2026-10-08
+Flint,child_urine,7,0,Child Urine,TRUE,July,2026-07-01,2026,2026-10-08
+Unknown,child_urine,7,0,Child Urine,TRUE,July,2026-07-01,2026,2026-10-08
+Detroit,child_stool,7,0,Child Stool,TRUE,July,2026-07-01,2026,2026-10-08
+Flint,child_stool,7,0,Child Stool,TRUE,July,2026-07-01,2026,2026-10-08
+Unknown,child_stool,7,0,Child Stool,TRUE,July,2026-07-01,2026,2026-10-08
+Detroit,mom_hair,7,0,Mom Hair,TRUE,July,2026-07-01,2026,2026-10-08
+Flint,mom_hair,7,0,Mom Hair,TRUE,July,2026-07-01,2026,2026-10-08
+Unknown,mom_hair,7,0,Mom Hair,TRUE,July,2026-07-01,2026,2026-10-08
+Flint,mom_bs,7,0,Mom Bloodspot,TRUE,July,2026-07-01,2026,2026-10-08
+Unknown,mom_bs,7,0,Mom Bloodspot,TRUE,July,2026-07-01,2026,2026-10-08
+Flint,breast_milk,7,0,Breast Milk,TRUE,July,2026-07-01,2026,2026-10-08
+Unknown,breast_milk,7,0,Breast Milk,TRUE,July,2026-07-01,2026,2026-10-08
+Unknown,postnatal_consent,8,0,Postnatal Consent,FALSE,August,2026-08-01,2026,2026-10-08
+Unknown,survey,8,0,Survey,FALSE,August,2026-08-01,2026,2026-10-08
+Detroit,child_anthro,8,0,Child Anthro,FALSE,August,2026-08-01,2026,2026-10-08
+Unknown,child_anthro,8,0,Child Anthro,FALSE,August,2026-08-01,2026,2026-10-08
+Detroit,mom_anthro,8,0,Mom Anthro,FALSE,August,2026-08-01,2026,2026-10-08
+Unknown,mom_anthro,8,0,Mom Anthro,FALSE,August,2026-08-01,2026,2026-10-08
+Detroit,visit_scheduled,8,0,Visit Scheduled,FALSE,August,2026-08-01,2026,2026-10-08
+Unknown,visit_scheduled,8,0,Visit Scheduled,FALSE,August,2026-08-01,2026,2026-10-08
+Detroit,vib_request,8,0,VIB Request,FALSE,August,2026-08-01,2026,2026-10-08
+Flint,vib_request,8,0,VIB Request,FALSE,August,2026-08-01,2026,2026-10-08
+Unknown,vib_request,8,0,VIB Request,FALSE,August,2026-08-01,2026,2026-10-08
+Detroit,diaper_sent,8,0,Diaper Sent,FALSE,August,2026-08-01,2026,2026-10-08
+Traverse City,diaper_sent,8,0,Diaper Sent,FALSE,August,2026-08-01,2026,2026-10-08
+Unknown,diaper_sent,8,0,Diaper Sent,FALSE,August,2026-08-01,2026,2026-10-08
+Detroit,partner_contact,8,0,Partner Contact,FALSE,August,2026-08-01,2026,2026-10-08
+Flint,partner_contact,8,0,Partner Contact,FALSE,August,2026-08-01,2026,2026-10-08
+Traverse City,partner_contact,8,0,Partner Contact,FALSE,August,2026-08-01,2026,2026-10-08
+Unknown,partner_contact,8,0,Partner Contact,FALSE,August,2026-08-01,2026,2026-10-08
+Detroit,child_urine,8,0,Child Urine,TRUE,August,2026-08-01,2026,2026-10-08
+Traverse City,child_urine,8,0,Child Urine,TRUE,August,2026-08-01,2026,2026-10-08
+Unknown,child_urine,8,0,Child Urine,TRUE,August,2026-08-01,2026,2026-10-08
+Detroit,child_stool,8,0,Child Stool,TRUE,August,2026-08-01,2026,2026-10-08
+Traverse City,child_stool,8,0,Child Stool,TRUE,August,2026-08-01,2026,2026-10-08
+Unknown,child_stool,8,0,Child Stool,TRUE,August,2026-08-01,2026,2026-10-08
+Detroit,mom_hair,8,0,Mom Hair,TRUE,August,2026-08-01,2026,2026-10-08
+Unknown,mom_hair,8,0,Mom Hair,TRUE,August,2026-08-01,2026,2026-10-08
+Detroit,mom_bs,8,0,Mom Bloodspot,TRUE,August,2026-08-01,2026,2026-10-08
+Traverse City,mom_bs,8,0,Mom Bloodspot,TRUE,August,2026-08-01,2026,2026-10-08
+Unknown,mom_bs,8,0,Mom Bloodspot,TRUE,August,2026-08-01,2026,2026-10-08
+Detroit,breast_milk,8,0,Breast Milk,TRUE,August,2026-08-01,2026,2026-10-08
+Traverse City,breast_milk,8,0,Breast Milk,TRUE,August,2026-08-01,2026,2026-10-08
+Unknown,breast_milk,8,0,Breast Milk,TRUE,August,2026-08-01,2026,2026-10-08
+Flint,postnatal_consent,9,0,Postnatal Consent,FALSE,September,2026-09-01,2026,2026-10-08
+Unknown,postnatal_consent,9,0,Postnatal Consent,FALSE,September,2026-09-01,2026,2026-10-08
+Flint,survey,9,0,Survey,FALSE,September,2026-09-01,2026,2026-10-08
+Unknown,survey,9,0,Survey,FALSE,September,2026-09-01,2026,2026-10-08
+Flint,child_anthro,9,0,Child Anthro,FALSE,September,2026-09-01,2026,2026-10-08
+Unknown,child_anthro,9,0,Child Anthro,FALSE,September,2026-09-01,2026,2026-10-08
+Flint,mom_anthro,9,0,Mom Anthro,FALSE,September,2026-09-01,2026,2026-10-08
+Unknown,mom_anthro,9,0,Mom Anthro,FALSE,September,2026-09-01,2026,2026-10-08
+Flint,visit_scheduled,9,0,Visit Scheduled,FALSE,September,2026-09-01,2026,2026-10-08
+Traverse City,visit_scheduled,9,0,Visit Scheduled,FALSE,September,2026-09-01,2026,2026-10-08
+Unknown,visit_scheduled,9,0,Visit Scheduled,FALSE,September,2026-09-01,2026,2026-10-08
+Unknown,vib_request,9,0,VIB Request,FALSE,September,2026-09-01,2026,2026-10-08
+Flint,diaper_sent,9,0,Diaper Sent,FALSE,September,2026-09-01,2026,2026-10-08
+Unknown,diaper_sent,9,0,Diaper Sent,FALSE,September,2026-09-01,2026,2026-10-08
+Detroit,partner_contact,9,0,Partner Contact,FALSE,September,2026-09-01,2026,2026-10-08
+Unknown,partner_contact,9,0,Partner Contact,FALSE,September,2026-09-01,2026,2026-10-08
+Detroit,child_urine,9,0,Child Urine,TRUE,September,2026-09-01,2026,2026-10-08
+Flint,child_urine,9,0,Child Urine,TRUE,September,2026-09-01,2026,2026-10-08
+Unknown,child_urine,9,0,Child Urine,TRUE,September,2026-09-01,2026,2026-10-08
+Detroit,child_stool,9,0,Child Stool,TRUE,September,2026-09-01,2026,2026-10-08
+Flint,child_stool,9,0,Child Stool,TRUE,September,2026-09-01,2026,2026-10-08
+Unknown,child_stool,9,0,Child Stool,TRUE,September,2026-09-01,2026,2026-10-08
+Detroit,mom_hair,9,0,Mom Hair,TRUE,September,2026-09-01,2026,2026-10-08
+Flint,mom_hair,9,0,Mom Hair,TRUE,September,2026-09-01,2026,2026-10-08
+Unknown,mom_hair,9,0,Mom Hair,TRUE,September,2026-09-01,2026,2026-10-08
+Flint,mom_bs,9,0,Mom Bloodspot,TRUE,September,2026-09-01,2026,2026-10-08
+Unknown,mom_bs,9,0,Mom Bloodspot,TRUE,September,2026-09-01,2026,2026-10-08
+Detroit,breast_milk,9,0,Breast Milk,TRUE,September,2026-09-01,2026,2026-10-08
+Flint,breast_milk,9,0,Breast Milk,TRUE,September,2026-09-01,2026,2026-10-08
+Unknown,breast_milk,9,0,Breast Milk,TRUE,September,2026-09-01,2026,2026-10-08
+Detroit,postnatal_consent,10,0,Postnatal Consent,FALSE,October,2026-10-01,2026,2026-10-08
+Unknown,postnatal_consent,10,0,Postnatal Consent,FALSE,October,2026-10-01,2026,2026-10-08
+Detroit,survey,10,0,Survey,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,survey,10,0,Survey,FALSE,October,2026-10-01,2026,2026-10-08
+Unknown,survey,10,0,Survey,FALSE,October,2026-10-01,2026,2026-10-08
+Detroit,child_anthro,10,0,Child Anthro,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,child_anthro,10,0,Child Anthro,FALSE,October,2026-10-01,2026,2026-10-08
+Traverse City,child_anthro,10,0,Child Anthro,FALSE,October,2026-10-01,2026,2026-10-08
+Unknown,child_anthro,10,0,Child Anthro,FALSE,October,2026-10-01,2026,2026-10-08
+Detroit,mom_anthro,10,0,Mom Anthro,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,mom_anthro,10,0,Mom Anthro,FALSE,October,2026-10-01,2026,2026-10-08
+Traverse City,mom_anthro,10,0,Mom Anthro,FALSE,October,2026-10-01,2026,2026-10-08
+Unknown,mom_anthro,10,0,Mom Anthro,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,visit_scheduled,10,0,Visit Scheduled,FALSE,October,2026-10-01,2026,2026-10-08
+Unknown,visit_scheduled,10,0,Visit Scheduled,FALSE,October,2026-10-01,2026,2026-10-08
+Detroit,vib_request,10,0,VIB Request,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,vib_request,10,0,VIB Request,FALSE,October,2026-10-01,2026,2026-10-08
+Unknown,vib_request,10,0,VIB Request,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,diaper_sent,10,0,Diaper Sent,FALSE,October,2026-10-01,2026,2026-10-08
+Unknown,diaper_sent,10,0,Diaper Sent,FALSE,October,2026-10-01,2026,2026-10-08
+Detroit,partner_contact,10,0,Partner Contact,FALSE,October,2026-10-01,2026,2026-10-08
+Flint,partner_contact,10,0,Partner Contact,FALSE,October,2026-10-01,2026,2026-10-08
+Traverse City,partner_contact,10,0,Partner Contact,FALSE,October,2026-10-01,2026,2026-10-08
+Unknown,partner_contact,10,0,Partner Contact,FALSE,October,2026-10-01,2026,2026-10-08
+Detroit,child_urine,10,0,Child Urine,TRUE,October,2026-10-01,2026,2026-10-08
+Flint,child_urine,10,0,Child Urine,TRUE,October,2026-10-01,2026,2026-10-08
+Traverse City,child_urine,10,0,Child Urine,TRUE,October,2026-10-01,2026,2026-10-08
+Unknown,child_urine,10,0,Child Urine,TRUE,October,2026-10-01,2026,2026-10-08
+Detroit,child_stool,10,0,Child Stool,TRUE,October,2026-10-01,2026,2026-10-08
+Flint,child_stool,10,0,Child Stool,TRUE,October,2026-10-01,2026,2026-10-08
+Traverse City,child_stool,10,0,Child Stool,TRUE,October,2026-10-01,2026,2026-10-08
+Unknown,child_stool,10,0,Child Stool,TRUE,October,2026-10-01,2026,2026-10-08
+Detroit,mom_hair,10,0,Mom Hair,TRUE,October,2026-10-01,2026,2026-10-08
+Flint,mom_hair,10,0,Mom Hair,TRUE,October,2026-10-01,2026,2026-10-08
+Traverse City,mom_hair,10,0,Mom Hair,TRUE,October,2026-10-01,2026,2026-10-08
+Unknown,mom_hair,10,0,Mom Hair,TRUE,October,2026-10-01,2026,2026-10-08
+Detroit,mom_bs,10,0,Mom Bloodspot,TRUE,October,2026-10-01,2026,2026-10-08
+Flint,mom_bs,10,0,Mom Bloodspot,TRUE,October,2026-10-01,2026,2026-10-08
+Traverse City,mom_bs,10,0,Mom Bloodspot,TRUE,October,2026-10-01,2026,2026-10-08
+Unknown,mom_bs,10,0,Mom Bloodspot,TRUE,October,2026-10-01,2026,2026-10-08
+Detroit,breast_milk,10,0,Breast Milk,TRUE,October,2026-10-01,2026,2026-10-08
+Flint,breast_milk,10,0,Breast Milk,TRUE,October,2026-10-01,2026,2026-10-08
+Traverse City,breast_milk,10,0,Breast Milk,TRUE,October,2026-10-01,2026,2026-10-08
+Unknown,breast_milk,10,0,Breast Milk,TRUE,October,2026-10-01,2026,2026-10-08
+Detroit,postnatal_consent,11,0,Postnatal Consent,FALSE,November,2026-11-01,2026,2026-10-08
+Flint,postnatal_consent,11,0,Postnatal Consent,FALSE,November,2026-11-01,2026,2026-10-08
+Traverse City,postnatal_consent,11,0,Postnatal Consent,FALSE,November,2026-11-01,2026,2026-10-08
+Unknown,postnatal_consent,11,0,Postnatal Consent,FALSE,November,2026-11-01,2026,2026-10-08
+Detroit,survey,11,0,Survey,FALSE,November,2026-11-01,2026,2026-10-08
+Flint,survey,11,0,Survey,FALSE,November,2026-11-01,2026,2026-10-08
+Traverse City,survey,11,0,Survey,FALSE,November,2026-11-01,2026,2026-10-08
+Unknown,survey,11,0,Survey,FALSE,November,2026-11-01,2026,2026-10-08
+Detroit,child_anthro,11,0,Child Anthro,FALSE,November,2026-11-01,2026,2026-10-08
+Flint,child_anthro,11,0,Child Anthro,FALSE,November,2026-11-01,2026,2026-10-08
+Traverse City,child_anthro,11,0,Child Anthro,FALSE,November,2026-11-01,2026,2026-10-08
+Unknown,child_anthro,11,0,Child Anthro,FALSE,November,2026-11-01,2026,2026-10-08
+Detroit,mom_anthro,11,0,Mom Anthro,FALSE,November,2026-11-01,2026,2026-10-08
+Flint,mom_anthro,11,0,Mom Anthro,FALSE,November,2026-11-01,2026,2026-10-08
+Traverse City,mom_anthro,11,0,Mom Anthro,FALSE,November,2026-11-01,2026,2026-10-08
+Unknown,mom_anthro,11,0,Mom Anthro,FALSE,November,2026-11-01,2026,2026-10-08
+Detroit,visit_scheduled,11,0,Visit Scheduled,FALSE,November,2026-11-01,2026,2026-10-08
+Flint,visit_scheduled,11,0,Visit Scheduled,FALSE,November,2026-11-01,2026,2026-10-08
+Traverse City,visit_scheduled,11,0,Visit Scheduled,FALSE,November,2026-11-01,2026,2026-10-08
+Unknown,visit_scheduled,11,0,Visit Scheduled,FALSE,November,2026-11-01,2026,2026-10-08
+Detroit,vib_request,11,0,VIB Request,FALSE,November,2026-11-01,2026,2026-10-08
+Flint,vib_request,11,0,VIB Request,FALSE,November,2026-11-01,2026,2026-10-08
+Traverse City,vib_request,11,0,VIB Request,FALSE,November,2026-11-01,2026,2026-10-08
+Unknown,vib_request,11,0,VIB Request,FALSE,November,2026-11-01,2026,2026-10-08
+Detroit,diaper_sent,11,0,Diaper Sent,FALSE,November,2026-11-01,2026,2026-10-08
+Flint,diaper_sent,11,0,Diaper Sent,FALSE,November,2026-11-01,2026,2026-10-08
+Traverse City,diaper_sent,11,0,Diaper Sent,FALSE,November,2026-11-01,2026,2026-10-08
+Unknown,diaper_sent,11,0,Diaper Sent,FALSE,November,2026-11-01,2026,2026-10-08
+Detroit,partner_contact,11,0,Partner Contact,FALSE,November,2026-11-01,2026,2026-10-08
+Flint,partner_contact,11,0,Partner Contact,FALSE,November,2026-11-01,2026,2026-10-08
+Traverse City,partner_contact,11,0,Partner Contact,FALSE,November,2026-11-01,2026,2026-10-08
+Unknown,partner_contact,11,0,Partner Contact,FALSE,November,2026-11-01,2026,2026-10-08
+Detroit,child_urine,11,0,Child Urine,TRUE,November,2026-11-01,2026,2026-10-08
+Flint,child_urine,11,0,Child Urine,TRUE,November,2026-11-01,2026,2026-10-08
+Traverse City,child_urine,11,0,Child Urine,TRUE,November,2026-11-01,2026,2026-10-08
+Unknown,child_urine,11,0,Child Urine,TRUE,November,2026-11-01,2026,2026-10-08
+Detroit,child_stool,11,0,Child Stool,TRUE,November,2026-11-01,2026,2026-10-08
+Flint,child_stool,11,0,Child Stool,TRUE,November,2026-11-01,2026,2026-10-08
+Traverse City,child_stool,11,0,Child Stool,TRUE,November,2026-11-01,2026,2026-10-08
+Unknown,child_stool,11,0,Child Stool,TRUE,November,2026-11-01,2026,2026-10-08
+Detroit,mom_hair,11,0,Mom Hair,TRUE,November,2026-11-01,2026,2026-10-08
+Flint,mom_hair,11,0,Mom Hair,TRUE,November,2026-11-01,2026,2026-10-08
+Traverse City,mom_hair,11,0,Mom Hair,TRUE,November,2026-11-01,2026,2026-10-08
+Unknown,mom_hair,11,0,Mom Hair,TRUE,November,2026-11-01,2026,2026-10-08
+Detroit,mom_bs,11,0,Mom Bloodspot,TRUE,November,2026-11-01,2026,2026-10-08
+Flint,mom_bs,11,0,Mom Bloodspot,TRUE,November,2026-11-01,2026,2026-10-08
+Traverse City,mom_bs,11,0,Mom Bloodspot,TRUE,November,2026-11-01,2026,2026-10-08
+Unknown,mom_bs,11,0,Mom Bloodspot,TRUE,November,2026-11-01,2026,2026-10-08
+Detroit,breast_milk,11,0,Breast Milk,TRUE,November,2026-11-01,2026,2026-10-08
+Flint,breast_milk,11,0,Breast Milk,TRUE,November,2026-11-01,2026,2026-10-08
+Traverse City,breast_milk,11,0,Breast Milk,TRUE,November,2026-11-01,2026,2026-10-08
+Unknown,breast_milk,11,0,Breast Milk,TRUE,November,2026-11-01,2026,2026-10-08
+Detroit,postnatal_consent,12,0,Postnatal Consent,FALSE,December,2026-12-01,2026,2026-10-08
+Flint,postnatal_consent,12,0,Postnatal Consent,FALSE,December,2026-12-01,2026,2026-10-08
+Traverse City,postnatal_consent,12,0,Postnatal Consent,FALSE,December,2026-12-01,2026,2026-10-08
+Unknown,postnatal_consent,12,0,Postnatal Consent,FALSE,December,2026-12-01,2026,2026-10-08
+Detroit,survey,12,0,Survey,FALSE,December,2026-12-01,2026,2026-10-08
+Flint,survey,12,0,Survey,FALSE,December,2026-12-01,2026,2026-10-08
+Traverse City,survey,12,0,Survey,FALSE,December,2026-12-01,2026,2026-10-08
+Unknown,survey,12,0,Survey,FALSE,December,2026-12-01,2026,2026-10-08
+Detroit,child_anthro,12,0,Child Anthro,FALSE,December,2026-12-01,2026,2026-10-08
+Flint,child_anthro,12,0,Child Anthro,FALSE,December,2026-12-01,2026,2026-10-08
+Traverse City,child_anthro,12,0,Child Anthro,FALSE,December,2026-12-01,2026,2026-10-08
+Unknown,child_anthro,12,0,Child Anthro,FALSE,December,2026-12-01,2026,2026-10-08
+Detroit,mom_anthro,12,0,Mom Anthro,FALSE,December,2026-12-01,2026,2026-10-08
+Flint,mom_anthro,12,0,Mom Anthro,FALSE,December,2026-12-01,2026,2026-10-08
+Traverse City,mom_anthro,12,0,Mom Anthro,FALSE,December,2026-12-01,2026,2026-10-08
+Unknown,mom_anthro,12,0,Mom Anthro,FALSE,December,2026-12-01,2026,2026-10-08
+Detroit,visit_scheduled,12,0,Visit Scheduled,FALSE,December,2026-12-01,2026,2026-10-08
+Flint,visit_scheduled,12,0,Visit Scheduled,FALSE,December,2026-12-01,2026,2026-10-08
+Traverse City,visit_scheduled,12,0,Visit Scheduled,FALSE,December,2026-12-01,2026,2026-10-08
+Unknown,visit_scheduled,12,0,Visit Scheduled,FALSE,December,2026-12-01,2026,2026-10-08
+Detroit,vib_request,12,0,VIB Request,FALSE,December,2026-12-01,2026,2026-10-08
+Flint,vib_request,12,0,VIB Request,FALSE,December,2026-12-01,2026,2026-10-08
+Traverse City,vib_request,12,0,VIB Request,FALSE,December,2026-12-01,2026,2026-10-08
+Unknown,vib_request,12,0,VIB Request,FALSE,December,2026-12-01,2026,2026-10-08
+Detroit,diaper_sent,12,0,Diaper Sent,FALSE,December,2026-12-01,2026,2026-10-08
+Flint,diaper_sent,12,0,Diaper Sent,FALSE,December,2026-12-01,2026,2026-10-08
+Traverse City,diaper_sent,12,0,Diaper Sent,FALSE,December,2026-12-01,2026,2026-10-08
+Unknown,diaper_sent,12,0,Diaper Sent,FALSE,December,2026-12-01,2026,2026-10-08
+Detroit,partner_contact,12,0,Partner Contact,FALSE,December,2026-12-01,2026,2026-10-08
+Flint,partner_contact,12,0,Partner Contact,FALSE,December,2026-12-01,2026,2026-10-08
+Traverse City,partner_contact,12,0,Partner Contact,FALSE,December,2026-12-01,2026,2026-10-08
+Unknown,partner_contact,12,0,Partner Contact,FALSE,December,2026-12-01,2026,2026-10-08
+Detroit,child_urine,12,0,Child Urine,TRUE,December,2026-12-01,2026,2026-10-08
+Flint,child_urine,12,0,Child Urine,TRUE,December,2026-12-01,2026,2026-10-08
+Traverse City,child_urine,12,0,Child Urine,TRUE,December,2026-12-01,2026,2026-10-08
+Unknown,child_urine,12,0,Child Urine,TRUE,December,2026-12-01,2026,2026-10-08
+Detroit,child_stool,12,0,Child Stool,TRUE,December,2026-12-01,2026,2026-10-08
+Flint,child_stool,12,0,Child Stool,TRUE,December,2026-12-01,2026,2026-10-08
+Traverse City,child_stool,12,0,Child Stool,TRUE,December,2026-12-01,2026,2026-10-08
+Unknown,child_stool,12,0,Child Stool,TRUE,December,2026-12-01,2026,2026-10-08
+Detroit,mom_hair,12,0,Mom Hair,TRUE,December,2026-12-01,2026,2026-10-08
+Flint,mom_hair,12,0,Mom Hair,TRUE,December,2026-12-01,2026,2026-10-08
+Traverse City,mom_hair,12,0,Mom Hair,TRUE,December,2026-12-01,2026,2026-10-08
+Unknown,mom_hair,12,0,Mom Hair,TRUE,December,2026-12-01,2026,2026-10-08
+Detroit,mom_bs,12,0,Mom Bloodspot,TRUE,December,2026-12-01,2026,2026-10-08
+Flint,mom_bs,12,0,Mom Bloodspot,TRUE,December,2026-12-01,2026,2026-10-08
+Traverse City,mom_bs,12,0,Mom Bloodspot,TRUE,December,2026-12-01,2026,2026-10-08
+Unknown,mom_bs,12,0,Mom Bloodspot,TRUE,December,2026-12-01,2026,2026-10-08
+Detroit,breast_milk,12,0,Breast Milk,TRUE,December,2026-12-01,2026,2026-10-08
+Flint,breast_milk,12,0,Breast Milk,TRUE,December,2026-12-01,2026,2026-10-08
+Traverse City,breast_milk,12,0,Breast Milk,TRUE,December,2026-12-01,2026,2026-10-08
+Unknown,breast_milk,12,0,Breast Milk,TRUE,December,2026-12-01,2026,2026-10-08

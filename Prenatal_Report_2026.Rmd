@@ -1,0 +1,3301 @@
+---
+---
+
+|                                            |                          |
+|--------------------------------------------|--------------------------|
+| ![](C:/Users/vantube4/Box/CHARM Final/CHARM/Communications/Logos/CHARM-Logo-H-2C-RGB.jpg)|![](C:/Users/vantube4/Box/CHARM Final/CHARM/Communications/Logos/echo%20logo.jpg)|
+
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(openxlsx)
+library(eeptools)
+library(kableExtra)
+library(lubridate)
+library(DBI)
+library(zipcodeR)
+library(tidycensus)
+library(maps)
+library(viridis)
+library(plotly)
+library(ggpubr)
+library(RColorBrewer)
+library(httr2)
+library(readr)
+library(ggiraph)
+library(htmltools)
+library(ggplot2)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r, include=FALSE}
+#Ripple API
+convert_to_dataframe <- function(resp_body_string, content_type) {
+  if (content_type == "text/csv") {
+    # Use read_csv from readr to read the CSV string directly into a data frame
+    df <- readr::read_csv(response_body_string)
+  } else if (content_type == "text/plain") {
+    # Split the plain text by lines and then by commas (or other delimiters)
+    lines <- strsplit(resp_body_string, "\n", fixed = TRUE)[[1]]
+    data <- lapply(lines, function(line) {
+      strsplit(line, ",", fixed = TRUE)[[1]]
+    })
+    
+       df <- as.data.frame(do.call(rbind, data), stringsAsFactors = FALSE)
+    colnames(df) <- c("Column1", "Column2", "statusId")  # Replace with appropriate column names
+  } else {
+    stop("Unsupported content type")
+  }
+  
+  return(df)
+}
+
+#Global
+request<- request("https://echocharm.ripplescience.com")%>%
+  req_url_path("/v1/export")%>%
+  req_headers( "Content-Type" = "application/x-www-form-urlencoded",  "Authorization" = "Basic dmFudHViZTRAbXN1LmVkdTpBQyR2dDEwNDEyMjMwMjQxMDQx")%>%
+  req_body_form(
+  export_type = "global",
+  globalId = "globalId",
+  firstName="firstName",
+  lastName="lastName",
+  sex="sex",
+  birthday="birthday",
+  #"Participant Contacts"=""
+  )%>%
+  req_method("GET")
+
+response <- tryCatch(
+ req_perform(request),
+  error = function(e) {
+   message("Request failed: ", e)
+   NULL
+  }
+)
+
+ if (!is.null(response)) {
+   data<- resp_body_string(response)
+  print(data)
+
+}
+
+response_body_string <- resp_body_string(response)
+content_type<-"text/csv"
+study_global <- convert_to_dataframe(resp_body_string, content_type)
+
+since_date <- format(Sys.Date() - 7, "%Y-%m-%d")
+
+#Prenatal
+request<- request("https://echocharm.ripplescience.com")%>%
+  req_url_path("/v1/export")%>%
+  req_headers( "Content-Type" = "application/x-www-form-urlencoded",  "Authorization" = "Basic dmFudHViZTRAbXN1LmVkdTpBQyR2dDEwNDEyMjMwMjQxMDQx", )%>%
+  req_body_form(
+  "export-type"="hsGq26e46PfHRofdJ",
+  statusId="",
+  globalId = "globalId",
+  customId="",
+  familyId="",
+  firstName="",
+  lastName="",
+  race="",
+  ethnicity="",
+  birthday="",
+  cv.last_menstral_period="",
+  cv.estimated_due_date="",
+  cv.consent_genetics="",
+  cv.consent_birth_certificate="",
+  cv.permission_for_placenta="",
+  cv.permission_for_cord_blood="",
+  dateSignedConsentForm="",
+  "Events (All or None)"="")%>%
+  req_method("GET")
+
+response<- tryCatch(
+ req_perform(request),
+  error = function(e) {
+   message("Request failed: ", e)
+   NULL
+  }
+)
+
+ if (!is.null(response)) {
+   data<- resp_body_string(response)
+  print(data)
+
+}
+
+response_body_string<- resp_body_string(response)
+content_type<-"text/csv"
+study_prenatal <- convert_to_dataframe(resp_body_string, content_type)
+```
+
+```{r echo = FALSE}
+# Create Dataframe for Report
+prenatal_2026 <- study_prenatal %>%
+  select(globalId, customId, statusId, `event.consent_into_study.completedDate`, `event.dmc_enrollment_form.completedDate`, `event.estimated_due_date.completedDate`, `event.actigraphy_sleep_diary.completedDate`, `event.household_water.completedDate`, `event.first_visit_survey.completedDate`, `event.first_visit_anthropometrics.completedDate`, `event.cord_blood_collection.completedDate`, `event.first_prenatal_urine.completedDate`, `event.first_prenatal_blood.completedDate`, `event.second_visit_survey.completedDate`, `event.second_visit_anthropometrics.completedDate`, `event.second_prenatal_urine.completedDate`, `event.second_prenatal_blood.completedDate`, `event.child_is_born.completedDate`, `event.cord_blood_collection.completedDate`, `event.maternal_medical_record_abstraction.completedDate`, `event.date_of_pregnancy_loss.completedDate`) %>%
+  rename("consent_date" = "event.consent_into_study.completedDate",
+         "estduedate" = "event.estimated_due_date.completedDate",
+         "dmc_enroll" = "event.dmc_enrollment_form.completedDate",
+         "pn1_survey" = "event.first_visit_survey.completedDate",
+         "pn1_anthro" = "event.first_visit_anthropometrics.completedDate",
+         "pn1_urine" = "event.first_prenatal_urine.completedDate",
+         "pn1_blood" = "event.first_prenatal_blood.completedDate",
+         "actigraphy" = "event.actigraphy_sleep_diary.completedDate",
+         "pn2_survey" = "event.second_visit_survey.completedDate",
+         "pn2_anthro" = "event.second_visit_anthropometrics.completedDate",
+         "pn2_urine" = "event.second_prenatal_urine.completedDate",
+         "pn2_blood" = "event.second_prenatal_blood.completedDate",
+         "cordblood" = "event.cord_blood_collection.completedDate",
+         "mmra" = "event.maternal_medical_record_abstraction.completedDate",
+         "child_dob" = "event.child_is_born.completedDate",
+         "pregnancy_loss" = "event.date_of_pregnancy_loss.completedDate") %>%
+  mutate(consent_date = as.Date(consent_date, format="%m/%d/%Y"),
+         estduedate = as.Date(estduedate, format="%m/%d/%Y"),
+         dmc_enroll = as.Date(dmc_enroll, format="%m/%d/%Y"),
+         pn1_survey = as.Date(pn1_survey, format="%m/%d/%Y"),
+         pn1_anthro = as.Date(pn1_anthro, format="%m/%d/%Y"),
+         pn1_urine = as.Date(pn1_urine, format="%m/%d/%Y"),
+         pn1_blood = as.Date(pn1_blood, format="%m/%d/%Y"),
+         actigraphy = as.Date(actigraphy, format="%m/%d/%Y"),
+         pn2_anthro = as.Date(pn2_anthro, format="%m/%d/%Y"),
+         pn2_survey = as.Date(pn2_survey, format="%m/%d/%Y"),
+         pn2_urine = as.Date(pn2_urine, format="%m/%d/%Y"),
+         pn2_blood = as.Date(pn2_blood, format="%m/%d/%Y"),
+         cordblood = as.Date(cordblood, format="%m/%d/%Y"),
+         mmra = as.Date(mmra, format="%m/%d/%Y"),
+         pregnancy_loss = as.Date(pregnancy_loss, format="%m/%d/%Y"),
+         child_dob = as.Date(child_dob, format="%m/%d/%Y"))
+write.csv(prenatal_2026, "Z:/ECHO/CHARM/Data/Reports/2026/Prenatal Report/CSVs/prenatal_2026.csv", row.names = FALSE)
+```
+
+# CHARM Prenatal Weekly Report {style="color: Teal"}
+
+##### June 22, 2026 {style="color: Black"}
+
+## Prenatal Overview {style="color: Teal"}
+
+##### Below is a table of the number of enrollments completed so far by month. {style="color: Black"}
+
+```{r, echo = FALSE}
+
+# -------------- Prep report for Prenatal Basics: # of Enrollments completed, Enrollment Completed Date, Site completing enrollment
+
+prenatal_2026_enroll <- prenatal_2026 %>%
+  select(globalId, customId, statusId, consent_date) %>%
+  mutate(site = case_when(
+            str_starts(globalId, "41") | str_starts(globalId, "42") ~ "Detroit",
+            str_starts(globalId, "44") | str_starts(globalId, "45") ~ "Flint",
+            str_starts(globalId, "47") | str_starts(globalId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(year(consent_date) == 2026) %>%
+  select(globalId, customId, statusId, consent_date, site)
+
+# ----------------- Created for Enrollment Table
+prenatal_enrollment_month <- prenatal_2026_enroll %>%
+  mutate(month = month(consent_date, label = TRUE, abbr = FALSE)) %>%
+  group_by(month) %>%
+  summarise(
+    Detroit = sum(site == "Detroit", na.rm = TRUE),
+    Flint = sum(site == "Flint", na.rm = TRUE),
+    Traverse_City = sum(site == "Traverse City", na.rm = TRUE),
+    Total = n(),
+    .groups = "drop"
+  )
+
+prenatal_enrollment_month %>%
+  kable(format = "html", caption = "Total Enrollments by Month", booktabs = TRUE, col.names = c("Enrollment Month", "Detroit", "Flint", "Traverse City", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(column = c(1:5), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F,  position = "float_right", font_size = 16)%>%
+  gsub("font-size: initial !important;",
+"font-size: 20pt !important;",
+.)
+```
+##### Below is a table of the number of births by month in 2026. {style="color: Black"}
+
+```{r, echo = FALSE}
+
+# -------------- Prep report for Prenatal Basics: # of Births completed, Births Completed Month, Site DOBs
+
+prenatal_2026_births <- prenatal_2026 %>%
+  select(globalId, customId, statusId, child_dob) %>%
+  mutate(site = case_when(
+            str_starts(globalId, "41") | str_starts(globalId, "42") ~ "Detroit",
+            str_starts(globalId, "44") | str_starts(globalId, "45") ~ "Flint",
+            str_starts(globalId, "47") | str_starts(globalId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(year(child_dob) == 2026) %>%
+  select(globalId, customId, statusId, child_dob, site)
+
+# ----------------- Created for Births Table
+prenatal_births_month <- prenatal_2026_births %>%
+  mutate(month = month(child_dob, label = TRUE, abbr = FALSE)) %>%
+  group_by(month) %>%
+  summarise(
+    Detroit = sum(site == "Detroit", na.rm = TRUE),
+    Flint = sum(site == "Flint", na.rm = TRUE),
+    Traverse_City = sum(site == "Traverse City", na.rm = TRUE),
+    Total = n(),
+    .groups = "drop"
+  )
+
+prenatal_births_month %>%
+  kable(format = "html", caption = "Total Births by Month", booktabs = TRUE, col.names = c("Birth Month", "Detroit", "Flint", "Traverse City", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(column = c(1:5), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F,  position = "float_right", font_size = 16)%>%
+  gsub("font-size: initial !important;",
+"font-size: 20pt !important;",
+.)
+```
+### QA / QC for Date of Birth {style="color: Black"}
+
+##### Below you will find a QA/QC Report done to verify all births are accounted for in Ripple and Participant Registration. Please note, items will only appear if a problem is found. Therefore, the report may sometimes show one table but can show up to three tables, depending on the warnings detected.
+
+```{r, echo = FALSE}
+# -------------- Prepare table for comparing estimated due dates, dobs, and who to follow up with. 
+
+prenatal_2026_eddvdob <- prenatal_2026 %>%
+  select(globalId, customId, statusId, estduedate, child_dob) %>%
+  mutate(site = case_when(
+            str_starts(globalId, "41") | str_starts(globalId, "42") ~ "Detroit",
+            str_starts(globalId, "44") | str_starts(globalId, "45") ~ "Flint",
+            str_starts(globalId, "47") | str_starts(globalId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(!statusId %in% c("0-5 Month Complete", "0-5 Month Detroit", "0-5 Month Traverse City", "0-5 Month Flint", "Pregnancy Loss")) %>%
+  mutate(past_edd = if_else(estduedate < Sys.Date() & is.na(child_dob), "Check for DOB", NA_character_)) %>%
+  filter(past_edd == "Check for DOB") %>%
+  select(customId, site, estduedate)
+
+# -------------- Prepare table for comparing DOB in Ripple with who is registered in Participant Registration.
+
+PR <- read.csv("Z:/ECHO/CHARM/Data/Reports/2026/Prenatal Report/CSVs/PR_06222026.csv")
+
+pr_prenatal <- PR %>%
+  select(CohortParticipantId, EWCP_ParticipantID, Cycle2ProtocolEnrollmentDatev3_01) %>%
+  rename("customId" = "CohortParticipantId",
+         "globalId" = "EWCP_ParticipantID",
+         "enrollmentDate" = "Cycle2ProtocolEnrollmentDatev3_01") %>%
+  mutate(TFD = case_when(
+    str_detect(customId, "F") ~ "TFD",
+    TRUE ~ NA_character_)) %>%
+  filter(TFD == "TFD") %>%
+  select(customId, enrollmentDate)
+
+ripple_prenatal <- study_prenatal %>%
+  select(customId) %>%
+  mutate(TFD = case_when(
+    str_starts(customId, "4") ~ "TFD",
+    TRUE ~ NA_character_)) %>%
+  filter(TFD == "TFD") %>%
+  select(customId)
+
+missing_pr <- ripple_prenatal %>%
+  anti_join(pr_prenatal, by = "customId")
+
+missing_ripple <- pr_prenatal %>%
+  anti_join(ripple_prenatal, by = "customId")
+# ----------------- Created for Births Table
+
+prenatal_2026_eddvdob %>%
+  kable(format = "html", caption = "Estimated Due Date Past with No Date of Birth Recorded in Ripple Database", booktabs = TRUE, col.names = c("Custom ID", "Site", "Estimated Due Date")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(column = c(1:3), width = "12in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F,  position = "float_right", font_size = 16)%>%
+  gsub("font-size: initial !important;", "font-size: 20pt !important;",.)
+
+if (nrow(missing_pr) > 0) {
+  missing_pr %>%
+    select(customId) %>%
+    kable(format = "html", caption = "Births Missing in Participant Registration but Present in Ripple Database", booktabs = TRUE, col.names = "Custom ID") %>%
+    row_spec(0, font_size = 16) %>%
+    column_spec(1, width = "12in") %>%
+    kable_styling(bootstrap_options = "striped", full_width = FALSE, position = "float_right", font_size = 16) %>%
+  gsub("font-size: initial !important;",
+          "font-size: 20pt !important;",
+.)}
+
+if (nrow(missing_ripple) > 0) {
+  missing_ripple %>%
+    select(customId) %>%
+    kable(format = "html", caption = "Births Missing in Ripple Database but Present in Participant Registration", booktabs = TRUE, col.names = "Custom ID") %>%
+    row_spec(0, font_size = 16) %>%
+    column_spec(1, width = "12in") %>%
+    kable_styling(bootstrap_options = "striped", position = "float_right", full_width = FALSE, font_size = 16) %>%
+     gsub("font-size: initial !important;",
+          "font-size: 20pt !important;",.)}
+```
+
+## Early Pregnancy Events {style="color: Teal"}
+
+##### Below are the tables that showcase the events that have been completed during the early pregnancy visit. These events include surveys, anthropometrics, and actigraphy. {style="color: Black"}
+
+```{r, echo = FALSE}
+# PRENTATAL 1 Vist
+
+### PRENATAL: DETROIT 
+events_prenatal_detroit <- prenatal_2026 %>%
+  select(globalId, pn1_survey, pn1_anthro, pn1_urine, pn1_blood, actigraphy, pn2_survey, pn2_anthro, pn2_urine, pn2_blood, cordblood, mmra) %>%
+  mutate(site = case_when(
+            str_starts(globalId, "41") | str_starts(globalId, "42") ~ "Detroit",
+            str_starts(globalId, "44") | str_starts(globalId, "45") ~ "Flint",
+            str_starts(globalId, "47") | str_starts(globalId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(site == "Detroit")
+
+### PRENATAL: FLINT
+events_prenatal_flint <- prenatal_2026 %>%
+  select(globalId, pn1_survey, pn1_anthro, pn1_urine, pn1_blood, actigraphy, pn2_survey, pn2_anthro, pn2_urine, pn2_blood, cordblood, mmra) %>%
+  mutate(site = case_when(
+            str_starts(globalId, "41") | str_starts(globalId, "42") ~ "Detroit",
+            str_starts(globalId, "44") | str_starts(globalId, "45") ~ "Flint",
+            str_starts(globalId, "47") | str_starts(globalId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(site == "Flint")
+
+### PRENATAL: TRAVERSE CITY
+events_prenatal_tc <- prenatal_2026 %>%
+  select(globalId, pn1_survey, pn1_anthro, pn1_urine, pn1_blood, actigraphy, pn2_survey, pn2_anthro, pn2_urine, pn2_blood, cordblood, mmra) %>%
+  mutate(site = case_when(
+            str_starts(globalId, "41") | str_starts(globalId, "42") ~ "Detroit",
+            str_starts(globalId, "44") | str_starts(globalId, "45") ~ "Flint",
+            str_starts(globalId, "47") | str_starts(globalId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(site == "Traverse City")
+
+# ------------- PN1 Surveys: Detroit
+
+events_pn1_surveys_det <- events_prenatal_detroit %>%
+  select(globalId, pn1_survey) %>%
+  mutate(pn1_survey_month = case_when(
+      (month(pn1_survey) == 1 & year(pn1_survey) == 2026) ~ "January",
+      (month(pn1_survey) == 2 & year(pn1_survey) == 2026) ~ "February",
+      (month(pn1_survey) == 3 & year(pn1_survey) == 2026) ~ "March",
+      (month(pn1_survey) == 4 & year(pn1_survey) == 2026) ~ "April",
+      (month(pn1_survey) == 5 & year(pn1_survey) == 2026) ~ "May",
+      (month(pn1_survey) == 6 & year(pn1_survey) == 2026) ~ "June",
+      (month(pn1_survey) == 7 & year(pn1_survey) == 2026) ~ "July",
+      (month(pn1_survey) == 8 & year(pn1_survey) == 2026) ~ "August",
+      (month(pn1_survey) == 9 & year(pn1_survey) == 2026) ~ "September",
+      (month(pn1_survey) == 10 & year(pn1_survey) == 2026) ~ "October",
+      (month(pn1_survey) == 11 & year(pn1_survey) == 2026) ~ "November",
+      (month(pn1_survey) == 12 & year(pn1_survey) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>% 
+  filter(!is.na(pn1_survey_month)) %>%
+  mutate(pn1_survey = month(pn1_survey, label = TRUE, abbr = FALSE)) %>%
+  summarise(
+    January = sum(pn1_survey == "January", na.rm = TRUE),
+    February = sum(pn1_survey == "February", na.rm = TRUE),
+    March = sum(pn1_survey == "March", na.rm = TRUE),
+    April = sum(pn1_survey == "April", na.rm = TRUE),
+    May = sum(pn1_survey == "May", na.rm = TRUE),
+    June = sum(pn1_survey == "June", na.rm = TRUE),
+    July = sum(pn1_survey == "July", na.rm = TRUE),
+    August = sum(pn1_survey == "August", na.rm = TRUE),
+    September = sum(pn1_survey == "September", na.rm = TRUE),
+    October = sum(pn1_survey == "October", na.rm = TRUE),
+    November = sum(pn1_survey == "November", na.rm = TRUE),
+    December = sum(pn1_survey == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_survey), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Survey") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ---------- PN1 Anthro: Detroit
+
+events_pn1_anthro_det <- events_prenatal_detroit %>%
+  select(globalId, pn1_anthro) %>%
+  mutate(pn1_anthro_month = case_when(
+      (month(pn1_anthro) == 1 & year(pn1_anthro) == 2026) ~ "January",
+      (month(pn1_anthro) == 2 & year(pn1_anthro) == 2026) ~ "February",
+      (month(pn1_anthro) == 3 & year(pn1_anthro) == 2026) ~ "March",
+      (month(pn1_anthro) == 4 & year(pn1_anthro) == 2026) ~ "April",
+      (month(pn1_anthro) == 5 & year(pn1_anthro) == 2026) ~ "May",
+      (month(pn1_anthro) == 6 & year(pn1_anthro) == 2026) ~ "June",
+      (month(pn1_anthro) == 7 & year(pn1_anthro) == 2026) ~ "July",
+      (month(pn1_anthro) == 8 & year(pn1_anthro) == 2026) ~ "August",
+      (month(pn1_anthro) == 9 & year(pn1_anthro) == 2026) ~ "September",
+      (month(pn1_anthro) == 10 & year(pn1_anthro) == 2026) ~ "October",
+      (month(pn1_anthro) == 11 & year(pn1_anthro) == 2026) ~ "November",
+      (month(pn1_anthro) == 12 & year(pn1_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>% 
+  mutate(pn1_anthro = month(pn1_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_anthro_month)) %>%
+  summarise(
+    January = sum(pn1_anthro == "January", na.rm = TRUE),
+    February = sum(pn1_anthro == "February", na.rm = TRUE),
+    March = sum(pn1_anthro == "March", na.rm = TRUE),
+    April = sum(pn1_anthro == "April", na.rm = TRUE),
+    May = sum(pn1_anthro == "May", na.rm = TRUE),
+    June = sum(pn1_anthro == "June", na.rm = TRUE),
+    July = sum(pn1_anthro == "July", na.rm = TRUE),
+    August = sum(pn1_anthro == "August", na.rm = TRUE),
+    September = sum(pn1_anthro == "September", na.rm = TRUE),
+    October = sum(pn1_anthro == "October", na.rm = TRUE),
+    November = sum(pn1_anthro == "November", na.rm = TRUE),
+    December = sum(pn1_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Anthropometrics") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ---------- PN1 Actigraphy: Detroit 
+
+events_pn1_actig_det <- events_prenatal_detroit %>%
+  select(globalId, actigraphy) %>%
+  mutate(actigraphy_month = case_when(
+      (month(actigraphy) == 1 & year(actigraphy) == 2026) ~ "January",
+      (month(actigraphy) == 2 & year(actigraphy) == 2026) ~ "February",
+      (month(actigraphy) == 3 & year(actigraphy) == 2026) ~ "March",
+      (month(actigraphy) == 4 & year(actigraphy) == 2026) ~ "April",
+      (month(actigraphy) == 5 & year(actigraphy) == 2026) ~ "May",
+      (month(actigraphy) == 6 & year(actigraphy) == 2026) ~ "June",
+      (month(actigraphy) == 7 & year(actigraphy) == 2026) ~ "July",
+      (month(actigraphy) == 8 & year(actigraphy) == 2026) ~ "August",
+      (month(actigraphy) == 9 & year(actigraphy) == 2026) ~ "September",
+      (month(actigraphy) == 10 & year(actigraphy) == 2026) ~ "October",
+      (month(actigraphy) == 11 & year(actigraphy) == 2026) ~ "November",
+      (month(actigraphy) == 12 & year(actigraphy) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>% 
+  mutate(actigraphy = month(actigraphy, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(actigraphy_month)) %>%
+  summarise(
+    January = sum(actigraphy == "January", na.rm = TRUE),
+    February = sum(actigraphy == "February", na.rm = TRUE),
+    March = sum(actigraphy == "March", na.rm = TRUE),
+    April = sum(actigraphy == "April", na.rm = TRUE),
+    May = sum(actigraphy == "May", na.rm = TRUE),
+    June = sum(actigraphy == "June", na.rm = TRUE),
+    July = sum(actigraphy == "July", na.rm = TRUE),
+    August = sum(actigraphy == "August", na.rm = TRUE),
+    September = sum(actigraphy == "September", na.rm = TRUE),
+    October = sum(actigraphy == "October", na.rm = TRUE),
+    November = sum(actigraphy == "November", na.rm = TRUE),
+    December = sum(actigraphy == "December", na.rm = TRUE),
+    Total = sum(!is.na(actigraphy), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Actigraphy") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ------------- PN1 Surveys: Flint
+
+events_pn1_surveys_fli <- events_prenatal_flint %>%
+  select(globalId, pn1_survey) %>%
+  mutate(pn1_survey_month = case_when(
+      (month(pn1_survey) == 1 & year(pn1_survey) == 2026) ~ "January",
+      (month(pn1_survey) == 2 & year(pn1_survey) == 2026) ~ "February",
+      (month(pn1_survey) == 3 & year(pn1_survey) == 2026) ~ "March",
+      (month(pn1_survey) == 4 & year(pn1_survey) == 2026) ~ "April",
+      (month(pn1_survey) == 5 & year(pn1_survey) == 2026) ~ "May",
+      (month(pn1_survey) == 6 & year(pn1_survey) == 2026) ~ "June",
+      (month(pn1_survey) == 7 & year(pn1_survey) == 2026) ~ "July",
+      (month(pn1_survey) == 8 & year(pn1_survey) == 2026) ~ "August",
+      (month(pn1_survey) == 9 & year(pn1_survey) == 2026) ~ "September",
+      (month(pn1_survey) == 10 & year(pn1_survey) == 2026) ~ "October",
+      (month(pn1_survey) == 11 & year(pn1_survey) == 2026) ~ "November",
+      (month(pn1_survey) == 12 & year(pn1_survey) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn1_survey = month(pn1_survey, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_survey_month)) %>%
+  summarise(
+    January = sum(pn1_survey == "January", na.rm = TRUE),
+    February = sum(pn1_survey == "February", na.rm = TRUE),
+    March = sum(pn1_survey == "March", na.rm = TRUE),
+    April = sum(pn1_survey == "April", na.rm = TRUE),
+    May = sum(pn1_survey == "May", na.rm = TRUE),
+    June = sum(pn1_survey == "June", na.rm = TRUE),
+    July = sum(pn1_survey == "July", na.rm = TRUE),
+    August = sum(pn1_survey == "August", na.rm = TRUE),
+    September = sum(pn1_survey == "September", na.rm = TRUE),
+    October = sum(pn1_survey == "October", na.rm = TRUE),
+    November = sum(pn1_survey == "November", na.rm = TRUE),
+    December = sum(pn1_survey == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_survey), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Survey") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ---------- PN1 Anthro: Flint
+
+events_pn1_anthro_fli <- events_prenatal_flint %>%
+  select(globalId, pn1_anthro) %>%
+  mutate(pn1_anthro_month = case_when(
+      (month(pn1_anthro) == 1 & year(pn1_anthro) == 2026) ~ "January",
+      (month(pn1_anthro) == 2 & year(pn1_anthro) == 2026) ~ "February",
+      (month(pn1_anthro) == 3 & year(pn1_anthro) == 2026) ~ "March",
+      (month(pn1_anthro) == 4 & year(pn1_anthro) == 2026) ~ "April",
+      (month(pn1_anthro) == 5 & year(pn1_anthro) == 2026) ~ "May",
+      (month(pn1_anthro) == 6 & year(pn1_anthro) == 2026) ~ "June",
+      (month(pn1_anthro) == 7 & year(pn1_anthro) == 2026) ~ "July",
+      (month(pn1_anthro) == 8 & year(pn1_anthro) == 2026) ~ "August",
+      (month(pn1_anthro) == 9 & year(pn1_anthro) == 2026) ~ "September",
+      (month(pn1_anthro) == 10 & year(pn1_anthro) == 2026) ~ "October",
+      (month(pn1_anthro) == 11 & year(pn1_anthro) == 2026) ~ "November",
+      (month(pn1_anthro) == 12 & year(pn1_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn1_anthro = month(pn1_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_anthro_month)) %>%
+  summarise(
+    January = sum(pn1_anthro == "January", na.rm = TRUE),
+    February = sum(pn1_anthro == "February", na.rm = TRUE),
+    March = sum(pn1_anthro == "March", na.rm = TRUE),
+    April = sum(pn1_anthro == "April", na.rm = TRUE),
+    May = sum(pn1_anthro == "May", na.rm = TRUE),
+    June = sum(pn1_anthro == "June", na.rm = TRUE),
+    July = sum(pn1_anthro == "July", na.rm = TRUE),
+    August = sum(pn1_anthro == "August", na.rm = TRUE),
+    September = sum(pn1_anthro == "September", na.rm = TRUE),
+    October = sum(pn1_anthro == "October", na.rm = TRUE),
+    November = sum(pn1_anthro == "November", na.rm = TRUE),
+    December = sum(pn1_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Anthropometrics") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ---------- PN1 Actigraphy: Flint
+
+events_pn1_actig_fli <- events_prenatal_flint %>%
+  select(globalId, actigraphy) %>%
+  mutate(actigraphy_month = case_when(
+      (month(actigraphy) == 1 & year(actigraphy) == 2026) ~ "January",
+      (month(actigraphy) == 2 & year(actigraphy) == 2026) ~ "February",
+      (month(actigraphy) == 3 & year(actigraphy) == 2026) ~ "March",
+      (month(actigraphy) == 4 & year(actigraphy) == 2026) ~ "April",
+      (month(actigraphy) == 5 & year(actigraphy) == 2026) ~ "May",
+      (month(actigraphy) == 6 & year(actigraphy) == 2026) ~ "June",
+      (month(actigraphy) == 7 & year(actigraphy) == 2026) ~ "July",
+      (month(actigraphy) == 8 & year(actigraphy) == 2026) ~ "August",
+      (month(actigraphy) == 9 & year(actigraphy) == 2026) ~ "September",
+      (month(actigraphy) == 10 & year(actigraphy) == 2026) ~ "October",
+      (month(actigraphy) == 11 & year(actigraphy) == 2026) ~ "November",
+      (month(actigraphy) == 12 & year(actigraphy) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>% 
+  mutate(actigraphy = month(actigraphy, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(actigraphy_month)) %>%
+  summarise(
+    January = sum(actigraphy == "January", na.rm = TRUE),
+    February = sum(actigraphy == "February", na.rm = TRUE),
+    March = sum(actigraphy == "March", na.rm = TRUE),
+    April = sum(actigraphy == "April", na.rm = TRUE),
+    May = sum(actigraphy == "May", na.rm = TRUE),
+    June = sum(actigraphy == "June", na.rm = TRUE),
+    July = sum(actigraphy == "July", na.rm = TRUE),
+    August = sum(actigraphy == "August", na.rm = TRUE),
+    September = sum(actigraphy == "September", na.rm = TRUE),
+    October = sum(actigraphy == "October", na.rm = TRUE),
+    November = sum(actigraphy == "November", na.rm = TRUE),
+    December = sum(actigraphy == "December", na.rm = TRUE),
+    Total = sum(!is.na(actigraphy), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Actigraphy") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ------------- PN1 Surveys: Traverse City
+
+events_pn1_surveys_tc <- events_prenatal_tc %>%
+  select(globalId, pn1_survey) %>%
+  mutate(pn1_survey_month = case_when(
+      (month(pn1_survey) == 1 & year(pn1_survey) == 2026) ~ "January",
+      (month(pn1_survey) == 2 & year(pn1_survey) == 2026) ~ "February",
+      (month(pn1_survey) == 3 & year(pn1_survey) == 2026) ~ "March",
+      (month(pn1_survey) == 4 & year(pn1_survey) == 2026) ~ "April",
+      (month(pn1_survey) == 5 & year(pn1_survey) == 2026) ~ "May",
+      (month(pn1_survey) == 6 & year(pn1_survey) == 2026) ~ "June",
+      (month(pn1_survey) == 7 & year(pn1_survey) == 2026) ~ "July",
+      (month(pn1_survey) == 8 & year(pn1_survey) == 2026) ~ "August",
+      (month(pn1_survey) == 9 & year(pn1_survey) == 2026) ~ "September",
+      (month(pn1_survey) == 10 & year(pn1_survey) == 2026) ~ "October",
+      (month(pn1_survey) == 11 & year(pn1_survey) == 2026) ~ "November",
+      (month(pn1_survey) == 12 & year(pn1_survey) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>% 
+  mutate(pn1_survey = month(pn1_survey, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_survey_month)) %>%
+  summarise(
+    January = sum(pn1_survey == "January", na.rm = TRUE),
+    February = sum(pn1_survey == "February", na.rm = TRUE),
+    March = sum(pn1_survey == "March", na.rm = TRUE),
+    April = sum(pn1_survey == "April", na.rm = TRUE),
+    May = sum(pn1_survey == "May", na.rm = TRUE),
+    June = sum(pn1_survey == "June", na.rm = TRUE),
+    July = sum(pn1_survey == "July", na.rm = TRUE),
+    August = sum(pn1_survey == "August", na.rm = TRUE),
+    September = sum(pn1_survey == "September", na.rm = TRUE),
+    October = sum(pn1_survey == "October", na.rm = TRUE),
+    November = sum(pn1_survey == "November", na.rm = TRUE),
+    December = sum(pn1_survey == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_survey), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Survey") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ---------- PN1 Anthro: Traverse City
+
+events_pn1_anthro_tc <- events_prenatal_tc %>%
+  select(globalId, pn1_anthro) %>%
+  mutate(pn1_anthro_month = case_when(
+      (month(pn1_anthro) == 1 & year(pn1_anthro) == 2026) ~ "January",
+      (month(pn1_anthro) == 2 & year(pn1_anthro) == 2026) ~ "February",
+      (month(pn1_anthro) == 3 & year(pn1_anthro) == 2026) ~ "March",
+      (month(pn1_anthro) == 4 & year(pn1_anthro) == 2026) ~ "April",
+      (month(pn1_anthro) == 5 & year(pn1_anthro) == 2026) ~ "May",
+      (month(pn1_anthro) == 6 & year(pn1_anthro) == 2026) ~ "June",
+      (month(pn1_anthro) == 7 & year(pn1_anthro) == 2026) ~ "July",
+      (month(pn1_anthro) == 8 & year(pn1_anthro) == 2026) ~ "August",
+      (month(pn1_anthro) == 9 & year(pn1_anthro) == 2026) ~ "September",
+      (month(pn1_anthro) == 10 & year(pn1_anthro) == 2026) ~ "October",
+      (month(pn1_anthro) == 11 & year(pn1_anthro) == 2026) ~ "November",
+      (month(pn1_anthro) == 12 & year(pn1_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn1_anthro = month(pn1_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_anthro_month)) %>%
+  summarise(
+    January = sum(pn1_anthro == "January", na.rm = TRUE),
+    February = sum(pn1_anthro == "February", na.rm = TRUE),
+    March = sum(pn1_anthro == "March", na.rm = TRUE),
+    April = sum(pn1_anthro == "April", na.rm = TRUE),
+    May = sum(pn1_anthro == "May", na.rm = TRUE),
+    June = sum(pn1_anthro == "June", na.rm = TRUE),
+    July = sum(pn1_anthro == "July", na.rm = TRUE),
+    August = sum(pn1_anthro == "August", na.rm = TRUE),
+    September = sum(pn1_anthro == "September", na.rm = TRUE),
+    October = sum(pn1_anthro == "October", na.rm = TRUE),
+    November = sum(pn1_anthro == "November", na.rm = TRUE),
+    December = sum(pn1_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Anthropometrics") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ---------- PN1 Actigraphy: Traverse City
+
+events_pn1_actig_tc <- events_prenatal_tc %>%
+  select(globalId, actigraphy) %>%
+  mutate(actigraphy_month = case_when(
+      (month(actigraphy) == 1 & year(actigraphy) == 2026) ~ "January",
+      (month(actigraphy) == 2 & year(actigraphy) == 2026) ~ "February",
+      (month(actigraphy) == 3 & year(actigraphy) == 2026) ~ "March",
+      (month(actigraphy) == 4 & year(actigraphy) == 2026) ~ "April",
+      (month(actigraphy) == 5 & year(actigraphy) == 2026) ~ "May",
+      (month(actigraphy) == 6 & year(actigraphy) == 2026) ~ "June",
+      (month(actigraphy) == 7 & year(actigraphy) == 2026) ~ "July",
+      (month(actigraphy) == 8 & year(actigraphy) == 2026) ~ "August",
+      (month(actigraphy) == 9 & year(actigraphy) == 2026) ~ "September",
+      (month(actigraphy) == 10 & year(actigraphy) == 2026) ~ "October",
+      (month(actigraphy) == 11 & year(actigraphy) == 2026) ~ "November",
+      (month(actigraphy) == 12 & year(actigraphy) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(actigraphy = month(actigraphy, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(actigraphy_month)) %>%
+  summarise(
+    January = sum(actigraphy == "January", na.rm = TRUE),
+    February = sum(actigraphy == "February", na.rm = TRUE),
+    March = sum(actigraphy == "March", na.rm = TRUE),
+    April = sum(actigraphy == "April", na.rm = TRUE),
+    May = sum(actigraphy == "May", na.rm = TRUE),
+    June = sum(actigraphy == "June", na.rm = TRUE),
+    July = sum(actigraphy == "July", na.rm = TRUE),
+    August = sum(actigraphy == "August", na.rm = TRUE),
+    September = sum(actigraphy == "September", na.rm = TRUE),
+    October = sum(actigraphy == "October", na.rm = TRUE),
+    November = sum(actigraphy == "November", na.rm = TRUE),
+    December = sum(actigraphy == "December", na.rm = TRUE),
+    Total = sum(!is.na(actigraphy), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Actigraphy") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+pn1_events_detroit <- rbind(events_pn1_surveys_det, events_pn1_anthro_det, events_pn1_actig_det)
+pn1_events_flint <- rbind(events_pn1_surveys_fli, events_pn1_anthro_fli, events_pn1_actig_fli)
+pn1_events_tc <- rbind(events_pn1_surveys_tc, events_pn1_anthro_tc, events_pn1_actig_tc)
+
+pn1_events_detroit %>%
+  kable(format = "html", caption = "Detroit", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(column = c(1:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+pn1_events_flint %>%
+  kable(format = "html", caption = "Flint", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(column = c(1:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+pn1_events_tc %>%
+  kable(format = "html", caption = "Traverse City", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(column = c(1:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+```
+
+## Late Pregnancy Events {style="color: Teal"}
+
+##### Below are the tables that showcase the events that have been completed during the late pregnancy visit. These events include surveys and anthropometrics. {style="color: Black"}
+
+```{r, echo = FALSE}
+# PRENTATAL 2 Visit
+# ------------- PN2 Surveys: Detroit
+
+events_pn2_surveys_det <- events_prenatal_detroit %>%
+  select(globalId, pn2_survey) %>%
+  mutate(pn2_survey_month = case_when(
+      (month(pn2_survey) == 1 & year(pn2_survey) == 2026) ~ "January",
+      (month(pn2_survey) == 2 & year(pn2_survey) == 2026) ~ "February",
+      (month(pn2_survey) == 3 & year(pn2_survey) == 2026) ~ "March",
+      (month(pn2_survey) == 4 & year(pn2_survey) == 2026) ~ "April",
+      (month(pn2_survey) == 5 & year(pn2_survey) == 2026) ~ "May",
+      (month(pn2_survey) == 6 & year(pn2_survey) == 2026) ~ "June",
+      (month(pn2_survey) == 7 & year(pn2_survey) == 2026) ~ "July",
+      (month(pn2_survey) == 8 & year(pn2_survey) == 2026) ~ "August",
+      (month(pn2_survey) == 9 & year(pn2_survey) == 2026) ~ "September",
+      (month(pn2_survey) == 10 & year(pn2_survey) == 2026) ~ "October",
+      (month(pn2_survey) == 11 & year(pn2_survey) == 2026) ~ "November",
+      (month(pn2_survey) == 12 & year(pn2_survey) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>% 
+  filter(!is.na(pn2_survey_month)) %>%
+  mutate(pn2_survey = month(pn2_survey, label = TRUE, abbr = FALSE)) %>%
+  summarise(
+    January = sum(pn2_survey == "January", na.rm = TRUE),
+    February = sum(pn2_survey == "February", na.rm = TRUE),
+    March = sum(pn2_survey == "March", na.rm = TRUE),
+    April = sum(pn2_survey == "April", na.rm = TRUE),
+    May = sum(pn2_survey == "May", na.rm = TRUE),
+    June = sum(pn2_survey == "June", na.rm = TRUE),
+    July = sum(pn2_survey == "July", na.rm = TRUE),
+    August = sum(pn2_survey == "August", na.rm = TRUE),
+    September = sum(pn2_survey == "September", na.rm = TRUE),
+    October = sum(pn2_survey == "October", na.rm = TRUE),
+    November = sum(pn2_survey == "November", na.rm = TRUE),
+    December = sum(pn2_survey == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_survey), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Survey") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ---------- PN2 Anthro: Detroit
+
+events_pn2_anthro_det <- events_prenatal_detroit %>%
+  select(globalId, pn2_anthro) %>%
+  mutate(pn2_anthro_month = case_when(
+      (month(pn2_anthro) == 1 & year(pn2_anthro) == 2026) ~ "January",
+      (month(pn2_anthro) == 2 & year(pn2_anthro) == 2026) ~ "February",
+      (month(pn2_anthro) == 3 & year(pn2_anthro) == 2026) ~ "March",
+      (month(pn2_anthro) == 4 & year(pn2_anthro) == 2026) ~ "April",
+      (month(pn2_anthro) == 5 & year(pn2_anthro) == 2026) ~ "May",
+      (month(pn2_anthro) == 6 & year(pn2_anthro) == 2026) ~ "June",
+      (month(pn2_anthro) == 7 & year(pn2_anthro) == 2026) ~ "July",
+      (month(pn2_anthro) == 8 & year(pn2_anthro) == 2026) ~ "August",
+      (month(pn2_anthro) == 9 & year(pn2_anthro) == 2026) ~ "September",
+      (month(pn2_anthro) == 10 & year(pn2_anthro) == 2026) ~ "October",
+      (month(pn2_anthro) == 11 & year(pn2_anthro) == 2026) ~ "November",
+      (month(pn2_anthro) == 12 & year(pn2_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>% 
+  mutate(pn2_anthro = month(pn2_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_anthro_month)) %>%
+  summarise(
+    January = sum(pn2_anthro == "January", na.rm = TRUE),
+    February = sum(pn2_anthro == "February", na.rm = TRUE),
+    March = sum(pn2_anthro == "March", na.rm = TRUE),
+    April = sum(pn2_anthro == "April", na.rm = TRUE),
+    May = sum(pn2_anthro == "May", na.rm = TRUE),
+    June = sum(pn2_anthro == "June", na.rm = TRUE),
+    July = sum(pn2_anthro == "July", na.rm = TRUE),
+    August = sum(pn2_anthro == "August", na.rm = TRUE),
+    September = sum(pn2_anthro == "September", na.rm = TRUE),
+    October = sum(pn2_anthro == "October", na.rm = TRUE),
+    November = sum(pn2_anthro == "November", na.rm = TRUE),
+    December = sum(pn2_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Anthropometrics") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ------------- PN2 Surveys: Flint
+
+events_pn2_surveys_fli <- events_prenatal_flint %>%
+  select(globalId, pn2_survey) %>%
+  mutate(pn2_survey_month = case_when(
+      (month(pn2_survey) == 1 & year(pn2_survey) == 2026) ~ "January",
+      (month(pn2_survey) == 2 & year(pn2_survey) == 2026) ~ "February",
+      (month(pn2_survey) == 3 & year(pn2_survey) == 2026) ~ "March",
+      (month(pn2_survey) == 4 & year(pn2_survey) == 2026) ~ "April",
+      (month(pn2_survey) == 5 & year(pn2_survey) == 2026) ~ "May",
+      (month(pn2_survey) == 6 & year(pn2_survey) == 2026) ~ "June",
+      (month(pn2_survey) == 7 & year(pn2_survey) == 2026) ~ "July",
+      (month(pn2_survey) == 8 & year(pn2_survey) == 2026) ~ "August",
+      (month(pn2_survey) == 9 & year(pn2_survey) == 2026) ~ "September",
+      (month(pn2_survey) == 10 & year(pn2_survey) == 2026) ~ "October",
+      (month(pn2_survey) == 11 & year(pn2_survey) == 2026) ~ "November",
+      (month(pn2_survey) == 12 & year(pn2_survey) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn2_survey = month(pn2_survey, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_survey_month)) %>%
+  summarise(
+    January = sum(pn2_survey == "January", na.rm = TRUE),
+    February = sum(pn2_survey == "February", na.rm = TRUE),
+    March = sum(pn2_survey == "March", na.rm = TRUE),
+    April = sum(pn2_survey == "April", na.rm = TRUE),
+    May = sum(pn2_survey == "May", na.rm = TRUE),
+    June = sum(pn2_survey == "June", na.rm = TRUE),
+    July = sum(pn2_survey == "July", na.rm = TRUE),
+    August = sum(pn2_survey == "August", na.rm = TRUE),
+    September = sum(pn2_survey == "September", na.rm = TRUE),
+    October = sum(pn2_survey == "October", na.rm = TRUE),
+    November = sum(pn2_survey == "November", na.rm = TRUE),
+    December = sum(pn2_survey == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_survey), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Survey") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ---------- PN2 Anthro: Flint
+
+events_pn2_anthro_fli <- events_prenatal_flint %>%
+  select(globalId, pn2_anthro) %>%
+  mutate(pn2_anthro_month = case_when(
+      (month(pn2_anthro) == 1 & year(pn2_anthro) == 2026) ~ "January",
+      (month(pn2_anthro) == 2 & year(pn2_anthro) == 2026) ~ "February",
+      (month(pn2_anthro) == 3 & year(pn2_anthro) == 2026) ~ "March",
+      (month(pn2_anthro) == 4 & year(pn2_anthro) == 2026) ~ "April",
+      (month(pn2_anthro) == 5 & year(pn2_anthro) == 2026) ~ "May",
+      (month(pn2_anthro) == 6 & year(pn2_anthro) == 2026) ~ "June",
+      (month(pn2_anthro) == 7 & year(pn2_anthro) == 2026) ~ "July",
+      (month(pn2_anthro) == 8 & year(pn2_anthro) == 2026) ~ "August",
+      (month(pn2_anthro) == 9 & year(pn2_anthro) == 2026) ~ "September",
+      (month(pn2_anthro) == 10 & year(pn2_anthro) == 2026) ~ "October",
+      (month(pn2_anthro) == 11 & year(pn2_anthro) == 2026) ~ "November",
+      (month(pn2_anthro) == 12 & year(pn2_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn2_anthro = month(pn2_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_anthro_month)) %>%
+  summarise(
+    January = sum(pn2_anthro == "January", na.rm = TRUE),
+    February = sum(pn2_anthro == "February", na.rm = TRUE),
+    March = sum(pn2_anthro == "March", na.rm = TRUE),
+    April = sum(pn2_anthro == "April", na.rm = TRUE),
+    May = sum(pn2_anthro == "May", na.rm = TRUE),
+    June = sum(pn2_anthro == "June", na.rm = TRUE),
+    July = sum(pn2_anthro == "July", na.rm = TRUE),
+    August = sum(pn2_anthro == "August", na.rm = TRUE),
+    September = sum(pn2_anthro == "September", na.rm = TRUE),
+    October = sum(pn2_anthro == "October", na.rm = TRUE),
+    November = sum(pn2_anthro == "November", na.rm = TRUE),
+    December = sum(pn2_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Anthropometrics") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ------------- PN2 Surveys: Traverse City
+
+events_pn2_surveys_tc <- events_prenatal_tc %>%
+  select(globalId, pn2_survey) %>%
+  mutate(pn2_survey_month = case_when(
+      (month(pn2_survey) == 1 & year(pn2_survey) == 2026) ~ "January",
+      (month(pn2_survey) == 2 & year(pn2_survey) == 2026) ~ "February",
+      (month(pn2_survey) == 3 & year(pn2_survey) == 2026) ~ "March",
+      (month(pn2_survey) == 4 & year(pn2_survey) == 2026) ~ "April",
+      (month(pn2_survey) == 5 & year(pn2_survey) == 2026) ~ "May",
+      (month(pn2_survey) == 6 & year(pn2_survey) == 2026) ~ "June",
+      (month(pn2_survey) == 7 & year(pn2_survey) == 2026) ~ "July",
+      (month(pn2_survey) == 8 & year(pn2_survey) == 2026) ~ "August",
+      (month(pn2_survey) == 9 & year(pn2_survey) == 2026) ~ "September",
+      (month(pn2_survey) == 10 & year(pn2_survey) == 2026) ~ "October",
+      (month(pn2_survey) == 11 & year(pn2_survey) == 2026) ~ "November",
+      (month(pn2_survey) == 12 & year(pn2_survey) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>% 
+  mutate(pn2_survey = month(pn2_survey, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_survey_month)) %>%
+  summarise(
+    January = sum(pn2_survey == "January", na.rm = TRUE),
+    February = sum(pn2_survey == "February", na.rm = TRUE),
+    March = sum(pn2_survey == "March", na.rm = TRUE),
+    April = sum(pn2_survey == "April", na.rm = TRUE),
+    May = sum(pn2_survey == "May", na.rm = TRUE),
+    June = sum(pn2_survey == "June", na.rm = TRUE),
+    July = sum(pn2_survey == "July", na.rm = TRUE),
+    August = sum(pn2_survey == "August", na.rm = TRUE),
+    September = sum(pn2_survey == "September", na.rm = TRUE),
+    October = sum(pn2_survey == "October", na.rm = TRUE),
+    November = sum(pn2_survey == "November", na.rm = TRUE),
+    December = sum(pn2_survey == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_survey), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Survey") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# ---------- PN2 Anthro: Traverse City
+
+events_pn2_anthro_tc <- events_prenatal_tc %>%
+  select(globalId, pn2_anthro) %>%
+  mutate(pn2_anthro_month = case_when(
+      (month(pn2_anthro) == 1 & year(pn2_anthro) == 2026) ~ "January",
+      (month(pn2_anthro) == 2 & year(pn2_anthro) == 2026) ~ "February",
+      (month(pn2_anthro) == 3 & year(pn2_anthro) == 2026) ~ "March",
+      (month(pn2_anthro) == 4 & year(pn2_anthro) == 2026) ~ "April",
+      (month(pn2_anthro) == 5 & year(pn2_anthro) == 2026) ~ "May",
+      (month(pn2_anthro) == 6 & year(pn2_anthro) == 2026) ~ "June",
+      (month(pn2_anthro) == 7 & year(pn2_anthro) == 2026) ~ "July",
+      (month(pn2_anthro) == 8 & year(pn2_anthro) == 2026) ~ "August",
+      (month(pn2_anthro) == 9 & year(pn2_anthro) == 2026) ~ "September",
+      (month(pn2_anthro) == 10 & year(pn2_anthro) == 2026) ~ "October",
+      (month(pn2_anthro) == 11 & year(pn2_anthro) == 2026) ~ "November",
+      (month(pn2_anthro) == 12 & year(pn2_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn2_anthro = month(pn2_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_anthro_month)) %>%
+  summarise(
+    January = sum(pn2_anthro == "January", na.rm = TRUE),
+    February = sum(pn2_anthro == "February", na.rm = TRUE),
+    March = sum(pn2_anthro == "March", na.rm = TRUE),
+    April = sum(pn2_anthro == "April", na.rm = TRUE),
+    May = sum(pn2_anthro == "May", na.rm = TRUE),
+    June = sum(pn2_anthro == "June", na.rm = TRUE),
+    July = sum(pn2_anthro == "July", na.rm = TRUE),
+    August = sum(pn2_anthro == "August", na.rm = TRUE),
+    September = sum(pn2_anthro == "September", na.rm = TRUE),
+    October = sum(pn2_anthro == "October", na.rm = TRUE),
+    November = sum(pn2_anthro == "November", na.rm = TRUE),
+    December = sum(pn2_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Anthropometrics") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+pn2_events_detroit <- rbind(events_pn2_surveys_det, events_pn2_anthro_det)
+pn2_events_flint <- rbind(events_pn2_surveys_fli, events_pn2_anthro_fli)
+pn2_events_tc <- rbind(events_pn2_surveys_tc, events_pn2_anthro_tc)
+
+pn2_events_detroit %>%
+  kable(format = "html", caption = "Detroit", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(1, width = "200px", extra_css = "white-space: nowrap;") %>%
+  column_spec(column = c(2:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+pn2_events_flint %>%
+  kable(format = "html", caption = "Flint", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(1, width = "200px", extra_css = "white-space: nowrap;") %>%
+  column_spec(column = c(2:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+pn2_events_tc %>%
+  kable(format = "html", caption = "Traverse City", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(1, width = "200px", extra_css = "white-space: nowrap;") %>%
+  column_spec(column = c(2:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+```
+
+## 0-5 Month Events {style="color: Teal"}
+
+##### Below are the tables that showcase the events that have been completed during the 0-5 Month Visit. These events include surveys, child anthropometrics, maternal anthropometrics, visits scheduled, VIB's requested, diaper kits sent, postnatal consents, and partner's contacted. {style="color: Black"}
+
+```{r, echo = FALSE}
+study_0to5 <- study_prenatal %>%
+  select(globalId, customId, statusId, birthday, `event.0_5_month_visit_scheduled.completedDate`, `event.vib_request_submitted.completedDate`, `event.diaper_kit_sent.completedDate`, `event.0_5_month_survey.completedDate`, `event.child_anthropometrics.completedDate`, `event.maternal_anthropometrics.completedDate`, `event.postnatal_consent.completedDate`, `event.partner_contact_info_requested.completedDate`) %>%
+  rename("visit_scheduled" = "event.0_5_month_visit_scheduled.completedDate",
+         "vib_request" = "event.vib_request_submitted.completedDate",
+         "diaper_sent" = "event.diaper_kit_sent.completedDate",
+         "survey" = "event.0_5_month_survey.completedDate",
+         "child_anthro" = "event.child_anthropometrics.completedDate",
+         "mom_anthro" = "event.maternal_anthropometrics.completedDate",
+         "postnatal_consent" = "event.postnatal_consent.completedDate",
+         "partner_contact" = "event.partner_contact_info_requested.completedDate") %>%
+   mutate(visit_scheduled = as.Date(visit_scheduled, format="%m/%d/%Y"),
+          vib_request = as.Date(vib_request, format="%m/%d/%Y"),
+          diaper_sent = as.Date(diaper_sent, format="%m/%d/%Y"),
+          survey = as.Date(survey, format="%m/%d/%Y"),
+          child_anthro = as.Date(visit_scheduled, format="%m/%d/%Y"),
+          mom_anthro = as.Date(mom_anthro, format="%m/%d/%Y"),
+          postnatal_consent = as.Date(postnatal_consent, format="%m/%d/%Y"),
+          partner_contact = as.Date(partner_contact, format="%m/%d/%Y"))
+
+write.csv(study_0to5, "Z:/ECHO/CHARM/Data/Reports/2026/Prenatal Report/CSVs/study_0to5.csv", row.names = FALSE)
+
+study_0to5_detroit <- study_0to5 %>%
+  mutate(site = case_when(
+            str_starts(customId, "41") | str_starts(customId, "42") ~ "Detroit",
+            str_starts(customId, "44") | str_starts(customId, "45") ~ "Flint",
+            str_starts(customId, "47") | str_starts(customId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(site == "Detroit")
+
+study_0to5_flint <- study_0to5 %>%
+  mutate(site = case_when(
+            str_starts(customId, "41") | str_starts(customId, "42") ~ "Detroit",
+            str_starts(customId, "44") | str_starts(customId, "45") ~ "Flint",
+            str_starts(customId, "47") | str_starts(customId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(site == "Flint")
+
+study_0to5_tc <- study_0to5 %>%
+  mutate(site = case_when(
+            str_starts(customId, "41") | str_starts(customId, "42") ~ "Detroit",
+            str_starts(customId, "44") | str_starts(customId, "45") ~ "Flint",
+            str_starts(customId, "47") | str_starts(customId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(site == "Traverse City")
+
+# DETROIT: Survey
+
+study_0to5_detroit_survey <- study_0to5_detroit %>%
+  select(globalId, survey) %>%
+  mutate(survey_month = case_when(
+      (month(survey) == 1 & year(survey) == 2026) ~ "January",
+      (month(survey) == 2 & year(survey) == 2026) ~ "February",
+      (month(survey) == 3 & year(survey) == 2026) ~ "March",
+      (month(survey) == 4 & year(survey) == 2026) ~ "April",
+      (month(survey) == 5 & year(survey) == 2026) ~ "May",
+      (month(survey) == 6 & year(survey) == 2026) ~ "June",
+      (month(survey) == 7 & year(survey) == 2026) ~ "July",
+      (month(survey) == 8 & year(survey) == 2026) ~ "August",
+      (month(survey) == 9 & year(survey) == 2026) ~ "September",
+      (month(survey) == 10 & year(survey) == 2026) ~ "October",
+      (month(survey) == 11 & year(survey) == 2026) ~ "November",
+      (month(survey) == 12 & year(survey) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(survey = month(survey, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(survey_month)) %>%
+  summarise(
+    January = sum(survey == "January", na.rm = TRUE),
+    February = sum(survey == "February", na.rm = TRUE),
+    March = sum(survey == "March", na.rm = TRUE),
+    April = sum(survey == "April", na.rm = TRUE),
+    May = sum(survey == "May", na.rm = TRUE),
+    June = sum(survey == "June", na.rm = TRUE),
+    July = sum(survey == "July", na.rm = TRUE),
+    August = sum(survey == "August", na.rm = TRUE),
+    September = sum(survey == "September", na.rm = TRUE),
+    October = sum(survey == "October", na.rm = TRUE),
+    November = sum(survey == "November", na.rm = TRUE),
+    December = sum(survey == "December", na.rm = TRUE),
+    Total = sum(!is.na(survey), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Surveys") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: Survey
+
+study_0to5_flint_survey <- study_0to5_flint %>%
+  select(globalId, survey) %>%
+  mutate(survey_month = case_when(
+      (month(survey) == 1 & year(survey) == 2026) ~ "January",
+      (month(survey) == 2 & year(survey) == 2026) ~ "February",
+      (month(survey) == 3 & year(survey) == 2026) ~ "March",
+      (month(survey) == 4 & year(survey) == 2026) ~ "April",
+      (month(survey) == 5 & year(survey) == 2026) ~ "May",
+      (month(survey) == 6 & year(survey) == 2026) ~ "June",
+      (month(survey) == 7 & year(survey) == 2026) ~ "July",
+      (month(survey) == 8 & year(survey) == 2026) ~ "August",
+      (month(survey) == 9 & year(survey) == 2026) ~ "September",
+      (month(survey) == 10 & year(survey) == 2026) ~ "October",
+      (month(survey) == 11 & year(survey) == 2026) ~ "November",
+      (month(survey) == 12 & year(survey) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(survey = month(survey, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(survey_month)) %>%
+  summarise(
+    January = sum(survey == "January", na.rm = TRUE),
+    February = sum(survey == "February", na.rm = TRUE),
+    March = sum(survey == "March", na.rm = TRUE),
+    April = sum(survey == "April", na.rm = TRUE),
+    May = sum(survey == "May", na.rm = TRUE),
+    June = sum(survey == "June", na.rm = TRUE),
+    July = sum(survey == "July", na.rm = TRUE),
+    August = sum(survey == "August", na.rm = TRUE),
+    September = sum(survey == "September", na.rm = TRUE),
+    October = sum(survey == "October", na.rm = TRUE),
+    November = sum(survey == "November", na.rm = TRUE),
+    December = sum(survey == "December", na.rm = TRUE),
+    Total = sum(!is.na(survey), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Surveys") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: Survey
+
+study_0to5_tc_survey <- study_0to5_tc %>%
+  select(globalId, survey) %>%
+  mutate(survey_month = case_when(
+      (month(survey) == 1 & year(survey) == 2026) ~ "January",
+      (month(survey) == 2 & year(survey) == 2026) ~ "February",
+      (month(survey) == 3 & year(survey) == 2026) ~ "March",
+      (month(survey) == 4 & year(survey) == 2026) ~ "April",
+      (month(survey) == 5 & year(survey) == 2026) ~ "May",
+      (month(survey) == 6 & year(survey) == 2026) ~ "June",
+      (month(survey) == 7 & year(survey) == 2026) ~ "July",
+      (month(survey) == 8 & year(survey) == 2026) ~ "August",
+      (month(survey) == 9 & year(survey) == 2026) ~ "September",
+      (month(survey) == 10 & year(survey) == 2026) ~ "October",
+      (month(survey) == 11 & year(survey) == 2026) ~ "November",
+      (month(survey) == 12 & year(survey) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(survey = month(survey, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(survey_month)) %>%
+  summarise(
+    January = sum(survey == "January", na.rm = TRUE),
+    February = sum(survey == "February", na.rm = TRUE),
+    March = sum(survey == "March", na.rm = TRUE),
+    April = sum(survey == "April", na.rm = TRUE),
+    May = sum(survey == "May", na.rm = TRUE),
+    June = sum(survey == "June", na.rm = TRUE),
+    July = sum(survey == "July", na.rm = TRUE),
+    August = sum(survey == "August", na.rm = TRUE),
+    September = sum(survey == "September", na.rm = TRUE),
+    October = sum(survey == "October", na.rm = TRUE),
+    November = sum(survey == "November", na.rm = TRUE),
+    December = sum(survey == "December", na.rm = TRUE),
+    Total = sum(!is.na(survey), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Surveys") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+
+#DETROIT: Child Anthro 
+
+study_0to5_detroit_childanthro <- study_0to5_detroit %>%
+  select(globalId, child_anthro) %>%
+  mutate(child_anthro_month = case_when(
+      (month(child_anthro) == 1 & year(child_anthro) == 2026) ~ "January",
+      (month(child_anthro) == 2 & year(child_anthro) == 2026) ~ "February",
+      (month(child_anthro) == 3 & year(child_anthro) == 2026) ~ "March",
+      (month(child_anthro) == 4 & year(child_anthro) == 2026) ~ "April",
+      (month(child_anthro) == 5 & year(child_anthro) == 2026) ~ "May",
+      (month(child_anthro) == 6 & year(child_anthro) == 2026) ~ "June",
+      (month(child_anthro) == 7 & year(child_anthro) == 2026) ~ "July",
+      (month(child_anthro) == 8 & year(child_anthro) == 2026) ~ "August",
+      (month(child_anthro) == 9 & year(child_anthro) == 2026) ~ "September",
+      (month(child_anthro) == 10 & year(child_anthro) == 2026) ~ "October",
+      (month(child_anthro) == 11 & year(child_anthro) == 2026) ~ "November",
+      (month(child_anthro) == 12 & year(child_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(child_anthro = month(child_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(child_anthro_month)) %>%
+  summarise(
+    January = sum(child_anthro == "January", na.rm = TRUE),
+    February = sum(child_anthro == "February", na.rm = TRUE),
+    March = sum(child_anthro == "March", na.rm = TRUE),
+    April = sum(child_anthro == "April", na.rm = TRUE),
+    May = sum(child_anthro == "May", na.rm = TRUE),
+    June = sum(child_anthro == "June", na.rm = TRUE),
+    July = sum(child_anthro == "July", na.rm = TRUE),
+    August = sum(child_anthro == "August", na.rm = TRUE),
+    September = sum(child_anthro == "September", na.rm = TRUE),
+    October = sum(child_anthro == "October", na.rm = TRUE),
+    November = sum(child_anthro == "November", na.rm = TRUE),
+    December = sum(child_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(child_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Child Anthro") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: Child Anthro 
+
+study_0to5_flint_childanthro <- study_0to5_flint %>%
+  select(globalId, child_anthro) %>%
+  mutate(child_anthro_month = case_when(
+      (month(child_anthro) == 1 & year(child_anthro) == 2026) ~ "January",
+      (month(child_anthro) == 2 & year(child_anthro) == 2026) ~ "February",
+      (month(child_anthro) == 3 & year(child_anthro) == 2026) ~ "March",
+      (month(child_anthro) == 4 & year(child_anthro) == 2026) ~ "April",
+      (month(child_anthro) == 5 & year(child_anthro) == 2026) ~ "May",
+      (month(child_anthro) == 6 & year(child_anthro) == 2026) ~ "June",
+      (month(child_anthro) == 7 & year(child_anthro) == 2026) ~ "July",
+      (month(child_anthro) == 8 & year(child_anthro) == 2026) ~ "August",
+      (month(child_anthro) == 9 & year(child_anthro) == 2026) ~ "September",
+      (month(child_anthro) == 10 & year(child_anthro) == 2026) ~ "October",
+      (month(child_anthro) == 11 & year(child_anthro) == 2026) ~ "November",
+      (month(child_anthro) == 12 & year(child_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(child_anthro = month(child_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(child_anthro_month)) %>%
+  summarise(
+    January = sum(child_anthro == "January", na.rm = TRUE),
+    February = sum(child_anthro == "February", na.rm = TRUE),
+    March = sum(child_anthro == "March", na.rm = TRUE),
+    April = sum(child_anthro == "April", na.rm = TRUE),
+    May = sum(child_anthro == "May", na.rm = TRUE),
+    June = sum(child_anthro == "June", na.rm = TRUE),
+    July = sum(child_anthro == "July", na.rm = TRUE),
+    August = sum(child_anthro == "August", na.rm = TRUE),
+    September = sum(child_anthro == "September", na.rm = TRUE),
+    October = sum(child_anthro == "October", na.rm = TRUE),
+    November = sum(child_anthro == "November", na.rm = TRUE),
+    December = sum(child_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(child_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Child Anthro") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: Child Anthro 
+
+study_0to5_tc_childanthro <- study_0to5_tc %>%
+  select(globalId, child_anthro) %>%
+  mutate(child_anthro_month = case_when(
+      (month(child_anthro) == 1 & year(child_anthro) == 2026) ~ "January",
+      (month(child_anthro) == 2 & year(child_anthro) == 2026) ~ "February",
+      (month(child_anthro) == 3 & year(child_anthro) == 2026) ~ "March",
+      (month(child_anthro) == 4 & year(child_anthro) == 2026) ~ "April",
+      (month(child_anthro) == 5 & year(child_anthro) == 2026) ~ "May",
+      (month(child_anthro) == 6 & year(child_anthro) == 2026) ~ "June",
+      (month(child_anthro) == 7 & year(child_anthro) == 2026) ~ "July",
+      (month(child_anthro) == 8 & year(child_anthro) == 2026) ~ "August",
+      (month(child_anthro) == 9 & year(child_anthro) == 2026) ~ "September",
+      (month(child_anthro) == 10 & year(child_anthro) == 2026) ~ "October",
+      (month(child_anthro) == 11 & year(child_anthro) == 2026) ~ "November",
+      (month(child_anthro) == 12 & year(child_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(child_anthro = month(child_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(child_anthro_month)) %>%
+  summarise(
+    January = sum(child_anthro == "January", na.rm = TRUE),
+    February = sum(child_anthro == "February", na.rm = TRUE),
+    March = sum(child_anthro == "March", na.rm = TRUE),
+    April = sum(child_anthro == "April", na.rm = TRUE),
+    May = sum(child_anthro == "May", na.rm = TRUE),
+    June = sum(child_anthro == "June", na.rm = TRUE),
+    July = sum(child_anthro == "July", na.rm = TRUE),
+    August = sum(child_anthro == "August", na.rm = TRUE),
+    September = sum(child_anthro == "September", na.rm = TRUE),
+    October = sum(child_anthro == "October", na.rm = TRUE),
+    November = sum(child_anthro == "November", na.rm = TRUE),
+    December = sum(child_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(child_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Child Anthro") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+#DETROIT: Mom Anthro 
+
+study_0to5_detroit_momanthro <- study_0to5_detroit %>%
+  select(globalId, mom_anthro) %>%
+  mutate(mom_anthro_month = case_when(
+      (month(mom_anthro) == 1 & year(mom_anthro) == 2026) ~ "January",
+      (month(mom_anthro) == 2 & year(mom_anthro) == 2026) ~ "February",
+      (month(mom_anthro) == 3 & year(mom_anthro) == 2026) ~ "March",
+      (month(mom_anthro) == 4 & year(mom_anthro) == 2026) ~ "April",
+      (month(mom_anthro) == 5 & year(mom_anthro) == 2026) ~ "May",
+      (month(mom_anthro) == 6 & year(mom_anthro) == 2026) ~ "June",
+      (month(mom_anthro) == 7 & year(mom_anthro) == 2026) ~ "July",
+      (month(mom_anthro) == 8 & year(mom_anthro) == 2026) ~ "August",
+      (month(mom_anthro) == 9 & year(mom_anthro) == 2026) ~ "September",
+      (month(mom_anthro) == 10 & year(mom_anthro) == 2026) ~ "October",
+      (month(mom_anthro) == 11 & year(mom_anthro) == 2026) ~ "November",
+      (month(mom_anthro) == 12 & year(mom_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(mom_anthro = month(mom_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(mom_anthro_month)) %>%
+  summarise(
+    January = sum(mom_anthro == "January", na.rm = TRUE),
+    February = sum(mom_anthro == "February", na.rm = TRUE),
+    March = sum(mom_anthro == "March", na.rm = TRUE),
+    April = sum(mom_anthro == "April", na.rm = TRUE),
+    May = sum(mom_anthro == "May", na.rm = TRUE),
+    June = sum(mom_anthro == "June", na.rm = TRUE),
+    July = sum(mom_anthro == "July", na.rm = TRUE),
+    August = sum(mom_anthro == "August", na.rm = TRUE),
+    September = sum(mom_anthro == "September", na.rm = TRUE),
+    October = sum(mom_anthro == "October", na.rm = TRUE),
+    November = sum(mom_anthro == "November", na.rm = TRUE),
+    December = sum(mom_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(mom_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Mom Anthro") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: Mom Anthro 
+
+study_0to5_flint_momanthro <- study_0to5_flint %>%
+  select(globalId, mom_anthro) %>%
+  mutate(mom_anthro_month = case_when(
+      (month(mom_anthro) == 1 & year(mom_anthro) == 2026) ~ "January",
+      (month(mom_anthro) == 2 & year(mom_anthro) == 2026) ~ "February",
+      (month(mom_anthro) == 3 & year(mom_anthro) == 2026) ~ "March",
+      (month(mom_anthro) == 4 & year(mom_anthro) == 2026) ~ "April",
+      (month(mom_anthro) == 5 & year(mom_anthro) == 2026) ~ "May",
+      (month(mom_anthro) == 6 & year(mom_anthro) == 2026) ~ "June",
+      (month(mom_anthro) == 7 & year(mom_anthro) == 2026) ~ "July",
+      (month(mom_anthro) == 8 & year(mom_anthro) == 2026) ~ "August",
+      (month(mom_anthro) == 9 & year(mom_anthro) == 2026) ~ "September",
+      (month(mom_anthro) == 10 & year(mom_anthro) == 2026) ~ "October",
+      (month(mom_anthro) == 11 & year(mom_anthro) == 2026) ~ "November",
+      (month(mom_anthro) == 12 & year(mom_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(mom_anthro = month(mom_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(mom_anthro_month)) %>%
+  summarise(
+    January = sum(mom_anthro == "January", na.rm = TRUE),
+    February = sum(mom_anthro == "February", na.rm = TRUE),
+    March = sum(mom_anthro == "March", na.rm = TRUE),
+    April = sum(mom_anthro == "April", na.rm = TRUE),
+    May = sum(mom_anthro == "May", na.rm = TRUE),
+    June = sum(mom_anthro == "June", na.rm = TRUE),
+    July = sum(mom_anthro == "July", na.rm = TRUE),
+    August = sum(mom_anthro == "August", na.rm = TRUE),
+    September = sum(mom_anthro == "September", na.rm = TRUE),
+    October = sum(mom_anthro == "October", na.rm = TRUE),
+    November = sum(mom_anthro == "November", na.rm = TRUE),
+    December = sum(mom_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(mom_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Mom Anthro") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: Mom Anthro 
+
+study_0to5_tc_momanthro <- study_0to5_tc %>%
+  select(globalId, mom_anthro) %>%
+  mutate(mom_anthro_month = case_when(
+      (month(mom_anthro) == 1 & year(mom_anthro) == 2026) ~ "January",
+      (month(mom_anthro) == 2 & year(mom_anthro) == 2026) ~ "February",
+      (month(mom_anthro) == 3 & year(mom_anthro) == 2026) ~ "March",
+      (month(mom_anthro) == 4 & year(mom_anthro) == 2026) ~ "April",
+      (month(mom_anthro) == 5 & year(mom_anthro) == 2026) ~ "May",
+      (month(mom_anthro) == 6 & year(mom_anthro) == 2026) ~ "June",
+      (month(mom_anthro) == 7 & year(mom_anthro) == 2026) ~ "July",
+      (month(mom_anthro) == 8 & year(mom_anthro) == 2026) ~ "August",
+      (month(mom_anthro) == 9 & year(mom_anthro) == 2026) ~ "September",
+      (month(mom_anthro) == 10 & year(mom_anthro) == 2026) ~ "October",
+      (month(mom_anthro) == 11 & year(mom_anthro) == 2026) ~ "November",
+      (month(mom_anthro) == 12 & year(mom_anthro) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(mom_anthro = month(mom_anthro, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(mom_anthro_month)) %>%
+  summarise(
+    January = sum(mom_anthro == "January", na.rm = TRUE),
+    February = sum(mom_anthro == "February", na.rm = TRUE),
+    March = sum(mom_anthro == "March", na.rm = TRUE),
+    April = sum(mom_anthro == "April", na.rm = TRUE),
+    May = sum(mom_anthro == "May", na.rm = TRUE),
+    June = sum(mom_anthro == "June", na.rm = TRUE),
+    July = sum(mom_anthro == "July", na.rm = TRUE),
+    August = sum(mom_anthro == "August", na.rm = TRUE),
+    September = sum(mom_anthro == "September", na.rm = TRUE),
+    October = sum(mom_anthro == "October", na.rm = TRUE),
+    November = sum(mom_anthro == "November", na.rm = TRUE),
+    December = sum(mom_anthro == "December", na.rm = TRUE),
+    Total = sum(!is.na(mom_anthro), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Mom Anthro") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+#DETROIT: Visit Scheduled
+
+study_0to5_detroit_visit_scheduled <- study_0to5_detroit %>%
+  select(globalId, visit_scheduled) %>%
+  mutate(visit_scheduled_month = case_when(
+      (month(visit_scheduled) == 1 & year(visit_scheduled) == 2026) ~ "January",
+      (month(visit_scheduled) == 2 & year(visit_scheduled) == 2026) ~ "February",
+      (month(visit_scheduled) == 3 & year(visit_scheduled) == 2026) ~ "March",
+      (month(visit_scheduled) == 4 & year(visit_scheduled) == 2026) ~ "April",
+      (month(visit_scheduled) == 5 & year(visit_scheduled) == 2026) ~ "May",
+      (month(visit_scheduled) == 6 & year(visit_scheduled) == 2026) ~ "June",
+      (month(visit_scheduled) == 7 & year(visit_scheduled) == 2026) ~ "July",
+      (month(visit_scheduled) == 8 & year(visit_scheduled) == 2026) ~ "August",
+      (month(visit_scheduled) == 9 & year(visit_scheduled) == 2026) ~ "September",
+      (month(visit_scheduled) == 10 & year(visit_scheduled) == 2026) ~ "October",
+      (month(visit_scheduled) == 11 & year(visit_scheduled) == 2026) ~ "November",
+      (month(visit_scheduled) == 12 & year(visit_scheduled) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(visit_scheduled = month(visit_scheduled, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(visit_scheduled_month)) %>%
+  summarise(
+    January = sum(visit_scheduled == "January", na.rm = TRUE),
+    February = sum(visit_scheduled == "February", na.rm = TRUE),
+    March = sum(visit_scheduled == "March", na.rm = TRUE),
+    April = sum(visit_scheduled == "April", na.rm = TRUE),
+    May = sum(visit_scheduled == "May", na.rm = TRUE),
+    June = sum(visit_scheduled == "June", na.rm = TRUE),
+    July = sum(visit_scheduled == "July", na.rm = TRUE),
+    August = sum(visit_scheduled == "August", na.rm = TRUE),
+    September = sum(visit_scheduled == "September", na.rm = TRUE),
+    October = sum(visit_scheduled == "October", na.rm = TRUE),
+    November = sum(visit_scheduled == "November", na.rm = TRUE),
+    December = sum(visit_scheduled == "December", na.rm = TRUE),
+    Total = sum(!is.na(visit_scheduled), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Visit Scheduled") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: Visit Scheduled
+
+study_0to5_flint_visit_scheduled <- study_0to5_flint %>%
+  select(globalId, visit_scheduled) %>%
+  mutate(visit_scheduled_month = case_when(
+      (month(visit_scheduled) == 1 & year(visit_scheduled) == 2026) ~ "January",
+      (month(visit_scheduled) == 2 & year(visit_scheduled) == 2026) ~ "February",
+      (month(visit_scheduled) == 3 & year(visit_scheduled) == 2026) ~ "March",
+      (month(visit_scheduled) == 4 & year(visit_scheduled) == 2026) ~ "April",
+      (month(visit_scheduled) == 5 & year(visit_scheduled) == 2026) ~ "May",
+      (month(visit_scheduled) == 6 & year(visit_scheduled) == 2026) ~ "June",
+      (month(visit_scheduled) == 7 & year(visit_scheduled) == 2026) ~ "July",
+      (month(visit_scheduled) == 8 & year(visit_scheduled) == 2026) ~ "August",
+      (month(visit_scheduled) == 9 & year(visit_scheduled) == 2026) ~ "September",
+      (month(visit_scheduled) == 10 & year(visit_scheduled) == 2026) ~ "October",
+      (month(visit_scheduled) == 11 & year(visit_scheduled) == 2026) ~ "November",
+      (month(visit_scheduled) == 12 & year(visit_scheduled) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(visit_scheduled = month(visit_scheduled, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(visit_scheduled_month)) %>%
+  summarise(
+    January = sum(visit_scheduled == "January", na.rm = TRUE),
+    February = sum(visit_scheduled == "February", na.rm = TRUE),
+    March = sum(visit_scheduled == "March", na.rm = TRUE),
+    April = sum(visit_scheduled == "April", na.rm = TRUE),
+    May = sum(visit_scheduled == "May", na.rm = TRUE),
+    June = sum(visit_scheduled == "June", na.rm = TRUE),
+    July = sum(visit_scheduled == "July", na.rm = TRUE),
+    August = sum(visit_scheduled == "August", na.rm = TRUE),
+    September = sum(visit_scheduled == "September", na.rm = TRUE),
+    October = sum(visit_scheduled == "October", na.rm = TRUE),
+    November = sum(visit_scheduled == "November", na.rm = TRUE),
+    December = sum(visit_scheduled == "December", na.rm = TRUE),
+    Total = sum(!is.na(visit_scheduled), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Visit Scheduled") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: Visit Scheduled
+
+study_0to5_tc_visit_scheduled <- study_0to5_tc %>%
+  select(globalId, visit_scheduled) %>%
+  mutate(visit_scheduled_month = case_when(
+      (month(visit_scheduled) == 1 & year(visit_scheduled) == 2026) ~ "January",
+      (month(visit_scheduled) == 2 & year(visit_scheduled) == 2026) ~ "February",
+      (month(visit_scheduled) == 3 & year(visit_scheduled) == 2026) ~ "March",
+      (month(visit_scheduled) == 4 & year(visit_scheduled) == 2026) ~ "April",
+      (month(visit_scheduled) == 5 & year(visit_scheduled) == 2026) ~ "May",
+      (month(visit_scheduled) == 6 & year(visit_scheduled) == 2026) ~ "June",
+      (month(visit_scheduled) == 7 & year(visit_scheduled) == 2026) ~ "July",
+      (month(visit_scheduled) == 8 & year(visit_scheduled) == 2026) ~ "August",
+      (month(visit_scheduled) == 9 & year(visit_scheduled) == 2026) ~ "September",
+      (month(visit_scheduled) == 10 & year(visit_scheduled) == 2026) ~ "October",
+      (month(visit_scheduled) == 11 & year(visit_scheduled) == 2026) ~ "November",
+      (month(visit_scheduled) == 12 & year(visit_scheduled) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(visit_scheduled = month(visit_scheduled, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(visit_scheduled_month)) %>%
+  summarise(
+    January = sum(visit_scheduled == "January", na.rm = TRUE),
+    February = sum(visit_scheduled == "February", na.rm = TRUE),
+    March = sum(visit_scheduled == "March", na.rm = TRUE),
+    April = sum(visit_scheduled == "April", na.rm = TRUE),
+    May = sum(visit_scheduled == "May", na.rm = TRUE),
+    June = sum(visit_scheduled == "June", na.rm = TRUE),
+    July = sum(visit_scheduled == "July", na.rm = TRUE),
+    August = sum(visit_scheduled == "August", na.rm = TRUE),
+    September = sum(visit_scheduled == "September", na.rm = TRUE),
+    October = sum(visit_scheduled == "October", na.rm = TRUE),
+    November = sum(visit_scheduled == "November", na.rm = TRUE),
+    December = sum(visit_scheduled == "December", na.rm = TRUE),
+    Total = sum(!is.na(visit_scheduled), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Visit Scheduled") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+#DETROIT: VIB Request
+
+study_0to5_detroit_vib_request <- study_0to5_detroit %>%
+  select(globalId, vib_request) %>%
+  mutate(vib_request_month = case_when(
+      (month(vib_request) == 1 & year(vib_request) == 2026) ~ "January",
+      (month(vib_request) == 2 & year(vib_request) == 2026) ~ "February",
+      (month(vib_request) == 3 & year(vib_request) == 2026) ~ "March",
+      (month(vib_request) == 4 & year(vib_request) == 2026) ~ "April",
+      (month(vib_request) == 5 & year(vib_request) == 2026) ~ "May",
+      (month(vib_request) == 6 & year(vib_request) == 2026) ~ "June",
+      (month(vib_request) == 7 & year(vib_request) == 2026) ~ "July",
+      (month(vib_request) == 8 & year(vib_request) == 2026) ~ "August",
+      (month(vib_request) == 9 & year(vib_request) == 2026) ~ "September",
+      (month(vib_request) == 10 & year(vib_request) == 2026) ~ "October",
+      (month(vib_request) == 11 & year(vib_request) == 2026) ~ "November",
+      (month(vib_request) == 12 & year(vib_request) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(vib_request = month(vib_request, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(vib_request_month)) %>%
+  summarise(
+    January = sum(vib_request == "January", na.rm = TRUE),
+    February = sum(vib_request == "February", na.rm = TRUE),
+    March = sum(vib_request == "March", na.rm = TRUE),
+    April = sum(vib_request == "April", na.rm = TRUE),
+    May = sum(vib_request == "May", na.rm = TRUE),
+    June = sum(vib_request == "June", na.rm = TRUE),
+    July = sum(vib_request == "July", na.rm = TRUE),
+    August = sum(vib_request == "August", na.rm = TRUE),
+    September = sum(vib_request == "September", na.rm = TRUE),
+    October = sum(vib_request == "October", na.rm = TRUE),
+    November = sum(vib_request == "November", na.rm = TRUE),
+    December = sum(vib_request == "December", na.rm = TRUE),
+    Total = sum(!is.na(vib_request), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "VIB Request") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: VIB Request 
+
+study_0to5_flint_vib_request <- study_0to5_flint %>%
+  select(globalId, vib_request) %>%
+  mutate(vib_request_month = case_when(
+      (month(vib_request) == 1 & year(vib_request) == 2026) ~ "January",
+      (month(vib_request) == 2 & year(vib_request) == 2026) ~ "February",
+      (month(vib_request) == 3 & year(vib_request) == 2026) ~ "March",
+      (month(vib_request) == 4 & year(vib_request) == 2026) ~ "April",
+      (month(vib_request) == 5 & year(vib_request) == 2026) ~ "May",
+      (month(vib_request) == 6 & year(vib_request) == 2026) ~ "June",
+      (month(vib_request) == 7 & year(vib_request) == 2026) ~ "July",
+      (month(vib_request) == 8 & year(vib_request) == 2026) ~ "August",
+      (month(vib_request) == 9 & year(vib_request) == 2026) ~ "September",
+      (month(vib_request) == 10 & year(vib_request) == 2026) ~ "October",
+      (month(vib_request) == 11 & year(vib_request) == 2026) ~ "November",
+      (month(vib_request) == 12 & year(vib_request) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(vib_request = month(vib_request, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(vib_request_month)) %>%
+  summarise(
+    January = sum(vib_request == "January", na.rm = TRUE),
+    February = sum(vib_request == "February", na.rm = TRUE),
+    March = sum(vib_request == "March", na.rm = TRUE),
+    April = sum(vib_request == "April", na.rm = TRUE),
+    May = sum(vib_request == "May", na.rm = TRUE),
+    June = sum(vib_request == "June", na.rm = TRUE),
+    July = sum(vib_request == "July", na.rm = TRUE),
+    August = sum(vib_request == "August", na.rm = TRUE),
+    September = sum(vib_request == "September", na.rm = TRUE),
+    October = sum(vib_request == "October", na.rm = TRUE),
+    November = sum(vib_request == "November", na.rm = TRUE),
+    December = sum(vib_request == "December", na.rm = TRUE),
+    Total = sum(!is.na(vib_request), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "VIB Request") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: VIB Request 
+
+study_0to5_tc_vib_request <- study_0to5_tc %>%
+  select(globalId, vib_request) %>%
+  mutate(vib_request_month = case_when(
+      (month(vib_request) == 1 & year(vib_request) == 2026) ~ "January",
+      (month(vib_request) == 2 & year(vib_request) == 2026) ~ "February",
+      (month(vib_request) == 3 & year(vib_request) == 2026) ~ "March",
+      (month(vib_request) == 4 & year(vib_request) == 2026) ~ "April",
+      (month(vib_request) == 5 & year(vib_request) == 2026) ~ "May",
+      (month(vib_request) == 6 & year(vib_request) == 2026) ~ "June",
+      (month(vib_request) == 7 & year(vib_request) == 2026) ~ "July",
+      (month(vib_request) == 8 & year(vib_request) == 2026) ~ "August",
+      (month(vib_request) == 9 & year(vib_request) == 2026) ~ "September",
+      (month(vib_request) == 10 & year(vib_request) == 2026) ~ "October",
+      (month(vib_request) == 11 & year(vib_request) == 2026) ~ "November",
+      (month(vib_request) == 12 & year(vib_request) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(vib_request = month(vib_request, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(vib_request_month)) %>%
+  summarise(
+    January = sum(vib_request == "January", na.rm = TRUE),
+    February = sum(vib_request == "February", na.rm = TRUE),
+    March = sum(vib_request == "March", na.rm = TRUE),
+    April = sum(vib_request == "April", na.rm = TRUE),
+    May = sum(vib_request == "May", na.rm = TRUE),
+    June = sum(vib_request == "June", na.rm = TRUE),
+    July = sum(vib_request == "July", na.rm = TRUE),
+    August = sum(vib_request == "August", na.rm = TRUE),
+    September = sum(vib_request == "September", na.rm = TRUE),
+    October = sum(vib_request == "October", na.rm = TRUE),
+    November = sum(vib_request == "November", na.rm = TRUE),
+    December = sum(vib_request == "December", na.rm = TRUE),
+    Total = sum(!is.na(vib_request), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "VIB Request") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+#DETROIT: Diaper Sent
+
+study_0to5_detroit_diaper_sent <- study_0to5_detroit %>%
+  select(globalId, diaper_sent) %>%
+  mutate(diaper_sent_month = case_when(
+      (month(diaper_sent) == 1 & year(diaper_sent) == 2026) ~ "January",
+      (month(diaper_sent) == 2 & year(diaper_sent) == 2026) ~ "February",
+      (month(diaper_sent) == 3 & year(diaper_sent) == 2026) ~ "March",
+      (month(diaper_sent) == 4 & year(diaper_sent) == 2026) ~ "April",
+      (month(diaper_sent) == 5 & year(diaper_sent) == 2026) ~ "May",
+      (month(diaper_sent) == 6 & year(diaper_sent) == 2026) ~ "June",
+      (month(diaper_sent) == 7 & year(diaper_sent) == 2026) ~ "July",
+      (month(diaper_sent) == 8 & year(diaper_sent) == 2026) ~ "August",
+      (month(diaper_sent) == 9 & year(diaper_sent) == 2026) ~ "September",
+      (month(diaper_sent) == 10 & year(diaper_sent) == 2026) ~ "October",
+      (month(diaper_sent) == 11 & year(diaper_sent) == 2026) ~ "November",
+      (month(diaper_sent) == 12 & year(diaper_sent) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(diaper_sent = month(diaper_sent, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(diaper_sent_month)) %>%
+  summarise(
+    January = sum(diaper_sent == "January", na.rm = TRUE),
+    February = sum(diaper_sent == "February", na.rm = TRUE),
+    March = sum(diaper_sent == "March", na.rm = TRUE),
+    April = sum(diaper_sent == "April", na.rm = TRUE),
+    May = sum(diaper_sent == "May", na.rm = TRUE),
+    June = sum(diaper_sent == "June", na.rm = TRUE),
+    July = sum(diaper_sent == "July", na.rm = TRUE),
+    August = sum(diaper_sent == "August", na.rm = TRUE),
+    September = sum(diaper_sent == "September", na.rm = TRUE),
+    October = sum(diaper_sent == "October", na.rm = TRUE),
+    November = sum(diaper_sent == "November", na.rm = TRUE),
+    December = sum(diaper_sent == "December", na.rm = TRUE),
+    Total = sum(!is.na(diaper_sent), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Diaper Sent") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: Diaper Sent
+
+study_0to5_flint_diaper_sent <- study_0to5_flint %>%
+  select(globalId, diaper_sent) %>%
+  mutate(diaper_sent_month = case_when(
+      (month(diaper_sent) == 1 & year(diaper_sent) == 2026) ~ "January",
+      (month(diaper_sent) == 2 & year(diaper_sent) == 2026) ~ "February",
+      (month(diaper_sent) == 3 & year(diaper_sent) == 2026) ~ "March",
+      (month(diaper_sent) == 4 & year(diaper_sent) == 2026) ~ "April",
+      (month(diaper_sent) == 5 & year(diaper_sent) == 2026) ~ "May",
+      (month(diaper_sent) == 6 & year(diaper_sent) == 2026) ~ "June",
+      (month(diaper_sent) == 7 & year(diaper_sent) == 2026) ~ "July",
+      (month(diaper_sent) == 8 & year(diaper_sent) == 2026) ~ "August",
+      (month(diaper_sent) == 9 & year(diaper_sent) == 2026) ~ "September",
+      (month(diaper_sent) == 10 & year(diaper_sent) == 2026) ~ "October",
+      (month(diaper_sent) == 11 & year(diaper_sent) == 2026) ~ "November",
+      (month(diaper_sent) == 12 & year(diaper_sent) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(diaper_sent = month(diaper_sent, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(diaper_sent_month)) %>%
+  summarise(
+    January = sum(diaper_sent == "January", na.rm = TRUE),
+    February = sum(diaper_sent == "February", na.rm = TRUE),
+    March = sum(diaper_sent == "March", na.rm = TRUE),
+    April = sum(diaper_sent == "April", na.rm = TRUE),
+    May = sum(diaper_sent == "May", na.rm = TRUE),
+    June = sum(diaper_sent == "June", na.rm = TRUE),
+    July = sum(diaper_sent == "July", na.rm = TRUE),
+    August = sum(diaper_sent == "August", na.rm = TRUE),
+    September = sum(diaper_sent == "September", na.rm = TRUE),
+    October = sum(diaper_sent == "October", na.rm = TRUE),
+    November = sum(diaper_sent == "November", na.rm = TRUE),
+    December = sum(diaper_sent == "December", na.rm = TRUE),
+    Total = sum(!is.na(diaper_sent), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Diaper Sent") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: Diaper Sent
+
+study_0to5_tc_diaper_sent <- study_0to5_tc %>%
+  select(globalId, diaper_sent) %>%
+  mutate(diaper_sent_month = case_when(
+      (month(diaper_sent) == 1 & year(diaper_sent) == 2026) ~ "January",
+      (month(diaper_sent) == 2 & year(diaper_sent) == 2026) ~ "February",
+      (month(diaper_sent) == 3 & year(diaper_sent) == 2026) ~ "March",
+      (month(diaper_sent) == 4 & year(diaper_sent) == 2026) ~ "April",
+      (month(diaper_sent) == 5 & year(diaper_sent) == 2026) ~ "May",
+      (month(diaper_sent) == 6 & year(diaper_sent) == 2026) ~ "June",
+      (month(diaper_sent) == 7 & year(diaper_sent) == 2026) ~ "July",
+      (month(diaper_sent) == 8 & year(diaper_sent) == 2026) ~ "August",
+      (month(diaper_sent) == 9 & year(diaper_sent) == 2026) ~ "September",
+      (month(diaper_sent) == 10 & year(diaper_sent) == 2026) ~ "October",
+      (month(diaper_sent) == 11 & year(diaper_sent) == 2026) ~ "November",
+      (month(diaper_sent) == 12 & year(diaper_sent) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(diaper_sent = month(diaper_sent, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(diaper_sent_month)) %>%
+  summarise(
+    January = sum(diaper_sent == "January", na.rm = TRUE),
+    February = sum(diaper_sent == "February", na.rm = TRUE),
+    March = sum(diaper_sent == "March", na.rm = TRUE),
+    April = sum(diaper_sent == "April", na.rm = TRUE),
+    May = sum(diaper_sent == "May", na.rm = TRUE),
+    June = sum(diaper_sent == "June", na.rm = TRUE),
+    July = sum(diaper_sent == "July", na.rm = TRUE),
+    August = sum(diaper_sent == "August", na.rm = TRUE),
+    September = sum(diaper_sent == "September", na.rm = TRUE),
+    October = sum(diaper_sent == "October", na.rm = TRUE),
+    November = sum(diaper_sent == "November", na.rm = TRUE),
+    December = sum(diaper_sent == "December", na.rm = TRUE),
+    Total = sum(!is.na(diaper_sent), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Diaper Sent") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+#DETROIT: Postnatal Consent
+
+study_0to5_detroit_postnatal_consent <- study_0to5_detroit %>%
+  select(globalId, postnatal_consent) %>%
+  mutate(postnatal_consent_month = case_when(
+      (month(postnatal_consent) == 1 & year(postnatal_consent) == 2026) ~ "January",
+      (month(postnatal_consent) == 2 & year(postnatal_consent) == 2026) ~ "February",
+      (month(postnatal_consent) == 3 & year(postnatal_consent) == 2026) ~ "March",
+      (month(postnatal_consent) == 4 & year(postnatal_consent) == 2026) ~ "April",
+      (month(postnatal_consent) == 5 & year(postnatal_consent) == 2026) ~ "May",
+      (month(postnatal_consent) == 6 & year(postnatal_consent) == 2026) ~ "June",
+      (month(postnatal_consent) == 7 & year(postnatal_consent) == 2026) ~ "July",
+      (month(postnatal_consent) == 8 & year(postnatal_consent) == 2026) ~ "August",
+      (month(postnatal_consent) == 9 & year(postnatal_consent) == 2026) ~ "September",
+      (month(postnatal_consent) == 10 & year(postnatal_consent) == 2026) ~ "October",
+      (month(postnatal_consent) == 11 & year(postnatal_consent) == 2026) ~ "November",
+      (month(postnatal_consent) == 12 & year(postnatal_consent) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(postnatal_consent = month(postnatal_consent, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(postnatal_consent_month)) %>%
+  summarise(
+    January = sum(postnatal_consent == "January", na.rm = TRUE),
+    February = sum(postnatal_consent == "February", na.rm = TRUE),
+    March = sum(postnatal_consent == "March", na.rm = TRUE),
+    April = sum(postnatal_consent == "April", na.rm = TRUE),
+    May = sum(postnatal_consent == "May", na.rm = TRUE),
+    June = sum(postnatal_consent == "June", na.rm = TRUE),
+    July = sum(postnatal_consent == "July", na.rm = TRUE),
+    August = sum(postnatal_consent == "August", na.rm = TRUE),
+    September = sum(postnatal_consent == "September", na.rm = TRUE),
+    October = sum(postnatal_consent == "October", na.rm = TRUE),
+    November = sum(postnatal_consent == "November", na.rm = TRUE),
+    December = sum(postnatal_consent == "December", na.rm = TRUE),
+    Total = sum(!is.na(postnatal_consent), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Postnatal Consent") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: Diaper Sent
+
+study_0to5_flint_postnatal_consent <- study_0to5_flint %>%
+  select(globalId, postnatal_consent) %>%
+  mutate(postnatal_consent_month = case_when(
+      (month(postnatal_consent) == 1 & year(postnatal_consent) == 2026) ~ "January",
+      (month(postnatal_consent) == 2 & year(postnatal_consent) == 2026) ~ "February",
+      (month(postnatal_consent) == 3 & year(postnatal_consent) == 2026) ~ "March",
+      (month(postnatal_consent) == 4 & year(postnatal_consent) == 2026) ~ "April",
+      (month(postnatal_consent) == 5 & year(postnatal_consent) == 2026) ~ "May",
+      (month(postnatal_consent) == 6 & year(postnatal_consent) == 2026) ~ "June",
+      (month(postnatal_consent) == 7 & year(postnatal_consent) == 2026) ~ "July",
+      (month(postnatal_consent) == 8 & year(postnatal_consent) == 2026) ~ "August",
+      (month(postnatal_consent) == 9 & year(postnatal_consent) == 2026) ~ "September",
+      (month(postnatal_consent) == 10 & year(postnatal_consent) == 2026) ~ "October",
+      (month(postnatal_consent) == 11 & year(postnatal_consent) == 2026) ~ "November",
+      (month(postnatal_consent) == 12 & year(postnatal_consent) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(postnatal_consent = month(postnatal_consent, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(postnatal_consent_month)) %>%
+  summarise(
+    January = sum(postnatal_consent == "January", na.rm = TRUE),
+    February = sum(postnatal_consent == "February", na.rm = TRUE),
+    March = sum(postnatal_consent == "March", na.rm = TRUE),
+    April = sum(postnatal_consent == "April", na.rm = TRUE),
+    May = sum(postnatal_consent == "May", na.rm = TRUE),
+    June = sum(postnatal_consent == "June", na.rm = TRUE),
+    July = sum(postnatal_consent == "July", na.rm = TRUE),
+    August = sum(postnatal_consent == "August", na.rm = TRUE),
+    September = sum(postnatal_consent == "September", na.rm = TRUE),
+    October = sum(postnatal_consent == "October", na.rm = TRUE),
+    November = sum(postnatal_consent == "November", na.rm = TRUE),
+    December = sum(postnatal_consent == "December", na.rm = TRUE),
+    Total = sum(!is.na(postnatal_consent), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Diaper Sent") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: Postnatal Consent
+
+study_0to5_tc_postnatal_consent <- study_0to5_tc %>%
+  select(globalId, postnatal_consent) %>%
+  mutate(postnatal_consent_month = case_when(
+      (month(postnatal_consent) == 1 & year(postnatal_consent) == 2026) ~ "January",
+      (month(postnatal_consent) == 2 & year(postnatal_consent) == 2026) ~ "February",
+      (month(postnatal_consent) == 3 & year(postnatal_consent) == 2026) ~ "March",
+      (month(postnatal_consent) == 4 & year(postnatal_consent) == 2026) ~ "April",
+      (month(postnatal_consent) == 5 & year(postnatal_consent) == 2026) ~ "May",
+      (month(postnatal_consent) == 6 & year(postnatal_consent) == 2026) ~ "June",
+      (month(postnatal_consent) == 7 & year(postnatal_consent) == 2026) ~ "July",
+      (month(postnatal_consent) == 8 & year(postnatal_consent) == 2026) ~ "August",
+      (month(postnatal_consent) == 9 & year(postnatal_consent) == 2026) ~ "September",
+      (month(postnatal_consent) == 10 & year(postnatal_consent) == 2026) ~ "October",
+      (month(postnatal_consent) == 11 & year(postnatal_consent) == 2026) ~ "November",
+      (month(postnatal_consent) == 12 & year(postnatal_consent) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(postnatal_consent = month(postnatal_consent, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(postnatal_consent_month)) %>%
+  summarise(
+    January = sum(postnatal_consent == "January", na.rm = TRUE),
+    February = sum(postnatal_consent == "February", na.rm = TRUE),
+    March = sum(postnatal_consent == "March", na.rm = TRUE),
+    April = sum(postnatal_consent == "April", na.rm = TRUE),
+    May = sum(postnatal_consent == "May", na.rm = TRUE),
+    June = sum(postnatal_consent == "June", na.rm = TRUE),
+    July = sum(postnatal_consent == "July", na.rm = TRUE),
+    August = sum(postnatal_consent == "August", na.rm = TRUE),
+    September = sum(postnatal_consent == "September", na.rm = TRUE),
+    October = sum(postnatal_consent == "October", na.rm = TRUE),
+    November = sum(postnatal_consent == "November", na.rm = TRUE),
+    December = sum(postnatal_consent == "December", na.rm = TRUE),
+    Total = sum(!is.na(postnatal_consent), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Postnatal Consent") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+#DETROIT: Partner Contact
+
+study_0to5_detroit_partner_contact <- study_0to5_detroit %>%
+  select(globalId, partner_contact) %>%
+  mutate(partner_contact_month = case_when(
+      (month(partner_contact) == 1 & year(partner_contact) == 2026) ~ "January",
+      (month(partner_contact) == 2 & year(partner_contact) == 2026) ~ "February",
+      (month(partner_contact) == 3 & year(partner_contact) == 2026) ~ "March",
+      (month(partner_contact) == 4 & year(partner_contact) == 2026) ~ "April",
+      (month(partner_contact) == 5 & year(partner_contact) == 2026) ~ "May",
+      (month(partner_contact) == 6 & year(partner_contact) == 2026) ~ "June",
+      (month(partner_contact) == 7 & year(partner_contact) == 2026) ~ "July",
+      (month(partner_contact) == 8 & year(partner_contact) == 2026) ~ "August",
+      (month(partner_contact) == 9 & year(partner_contact) == 2026) ~ "September",
+      (month(partner_contact) == 10 & year(partner_contact) == 2026) ~ "October",
+      (month(partner_contact) == 11 & year(partner_contact) == 2026) ~ "November",
+      (month(partner_contact) == 12 & year(partner_contact) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(partner_contact = month(partner_contact, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(partner_contact_month)) %>%
+  summarise(
+    January = sum(partner_contact == "January", na.rm = TRUE),
+    February = sum(partner_contact == "February", na.rm = TRUE),
+    March = sum(partner_contact == "March", na.rm = TRUE),
+    April = sum(partner_contact == "April", na.rm = TRUE),
+    May = sum(partner_contact == "May", na.rm = TRUE),
+    June = sum(partner_contact == "June", na.rm = TRUE),
+    July = sum(partner_contact == "July", na.rm = TRUE),
+    August = sum(partner_contact == "August", na.rm = TRUE),
+    September = sum(partner_contact == "September", na.rm = TRUE),
+    October = sum(partner_contact == "October", na.rm = TRUE),
+    November = sum(partner_contact == "November", na.rm = TRUE),
+    December = sum(partner_contact == "December", na.rm = TRUE),
+    Total = sum(!is.na(partner_contact), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Partner Contact") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: Partner Contact
+
+study_0to5_flint_partner_contact <- study_0to5_flint %>%
+  select(globalId, partner_contact) %>%
+  mutate(partner_contact_month = case_when(
+      (month(partner_contact) == 1 & year(partner_contact) == 2026) ~ "January",
+      (month(partner_contact) == 2 & year(partner_contact) == 2026) ~ "February",
+      (month(partner_contact) == 3 & year(partner_contact) == 2026) ~ "March",
+      (month(partner_contact) == 4 & year(partner_contact) == 2026) ~ "April",
+      (month(partner_contact) == 5 & year(partner_contact) == 2026) ~ "May",
+      (month(partner_contact) == 6 & year(partner_contact) == 2026) ~ "June",
+      (month(partner_contact) == 7 & year(partner_contact) == 2026) ~ "July",
+      (month(partner_contact) == 8 & year(partner_contact) == 2026) ~ "August",
+      (month(partner_contact) == 9 & year(partner_contact) == 2026) ~ "September",
+      (month(partner_contact) == 10 & year(partner_contact) == 2026) ~ "October",
+      (month(partner_contact) == 11 & year(partner_contact) == 2026) ~ "November",
+      (month(partner_contact) == 12 & year(partner_contact) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(partner_contact = month(partner_contact, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(partner_contact_month)) %>%
+  summarise(
+    January = sum(partner_contact == "January", na.rm = TRUE),
+    February = sum(partner_contact == "February", na.rm = TRUE),
+    March = sum(partner_contact == "March", na.rm = TRUE),
+    April = sum(partner_contact == "April", na.rm = TRUE),
+    May = sum(partner_contact == "May", na.rm = TRUE),
+    June = sum(partner_contact == "June", na.rm = TRUE),
+    July = sum(partner_contact == "July", na.rm = TRUE),
+    August = sum(partner_contact == "August", na.rm = TRUE),
+    September = sum(partner_contact == "September", na.rm = TRUE),
+    October = sum(partner_contact == "October", na.rm = TRUE),
+    November = sum(partner_contact == "November", na.rm = TRUE),
+    December = sum(partner_contact == "December", na.rm = TRUE),
+    Total = sum(!is.na(partner_contact), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Partner Contact") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: Partner Contact
+
+study_0to5_tc_partner_contact <- study_0to5_tc %>%
+  select(globalId, partner_contact) %>%
+  mutate(partner_contact_month = case_when(
+      (month(partner_contact) == 1 & year(partner_contact) == 2026) ~ "January",
+      (month(partner_contact) == 2 & year(partner_contact) == 2026) ~ "February",
+      (month(partner_contact) == 3 & year(partner_contact) == 2026) ~ "March",
+      (month(partner_contact) == 4 & year(partner_contact) == 2026) ~ "April",
+      (month(partner_contact) == 5 & year(partner_contact) == 2026) ~ "May",
+      (month(partner_contact) == 6 & year(partner_contact) == 2026) ~ "June",
+      (month(partner_contact) == 7 & year(partner_contact) == 2026) ~ "July",
+      (month(partner_contact) == 8 & year(partner_contact) == 2026) ~ "August",
+      (month(partner_contact) == 9 & year(partner_contact) == 2026) ~ "September",
+      (month(partner_contact) == 10 & year(partner_contact) == 2026) ~ "October",
+      (month(partner_contact) == 11 & year(partner_contact) == 2026) ~ "November",
+      (month(partner_contact) == 12 & year(partner_contact) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(partner_contact = month(partner_contact, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(partner_contact_month)) %>%
+  summarise(
+    January = sum(partner_contact == "January", na.rm = TRUE),
+    February = sum(partner_contact == "February", na.rm = TRUE),
+    March = sum(partner_contact == "March", na.rm = TRUE),
+    April = sum(partner_contact == "April", na.rm = TRUE),
+    May = sum(partner_contact == "May", na.rm = TRUE),
+    June = sum(partner_contact == "June", na.rm = TRUE),
+    July = sum(partner_contact == "July", na.rm = TRUE),
+    August = sum(partner_contact == "August", na.rm = TRUE),
+    September = sum(partner_contact == "September", na.rm = TRUE),
+    October = sum(partner_contact == "October", na.rm = TRUE),
+    November = sum(partner_contact == "November", na.rm = TRUE),
+    December = sum(partner_contact == "December", na.rm = TRUE),
+    Total = sum(!is.na(partner_contact), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Partner Contact") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+mo0to5_events_detroit <- rbind(study_0to5_detroit_survey, study_0to5_detroit_childanthro, study_0to5_detroit_momanthro, study_0to5_detroit_visit_scheduled, study_0to5_detroit_vib_request, study_0to5_detroit_diaper_sent, study_0to5_detroit_postnatal_consent, study_0to5_detroit_partner_contact)
+
+mo0to5_events_flint <- rbind(study_0to5_flint_survey, study_0to5_flint_childanthro, study_0to5_flint_momanthro, study_0to5_flint_visit_scheduled, study_0to5_flint_vib_request, study_0to5_flint_diaper_sent, study_0to5_flint_postnatal_consent, study_0to5_flint_partner_contact)
+
+mo0to5_events_tc <- rbind(study_0to5_tc_survey, study_0to5_tc_childanthro, study_0to5_tc_momanthro, study_0to5_tc_visit_scheduled, study_0to5_tc_vib_request, study_0to5_tc_diaper_sent, study_0to5_tc_postnatal_consent, study_0to5_tc_partner_contact)
+
+mo0to5_events_detroit %>%
+  kable(format = "html", caption = "Detroit", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(1, width = "200px", extra_css = "white-space: nowrap;") %>%
+  column_spec(column = c(2:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+mo0to5_events_flint %>%
+  kable(format = "html", caption = "Flint", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(1, width = "200px", extra_css = "white-space: nowrap;") %>%
+  column_spec(column = c(2:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+mo0to5_events_tc %>%
+  kable(format = "html", caption = "Traverse City", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(1, width = "200px", extra_css = "white-space: nowrap;") %>%
+  column_spec(column = c(2:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+```
+
+## 2026 Prenatal Biospecimens {style="color: Teal"}
+
+##### Below are the tables that showcases all of the biospecimens collected in 2026 from early pregnancy to 0-5 month visits. 
+
+```{r, echo = FALSE}
+prenatal_biospecimens <- study_prenatal %>%
+  select(customId, globalId, `event.first_prenatal_urine.completedDate`, `event.first_prenatal_blood.completedDate`, `event.household_water.completedDate`, `event.second_prenatal_urine.completedDate`, `event.second_prenatal_blood.completedDate`, `event.cord_blood_collection.completedDate`, `event.child_urine.completedDate`, `event.child_stool.completedDate`, `event.maternal_hair.completedDate`, `event.maternal_bloodspot.completedDate`, `event.breast_milk.completedDate`) %>%
+  rename("pn1_urine" = "event.first_prenatal_urine.completedDate",
+         "pn1_blood" = "event.first_prenatal_blood.completedDate",
+         "pn2_urine" = "event.second_prenatal_urine.completedDate",
+         "pn2_blood" = "event.second_prenatal_blood.completedDate",
+         "water" = "event.household_water.completedDate",
+         "child_urine" = "event.child_urine.completedDate",
+         "child_stool" = "event.child_stool.completedDate",
+         "mom_hair" = "event.maternal_hair.completedDate",
+         "mom_bs" = "event.maternal_bloodspot.completedDate",
+         "breast_milk" = "event.breast_milk.completedDate") %>%
+  mutate(pn1_urine = as.Date(pn1_urine, format="%m/%d/%Y"),
+         pn1_blood = as.Date(pn1_blood, format="%m/%d/%Y"),
+         pn2_urine = as.Date(pn2_urine, format="%m/%d/%Y"),
+         pn2_blood = as.Date(pn1_blood, format="%m/%d/%Y"),
+         water = as.Date(water, format="%m/%d/%Y"),
+         child_urine = as.Date(child_urine, format="%m/%d/%Y"),
+         child_stool = as.Date(child_stool, format="%m/%d/%Y"),
+         mom_hair = as.Date(mom_hair, format="%m/%d/%Y"),
+         mom_bs = as.Date(mom_bs, format="%m/%d/%Y"),
+         breast_milk = as.Date(breast_milk, format = "%m/%d/%Y"))
+write.csv(prenatal_biospecimens, "Z:/ECHO/CHARM/Data/Reports/2026/Prenatal Report/CSVs/prenatal_biospecimens.csv", row.names = FALSE)
+
+prenatal_biospecimens_det <- prenatal_biospecimens %>%
+  mutate(site = case_when(
+            str_starts(globalId, "41") | str_starts(globalId, "42") ~ "Detroit",
+            str_starts(globalId, "44") | str_starts(globalId, "45") ~ "Flint",
+            str_starts(globalId, "47") | str_starts(globalId, "48") ~ "Traverse City",
+            str_starts(customId, "41") | str_starts(customId, "42") ~ "Detroit",
+            str_starts(customId, "44") | str_starts(customId, "45") ~ "Flint",
+            str_starts(customId, "47") | str_starts(customId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(site == "Detroit")
+         
+prenatal_biospecimens_fli <- prenatal_biospecimens %>%
+  mutate(site = case_when(
+            str_starts(globalId, "41") | str_starts(globalId, "42") ~ "Detroit",
+            str_starts(globalId, "44") | str_starts(globalId, "45") ~ "Flint",
+            str_starts(globalId, "47") | str_starts(globalId, "48") ~ "Traverse City",
+            str_starts(customId, "41") | str_starts(customId, "42") ~ "Detroit",
+            str_starts(customId, "44") | str_starts(customId, "45") ~ "Flint",
+            str_starts(customId, "47") | str_starts(customId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(site == "Flint")
+
+prenatal_biospecimens_tc <- prenatal_biospecimens %>%
+  mutate(site = case_when(
+            str_starts(globalId, "41") | str_starts(globalId, "42") ~ "Detroit",
+            str_starts(globalId, "44") | str_starts(globalId, "45") ~ "Flint",
+            str_starts(globalId, "47") | str_starts(globalId, "48") ~ "Traverse City",
+            str_starts(customId, "41") | str_starts(customId, "42") ~ "Detroit",
+            str_starts(customId, "44") | str_starts(customId, "45") ~ "Flint",
+            str_starts(customId, "47") | str_starts(customId, "48") ~ "Traverse City",
+            TRUE ~ NA_character_)) %>%
+  filter(site == "Traverse City")
+
+# DETROIT: PN1 URINE 
+
+prenatal_biospecimens_det_pn1_urine <- prenatal_biospecimens_det %>%
+  select(globalId, pn1_urine) %>%
+  mutate(pn1_urine_month = case_when(
+      (month(pn1_urine) == 1 & year(pn1_urine) == 2026) ~ "January",
+      (month(pn1_urine) == 2 & year(pn1_urine) == 2026) ~ "February",
+      (month(pn1_urine) == 3 & year(pn1_urine) == 2026) ~ "March",
+      (month(pn1_urine) == 4 & year(pn1_urine) == 2026) ~ "April",
+      (month(pn1_urine) == 5 & year(pn1_urine) == 2026) ~ "May",
+      (month(pn1_urine) == 6 & year(pn1_urine) == 2026) ~ "June",
+      (month(pn1_urine) == 7 & year(pn1_urine) == 2026) ~ "July",
+      (month(pn1_urine) == 8 & year(pn1_urine) == 2026) ~ "August",
+      (month(pn1_urine) == 9 & year(pn1_urine) == 2026) ~ "September",
+      (month(pn1_urine) == 10 & year(pn1_urine) == 2026) ~ "October",
+      (month(pn1_urine) == 11 & year(pn1_urine) == 2026) ~ "November",
+      (month(pn1_urine) == 12 & year(pn1_urine) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn1_urine = month(pn1_urine, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_urine_month)) %>%
+  summarise(
+    January = sum(pn1_urine == "January", na.rm = TRUE),
+    February = sum(pn1_urine == "February", na.rm = TRUE),
+    March = sum(pn1_urine == "March", na.rm = TRUE),
+    April = sum(pn1_urine == "April", na.rm = TRUE),
+    May = sum(pn1_urine == "May", na.rm = TRUE),
+    June = sum(pn1_urine == "June", na.rm = TRUE),
+    July = sum(pn1_urine == "July", na.rm = TRUE),
+    August = sum(pn1_urine == "August", na.rm = TRUE),
+    September = sum(pn1_urine == "September", na.rm = TRUE),
+    October = sum(pn1_urine == "October", na.rm = TRUE),
+    November = sum(pn1_urine == "November", na.rm = TRUE),
+    December = sum(pn1_urine == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_urine), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN1 Urine") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# DETROIT: PN1 BLOOD
+
+prenatal_biospecimens_det_pn1_blood <- prenatal_biospecimens_det %>%
+  select(globalId, pn1_blood) %>%
+  mutate(pn1_blood_month = case_when(
+      (month(pn1_blood) == 1 & year(pn1_blood) == 2026) ~ "January",
+      (month(pn1_blood) == 2 & year(pn1_blood) == 2026) ~ "February",
+      (month(pn1_blood) == 3 & year(pn1_blood) == 2026) ~ "March",
+      (month(pn1_blood) == 4 & year(pn1_blood) == 2026) ~ "April",
+      (month(pn1_blood) == 5 & year(pn1_blood) == 2026) ~ "May",
+      (month(pn1_blood) == 6 & year(pn1_blood) == 2026) ~ "June",
+      (month(pn1_blood) == 7 & year(pn1_blood) == 2026) ~ "July",
+      (month(pn1_blood) == 8 & year(pn1_blood) == 2026) ~ "August",
+      (month(pn1_blood) == 9 & year(pn1_blood) == 2026) ~ "September",
+      (month(pn1_blood) == 10 & year(pn1_blood) == 2026) ~ "October",
+      (month(pn1_blood) == 11 & year(pn1_blood) == 2026) ~ "November",
+      (month(pn1_blood) == 12 & year(pn1_blood) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn1_blood = month(pn1_blood, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_blood_month)) %>%
+  summarise(
+    January = sum(pn1_blood == "January", na.rm = TRUE),
+    February = sum(pn1_blood == "February", na.rm = TRUE),
+    March = sum(pn1_blood == "March", na.rm = TRUE),
+    April = sum(pn1_blood == "April", na.rm = TRUE),
+    May = sum(pn1_blood == "May", na.rm = TRUE),
+    June = sum(pn1_blood == "June", na.rm = TRUE),
+    July = sum(pn1_blood == "July", na.rm = TRUE),
+    August = sum(pn1_blood == "August", na.rm = TRUE),
+    September = sum(pn1_blood == "September", na.rm = TRUE),
+    October = sum(pn1_blood == "October", na.rm = TRUE),
+    November = sum(pn1_blood == "November", na.rm = TRUE),
+    December = sum(pn1_blood == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_blood), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN1 Blood") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# DETROIT: PN2 URINE
+
+prenatal_biospecimens_det_pn2_urine <- prenatal_biospecimens_det %>%
+  select(globalId, pn2_urine) %>%
+  mutate(pn2_urine_month = case_when(
+      (month(pn2_urine) == 1 & year(pn2_urine) == 2026) ~ "January",
+      (month(pn2_urine) == 2 & year(pn2_urine) == 2026) ~ "February",
+      (month(pn2_urine) == 3 & year(pn2_urine) == 2026) ~ "March",
+      (month(pn2_urine) == 4 & year(pn2_urine) == 2026) ~ "April",
+      (month(pn2_urine) == 5 & year(pn2_urine) == 2026) ~ "May",
+      (month(pn2_urine) == 6 & year(pn2_urine) == 2026) ~ "June",
+      (month(pn2_urine) == 7 & year(pn2_urine) == 2026) ~ "July",
+      (month(pn2_urine) == 8 & year(pn2_urine) == 2026) ~ "August",
+      (month(pn2_urine) == 9 & year(pn2_urine) == 2026) ~ "September",
+      (month(pn2_urine) == 10 & year(pn2_urine) == 2026) ~ "October",
+      (month(pn2_urine) == 11 & year(pn2_urine) == 2026) ~ "November",
+      (month(pn2_urine) == 12 & year(pn2_urine) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn2_urine = month(pn2_urine, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_urine_month)) %>%
+  summarise(
+    January = sum(pn2_urine == "January", na.rm = TRUE),
+    February = sum(pn2_urine == "February", na.rm = TRUE),
+    March = sum(pn2_urine == "March", na.rm = TRUE),
+    April = sum(pn2_urine == "April", na.rm = TRUE),
+    May = sum(pn2_urine == "May", na.rm = TRUE),
+    June = sum(pn2_urine == "June", na.rm = TRUE),
+    July = sum(pn2_urine == "July", na.rm = TRUE),
+    August = sum(pn2_urine == "August", na.rm = TRUE),
+    September = sum(pn2_urine == "September", na.rm = TRUE),
+    October = sum(pn2_urine == "October", na.rm = TRUE),
+    November = sum(pn2_urine == "November", na.rm = TRUE),
+    December = sum(pn2_urine == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_urine), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN2 Urine") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# DETROIT: PN2 BLOOD
+
+prenatal_biospecimens_det_pn2_blood <- prenatal_biospecimens_det %>%
+  select(globalId, pn2_blood) %>%
+  mutate(pn2_blood_month = case_when(
+      (month(pn2_blood) == 1 & year(pn2_blood) == 2026) ~ "January",
+      (month(pn2_blood) == 2 & year(pn2_blood) == 2026) ~ "February",
+      (month(pn2_blood) == 3 & year(pn2_blood) == 2026) ~ "March",
+      (month(pn2_blood) == 4 & year(pn2_blood) == 2026) ~ "April",
+      (month(pn2_blood) == 5 & year(pn2_blood) == 2026) ~ "May",
+      (month(pn2_blood) == 6 & year(pn2_blood) == 2026) ~ "June",
+      (month(pn2_blood) == 7 & year(pn2_blood) == 2026) ~ "July",
+      (month(pn2_blood) == 8 & year(pn2_blood) == 2026) ~ "August",
+      (month(pn2_blood) == 9 & year(pn2_blood) == 2026) ~ "September",
+      (month(pn2_blood) == 10 & year(pn2_blood) == 2026) ~ "October",
+      (month(pn2_blood) == 11 & year(pn2_blood) == 2026) ~ "November",
+      (month(pn2_blood) == 12 & year(pn2_blood) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn2_blood = month(pn2_blood, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_blood_month)) %>%
+  summarise(
+    January = sum(pn2_blood == "January", na.rm = TRUE),
+    February = sum(pn2_blood == "February", na.rm = TRUE),
+    March = sum(pn2_blood == "March", na.rm = TRUE),
+    April = sum(pn2_blood == "April", na.rm = TRUE),
+    May = sum(pn2_blood == "May", na.rm = TRUE),
+    June = sum(pn2_blood == "June", na.rm = TRUE),
+    July = sum(pn2_blood == "July", na.rm = TRUE),
+    August = sum(pn2_blood == "August", na.rm = TRUE),
+    September = sum(pn2_blood == "September", na.rm = TRUE),
+    October = sum(pn2_blood == "October", na.rm = TRUE),
+    November = sum(pn2_blood == "November", na.rm = TRUE),
+    December = sum(pn2_blood == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_blood), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN1 Blood") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# DETROIT: WATER
+
+prenatal_biospecimens_det_water <- prenatal_biospecimens_det %>%
+  select(globalId, water) %>%
+  mutate(water_month = case_when(
+      (month(water) == 1 & year(water) == 2026) ~ "January",
+      (month(water) == 2 & year(water) == 2026) ~ "February",
+      (month(water) == 3 & year(water) == 2026) ~ "March",
+      (month(water) == 4 & year(water) == 2026) ~ "April",
+      (month(water) == 5 & year(water) == 2026) ~ "May",
+      (month(water) == 6 & year(water) == 2026) ~ "June",
+      (month(water) == 7 & year(water) == 2026) ~ "July",
+      (month(water) == 8 & year(water) == 2026) ~ "August",
+      (month(water) == 9 & year(water) == 2026) ~ "September",
+      (month(water) == 10 & year(water) == 2026) ~ "October",
+      (month(water) == 11 & year(water) == 2026) ~ "November",
+      (month(water) == 12 & year(water) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(water = month(water, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(water_month)) %>%
+  summarise(
+    January = sum(water == "January", na.rm = TRUE),
+    February = sum(water == "February", na.rm = TRUE),
+    March = sum(water == "March", na.rm = TRUE),
+    April = sum(water == "April", na.rm = TRUE),
+    May = sum(water == "May", na.rm = TRUE),
+    June = sum(water == "June", na.rm = TRUE),
+    July = sum(water == "July", na.rm = TRUE),
+    August = sum(water == "August", na.rm = TRUE),
+    September = sum(water == "September", na.rm = TRUE),
+    October = sum(water == "October", na.rm = TRUE),
+    November = sum(water == "November", na.rm = TRUE),
+    December = sum(water == "December", na.rm = TRUE),
+    Total = sum(!is.na(water), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Water") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# DETROIT: CHILD URINE
+
+prenatal_biospecimens_det_child_urine <- prenatal_biospecimens_det %>%
+  select(globalId, child_urine) %>%
+  mutate(child_urine_month = case_when(
+      (month(child_urine) == 1 & year(child_urine) == 2026) ~ "January",
+      (month(child_urine) == 2 & year(child_urine) == 2026) ~ "February",
+      (month(child_urine) == 3 & year(child_urine) == 2026) ~ "March",
+      (month(child_urine) == 4 & year(child_urine) == 2026) ~ "April",
+      (month(child_urine) == 5 & year(child_urine) == 2026) ~ "May",
+      (month(child_urine) == 6 & year(child_urine) == 2026) ~ "June",
+      (month(child_urine) == 7 & year(child_urine) == 2026) ~ "July",
+      (month(child_urine) == 8 & year(child_urine) == 2026) ~ "August",
+      (month(child_urine) == 9 & year(child_urine) == 2026) ~ "September",
+      (month(child_urine) == 10 & year(child_urine) == 2026) ~ "October",
+      (month(child_urine) == 11 & year(child_urine) == 2026) ~ "November",
+      (month(child_urine) == 12 & year(child_urine) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(child_urine = month(child_urine, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(child_urine_month)) %>%
+  summarise(
+    January = sum(child_urine == "January", na.rm = TRUE),
+    February = sum(child_urine == "February", na.rm = TRUE),
+    March = sum(child_urine == "March", na.rm = TRUE),
+    April = sum(child_urine == "April", na.rm = TRUE),
+    May = sum(child_urine == "May", na.rm = TRUE),
+    June = sum(child_urine == "June", na.rm = TRUE),
+    July = sum(child_urine == "July", na.rm = TRUE),
+    August = sum(child_urine == "August", na.rm = TRUE),
+    September = sum(child_urine == "September", na.rm = TRUE),
+    October = sum(child_urine == "October", na.rm = TRUE),
+    November = sum(child_urine == "November", na.rm = TRUE),
+    December = sum(child_urine == "December", na.rm = TRUE),
+    Total = sum(!is.na(child_urine), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Child Urine") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# DETROIT: CHILD STOOL
+
+prenatal_biospecimens_det_child_stool <- prenatal_biospecimens_det %>%
+  select(globalId, child_stool) %>%
+  mutate(child_stool_month = case_when(
+      (month(child_stool) == 1 & year(child_stool) == 2026) ~ "January",
+      (month(child_stool) == 2 & year(child_stool) == 2026) ~ "February",
+      (month(child_stool) == 3 & year(child_stool) == 2026) ~ "March",
+      (month(child_stool) == 4 & year(child_stool) == 2026) ~ "April",
+      (month(child_stool) == 5 & year(child_stool) == 2026) ~ "May",
+      (month(child_stool) == 6 & year(child_stool) == 2026) ~ "June",
+      (month(child_stool) == 7 & year(child_stool) == 2026) ~ "July",
+      (month(child_stool) == 8 & year(child_stool) == 2026) ~ "August",
+      (month(child_stool) == 9 & year(child_stool) == 2026) ~ "September",
+      (month(child_stool) == 10 & year(child_stool) == 2026) ~ "October",
+      (month(child_stool) == 11 & year(child_stool) == 2026) ~ "November",
+      (month(child_stool) == 12 & year(child_stool) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(child_stool = month(child_stool, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(child_stool_month)) %>%
+  summarise(
+    January = sum(child_stool == "January", na.rm = TRUE),
+    February = sum(child_stool == "February", na.rm = TRUE),
+    March = sum(child_stool == "March", na.rm = TRUE),
+    April = sum(child_stool == "April", na.rm = TRUE),
+    May = sum(child_stool == "May", na.rm = TRUE),
+    June = sum(child_stool == "June", na.rm = TRUE),
+    July = sum(child_stool == "July", na.rm = TRUE),
+    August = sum(child_stool == "August", na.rm = TRUE),
+    September = sum(child_stool == "September", na.rm = TRUE),
+    October = sum(child_stool == "October", na.rm = TRUE),
+    November = sum(child_stool == "November", na.rm = TRUE),
+    December = sum(child_stool == "December", na.rm = TRUE),
+    Total = sum(!is.na(child_stool), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Child Stool") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+  
+# DETROIT: MOM HAIR
+
+prenatal_biospecimens_det_mom_hair <- prenatal_biospecimens_det %>%
+  select(globalId, mom_hair) %>%
+  mutate(mom_hair_month = case_when(
+      (month(mom_hair) == 1 & year(mom_hair) == 2026) ~ "January",
+      (month(mom_hair) == 2 & year(mom_hair) == 2026) ~ "February",
+      (month(mom_hair) == 3 & year(mom_hair) == 2026) ~ "March",
+      (month(mom_hair) == 4 & year(mom_hair) == 2026) ~ "April",
+      (month(mom_hair) == 5 & year(mom_hair) == 2026) ~ "May",
+      (month(mom_hair) == 6 & year(mom_hair) == 2026) ~ "June",
+      (month(mom_hair) == 7 & year(mom_hair) == 2026) ~ "July",
+      (month(mom_hair) == 8 & year(mom_hair) == 2026) ~ "August",
+      (month(mom_hair) == 9 & year(mom_hair) == 2026) ~ "September",
+      (month(mom_hair) == 10 & year(mom_hair) == 2026) ~ "October",
+      (month(mom_hair) == 11 & year(mom_hair) == 2026) ~ "November",
+      (month(mom_hair) == 12 & year(mom_hair) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(mom_hair = month(mom_hair, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(mom_hair_month)) %>%
+  summarise(
+    January = sum(mom_hair == "January", na.rm = TRUE),
+    February = sum(mom_hair == "February", na.rm = TRUE),
+    March = sum(mom_hair == "March", na.rm = TRUE),
+    April = sum(mom_hair == "April", na.rm = TRUE),
+    May = sum(mom_hair == "May", na.rm = TRUE),
+    June = sum(mom_hair == "June", na.rm = TRUE),
+    July = sum(mom_hair == "July", na.rm = TRUE),
+    August = sum(mom_hair == "August", na.rm = TRUE),
+    September = sum(mom_hair == "September", na.rm = TRUE),
+    October = sum(mom_hair == "October", na.rm = TRUE),
+    November = sum(mom_hair == "November", na.rm = TRUE),
+    December = sum(mom_hair == "December", na.rm = TRUE),
+    Total = sum(!is.na(mom_hair), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Mom Hair") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# DETROIT: MOM BLOODSPOT
+
+prenatal_biospecimens_det_mom_bs <- prenatal_biospecimens_det %>%
+  select(globalId, mom_bs) %>%
+  mutate(mom_bs_month = case_when(
+      (month(mom_bs) == 1 & year(mom_bs) == 2026) ~ "January",
+      (month(mom_bs) == 2 & year(mom_bs) == 2026) ~ "February",
+      (month(mom_bs) == 3 & year(mom_bs) == 2026) ~ "March",
+      (month(mom_bs) == 4 & year(mom_bs) == 2026) ~ "April",
+      (month(mom_bs) == 5 & year(mom_bs) == 2026) ~ "May",
+      (month(mom_bs) == 6 & year(mom_bs) == 2026) ~ "June",
+      (month(mom_bs) == 7 & year(mom_bs) == 2026) ~ "July",
+      (month(mom_bs) == 8 & year(mom_bs) == 2026) ~ "August",
+      (month(mom_bs) == 9 & year(mom_bs) == 2026) ~ "September",
+      (month(mom_bs) == 10 & year(mom_bs) == 2026) ~ "October",
+      (month(mom_bs) == 11 & year(mom_bs) == 2026) ~ "November",
+      (month(mom_bs) == 12 & year(mom_bs) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(mom_bs = month(mom_bs, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(mom_bs_month)) %>%
+  summarise(
+    January = sum(mom_bs == "January", na.rm = TRUE),
+    February = sum(mom_bs == "February", na.rm = TRUE),
+    March = sum(mom_bs == "March", na.rm = TRUE),
+    April = sum(mom_bs == "April", na.rm = TRUE),
+    May = sum(mom_bs == "May", na.rm = TRUE),
+    June = sum(mom_bs == "June", na.rm = TRUE),
+    July = sum(mom_bs == "July", na.rm = TRUE),
+    August = sum(mom_bs == "August", na.rm = TRUE),
+    September = sum(mom_bs == "September", na.rm = TRUE),
+    October = sum(mom_bs == "October", na.rm = TRUE),
+    November = sum(mom_bs == "November", na.rm = TRUE),
+    December = sum(mom_bs == "December", na.rm = TRUE),
+    Total = sum(!is.na(mom_bs), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Mom Bloodspot") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# DETROIT: BREAST MILK
+
+prenatal_biospecimens_det_breast_milk <- prenatal_biospecimens_det %>%
+  select(globalId, breast_milk) %>%
+  mutate(breast_milk_month = case_when(
+      (month(breast_milk) == 1 & year(breast_milk) == 2026) ~ "January",
+      (month(breast_milk) == 2 & year(breast_milk) == 2026) ~ "February",
+      (month(breast_milk) == 3 & year(breast_milk) == 2026) ~ "March",
+      (month(breast_milk) == 4 & year(breast_milk) == 2026) ~ "April",
+      (month(breast_milk) == 5 & year(breast_milk) == 2026) ~ "May",
+      (month(breast_milk) == 6 & year(breast_milk) == 2026) ~ "June",
+      (month(breast_milk) == 7 & year(breast_milk) == 2026) ~ "July",
+      (month(breast_milk) == 8 & year(breast_milk) == 2026) ~ "August",
+      (month(breast_milk) == 9 & year(breast_milk) == 2026) ~ "September",
+      (month(breast_milk) == 10 & year(breast_milk) == 2026) ~ "October",
+      (month(breast_milk) == 11 & year(breast_milk) == 2026) ~ "November",
+      (month(breast_milk) == 12 & year(breast_milk) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(breast_milk = month(breast_milk, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(breast_milk_month)) %>%
+  summarise(
+    January = sum(breast_milk == "January", na.rm = TRUE),
+    February = sum(breast_milk == "February", na.rm = TRUE),
+    March = sum(breast_milk == "March", na.rm = TRUE),
+    April = sum(breast_milk == "April", na.rm = TRUE),
+    May = sum(breast_milk == "May", na.rm = TRUE),
+    June = sum(breast_milk == "June", na.rm = TRUE),
+    July = sum(breast_milk == "July", na.rm = TRUE),
+    August = sum(breast_milk == "August", na.rm = TRUE),
+    September = sum(breast_milk == "September", na.rm = TRUE),
+    October = sum(breast_milk == "October", na.rm = TRUE),
+    November = sum(breast_milk == "November", na.rm = TRUE),
+    December = sum(breast_milk == "December", na.rm = TRUE),
+    Total = sum(!is.na(breast_milk), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Breast Milk") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+  
+# FLINT: PN1 URINE 
+
+prenatal_biospecimens_fli_pn1_urine <- prenatal_biospecimens_fli %>%
+  select(globalId, pn1_urine) %>%
+  mutate(pn1_urine_month = case_when(
+      (month(pn1_urine) == 1 & year(pn1_urine) == 2026) ~ "January",
+      (month(pn1_urine) == 2 & year(pn1_urine) == 2026) ~ "February",
+      (month(pn1_urine) == 3 & year(pn1_urine) == 2026) ~ "March",
+      (month(pn1_urine) == 4 & year(pn1_urine) == 2026) ~ "April",
+      (month(pn1_urine) == 5 & year(pn1_urine) == 2026) ~ "May",
+      (month(pn1_urine) == 6 & year(pn1_urine) == 2026) ~ "June",
+      (month(pn1_urine) == 7 & year(pn1_urine) == 2026) ~ "July",
+      (month(pn1_urine) == 8 & year(pn1_urine) == 2026) ~ "August",
+      (month(pn1_urine) == 9 & year(pn1_urine) == 2026) ~ "September",
+      (month(pn1_urine) == 10 & year(pn1_urine) == 2026) ~ "October",
+      (month(pn1_urine) == 11 & year(pn1_urine) == 2026) ~ "November",
+      (month(pn1_urine) == 12 & year(pn1_urine) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn1_urine = month(pn1_urine, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_urine_month)) %>%
+  summarise(
+    January = sum(pn1_urine == "January", na.rm = TRUE),
+    February = sum(pn1_urine == "February", na.rm = TRUE),
+    March = sum(pn1_urine == "March", na.rm = TRUE),
+    April = sum(pn1_urine == "April", na.rm = TRUE),
+    May = sum(pn1_urine == "May", na.rm = TRUE),
+    June = sum(pn1_urine == "June", na.rm = TRUE),
+    July = sum(pn1_urine == "July", na.rm = TRUE),
+    August = sum(pn1_urine == "August", na.rm = TRUE),
+    September = sum(pn1_urine == "September", na.rm = TRUE),
+    October = sum(pn1_urine == "October", na.rm = TRUE),
+    November = sum(pn1_urine == "November", na.rm = TRUE),
+    December = sum(pn1_urine == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_urine), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN1 Urine") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: PN1 BLOOD
+
+prenatal_biospecimens_fli_pn1_blood <- prenatal_biospecimens_fli %>%
+  select(globalId, pn1_blood) %>%
+  mutate(pn1_blood_month = case_when(
+      (month(pn1_blood) == 1 & year(pn1_blood) == 2026) ~ "January",
+      (month(pn1_blood) == 2 & year(pn1_blood) == 2026) ~ "February",
+      (month(pn1_blood) == 3 & year(pn1_blood) == 2026) ~ "March",
+      (month(pn1_blood) == 4 & year(pn1_blood) == 2026) ~ "April",
+      (month(pn1_blood) == 5 & year(pn1_blood) == 2026) ~ "May",
+      (month(pn1_blood) == 6 & year(pn1_blood) == 2026) ~ "June",
+      (month(pn1_blood) == 7 & year(pn1_blood) == 2026) ~ "July",
+      (month(pn1_blood) == 8 & year(pn1_blood) == 2026) ~ "August",
+      (month(pn1_blood) == 9 & year(pn1_blood) == 2026) ~ "September",
+      (month(pn1_blood) == 10 & year(pn1_blood) == 2026) ~ "October",
+      (month(pn1_blood) == 11 & year(pn1_blood) == 2026) ~ "November",
+      (month(pn1_blood) == 12 & year(pn1_blood) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn1_blood = month(pn1_blood, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_blood_month)) %>%
+  summarise(
+    January = sum(pn1_blood == "January", na.rm = TRUE),
+    February = sum(pn1_blood == "February", na.rm = TRUE),
+    March = sum(pn1_blood == "March", na.rm = TRUE),
+    April = sum(pn1_blood == "April", na.rm = TRUE),
+    May = sum(pn1_blood == "May", na.rm = TRUE),
+    June = sum(pn1_blood == "June", na.rm = TRUE),
+    July = sum(pn1_blood == "July", na.rm = TRUE),
+    August = sum(pn1_blood == "August", na.rm = TRUE),
+    September = sum(pn1_blood == "September", na.rm = TRUE),
+    October = sum(pn1_blood == "October", na.rm = TRUE),
+    November = sum(pn1_blood == "November", na.rm = TRUE),
+    December = sum(pn1_blood == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_blood), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN1 Blood") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: PN2 URINE
+
+prenatal_biospecimens_fli_pn2_urine <- prenatal_biospecimens_fli %>%
+  select(globalId, pn2_urine) %>%
+  mutate(pn2_urine_month = case_when(
+      (month(pn2_urine) == 1 & year(pn2_urine) == 2026) ~ "January",
+      (month(pn2_urine) == 2 & year(pn2_urine) == 2026) ~ "February",
+      (month(pn2_urine) == 3 & year(pn2_urine) == 2026) ~ "March",
+      (month(pn2_urine) == 4 & year(pn2_urine) == 2026) ~ "April",
+      (month(pn2_urine) == 5 & year(pn2_urine) == 2026) ~ "May",
+      (month(pn2_urine) == 6 & year(pn2_urine) == 2026) ~ "June",
+      (month(pn2_urine) == 7 & year(pn2_urine) == 2026) ~ "July",
+      (month(pn2_urine) == 8 & year(pn2_urine) == 2026) ~ "August",
+      (month(pn2_urine) == 9 & year(pn2_urine) == 2026) ~ "September",
+      (month(pn2_urine) == 10 & year(pn2_urine) == 2026) ~ "October",
+      (month(pn2_urine) == 11 & year(pn2_urine) == 2026) ~ "November",
+      (month(pn2_urine) == 12 & year(pn2_urine) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn2_urine = month(pn2_urine, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_urine_month)) %>%
+  summarise(
+    January = sum(pn2_urine == "January", na.rm = TRUE),
+    February = sum(pn2_urine == "February", na.rm = TRUE),
+    March = sum(pn2_urine == "March", na.rm = TRUE),
+    April = sum(pn2_urine == "April", na.rm = TRUE),
+    May = sum(pn2_urine == "May", na.rm = TRUE),
+    June = sum(pn2_urine == "June", na.rm = TRUE),
+    July = sum(pn2_urine == "July", na.rm = TRUE),
+    August = sum(pn2_urine == "August", na.rm = TRUE),
+    September = sum(pn2_urine == "September", na.rm = TRUE),
+    October = sum(pn2_urine == "October", na.rm = TRUE),
+    November = sum(pn2_urine == "November", na.rm = TRUE),
+    December = sum(pn2_urine == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_urine), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN2 Urine") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: PN2 BLOOD
+
+prenatal_biospecimens_fli_pn2_blood <- prenatal_biospecimens_fli %>%
+  select(globalId, pn2_blood) %>%
+  mutate(pn2_blood_month = case_when(
+      (month(pn2_blood) == 1 & year(pn2_blood) == 2026) ~ "January",
+      (month(pn2_blood) == 2 & year(pn2_blood) == 2026) ~ "February",
+      (month(pn2_blood) == 3 & year(pn2_blood) == 2026) ~ "March",
+      (month(pn2_blood) == 4 & year(pn2_blood) == 2026) ~ "April",
+      (month(pn2_blood) == 5 & year(pn2_blood) == 2026) ~ "May",
+      (month(pn2_blood) == 6 & year(pn2_blood) == 2026) ~ "June",
+      (month(pn2_blood) == 7 & year(pn2_blood) == 2026) ~ "July",
+      (month(pn2_blood) == 8 & year(pn2_blood) == 2026) ~ "August",
+      (month(pn2_blood) == 9 & year(pn2_blood) == 2026) ~ "September",
+      (month(pn2_blood) == 10 & year(pn2_blood) == 2026) ~ "October",
+      (month(pn2_blood) == 11 & year(pn2_blood) == 2026) ~ "November",
+      (month(pn2_blood) == 12 & year(pn2_blood) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn2_blood = month(pn2_blood, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_blood_month)) %>%
+  summarise(
+    January = sum(pn2_blood == "January", na.rm = TRUE),
+    February = sum(pn2_blood == "February", na.rm = TRUE),
+    March = sum(pn2_blood == "March", na.rm = TRUE),
+    April = sum(pn2_blood == "April", na.rm = TRUE),
+    May = sum(pn2_blood == "May", na.rm = TRUE),
+    June = sum(pn2_blood == "June", na.rm = TRUE),
+    July = sum(pn2_blood == "July", na.rm = TRUE),
+    August = sum(pn2_blood == "August", na.rm = TRUE),
+    September = sum(pn2_blood == "September", na.rm = TRUE),
+    October = sum(pn2_blood == "October", na.rm = TRUE),
+    November = sum(pn2_blood == "November", na.rm = TRUE),
+    December = sum(pn2_blood == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_blood), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN1 Blood") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: WATER
+
+prenatal_biospecimens_fli_water <- prenatal_biospecimens_fli %>%
+  select(globalId, water) %>%
+  mutate(water_month = case_when(
+      (month(water) == 1 & year(water) == 2026) ~ "January",
+      (month(water) == 2 & year(water) == 2026) ~ "February",
+      (month(water) == 3 & year(water) == 2026) ~ "March",
+      (month(water) == 4 & year(water) == 2026) ~ "April",
+      (month(water) == 5 & year(water) == 2026) ~ "May",
+      (month(water) == 6 & year(water) == 2026) ~ "June",
+      (month(water) == 7 & year(water) == 2026) ~ "July",
+      (month(water) == 8 & year(water) == 2026) ~ "August",
+      (month(water) == 9 & year(water) == 2026) ~ "September",
+      (month(water) == 10 & year(water) == 2026) ~ "October",
+      (month(water) == 11 & year(water) == 2026) ~ "November",
+      (month(water) == 12 & year(water) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(water = month(water, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(water_month)) %>%
+  summarise(
+    January = sum(water == "January", na.rm = TRUE),
+    February = sum(water == "February", na.rm = TRUE),
+    March = sum(water == "March", na.rm = TRUE),
+    April = sum(water == "April", na.rm = TRUE),
+    May = sum(water == "May", na.rm = TRUE),
+    June = sum(water == "June", na.rm = TRUE),
+    July = sum(water == "July", na.rm = TRUE),
+    August = sum(water == "August", na.rm = TRUE),
+    September = sum(water == "September", na.rm = TRUE),
+    October = sum(water == "October", na.rm = TRUE),
+    November = sum(water == "November", na.rm = TRUE),
+    December = sum(water == "December", na.rm = TRUE),
+    Total = sum(!is.na(water), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Water") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: CHILD URINE
+
+prenatal_biospecimens_fli_child_urine <- prenatal_biospecimens_fli %>%
+  select(globalId, child_urine) %>%
+  mutate(child_urine_month = case_when(
+      (month(child_urine) == 1 & year(child_urine) == 2026) ~ "January",
+      (month(child_urine) == 2 & year(child_urine) == 2026) ~ "February",
+      (month(child_urine) == 3 & year(child_urine) == 2026) ~ "March",
+      (month(child_urine) == 4 & year(child_urine) == 2026) ~ "April",
+      (month(child_urine) == 5 & year(child_urine) == 2026) ~ "May",
+      (month(child_urine) == 6 & year(child_urine) == 2026) ~ "June",
+      (month(child_urine) == 7 & year(child_urine) == 2026) ~ "July",
+      (month(child_urine) == 8 & year(child_urine) == 2026) ~ "August",
+      (month(child_urine) == 9 & year(child_urine) == 2026) ~ "September",
+      (month(child_urine) == 10 & year(child_urine) == 2026) ~ "October",
+      (month(child_urine) == 11 & year(child_urine) == 2026) ~ "November",
+      (month(child_urine) == 12 & year(child_urine) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(child_urine = month(child_urine, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(child_urine_month)) %>%
+  summarise(
+    January = sum(child_urine == "January", na.rm = TRUE),
+    February = sum(child_urine == "February", na.rm = TRUE),
+    March = sum(child_urine == "March", na.rm = TRUE),
+    April = sum(child_urine == "April", na.rm = TRUE),
+    May = sum(child_urine == "May", na.rm = TRUE),
+    June = sum(child_urine == "June", na.rm = TRUE),
+    July = sum(child_urine == "July", na.rm = TRUE),
+    August = sum(child_urine == "August", na.rm = TRUE),
+    September = sum(child_urine == "September", na.rm = TRUE),
+    October = sum(child_urine == "October", na.rm = TRUE),
+    November = sum(child_urine == "November", na.rm = TRUE),
+    December = sum(child_urine == "December", na.rm = TRUE),
+    Total = sum(!is.na(child_urine), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Child Urine") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: CHILD STOOL
+
+prenatal_biospecimens_fli_child_stool <- prenatal_biospecimens_fli %>%
+  select(globalId, child_stool) %>%
+  mutate(child_stool_month = case_when(
+      (month(child_stool) == 1 & year(child_stool) == 2026) ~ "January",
+      (month(child_stool) == 2 & year(child_stool) == 2026) ~ "February",
+      (month(child_stool) == 3 & year(child_stool) == 2026) ~ "March",
+      (month(child_stool) == 4 & year(child_stool) == 2026) ~ "April",
+      (month(child_stool) == 5 & year(child_stool) == 2026) ~ "May",
+      (month(child_stool) == 6 & year(child_stool) == 2026) ~ "June",
+      (month(child_stool) == 7 & year(child_stool) == 2026) ~ "July",
+      (month(child_stool) == 8 & year(child_stool) == 2026) ~ "August",
+      (month(child_stool) == 9 & year(child_stool) == 2026) ~ "September",
+      (month(child_stool) == 10 & year(child_stool) == 2026) ~ "October",
+      (month(child_stool) == 11 & year(child_stool) == 2026) ~ "November",
+      (month(child_stool) == 12 & year(child_stool) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(child_stool = month(child_stool, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(child_stool_month)) %>%
+  summarise(
+    January = sum(child_stool == "January", na.rm = TRUE),
+    February = sum(child_stool == "February", na.rm = TRUE),
+    March = sum(child_stool == "March", na.rm = TRUE),
+    April = sum(child_stool == "April", na.rm = TRUE),
+    May = sum(child_stool == "May", na.rm = TRUE),
+    June = sum(child_stool == "June", na.rm = TRUE),
+    July = sum(child_stool == "July", na.rm = TRUE),
+    August = sum(child_stool == "August", na.rm = TRUE),
+    September = sum(child_stool == "September", na.rm = TRUE),
+    October = sum(child_stool == "October", na.rm = TRUE),
+    November = sum(child_stool == "November", na.rm = TRUE),
+    December = sum(child_stool == "December", na.rm = TRUE),
+    Total = sum(!is.na(child_stool), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Child Stool") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+  
+# FLINT: MOM HAIR
+
+prenatal_biospecimens_fli_mom_hair <- prenatal_biospecimens_fli %>%
+  select(globalId, mom_hair) %>%
+  mutate(mom_hair_month = case_when(
+      (month(mom_hair) == 1 & year(mom_hair) == 2026) ~ "January",
+      (month(mom_hair) == 2 & year(mom_hair) == 2026) ~ "February",
+      (month(mom_hair) == 3 & year(mom_hair) == 2026) ~ "March",
+      (month(mom_hair) == 4 & year(mom_hair) == 2026) ~ "April",
+      (month(mom_hair) == 5 & year(mom_hair) == 2026) ~ "May",
+      (month(mom_hair) == 6 & year(mom_hair) == 2026) ~ "June",
+      (month(mom_hair) == 7 & year(mom_hair) == 2026) ~ "July",
+      (month(mom_hair) == 8 & year(mom_hair) == 2026) ~ "August",
+      (month(mom_hair) == 9 & year(mom_hair) == 2026) ~ "September",
+      (month(mom_hair) == 10 & year(mom_hair) == 2026) ~ "October",
+      (month(mom_hair) == 11 & year(mom_hair) == 2026) ~ "November",
+      (month(mom_hair) == 12 & year(mom_hair) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(mom_hair = month(mom_hair, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(mom_hair_month)) %>%
+  summarise(
+    January = sum(mom_hair == "January", na.rm = TRUE),
+    February = sum(mom_hair == "February", na.rm = TRUE),
+    March = sum(mom_hair == "March", na.rm = TRUE),
+    April = sum(mom_hair == "April", na.rm = TRUE),
+    May = sum(mom_hair == "May", na.rm = TRUE),
+    June = sum(mom_hair == "June", na.rm = TRUE),
+    July = sum(mom_hair == "July", na.rm = TRUE),
+    August = sum(mom_hair == "August", na.rm = TRUE),
+    September = sum(mom_hair == "September", na.rm = TRUE),
+    October = sum(mom_hair == "October", na.rm = TRUE),
+    November = sum(mom_hair == "November", na.rm = TRUE),
+    December = sum(mom_hair == "December", na.rm = TRUE),
+    Total = sum(!is.na(mom_hair), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Mom Hair") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: MOM BLOODSPOT
+
+prenatal_biospecimens_fli_mom_bs <- prenatal_biospecimens_fli %>%
+  select(globalId, mom_bs) %>%
+  mutate(mom_bs_month = case_when(
+      (month(mom_bs) == 1 & year(mom_bs) == 2026) ~ "January",
+      (month(mom_bs) == 2 & year(mom_bs) == 2026) ~ "February",
+      (month(mom_bs) == 3 & year(mom_bs) == 2026) ~ "March",
+      (month(mom_bs) == 4 & year(mom_bs) == 2026) ~ "April",
+      (month(mom_bs) == 5 & year(mom_bs) == 2026) ~ "May",
+      (month(mom_bs) == 6 & year(mom_bs) == 2026) ~ "June",
+      (month(mom_bs) == 7 & year(mom_bs) == 2026) ~ "July",
+      (month(mom_bs) == 8 & year(mom_bs) == 2026) ~ "August",
+      (month(mom_bs) == 9 & year(mom_bs) == 2026) ~ "September",
+      (month(mom_bs) == 10 & year(mom_bs) == 2026) ~ "October",
+      (month(mom_bs) == 11 & year(mom_bs) == 2026) ~ "November",
+      (month(mom_bs) == 12 & year(mom_bs) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(mom_bs = month(mom_bs, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(mom_bs_month)) %>%
+  summarise(
+    January = sum(mom_bs == "January", na.rm = TRUE),
+    February = sum(mom_bs == "February", na.rm = TRUE),
+    March = sum(mom_bs == "March", na.rm = TRUE),
+    April = sum(mom_bs == "April", na.rm = TRUE),
+    May = sum(mom_bs == "May", na.rm = TRUE),
+    June = sum(mom_bs == "June", na.rm = TRUE),
+    July = sum(mom_bs == "July", na.rm = TRUE),
+    August = sum(mom_bs == "August", na.rm = TRUE),
+    September = sum(mom_bs == "September", na.rm = TRUE),
+    October = sum(mom_bs == "October", na.rm = TRUE),
+    November = sum(mom_bs == "November", na.rm = TRUE),
+    December = sum(mom_bs == "December", na.rm = TRUE),
+    Total = sum(!is.na(mom_bs), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Mom Bloodspot") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# FLINT: BREAST MILK
+
+prenatal_biospecimens_fli_breast_milk <- prenatal_biospecimens_fli %>%
+  select(globalId, breast_milk) %>%
+  mutate(breast_milk_month = case_when(
+      (month(breast_milk) == 1 & year(breast_milk) == 2026) ~ "January",
+      (month(breast_milk) == 2 & year(breast_milk) == 2026) ~ "February",
+      (month(breast_milk) == 3 & year(breast_milk) == 2026) ~ "March",
+      (month(breast_milk) == 4 & year(breast_milk) == 2026) ~ "April",
+      (month(breast_milk) == 5 & year(breast_milk) == 2026) ~ "May",
+      (month(breast_milk) == 6 & year(breast_milk) == 2026) ~ "June",
+      (month(breast_milk) == 7 & year(breast_milk) == 2026) ~ "July",
+      (month(breast_milk) == 8 & year(breast_milk) == 2026) ~ "August",
+      (month(breast_milk) == 9 & year(breast_milk) == 2026) ~ "September",
+      (month(breast_milk) == 10 & year(breast_milk) == 2026) ~ "October",
+      (month(breast_milk) == 11 & year(breast_milk) == 2026) ~ "November",
+      (month(breast_milk) == 12 & year(breast_milk) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(breast_milk = month(breast_milk, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(breast_milk_month)) %>%
+  summarise(
+    January = sum(breast_milk == "January", na.rm = TRUE),
+    February = sum(breast_milk == "February", na.rm = TRUE),
+    March = sum(breast_milk == "March", na.rm = TRUE),
+    April = sum(breast_milk == "April", na.rm = TRUE),
+    May = sum(breast_milk == "May", na.rm = TRUE),
+    June = sum(breast_milk == "June", na.rm = TRUE),
+    July = sum(breast_milk == "July", na.rm = TRUE),
+    August = sum(breast_milk == "August", na.rm = TRUE),
+    September = sum(breast_milk == "September", na.rm = TRUE),
+    October = sum(breast_milk == "October", na.rm = TRUE),
+    November = sum(breast_milk == "November", na.rm = TRUE),
+    December = sum(breast_milk == "December", na.rm = TRUE),
+    Total = sum(!is.na(breast_milk), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Breast Milk") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: PN1 URINE 
+
+prenatal_biospecimens_tc_pn1_urine <- prenatal_biospecimens_tc %>%
+  select(globalId, pn1_urine) %>%
+  mutate(pn1_urine_month = case_when(
+      (month(pn1_urine) == 1 & year(pn1_urine) == 2026) ~ "January",
+      (month(pn1_urine) == 2 & year(pn1_urine) == 2026) ~ "February",
+      (month(pn1_urine) == 3 & year(pn1_urine) == 2026) ~ "March",
+      (month(pn1_urine) == 4 & year(pn1_urine) == 2026) ~ "April",
+      (month(pn1_urine) == 5 & year(pn1_urine) == 2026) ~ "May",
+      (month(pn1_urine) == 6 & year(pn1_urine) == 2026) ~ "June",
+      (month(pn1_urine) == 7 & year(pn1_urine) == 2026) ~ "July",
+      (month(pn1_urine) == 8 & year(pn1_urine) == 2026) ~ "August",
+      (month(pn1_urine) == 9 & year(pn1_urine) == 2026) ~ "September",
+      (month(pn1_urine) == 10 & year(pn1_urine) == 2026) ~ "October",
+      (month(pn1_urine) == 11 & year(pn1_urine) == 2026) ~ "November",
+      (month(pn1_urine) == 12 & year(pn1_urine) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn1_urine = month(pn1_urine, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_urine_month)) %>%
+  summarise(
+    January = sum(pn1_urine == "January", na.rm = TRUE),
+    February = sum(pn1_urine == "February", na.rm = TRUE),
+    March = sum(pn1_urine == "March", na.rm = TRUE),
+    April = sum(pn1_urine == "April", na.rm = TRUE),
+    May = sum(pn1_urine == "May", na.rm = TRUE),
+    June = sum(pn1_urine == "June", na.rm = TRUE),
+    July = sum(pn1_urine == "July", na.rm = TRUE),
+    August = sum(pn1_urine == "August", na.rm = TRUE),
+    September = sum(pn1_urine == "September", na.rm = TRUE),
+    October = sum(pn1_urine == "October", na.rm = TRUE),
+    November = sum(pn1_urine == "November", na.rm = TRUE),
+    December = sum(pn1_urine == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_urine), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN1 Urine") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: PN1 BLOOD
+
+prenatal_biospecimens_tc_pn1_blood <- prenatal_biospecimens_tc %>%
+  select(globalId, pn1_blood) %>%
+  mutate(pn1_blood_month = case_when(
+      (month(pn1_blood) == 1 & year(pn1_blood) == 2026) ~ "January",
+      (month(pn1_blood) == 2 & year(pn1_blood) == 2026) ~ "February",
+      (month(pn1_blood) == 3 & year(pn1_blood) == 2026) ~ "March",
+      (month(pn1_blood) == 4 & year(pn1_blood) == 2026) ~ "April",
+      (month(pn1_blood) == 5 & year(pn1_blood) == 2026) ~ "May",
+      (month(pn1_blood) == 6 & year(pn1_blood) == 2026) ~ "June",
+      (month(pn1_blood) == 7 & year(pn1_blood) == 2026) ~ "July",
+      (month(pn1_blood) == 8 & year(pn1_blood) == 2026) ~ "August",
+      (month(pn1_blood) == 9 & year(pn1_blood) == 2026) ~ "September",
+      (month(pn1_blood) == 10 & year(pn1_blood) == 2026) ~ "October",
+      (month(pn1_blood) == 11 & year(pn1_blood) == 2026) ~ "November",
+      (month(pn1_blood) == 12 & year(pn1_blood) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn1_blood = month(pn1_blood, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn1_blood_month)) %>%
+  summarise(
+    January = sum(pn1_blood == "January", na.rm = TRUE),
+    February = sum(pn1_blood == "February", na.rm = TRUE),
+    March = sum(pn1_blood == "March", na.rm = TRUE),
+    April = sum(pn1_blood == "April", na.rm = TRUE),
+    May = sum(pn1_blood == "May", na.rm = TRUE),
+    June = sum(pn1_blood == "June", na.rm = TRUE),
+    July = sum(pn1_blood == "July", na.rm = TRUE),
+    August = sum(pn1_blood == "August", na.rm = TRUE),
+    September = sum(pn1_blood == "September", na.rm = TRUE),
+    October = sum(pn1_blood == "October", na.rm = TRUE),
+    November = sum(pn1_blood == "November", na.rm = TRUE),
+    December = sum(pn1_blood == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn1_blood), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN1 Blood") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: PN2 URINE
+
+prenatal_biospecimens_tc_pn2_urine <- prenatal_biospecimens_tc %>%
+  select(globalId, pn2_urine) %>%
+  mutate(pn2_urine_month = case_when(
+      (month(pn2_urine) == 1 & year(pn2_urine) == 2026) ~ "January",
+      (month(pn2_urine) == 2 & year(pn2_urine) == 2026) ~ "February",
+      (month(pn2_urine) == 3 & year(pn2_urine) == 2026) ~ "March",
+      (month(pn2_urine) == 4 & year(pn2_urine) == 2026) ~ "April",
+      (month(pn2_urine) == 5 & year(pn2_urine) == 2026) ~ "May",
+      (month(pn2_urine) == 6 & year(pn2_urine) == 2026) ~ "June",
+      (month(pn2_urine) == 7 & year(pn2_urine) == 2026) ~ "July",
+      (month(pn2_urine) == 8 & year(pn2_urine) == 2026) ~ "August",
+      (month(pn2_urine) == 9 & year(pn2_urine) == 2026) ~ "September",
+      (month(pn2_urine) == 10 & year(pn2_urine) == 2026) ~ "October",
+      (month(pn2_urine) == 11 & year(pn2_urine) == 2026) ~ "November",
+      (month(pn2_urine) == 12 & year(pn2_urine) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn2_urine = month(pn2_urine, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_urine_month)) %>%
+  summarise(
+    January = sum(pn2_urine == "January", na.rm = TRUE),
+    February = sum(pn2_urine == "February", na.rm = TRUE),
+    March = sum(pn2_urine == "March", na.rm = TRUE),
+    April = sum(pn2_urine == "April", na.rm = TRUE),
+    May = sum(pn2_urine == "May", na.rm = TRUE),
+    June = sum(pn2_urine == "June", na.rm = TRUE),
+    July = sum(pn2_urine == "July", na.rm = TRUE),
+    August = sum(pn2_urine == "August", na.rm = TRUE),
+    September = sum(pn2_urine == "September", na.rm = TRUE),
+    October = sum(pn2_urine == "October", na.rm = TRUE),
+    November = sum(pn2_urine == "November", na.rm = TRUE),
+    December = sum(pn2_urine == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_urine), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN2 Urine") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: PN2 BLOOD
+
+prenatal_biospecimens_tc_pn2_blood <- prenatal_biospecimens_tc %>%
+  select(globalId, pn2_blood) %>%
+  mutate(pn2_blood_month = case_when(
+      (month(pn2_blood) == 1 & year(pn2_blood) == 2026) ~ "January",
+      (month(pn2_blood) == 2 & year(pn2_blood) == 2026) ~ "February",
+      (month(pn2_blood) == 3 & year(pn2_blood) == 2026) ~ "March",
+      (month(pn2_blood) == 4 & year(pn2_blood) == 2026) ~ "April",
+      (month(pn2_blood) == 5 & year(pn2_blood) == 2026) ~ "May",
+      (month(pn2_blood) == 6 & year(pn2_blood) == 2026) ~ "June",
+      (month(pn2_blood) == 7 & year(pn2_blood) == 2026) ~ "July",
+      (month(pn2_blood) == 8 & year(pn2_blood) == 2026) ~ "August",
+      (month(pn2_blood) == 9 & year(pn2_blood) == 2026) ~ "September",
+      (month(pn2_blood) == 10 & year(pn2_blood) == 2026) ~ "October",
+      (month(pn2_blood) == 11 & year(pn2_blood) == 2026) ~ "November",
+      (month(pn2_blood) == 12 & year(pn2_blood) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(pn2_blood = month(pn2_blood, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(pn2_blood_month)) %>%
+  summarise(
+    January = sum(pn2_blood == "January", na.rm = TRUE),
+    February = sum(pn2_blood == "February", na.rm = TRUE),
+    March = sum(pn2_blood == "March", na.rm = TRUE),
+    April = sum(pn2_blood == "April", na.rm = TRUE),
+    May = sum(pn2_blood == "May", na.rm = TRUE),
+    June = sum(pn2_blood == "June", na.rm = TRUE),
+    July = sum(pn2_blood == "July", na.rm = TRUE),
+    August = sum(pn2_blood == "August", na.rm = TRUE),
+    September = sum(pn2_blood == "September", na.rm = TRUE),
+    October = sum(pn2_blood == "October", na.rm = TRUE),
+    November = sum(pn2_blood == "November", na.rm = TRUE),
+    December = sum(pn2_blood == "December", na.rm = TRUE),
+    Total = sum(!is.na(pn2_blood), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "PN1 Blood") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: WATER
+
+prenatal_biospecimens_tc_water <- prenatal_biospecimens_tc %>%
+  select(globalId, water) %>%
+  mutate(water_month = case_when(
+      (month(water) == 1 & year(water) == 2026) ~ "January",
+      (month(water) == 2 & year(water) == 2026) ~ "February",
+      (month(water) == 3 & year(water) == 2026) ~ "March",
+      (month(water) == 4 & year(water) == 2026) ~ "April",
+      (month(water) == 5 & year(water) == 2026) ~ "May",
+      (month(water) == 6 & year(water) == 2026) ~ "June",
+      (month(water) == 7 & year(water) == 2026) ~ "July",
+      (month(water) == 8 & year(water) == 2026) ~ "August",
+      (month(water) == 9 & year(water) == 2026) ~ "September",
+      (month(water) == 10 & year(water) == 2026) ~ "October",
+      (month(water) == 11 & year(water) == 2026) ~ "November",
+      (month(water) == 12 & year(water) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(water = month(water, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(water_month)) %>%
+  summarise(
+    January = sum(water == "January", na.rm = TRUE),
+    February = sum(water == "February", na.rm = TRUE),
+    March = sum(water == "March", na.rm = TRUE),
+    April = sum(water == "April", na.rm = TRUE),
+    May = sum(water == "May", na.rm = TRUE),
+    June = sum(water == "June", na.rm = TRUE),
+    July = sum(water == "July", na.rm = TRUE),
+    August = sum(water == "August", na.rm = TRUE),
+    September = sum(water == "September", na.rm = TRUE),
+    October = sum(water == "October", na.rm = TRUE),
+    November = sum(water == "November", na.rm = TRUE),
+    December = sum(water == "December", na.rm = TRUE),
+    Total = sum(!is.na(water), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Water") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: CHILD URINE
+
+prenatal_biospecimens_tc_child_urine <- prenatal_biospecimens_tc %>%
+  select(globalId, child_urine) %>%
+  mutate(child_urine_month = case_when(
+      (month(child_urine) == 1 & year(child_urine) == 2026) ~ "January",
+      (month(child_urine) == 2 & year(child_urine) == 2026) ~ "February",
+      (month(child_urine) == 3 & year(child_urine) == 2026) ~ "March",
+      (month(child_urine) == 4 & year(child_urine) == 2026) ~ "April",
+      (month(child_urine) == 5 & year(child_urine) == 2026) ~ "May",
+      (month(child_urine) == 6 & year(child_urine) == 2026) ~ "June",
+      (month(child_urine) == 7 & year(child_urine) == 2026) ~ "July",
+      (month(child_urine) == 8 & year(child_urine) == 2026) ~ "August",
+      (month(child_urine) == 9 & year(child_urine) == 2026) ~ "September",
+      (month(child_urine) == 10 & year(child_urine) == 2026) ~ "October",
+      (month(child_urine) == 11 & year(child_urine) == 2026) ~ "November",
+      (month(child_urine) == 12 & year(child_urine) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(child_urine = month(child_urine, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(child_urine_month)) %>%
+  summarise(
+    January = sum(child_urine == "January", na.rm = TRUE),
+    February = sum(child_urine == "February", na.rm = TRUE),
+    March = sum(child_urine == "March", na.rm = TRUE),
+    April = sum(child_urine == "April", na.rm = TRUE),
+    May = sum(child_urine == "May", na.rm = TRUE),
+    June = sum(child_urine == "June", na.rm = TRUE),
+    July = sum(child_urine == "July", na.rm = TRUE),
+    August = sum(child_urine == "August", na.rm = TRUE),
+    September = sum(child_urine == "September", na.rm = TRUE),
+    October = sum(child_urine == "October", na.rm = TRUE),
+    November = sum(child_urine == "November", na.rm = TRUE),
+    December = sum(child_urine == "December", na.rm = TRUE),
+    Total = sum(!is.na(child_urine), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Child Urine") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: CHILD STOOL
+
+prenatal_biospecimens_tc_child_stool <- prenatal_biospecimens_tc %>%
+  select(globalId, child_stool) %>%
+  mutate(child_stool_month = case_when(
+      (month(child_stool) == 1 & year(child_stool) == 2026) ~ "January",
+      (month(child_stool) == 2 & year(child_stool) == 2026) ~ "February",
+      (month(child_stool) == 3 & year(child_stool) == 2026) ~ "March",
+      (month(child_stool) == 4 & year(child_stool) == 2026) ~ "April",
+      (month(child_stool) == 5 & year(child_stool) == 2026) ~ "May",
+      (month(child_stool) == 6 & year(child_stool) == 2026) ~ "June",
+      (month(child_stool) == 7 & year(child_stool) == 2026) ~ "July",
+      (month(child_stool) == 8 & year(child_stool) == 2026) ~ "August",
+      (month(child_stool) == 9 & year(child_stool) == 2026) ~ "September",
+      (month(child_stool) == 10 & year(child_stool) == 2026) ~ "October",
+      (month(child_stool) == 11 & year(child_stool) == 2026) ~ "November",
+      (month(child_stool) == 12 & year(child_stool) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(child_stool = month(child_stool, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(child_stool_month)) %>%
+  summarise(
+    January = sum(child_stool == "January", na.rm = TRUE),
+    February = sum(child_stool == "February", na.rm = TRUE),
+    March = sum(child_stool == "March", na.rm = TRUE),
+    April = sum(child_stool == "April", na.rm = TRUE),
+    May = sum(child_stool == "May", na.rm = TRUE),
+    June = sum(child_stool == "June", na.rm = TRUE),
+    July = sum(child_stool == "July", na.rm = TRUE),
+    August = sum(child_stool == "August", na.rm = TRUE),
+    September = sum(child_stool == "September", na.rm = TRUE),
+    October = sum(child_stool == "October", na.rm = TRUE),
+    November = sum(child_stool == "November", na.rm = TRUE),
+    December = sum(child_stool == "December", na.rm = TRUE),
+    Total = sum(!is.na(child_stool), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Child Stool") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+  
+# TRAVERSE CITY: MOM HAIR
+
+prenatal_biospecimens_tc_mom_hair <- prenatal_biospecimens_tc %>%
+  select(globalId, mom_hair) %>%
+  mutate(mom_hair_month = case_when(
+      (month(mom_hair) == 1 & year(mom_hair) == 2026) ~ "January",
+      (month(mom_hair) == 2 & year(mom_hair) == 2026) ~ "February",
+      (month(mom_hair) == 3 & year(mom_hair) == 2026) ~ "March",
+      (month(mom_hair) == 4 & year(mom_hair) == 2026) ~ "April",
+      (month(mom_hair) == 5 & year(mom_hair) == 2026) ~ "May",
+      (month(mom_hair) == 6 & year(mom_hair) == 2026) ~ "June",
+      (month(mom_hair) == 7 & year(mom_hair) == 2026) ~ "July",
+      (month(mom_hair) == 8 & year(mom_hair) == 2026) ~ "August",
+      (month(mom_hair) == 9 & year(mom_hair) == 2026) ~ "September",
+      (month(mom_hair) == 10 & year(mom_hair) == 2026) ~ "October",
+      (month(mom_hair) == 11 & year(mom_hair) == 2026) ~ "November",
+      (month(mom_hair) == 12 & year(mom_hair) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(mom_hair = month(mom_hair, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(mom_hair_month)) %>%
+  summarise(
+    January = sum(mom_hair == "January", na.rm = TRUE),
+    February = sum(mom_hair == "February", na.rm = TRUE),
+    March = sum(mom_hair == "March", na.rm = TRUE),
+    April = sum(mom_hair == "April", na.rm = TRUE),
+    May = sum(mom_hair == "May", na.rm = TRUE),
+    June = sum(mom_hair == "June", na.rm = TRUE),
+    July = sum(mom_hair == "July", na.rm = TRUE),
+    August = sum(mom_hair == "August", na.rm = TRUE),
+    September = sum(mom_hair == "September", na.rm = TRUE),
+    October = sum(mom_hair == "October", na.rm = TRUE),
+    November = sum(mom_hair == "November", na.rm = TRUE),
+    December = sum(mom_hair == "December", na.rm = TRUE),
+    Total = sum(!is.na(mom_hair), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Mom Hair") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: MOM BLOODSPOT
+
+prenatal_biospecimens_tc_mom_bs <- prenatal_biospecimens_tc %>%
+  select(globalId, mom_bs) %>%
+  mutate(mom_bs_month = case_when(
+      (month(mom_bs) == 1 & year(mom_bs) == 2026) ~ "January",
+      (month(mom_bs) == 2 & year(mom_bs) == 2026) ~ "February",
+      (month(mom_bs) == 3 & year(mom_bs) == 2026) ~ "March",
+      (month(mom_bs) == 4 & year(mom_bs) == 2026) ~ "April",
+      (month(mom_bs) == 5 & year(mom_bs) == 2026) ~ "May",
+      (month(mom_bs) == 6 & year(mom_bs) == 2026) ~ "June",
+      (month(mom_bs) == 7 & year(mom_bs) == 2026) ~ "July",
+      (month(mom_bs) == 8 & year(mom_bs) == 2026) ~ "August",
+      (month(mom_bs) == 9 & year(mom_bs) == 2026) ~ "September",
+      (month(mom_bs) == 10 & year(mom_bs) == 2026) ~ "October",
+      (month(mom_bs) == 11 & year(mom_bs) == 2026) ~ "November",
+      (month(mom_bs) == 12 & year(mom_bs) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(mom_bs = month(mom_bs, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(mom_bs_month)) %>%
+  summarise(
+    January = sum(mom_bs == "January", na.rm = TRUE),
+    February = sum(mom_bs == "February", na.rm = TRUE),
+    March = sum(mom_bs == "March", na.rm = TRUE),
+    April = sum(mom_bs == "April", na.rm = TRUE),
+    May = sum(mom_bs == "May", na.rm = TRUE),
+    June = sum(mom_bs == "June", na.rm = TRUE),
+    July = sum(mom_bs == "July", na.rm = TRUE),
+    August = sum(mom_bs == "August", na.rm = TRUE),
+    September = sum(mom_bs == "September", na.rm = TRUE),
+    October = sum(mom_bs == "October", na.rm = TRUE),
+    November = sum(mom_bs == "November", na.rm = TRUE),
+    December = sum(mom_bs == "December", na.rm = TRUE),
+    Total = sum(!is.na(mom_bs), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Mom Bloodspot") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+# TRAVERSE CITY: BREAST MILK
+
+prenatal_biospecimens_tc_breast_milk <- prenatal_biospecimens_tc %>%
+  select(globalId, breast_milk) %>%
+  mutate(breast_milk_month = case_when(
+      (month(breast_milk) == 1 & year(breast_milk) == 2026) ~ "January",
+      (month(breast_milk) == 2 & year(breast_milk) == 2026) ~ "February",
+      (month(breast_milk) == 3 & year(breast_milk) == 2026) ~ "March",
+      (month(breast_milk) == 4 & year(breast_milk) == 2026) ~ "April",
+      (month(breast_milk) == 5 & year(breast_milk) == 2026) ~ "May",
+      (month(breast_milk) == 6 & year(breast_milk) == 2026) ~ "June",
+      (month(breast_milk) == 7 & year(breast_milk) == 2026) ~ "July",
+      (month(breast_milk) == 8 & year(breast_milk) == 2026) ~ "August",
+      (month(breast_milk) == 9 & year(breast_milk) == 2026) ~ "September",
+      (month(breast_milk) == 10 & year(breast_milk) == 2026) ~ "October",
+      (month(breast_milk) == 11 & year(breast_milk) == 2026) ~ "November",
+      (month(breast_milk) == 12 & year(breast_milk) == 2026) ~ "December",
+      TRUE ~ NA_character_)) %>%
+  mutate(breast_milk = month(breast_milk, label = TRUE, abbr = FALSE)) %>%
+  filter(!is.na(breast_milk_month)) %>%
+  summarise(
+    January = sum(breast_milk == "January", na.rm = TRUE),
+    February = sum(breast_milk == "February", na.rm = TRUE),
+    March = sum(breast_milk == "March", na.rm = TRUE),
+    April = sum(breast_milk == "April", na.rm = TRUE),
+    May = sum(breast_milk == "May", na.rm = TRUE),
+    June = sum(breast_milk == "June", na.rm = TRUE),
+    July = sum(breast_milk == "July", na.rm = TRUE),
+    August = sum(breast_milk == "August", na.rm = TRUE),
+    September = sum(breast_milk == "September", na.rm = TRUE),
+    October = sum(breast_milk == "October", na.rm = TRUE),
+    November = sum(breast_milk == "November", na.rm = TRUE),
+    December = sum(breast_milk == "December", na.rm = TRUE),
+    Total = sum(!is.na(breast_milk), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Event = "Breast Milk") %>%
+  select(Event, January, February, March, April, May, June, July, August, September, October, November, December, Total)
+
+biospecimens_det <- rbind(prenatal_biospecimens_det_pn1_urine, prenatal_biospecimens_det_pn1_blood, prenatal_biospecimens_det_pn2_urine, prenatal_biospecimens_det_pn2_blood, prenatal_biospecimens_det_water, prenatal_biospecimens_det_child_urine, prenatal_biospecimens_det_child_stool, prenatal_biospecimens_det_mom_hair, prenatal_biospecimens_det_mom_bs, prenatal_biospecimens_det_breast_milk)
+
+biospecimens_fli <- rbind(prenatal_biospecimens_fli_pn1_urine, prenatal_biospecimens_fli_pn1_blood, prenatal_biospecimens_fli_pn2_urine, prenatal_biospecimens_fli_pn2_blood, prenatal_biospecimens_fli_water, prenatal_biospecimens_fli_child_urine, prenatal_biospecimens_fli_child_stool, prenatal_biospecimens_fli_mom_hair, prenatal_biospecimens_fli_mom_bs, prenatal_biospecimens_fli_breast_milk)
+
+biospecimens_tc <- rbind(prenatal_biospecimens_tc_pn1_urine, prenatal_biospecimens_tc_pn1_blood, prenatal_biospecimens_tc_pn2_urine, prenatal_biospecimens_tc_pn2_blood, prenatal_biospecimens_tc_water, prenatal_biospecimens_tc_child_urine, prenatal_biospecimens_tc_child_stool, prenatal_biospecimens_tc_mom_hair, prenatal_biospecimens_tc_mom_bs, prenatal_biospecimens_tc_breast_milk)
+
+biospecimens_det %>%
+  kable(format = "html", caption = "Detroit", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(1, width = "200px", extra_css = "white-space: nowrap;") %>%
+  column_spec(column = c(2:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+biospecimens_fli %>%
+  kable(format = "html", caption = "Flint", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(1, width = "200px", extra_css = "white-space: nowrap;") %>%
+  column_spec(column = c(2:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+
+biospecimens_tc %>%
+  kable(format = "html", caption = "Traverse City", booktabs = TRUE, col.names = c("Event", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Total")) %>% 
+  row_spec(row = 0, font_size = 16)%>%
+  column_spec(1, width = "200px", extra_css = "white-space: nowrap;") %>%
+  column_spec(column = c(2:14), width = "25in") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE,  position = "float_left", font_size = 16)%>%
+  gsub("font-size: initial !important;","font-size: 20pt !important;",.)
+```
