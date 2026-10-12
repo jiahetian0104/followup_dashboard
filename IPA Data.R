@@ -3016,7 +3016,9 @@ manual_verified_fallback_assignments <-
 # IPA workload uses all appointments, independently of the latest-outcome
 # task ledger. Source completion flags for every age band, including older
 # bands still present in Ripple, and retain historical completion evidence.
-source(file.path(dirname(ipa_dashboard_app_dir), "ipa_activity.R"))
+source(
+  "/Users/tianjiah/Library/CloudStorage/OneDrive-MichiganStateUniversity/Data Manager/followup_dashboard/ipa_activity.R"
+)
 ipa_activity_exports <- build_ipa_activity_exports(
   calendly_export_clean,
   participant_roster,

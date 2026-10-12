@@ -18,7 +18,7 @@ get_path <- function(relative_path) {
 }
 
 participant_registration <- read_excel(
-  get_path("Data/Reports/Participant Registration/ParticipantRegistration_Export_10052026.xlsx")
+  get_path("Data/Reports/Participant Registration/ParticipantRegistration_Export_10122026.xlsx")
 )
 
 ## 2.1. Set up parameters ----------------------------------------------------
@@ -874,7 +874,7 @@ for (sheet_name in names(summary_wb)) {
   setColWidths(summary_wb, sheet_name, cols = 1:50, widths = "auto")
 }
 
-saveWorkbook(
+openxlsx::saveWorkbook(
   summary_wb,
   file.path(snapshot_dir, "summary.xlsx"),
   overwrite = TRUE

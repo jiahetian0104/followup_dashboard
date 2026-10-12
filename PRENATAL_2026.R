@@ -16,16 +16,10 @@ team_id <- "pze6EXgGw6hLwhhRy"
 timezone <- "America/New_York"
 study_id <- "hsGq26e46PfHRofdJ" # Prenatal and 0-5 month study.
 
-# Find the script's folder so both CSV files are saved beside this R file.
-script_argument <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
-if (length(script_argument) > 0) {
-  script_path <- sub("^--file=", "", script_argument[[1]])
-} else {
-  source_paths <- lapply(sys.frames(), function(frame) frame$ofile)
-  source_paths <- Filter(Negate(is.null), source_paths)
-  script_path <- if (length(source_paths) > 0) tail(source_paths, 1)[[1]] else "PRENATAL_2026.R"
-}
-output_dir <- dirname(normalizePath(script_path, mustWork = TRUE))
+# Fixed local output folder: open this script and run it to refresh the dashboard data.
+output_dir <- "/Users/tianjiah/Library/CloudStorage/OneDrive-MichiganStateUniversity/Data Manager/followup_dashboard"
+if (!dir.exists(output_dir)) stop("Output directory does not exist: ", output_dir)
+message("Export directory: ", output_dir)
 
 # Preserve every field requested by the original prenatal export. The all-events
 # option supplies both prenatal and 0-5 month event completion dates.

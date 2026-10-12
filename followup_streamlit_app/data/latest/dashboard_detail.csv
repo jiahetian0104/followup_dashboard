@@ -39,11 +39,11 @@ BDM298-01-A,723,Potential Participants,Jo,child_survey,08/22/2012,Potential Part
 BDM298-01-A,723,Potential Participants,Jo,ECHO 2 Re-Consent,08/22/2012,Potential Participants,,,,,2012-08-22,,1,,
 BDM298-01-A,723,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,08/22/2012,Potential Participants,,,,,2012-08-22,,0,,
 BDM298-01-A,723,Potential Participants,Jo,ipa_scheduled,08/22/2012,Potential Participants,,,,,2012-08-22,,1,,
-BDN943-01-A,657,Potential Participants,Toye,caregiver_survey,05/20/2019,ECHO 2 Refusal,,,,,2019-05-20,,0,,
-BDN943-01-A,657,Potential Participants,Toye,child_survey,05/20/2019,ECHO 2 Refusal,,,,,2019-05-20,,0,,
-BDN943-01-A,657,Potential Participants,Toye,ECHO 2 Re-Consent,05/20/2019,ECHO 2 Refusal,,,,,2019-05-20,,0,,
-BDN943-01-A,657,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,05/20/2019,ECHO 2 Refusal,,,,,2019-05-20,,0,,
-BDN943-01-A,657,Potential Participants,Toye,ipa_scheduled,05/20/2019,ECHO 2 Refusal,,,,,2019-05-20,,0,,
+BDN943-01-A,657,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+BDN943-01-A,657,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+BDN943-01-A,657,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+BDN943-01-A,657,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+BDN943-01-A,657,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 BDY460-01-A,822,11-17 Year,Jo,caregiver_survey,11/20/2011,11-17 Year,,2024-11-04T00:00:00Z,TRUE,2026-03-24,2011-11-20,14,1,Complete,1
 BDY460-01-A,822,11-17 Year,Jo,child_survey,11/20/2011,11-17 Year,,2024-11-04T00:00:00Z,TRUE,2026-03-24,2011-11-20,14,1,Complete,1
 BDY460-01-A,822,11-17 Year,Jo,ECHO 2 Re-Consent,11/20/2011,11-17 Year,,2024-11-04T00:00:00Z,TRUE,2026-03-24,2011-11-20,14,0,,
@@ -64,11 +64,11 @@ BGN085-01-A,657,Potential Participants,Toye,child_survey,10/16/2018,Potential Pa
 BGN085-01-A,657,Potential Participants,Toye,ECHO 2 Re-Consent,10/16/2018,Potential Participants,,,,,2018-10-16,,1,,
 BGN085-01-A,657,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,10/16/2018,Potential Participants,,,,,2018-10-16,,0,,
 BGN085-01-A,657,Potential Participants,Toye,ipa_scheduled,10/16/2018,Potential Participants,,,,,2018-10-16,,1,,
-BGN675-01-A,822,Potential Participants,Toye,caregiver_survey,08/01/2016,Potential Participants,,,,,2016-08-01,,1,,
-BGN675-01-A,822,Potential Participants,Toye,child_survey,08/01/2016,Potential Participants,,,,,2016-08-01,,0,,
-BGN675-01-A,822,Potential Participants,Toye,ECHO 2 Re-Consent,08/01/2016,Potential Participants,,,,,2016-08-01,,1,,
-BGN675-01-A,822,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,08/01/2016,Potential Participants,,,,,2016-08-01,,0,,
-BGN675-01-A,822,Potential Participants,Toye,ipa_scheduled,08/01/2016,Potential Participants,,,,,2016-08-01,,1,,
+BGN675-01-A,822,Potential Participants,Toye,caregiver_survey,08/01/2016,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2016-08-01,,1,Incomplete,0
+BGN675-01-A,822,Potential Participants,Toye,child_survey,08/01/2016,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2016-08-01,,0,Incomplete,0
+BGN675-01-A,822,Potential Participants,Toye,ECHO 2 Re-Consent,08/01/2016,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2016-08-01,,1,Complete,1
+BGN675-01-A,822,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,08/01/2016,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2016-08-01,,0,,
+BGN675-01-A,822,Potential Participants,Toye,ipa_scheduled,08/01/2016,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2016-08-01,,1,Incomplete,0
 BGT851-01-A,888,6-10 Year,Amy,caregiver_survey,03/13/2019,6-10 Year,2024-02-01T00:00:00Z,2025-02-12T00:00:00Z,TRUE,2026-05-27,2019-03-13,7,1,Complete,1
 BGT851-01-A,888,6-10 Year,Amy,child_survey,03/13/2019,6-10 Year,2024-02-01T00:00:00Z,2025-02-12T00:00:00Z,TRUE,2026-05-27,2019-03-13,7,0,Ineligible,1
 BGT851-01-A,888,6-10 Year,Amy,ECHO 2 Re-Consent,03/13/2019,6-10 Year,2024-02-01T00:00:00Z,2025-02-12T00:00:00Z,TRUE,2026-05-27,2019-03-13,7,0,,
@@ -509,11 +509,11 @@ CNC205-01-A,360,6-10 Year,Toye,child_survey,11/01/2016,6-10 Year,2024-02-11T00:0
 CNC205-01-A,360,6-10 Year,Toye,ECHO 2 Re-Consent,11/01/2016,6-10 Year,2024-02-11T00:00:00Z,2025-04-11T00:00:00Z,TRUE,2026-10-05,2016-11-01,9,0,,
 CNC205-01-A,360,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,11/01/2016,6-10 Year,2024-02-11T00:00:00Z,2025-04-11T00:00:00Z,TRUE,2026-10-05,2016-11-01,9,0,,
 CNC205-01-A,360,6-10 Year,Toye,ipa_scheduled,11/01/2016,6-10 Year,2024-02-11T00:00:00Z,2025-04-11T00:00:00Z,TRUE,2026-10-05,2016-11-01,9,1,Incomplete,0
-CNJ877-01-A,186,Potential Participants,Toye,caregiver_survey,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,FALSE,,2019-08-11,,1,Incomplete,0
-CNJ877-01-A,186,Potential Participants,Toye,child_survey,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,FALSE,,2019-08-11,,0,Incomplete,0
-CNJ877-01-A,186,Potential Participants,Toye,ECHO 2 Re-Consent,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,FALSE,,2019-08-11,,1,Complete,1
-CNJ877-01-A,186,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,FALSE,,2019-08-11,,0,,
-CNJ877-01-A,186,Potential Participants,Toye,ipa_scheduled,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,FALSE,,2019-08-11,,1,Incomplete,0
+CNJ877-01-A,186,Potential Participants,Toye,caregiver_survey,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,TRUE,2026-10-08,2019-08-11,7,1,Complete,1
+CNJ877-01-A,186,Potential Participants,Toye,child_survey,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,TRUE,2026-10-08,2019-08-11,7,0,Ineligible,1
+CNJ877-01-A,186,Potential Participants,Toye,ECHO 2 Re-Consent,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,TRUE,2026-10-08,2019-08-11,7,1,Complete,1
+CNJ877-01-A,186,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,TRUE,2026-10-08,2019-08-11,7,0,,
+CNJ877-01-A,186,Potential Participants,Toye,ipa_scheduled,08/11/2019,6-10 Year,,2026-09-26T00:00:00Z,TRUE,2026-10-08,2019-08-11,7,1,Complete,1
 CPH213-01-A,558,6-10 Year,Toye,caregiver_survey,10/31/2019,6-10 Year,,2025-11-22T00:00:00Z,FALSE,,2019-10-31,,1,Incomplete,0
 CPH213-01-A,558,6-10 Year,Toye,child_survey,10/31/2019,6-10 Year,,2025-11-22T00:00:00Z,FALSE,,2019-10-31,,0,Incomplete,0
 CPH213-01-A,558,6-10 Year,Toye,ECHO 2 Re-Consent,10/31/2019,6-10 Year,,2025-11-22T00:00:00Z,FALSE,,2019-10-31,,0,,
@@ -708,7 +708,7 @@ CZX484-01-A,746,6-10 Year,Toye,caregiver_survey,09/25/2018,6-10 Year,,2025-11-21
 CZX484-01-A,746,6-10 Year,Toye,child_survey,09/25/2018,6-10 Year,,2025-11-21T00:00:00Z,TRUE,2026-08-02,2018-09-25,7,0,Ineligible,1
 CZX484-01-A,746,6-10 Year,Toye,ECHO 2 Re-Consent,09/25/2018,6-10 Year,,2025-11-21T00:00:00Z,TRUE,2026-08-02,2018-09-25,7,0,,
 CZX484-01-A,746,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,09/25/2018,6-10 Year,,2025-11-21T00:00:00Z,TRUE,2026-08-02,2018-09-25,7,0,,
-CZX484-01-A,746,6-10 Year,Toye,ipa_scheduled,09/25/2018,6-10 Year,,2025-11-21T00:00:00Z,TRUE,2026-08-02,2018-09-25,7,1,Incomplete,0
+CZX484-01-A,746,6-10 Year,Toye,ipa_scheduled,09/25/2018,6-10 Year,,2025-11-21T00:00:00Z,TRUE,2026-08-02,2018-09-25,7,1,Complete,1
 CZY990-01-A,845,Potential Participants,Amy,caregiver_survey,04/04/2019,Potential Participants,,,,,2019-04-04,,1,,
 CZY990-01-A,845,Potential Participants,Amy,child_survey,04/04/2019,Potential Participants,,,,,2019-04-04,,0,,
 CZY990-01-A,845,Potential Participants,Amy,ECHO 2 Re-Consent,04/04/2019,Potential Participants,,,,,2019-04-04,,1,,
@@ -1080,7 +1080,7 @@ FGY262-01-N,495,Potential Participants,Amy,ECHO 2 Re-Consent,11/20/2018,Potentia
 FGY262-01-N,495,Potential Participants,Amy,ECHO 2 v3.01 Re-Consent,11/20/2018,Potential Participants,,,,,2018-11-20,,0,,
 FGY262-01-N,495,Potential Participants,Amy,ipa_scheduled,11/20/2018,Potential Participants,,,,,2018-11-20,,1,,
 FHF958-01-A,855,11-17 Year,Jo,caregiver_survey,02/03/2010,11-17 Year,2024-03-18T00:00:00Z,2025-03-16T00:00:00Z,TRUE,2026-08-26,2010-02-03,16,1,Complete,1
-FHF958-01-A,855,11-17 Year,Jo,child_survey,02/03/2010,11-17 Year,2024-03-18T00:00:00Z,2025-03-16T00:00:00Z,TRUE,2026-08-26,2010-02-03,16,1,Incomplete,0
+FHF958-01-A,855,11-17 Year,Jo,child_survey,02/03/2010,11-17 Year,2024-03-18T00:00:00Z,2025-03-16T00:00:00Z,TRUE,2026-08-26,2010-02-03,16,1,Complete,1
 FHF958-01-A,855,11-17 Year,Jo,ECHO 2 Re-Consent,02/03/2010,11-17 Year,2024-03-18T00:00:00Z,2025-03-16T00:00:00Z,TRUE,2026-08-26,2010-02-03,16,0,,
 FHF958-01-A,855,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,02/03/2010,11-17 Year,2024-03-18T00:00:00Z,2025-03-16T00:00:00Z,TRUE,2026-08-26,2010-02-03,16,0,,
 FHF958-01-A,855,11-17 Year,Jo,ipa_scheduled,02/03/2010,11-17 Year,2024-03-18T00:00:00Z,2025-03-16T00:00:00Z,TRUE,2026-08-26,2010-02-03,16,1,Incomplete,0
@@ -1224,11 +1224,11 @@ FTT082-01-A,317,Potential Participants,Jo,child_survey,08/02/2012,Potential Part
 FTT082-01-A,317,Potential Participants,Jo,ECHO 2 Re-Consent,08/02/2012,Potential Participants,,,,,2012-08-02,,1,,
 FTT082-01-A,317,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,08/02/2012,Potential Participants,,,,,2012-08-02,,0,,
 FTT082-01-A,317,Potential Participants,Jo,ipa_scheduled,08/02/2012,Potential Participants,,,,,2012-08-02,,1,,
-FVG235-01-A,954,Potential Participants,Jo,caregiver_survey,07/12/2012,Potential Participants,,,,,2012-07-12,,1,,
-FVG235-01-A,954,Potential Participants,Jo,child_survey,07/12/2012,Potential Participants,,,,,2012-07-12,,0,,
-FVG235-01-A,954,Potential Participants,Jo,ECHO 2 Re-Consent,07/12/2012,Potential Participants,,,,,2012-07-12,,1,,
-FVG235-01-A,954,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,07/12/2012,Potential Participants,,,,,2012-07-12,,0,,
-FVG235-01-A,954,Potential Participants,Jo,ipa_scheduled,07/12/2012,Potential Participants,,,,,2012-07-12,,1,,
+FVG235-01-A,954,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+FVG235-01-A,954,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+FVG235-01-A,954,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+FVG235-01-A,954,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+FVG235-01-A,954,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 FVG572-01-A,186,Potential Participants,Nicole,caregiver_survey,09/08/2021,Potential Participants,,,,,2021-09-08,,1,,
 FVG572-01-A,186,Potential Participants,Nicole,child_survey,09/08/2021,Potential Participants,,,,,2021-09-08,,0,,
 FVG572-01-A,186,Potential Participants,Nicole,ECHO 2 Re-Consent,09/08/2021,Potential Participants,,,,,2021-09-08,,1,,
@@ -1244,11 +1244,11 @@ FVG772-01-N,594,Potential Participants,Nicole,child_survey,05/14/2022,Potential 
 FVG772-01-N,594,Potential Participants,Nicole,ECHO 2 Re-Consent,05/14/2022,Potential Participants,,,,,2022-05-14,,1,,
 FVG772-01-N,594,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,05/14/2022,Potential Participants,,,,,2022-05-14,,0,,
 FVG772-01-N,594,Potential Participants,Nicole,ipa_scheduled,05/14/2022,Potential Participants,,,,,2022-05-14,,1,,
-FVJ218-01-A,186,6-10 Year,Toye,caregiver_survey,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,,FALSE,,2018-08-11,,1,Incomplete,0
-FVJ218-01-A,186,6-10 Year,Toye,child_survey,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,,FALSE,,2018-08-11,,0,Incomplete,0
-FVJ218-01-A,186,6-10 Year,Toye,ECHO 2 Re-Consent,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,,FALSE,,2018-08-11,,0,,
-FVJ218-01-A,186,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,,FALSE,,2018-08-11,,1,Incomplete,0
-FVJ218-01-A,186,6-10 Year,Toye,ipa_scheduled,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,,FALSE,,2018-08-11,,1,Incomplete,0
+FVJ218-01-A,186,6-10 Year,Toye,caregiver_survey,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,2026-10-07T00:00:00Z,TRUE,2026-10-08,2018-08-11,8,1,Complete,1
+FVJ218-01-A,186,6-10 Year,Toye,child_survey,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,2026-10-07T00:00:00Z,TRUE,2026-10-08,2018-08-11,8,1,Complete,1
+FVJ218-01-A,186,6-10 Year,Toye,ECHO 2 Re-Consent,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,2026-10-07T00:00:00Z,TRUE,2026-10-08,2018-08-11,8,0,,
+FVJ218-01-A,186,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,2026-10-07T00:00:00Z,TRUE,2026-10-08,2018-08-11,8,1,Complete,1
+FVJ218-01-A,186,6-10 Year,Toye,ipa_scheduled,08/11/2018,6-10 Year,2024-03-07T00:00:00Z,2026-10-07T00:00:00Z,TRUE,2026-10-08,2018-08-11,8,1,Complete,1
 FVN126-01-A,152,3-5 Year,Nicole,caregiver_survey,01/03/2022,3-5 Year,2024-04-16T00:00:00Z,2024-08-08T00:00:00Z,TRUE,2026-03-06,2022-01-03,4,1,Complete,1
 FVN126-01-A,152,3-5 Year,Nicole,child_survey,01/03/2022,3-5 Year,2024-04-16T00:00:00Z,2024-08-08T00:00:00Z,TRUE,2026-03-06,2022-01-03,4,0,,
 FVN126-01-A,152,3-5 Year,Nicole,ECHO 2 Re-Consent,01/03/2022,3-5 Year,2024-04-16T00:00:00Z,2024-08-08T00:00:00Z,TRUE,2026-03-06,2022-01-03,4,0,,
@@ -1299,11 +1299,11 @@ FYC718-01-A,119,3-5 Year,Nicole,child_survey,06/12/2021,3-5 Year,,2025-05-27T00:
 FYC718-01-A,119,3-5 Year,Nicole,ECHO 2 Re-Consent,06/12/2021,3-5 Year,,2025-05-27T00:00:00Z,TRUE,2026-03-30,2021-06-12,4,0,,
 FYC718-01-A,119,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,06/12/2021,3-5 Year,,2025-05-27T00:00:00Z,TRUE,2026-03-30,2021-06-12,4,0,,
 FYC718-01-A,119,3-5 Year,Nicole,ipa_scheduled,06/12/2021,3-5 Year,,2025-05-27T00:00:00Z,TRUE,2026-03-30,2021-06-12,4,1,Complete,1
-FYC899-01-A,449,Potential Participants,Toye,caregiver_survey,10/17/2018,Potential Participants,,,,,2018-10-17,,1,,
-FYC899-01-A,449,Potential Participants,Toye,child_survey,10/17/2018,Potential Participants,,,,,2018-10-17,,0,,
-FYC899-01-A,449,Potential Participants,Toye,ECHO 2 Re-Consent,10/17/2018,Potential Participants,,,,,2018-10-17,,1,,
-FYC899-01-A,449,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,10/17/2018,Potential Participants,,,,,2018-10-17,,0,,
-FYC899-01-A,449,Potential Participants,Toye,ipa_scheduled,10/17/2018,Potential Participants,,,,,2018-10-17,,1,,
+FYC899-01-A,449,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+FYC899-01-A,449,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+FYC899-01-A,449,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+FYC899-01-A,449,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+FYC899-01-A,449,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 FYD165-01-A,120,3-5 Year,Nicole,caregiver_survey,08/10/2022,3-5 Year,2024-01-28T00:00:00Z,2024-09-24T00:00:00Z,TRUE,2026-05-11,2022-08-10,3,1,Complete,1
 FYD165-01-A,120,3-5 Year,Nicole,child_survey,08/10/2022,3-5 Year,2024-01-28T00:00:00Z,2024-09-24T00:00:00Z,TRUE,2026-05-11,2022-08-10,3,0,,
 FYD165-01-A,120,3-5 Year,Nicole,ECHO 2 Re-Consent,08/10/2022,3-5 Year,2024-01-28T00:00:00Z,2024-09-24T00:00:00Z,TRUE,2026-05-11,2022-08-10,3,0,,
@@ -1439,11 +1439,11 @@ GGR945-01-A,119,Potential Participants,Amy,child_survey,03/03/2019,Potential Par
 GGR945-01-A,119,Potential Participants,Amy,ECHO 2 Re-Consent,03/03/2019,Potential Participants,,,,,2019-03-03,,1,,
 GGR945-01-A,119,Potential Participants,Amy,ECHO 2 v3.01 Re-Consent,03/03/2019,Potential Participants,,,,,2019-03-03,,0,,
 GGR945-01-A,119,Potential Participants,Amy,ipa_scheduled,03/03/2019,Potential Participants,,,,,2019-03-03,,1,,
-GHC234-01-A,360,Potential Participants,Toye,caregiver_survey,11/20/2018,Potential Participants,,,,,2018-11-20,,1,,
-GHC234-01-A,360,Potential Participants,Toye,child_survey,11/20/2018,Potential Participants,,,,,2018-11-20,,0,,
-GHC234-01-A,360,Potential Participants,Toye,ECHO 2 Re-Consent,11/20/2018,Potential Participants,,,,,2018-11-20,,1,,
-GHC234-01-A,360,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,11/20/2018,Potential Participants,,,,,2018-11-20,,0,,
-GHC234-01-A,360,Potential Participants,Toye,ipa_scheduled,11/20/2018,Potential Participants,,,,,2018-11-20,,1,,
+GHC234-01-A,360,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+GHC234-01-A,360,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+GHC234-01-A,360,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+GHC234-01-A,360,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+GHC234-01-A,360,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 GHG157-01-A,624,11-17 Year,Jo,caregiver_survey,07/20/2010,11-17 Year,2024-02-10T00:00:00Z,2025-03-06T00:00:00Z,FALSE,,2010-07-20,,1,Incomplete,0
 GHG157-01-A,624,11-17 Year,Jo,child_survey,07/20/2010,11-17 Year,2024-02-10T00:00:00Z,2025-03-06T00:00:00Z,FALSE,,2010-07-20,,0,Incomplete,0
 GHG157-01-A,624,11-17 Year,Jo,ECHO 2 Re-Consent,07/20/2010,11-17 Year,2024-02-10T00:00:00Z,2025-03-06T00:00:00Z,FALSE,,2010-07-20,,0,,
@@ -1514,11 +1514,11 @@ GLZ418-01-A,383,Potential Participants,Toye,child_survey,06/29/2018,Potential Pa
 GLZ418-01-A,383,Potential Participants,Toye,ECHO 2 Re-Consent,06/29/2018,Potential Participants,,,,,2018-06-29,,1,,
 GLZ418-01-A,383,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,06/29/2018,Potential Participants,,,,,2018-06-29,,0,,
 GLZ418-01-A,383,Potential Participants,Toye,ipa_scheduled,06/29/2018,Potential Participants,,,,,2018-06-29,,1,,
-GLZ418-01-N,825,Potential Participants,Toye,caregiver_survey,06/29/2018,Potential Participants,,,,,2018-06-29,,1,,
-GLZ418-01-N,825,Potential Participants,Toye,child_survey,06/29/2018,Potential Participants,,,,,2018-06-29,,0,,
-GLZ418-01-N,825,Potential Participants,Toye,ECHO 2 Re-Consent,06/29/2018,Potential Participants,,,,,2018-06-29,,1,,
-GLZ418-01-N,825,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,06/29/2018,Potential Participants,,,,,2018-06-29,,0,,
-GLZ418-01-N,825,Potential Participants,Toye,ipa_scheduled,06/29/2018,Potential Participants,,,,,2018-06-29,,1,,
+GLZ418-01-N,825,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+GLZ418-01-N,825,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+GLZ418-01-N,825,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+GLZ418-01-N,825,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+GLZ418-01-N,825,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 GMF268-01-A,855,11-17 Year,Jo,caregiver_survey,10/25/2011,11-17 Year,2024-03-19T00:00:00Z,2025-03-21T00:00:00Z,TRUE,2026-04-20,2011-10-25,14,1,Complete,1
 GMF268-01-A,855,11-17 Year,Jo,child_survey,10/25/2011,11-17 Year,2024-03-19T00:00:00Z,2025-03-21T00:00:00Z,TRUE,2026-04-20,2011-10-25,14,1,Complete,1
 GMF268-01-A,855,11-17 Year,Jo,ECHO 2 Re-Consent,10/25/2011,11-17 Year,2024-03-19T00:00:00Z,2025-03-21T00:00:00Z,TRUE,2026-04-20,2011-10-25,14,0,,
@@ -1649,11 +1649,11 @@ GVV323-01-A,416,3-5 Year,Nicole,child_survey,02/09/2022,3-5 Year,2024-03-30T00:0
 GVV323-01-A,416,3-5 Year,Nicole,ECHO 2 Re-Consent,02/09/2022,3-5 Year,2024-03-30T00:00:00Z,2026-05-01T00:00:00Z,TRUE,2026-08-03,2022-02-09,4,0,,
 GVV323-01-A,416,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,02/09/2022,3-5 Year,2024-03-30T00:00:00Z,2026-05-01T00:00:00Z,TRUE,2026-08-03,2022-02-09,4,1,Complete,1
 GVV323-01-A,416,3-5 Year,Nicole,ipa_scheduled,02/09/2022,3-5 Year,2024-03-30T00:00:00Z,2026-05-01T00:00:00Z,TRUE,2026-08-03,2022-02-09,4,1,Incomplete,0
-GVZ238-01-A,713,Potential Participants,Toye,caregiver_survey,06/21/2018,Potential Participants,,,,,2018-06-21,,1,,
-GVZ238-01-A,713,Potential Participants,Toye,child_survey,06/21/2018,Potential Participants,,,,,2018-06-21,,0,,
-GVZ238-01-A,713,Potential Participants,Toye,ECHO 2 Re-Consent,06/21/2018,Potential Participants,,,,,2018-06-21,,1,,
-GVZ238-01-A,713,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,06/21/2018,Potential Participants,,,,,2018-06-21,,0,,
-GVZ238-01-A,713,Potential Participants,Toye,ipa_scheduled,06/21/2018,Potential Participants,,,,,2018-06-21,,1,,
+GVZ238-01-A,713,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+GVZ238-01-A,713,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+GVZ238-01-A,713,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+GVZ238-01-A,713,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+GVZ238-01-A,713,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 GVZ320-01-A,449,6-10 Year,Toye,caregiver_survey,02/11/2020,6-10 Year,2024-02-14T00:00:00Z,2025-11-14T00:00:00Z,TRUE,2026-08-10,2020-02-11,6,1,Complete,1
 GVZ320-01-A,449,6-10 Year,Toye,child_survey,02/11/2020,6-10 Year,2024-02-14T00:00:00Z,2025-11-14T00:00:00Z,TRUE,2026-08-10,2020-02-11,6,0,Ineligible,1
 GVZ320-01-A,449,6-10 Year,Toye,ECHO 2 Re-Consent,02/11/2020,6-10 Year,2024-02-14T00:00:00Z,2025-11-14T00:00:00Z,TRUE,2026-08-10,2020-02-11,6,0,,
@@ -1774,11 +1774,11 @@ HFF071-01-A,393,Potential Participants,Jo,child_survey,09/29/2014,Potential Part
 HFF071-01-A,393,Potential Participants,Jo,ECHO 2 Re-Consent,09/29/2014,Potential Participants,,,,,2014-09-29,,1,,
 HFF071-01-A,393,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,09/29/2014,Potential Participants,,,,,2014-09-29,,0,,
 HFF071-01-A,393,Potential Participants,Jo,ipa_scheduled,09/29/2014,Potential Participants,,,,,2014-09-29,,1,,
-HFH370-01-A,525,Potential Participants,Toye,caregiver_survey,11/13/2018,Potential Participants,,,,,2018-11-13,,1,,
-HFH370-01-A,525,Potential Participants,Toye,child_survey,11/13/2018,Potential Participants,,,,,2018-11-13,,0,,
-HFH370-01-A,525,Potential Participants,Toye,ECHO 2 Re-Consent,11/13/2018,Potential Participants,,,,,2018-11-13,,1,,
-HFH370-01-A,525,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,11/13/2018,Potential Participants,,,,,2018-11-13,,0,,
-HFH370-01-A,525,Potential Participants,Toye,ipa_scheduled,11/13/2018,Potential Participants,,,,,2018-11-13,,1,,
+HFH370-01-A,525,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+HFH370-01-A,525,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+HFH370-01-A,525,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+HFH370-01-A,525,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+HFH370-01-A,525,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 HFR891-01-A,119,Potential Participants,Nicole,caregiver_survey,03/04/2021,Potential Participants,,,,,2021-03-04,,1,,
 HFR891-01-A,119,Potential Participants,Nicole,child_survey,03/04/2021,Potential Participants,,,,,2021-03-04,,0,,
 HFR891-01-A,119,Potential Participants,Nicole,ECHO 2 Re-Consent,03/04/2021,Potential Participants,,,,,2021-03-04,,1,,
@@ -1934,11 +1934,11 @@ HRL028-01-A,153,6-10 Year,Toye,child_survey,07/24/2019,6-10 Year,,2024-08-19T00:
 HRL028-01-A,153,6-10 Year,Toye,ECHO 2 Re-Consent,07/24/2019,6-10 Year,,2024-08-19T00:00:00Z,FALSE,,2019-07-24,,0,,
 HRL028-01-A,153,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,07/24/2019,6-10 Year,,2024-08-19T00:00:00Z,FALSE,,2019-07-24,,0,,
 HRL028-01-A,153,6-10 Year,Toye,ipa_scheduled,07/24/2019,6-10 Year,,2024-08-19T00:00:00Z,FALSE,,2019-07-24,,1,Incomplete,0
-HRV745-01-A,581,6-10 Year,Toye,caregiver_survey,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,,FALSE,,2018-10-13,,1,Incomplete,0
-HRV745-01-A,581,6-10 Year,Toye,child_survey,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,,FALSE,,2018-10-13,,0,Incomplete,0
-HRV745-01-A,581,6-10 Year,Toye,ECHO 2 Re-Consent,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,,FALSE,,2018-10-13,,0,,
-HRV745-01-A,581,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,,FALSE,,2018-10-13,,1,Incomplete,0
-HRV745-01-A,581,6-10 Year,Toye,ipa_scheduled,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,,FALSE,,2018-10-13,,1,Incomplete,0
+HRV745-01-A,581,6-10 Year,Toye,caregiver_survey,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,2026-10-05T00:00:00Z,FALSE,,2018-10-13,,1,Incomplete,0
+HRV745-01-A,581,6-10 Year,Toye,child_survey,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,2026-10-05T00:00:00Z,FALSE,,2018-10-13,,0,Incomplete,0
+HRV745-01-A,581,6-10 Year,Toye,ECHO 2 Re-Consent,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,2026-10-05T00:00:00Z,FALSE,,2018-10-13,,0,,
+HRV745-01-A,581,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,2026-10-05T00:00:00Z,FALSE,,2018-10-13,,1,Complete,1
+HRV745-01-A,581,6-10 Year,Toye,ipa_scheduled,10/13/2018,6-10 Year,2024-04-24T00:00:00Z,2026-10-05T00:00:00Z,FALSE,,2018-10-13,,1,Incomplete,0
 HSD339-01-A,987,6-10 Year,Toye,caregiver_survey,07/01/2020,6-10 Year,2024-02-02T00:00:00Z,2025-03-31T00:00:00Z,TRUE,2026-03-02,2020-07-01,5,1,Complete,1
 HSD339-01-A,987,6-10 Year,Toye,child_survey,07/01/2020,6-10 Year,2024-02-02T00:00:00Z,2025-03-31T00:00:00Z,TRUE,2026-03-02,2020-07-01,5,0,Ineligible,1
 HSD339-01-A,987,6-10 Year,Toye,ECHO 2 Re-Consent,07/01/2020,6-10 Year,2024-02-02T00:00:00Z,2025-03-31T00:00:00Z,TRUE,2026-03-02,2020-07-01,5,0,,
@@ -1999,11 +1999,11 @@ HVY011-01-A,350,6-10 Year,Amy,child_survey,12/24/2018,6-10 Year,,2025-06-30T00:0
 HVY011-01-A,350,6-10 Year,Amy,ECHO 2 Re-Consent,12/24/2018,6-10 Year,,2025-06-30T00:00:00Z,TRUE,2026-07-23,2018-12-24,7,0,,
 HVY011-01-A,350,6-10 Year,Amy,ECHO 2 v3.01 Re-Consent,12/24/2018,6-10 Year,,2025-06-30T00:00:00Z,TRUE,2026-07-23,2018-12-24,7,0,,
 HVY011-01-A,350,6-10 Year,Amy,ipa_scheduled,12/24/2018,6-10 Year,,2025-06-30T00:00:00Z,TRUE,2026-07-23,2018-12-24,7,1,Incomplete,0
-HWS510-01-A,317,Potential Participants,Nicole,caregiver_survey,07/09/2021,Potential Participants,,,,,2021-07-09,,1,,
-HWS510-01-A,317,Potential Participants,Nicole,child_survey,07/09/2021,Potential Participants,,,,,2021-07-09,,0,,
-HWS510-01-A,317,Potential Participants,Nicole,ECHO 2 Re-Consent,07/09/2021,Potential Participants,,,,,2021-07-09,,1,,
-HWS510-01-A,317,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,07/09/2021,Potential Participants,,,,,2021-07-09,,0,,
-HWS510-01-A,317,Potential Participants,Nicole,ipa_scheduled,07/09/2021,Potential Participants,,,,,2021-07-09,,1,,
+HWS510-01-A,317,Potential Participants,Nicole,caregiver_survey,,,,,,,,,0,,
+HWS510-01-A,317,Potential Participants,Nicole,child_survey,,,,,,,,,0,,
+HWS510-01-A,317,Potential Participants,Nicole,ECHO 2 Re-Consent,,,,,,,,,0,,
+HWS510-01-A,317,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+HWS510-01-A,317,Potential Participants,Nicole,ipa_scheduled,,,,,,,,,0,,
 HXK737-01-A,449,3-5 Year,Nicole,caregiver_survey,03/08/2023,3-5 Year,,2024-06-03T00:00:00Z,TRUE,2026-04-16,2023-03-08,3,1,Complete,1
 HXK737-01-A,449,3-5 Year,Nicole,child_survey,03/08/2023,3-5 Year,,2024-06-03T00:00:00Z,TRUE,2026-04-16,2023-03-08,3,0,,
 HXK737-01-A,449,3-5 Year,Nicole,ECHO 2 Re-Consent,03/08/2023,3-5 Year,,2024-06-03T00:00:00Z,TRUE,2026-04-16,2023-03-08,3,0,,
@@ -2129,11 +2129,11 @@ JHV440-01-A,153,3-5 Year,Nicole,child_survey,03/01/2022,3-5 Year,2024-04-09T00:0
 JHV440-01-A,153,3-5 Year,Nicole,ECHO 2 Re-Consent,03/01/2022,3-5 Year,2024-04-09T00:00:00Z,2024-09-01T00:00:00Z,FALSE,,2022-03-01,,0,,
 JHV440-01-A,153,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,03/01/2022,3-5 Year,2024-04-09T00:00:00Z,2024-09-01T00:00:00Z,FALSE,,2022-03-01,,0,,
 JHV440-01-A,153,3-5 Year,Nicole,ipa_scheduled,03/01/2022,3-5 Year,2024-04-09T00:00:00Z,2024-09-01T00:00:00Z,FALSE,,2022-03-01,,1,Incomplete,0
-JHX619-01-A,383,Potential Participants,Toye,caregiver_survey,10/22/2019,Potential Participants,,,,,2019-10-22,,1,,
-JHX619-01-A,383,Potential Participants,Toye,child_survey,10/22/2019,Potential Participants,,,,,2019-10-22,,0,,
-JHX619-01-A,383,Potential Participants,Toye,ECHO 2 Re-Consent,10/22/2019,Potential Participants,,,,,2019-10-22,,1,,
-JHX619-01-A,383,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,10/22/2019,Potential Participants,,,,,2019-10-22,,0,,
-JHX619-01-A,383,Potential Participants,Toye,ipa_scheduled,10/22/2019,Potential Participants,,,,,2019-10-22,,1,,
+JHX619-01-A,383,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+JHX619-01-A,383,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+JHX619-01-A,383,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+JHX619-01-A,383,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+JHX619-01-A,383,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 JHY914-01-A,350,Potential Participants,Nicole,caregiver_survey,11/17/2021,Potential Participants,,,,,2021-11-17,,1,,
 JHY914-01-A,350,Potential Participants,Nicole,child_survey,11/17/2021,Potential Participants,,,,,2021-11-17,,0,,
 JHY914-01-A,350,Potential Participants,Nicole,ECHO 2 Re-Consent,11/17/2021,Potential Participants,,,,,2021-11-17,,1,,
@@ -2529,11 +2529,11 @@ KDS985-01-A,317,11-17 Year,Jo,child_survey,01/01/2009,11-17 Year,2024-01-29T00:0
 KDS985-01-A,317,11-17 Year,Jo,ECHO 2 Re-Consent,01/01/2009,11-17 Year,2024-01-29T00:00:00Z,2025-03-03T00:00:00Z,TRUE,2026-04-28,2009-01-01,17,0,,
 KDS985-01-A,317,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,01/01/2009,11-17 Year,2024-01-29T00:00:00Z,2025-03-03T00:00:00Z,TRUE,2026-04-28,2009-01-01,17,0,,
 KDS985-01-A,317,11-17 Year,Jo,ipa_scheduled,01/01/2009,11-17 Year,2024-01-29T00:00:00Z,2025-03-03T00:00:00Z,TRUE,2026-04-28,2009-01-01,17,1,Complete,1
-KDX993-01-A,449,6-10 Year,Toye,caregiver_survey,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,FALSE,,2018-10-10,,1,Incomplete,0
-KDX993-01-A,449,6-10 Year,Toye,child_survey,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,FALSE,,2018-10-10,,0,Incomplete,0
-KDX993-01-A,449,6-10 Year,Toye,ECHO 2 Re-Consent,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,FALSE,,2018-10-10,,0,,
-KDX993-01-A,449,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,FALSE,,2018-10-10,,0,,
-KDX993-01-A,449,6-10 Year,Toye,ipa_scheduled,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,FALSE,,2018-10-10,,1,Incomplete,0
+KDX993-01-A,449,6-10 Year,Toye,caregiver_survey,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,TRUE,2026-10-07,2018-10-10,7,1,Complete,1
+KDX993-01-A,449,6-10 Year,Toye,child_survey,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,TRUE,2026-10-07,2018-10-10,7,0,Ineligible,1
+KDX993-01-A,449,6-10 Year,Toye,ECHO 2 Re-Consent,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,TRUE,2026-10-07,2018-10-10,7,0,,
+KDX993-01-A,449,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,TRUE,2026-10-07,2018-10-10,7,0,,
+KDX993-01-A,449,6-10 Year,Toye,ipa_scheduled,10/10/2018,6-10 Year,2024-03-26T00:00:00Z,2025-03-05T00:00:00Z,TRUE,2026-10-07,2018-10-10,7,1,Incomplete,0
 KFH643-01-A,723,3-5 Year,Nicole,caregiver_survey,01/03/2023,3-5 Year,2024-01-22T00:00:00Z,2025-02-04T00:00:00Z,TRUE,2026-05-22,2023-01-03,3,1,Complete,1
 KFH643-01-A,723,3-5 Year,Nicole,child_survey,01/03/2023,3-5 Year,2024-01-22T00:00:00Z,2025-02-04T00:00:00Z,TRUE,2026-05-22,2023-01-03,3,0,,
 KFH643-01-A,723,3-5 Year,Nicole,ECHO 2 Re-Consent,01/03/2023,3-5 Year,2024-01-22T00:00:00Z,2025-02-04T00:00:00Z,TRUE,2026-05-22,2023-01-03,3,0,,
@@ -2709,11 +2709,11 @@ KRH534-01-A,186,3-5 Year,Nicole,child_survey,09/27/2021,3-5 Year,,2025-11-18T00:
 KRH534-01-A,186,3-5 Year,Nicole,ECHO 2 Re-Consent,09/27/2021,3-5 Year,,2025-11-18T00:00:00Z,TRUE,2026-03-26,2021-09-27,4,0,,
 KRH534-01-A,186,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,09/27/2021,3-5 Year,,2025-11-18T00:00:00Z,TRUE,2026-03-26,2021-09-27,4,0,,
 KRH534-01-A,186,3-5 Year,Nicole,ipa_scheduled,09/27/2021,3-5 Year,,2025-11-18T00:00:00Z,TRUE,2026-03-26,2021-09-27,4,1,Incomplete,0
-KRR661-01-A,449,Potential Participants,Jo,caregiver_survey,04/15/2010,Potential Participants,,,,,2010-04-15,,1,,
-KRR661-01-A,449,Potential Participants,Jo,child_survey,04/15/2010,Potential Participants,,,,,2010-04-15,,0,,
-KRR661-01-A,449,Potential Participants,Jo,ECHO 2 Re-Consent,04/15/2010,Potential Participants,,,,,2010-04-15,,1,,
-KRR661-01-A,449,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,04/15/2010,Potential Participants,,,,,2010-04-15,,0,,
-KRR661-01-A,449,Potential Participants,Jo,ipa_scheduled,04/15/2010,Potential Participants,,,,,2010-04-15,,1,,
+KRR661-01-A,449,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+KRR661-01-A,449,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+KRR661-01-A,449,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+KRR661-01-A,449,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+KRR661-01-A,449,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 KRT349-01-A,614,Potential Participants,Toye,caregiver_survey,08/13/2020,Potential Participants,,,,,2020-08-13,,1,,
 KRT349-01-A,614,Potential Participants,Toye,child_survey,08/13/2020,Potential Participants,,,,,2020-08-13,,0,,
 KRT349-01-A,614,Potential Participants,Toye,ECHO 2 Re-Consent,08/13/2020,Potential Participants,,,,,2020-08-13,,1,,
@@ -2983,7 +2983,7 @@ LPG974-01-A,284,6-10 Year,Toye,caregiver_survey,07/04/2016,6-10 Year,2024-04-22T
 LPG974-01-A,284,6-10 Year,Toye,child_survey,07/04/2016,6-10 Year,2024-04-22T00:00:00Z,2025-02-14T00:00:00Z,FALSE,,2016-07-04,,0,Incomplete,0
 LPG974-01-A,284,6-10 Year,Toye,ECHO 2 Re-Consent,07/04/2016,6-10 Year,2024-04-22T00:00:00Z,2025-02-14T00:00:00Z,FALSE,,2016-07-04,,0,,
 LPG974-01-A,284,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,07/04/2016,6-10 Year,2024-04-22T00:00:00Z,2025-02-14T00:00:00Z,FALSE,,2016-07-04,,0,,
-LPG974-01-A,284,6-10 Year,Toye,ipa_scheduled,07/04/2016,6-10 Year,2024-04-22T00:00:00Z,2025-02-14T00:00:00Z,FALSE,,2016-07-04,,1,Incomplete,0
+LPG974-01-A,284,6-10 Year,Toye,ipa_scheduled,07/04/2016,6-10 Year,2024-04-22T00:00:00Z,2025-02-14T00:00:00Z,FALSE,,2016-07-04,,1,Complete,1
 LPT526-01-A,482,3-5 Year,Nicole,caregiver_survey,01/03/2023,3-5 Year,2024-02-13T00:00:00Z,2025-02-24T00:00:00Z,TRUE,2026-05-11,2023-01-03,3,1,Complete,1
 LPT526-01-A,482,3-5 Year,Nicole,child_survey,01/03/2023,3-5 Year,2024-02-13T00:00:00Z,2025-02-24T00:00:00Z,TRUE,2026-05-11,2023-01-03,3,0,,
 LPT526-01-A,482,3-5 Year,Nicole,ECHO 2 Re-Consent,01/03/2023,3-5 Year,2024-02-13T00:00:00Z,2025-02-24T00:00:00Z,TRUE,2026-05-11,2023-01-03,3,0,,
@@ -3204,11 +3204,11 @@ MCC047-01-A,459,6-10 Year,Toye,child_survey,09/13/2018,6-10 Year,2024-03-15T00:0
 MCC047-01-A,459,6-10 Year,Toye,ECHO 2 Re-Consent,09/13/2018,6-10 Year,2024-03-15T00:00:00Z,2025-02-25T00:00:00Z,TRUE,2026-09-22,2018-09-13,8,0,,
 MCC047-01-A,459,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,09/13/2018,6-10 Year,2024-03-15T00:00:00Z,2025-02-25T00:00:00Z,TRUE,2026-09-22,2018-09-13,8,0,,
 MCC047-01-A,459,6-10 Year,Toye,ipa_scheduled,09/13/2018,6-10 Year,2024-03-15T00:00:00Z,2025-02-25T00:00:00Z,TRUE,2026-09-22,2018-09-13,8,1,Complete,1
-MCF636-01-A,690,Potential Participants,Amy,caregiver_survey,10/07/2016,Potential Participants,,,,,2016-10-07,,1,,
-MCF636-01-A,690,Potential Participants,Amy,child_survey,10/07/2016,Potential Participants,,,,,2016-10-07,,0,,
-MCF636-01-A,690,Potential Participants,Amy,ECHO 2 Re-Consent,10/07/2016,Potential Participants,,,,,2016-10-07,,1,,
-MCF636-01-A,690,Potential Participants,Amy,ECHO 2 v3.01 Re-Consent,10/07/2016,Potential Participants,,,,,2016-10-07,,0,,
-MCF636-01-A,690,Potential Participants,Amy,ipa_scheduled,10/07/2016,Potential Participants,,,,,2016-10-07,,1,,
+MCF636-01-A,690,Potential Participants,Amy,caregiver_survey,,,,,,,,,0,,
+MCF636-01-A,690,Potential Participants,Amy,child_survey,,,,,,,,,0,,
+MCF636-01-A,690,Potential Participants,Amy,ECHO 2 Re-Consent,,,,,,,,,0,,
+MCF636-01-A,690,Potential Participants,Amy,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+MCF636-01-A,690,Potential Participants,Amy,ipa_scheduled,,,,,,,,,0,,
 MCH579-01-A,954,Potential Participants,Nicole,caregiver_survey,02/02/2022,Potential Participants,,,,,2022-02-02,,1,,
 MCH579-01-A,954,Potential Participants,Nicole,child_survey,02/02/2022,Potential Participants,,,,,2022-02-02,,0,,
 MCH579-01-A,954,Potential Participants,Nicole,ECHO 2 Re-Consent,02/02/2022,Potential Participants,,,,,2022-02-02,,1,,
@@ -3299,11 +3299,11 @@ MJT360-01-A,185,6-10 Year,Amy,child_survey,02/19/2019,6-10 Year,2024-01-27T00:00
 MJT360-01-A,185,6-10 Year,Amy,ECHO 2 Re-Consent,02/19/2019,6-10 Year,2024-01-27T00:00:00Z,2025-02-20T00:00:00Z,TRUE,2026-02-25,2019-02-19,7,0,,
 MJT360-01-A,185,6-10 Year,Amy,ECHO 2 v3.01 Re-Consent,02/19/2019,6-10 Year,2024-01-27T00:00:00Z,2025-02-20T00:00:00Z,TRUE,2026-02-25,2019-02-19,7,0,,
 MJT360-01-A,185,6-10 Year,Amy,ipa_scheduled,02/19/2019,6-10 Year,2024-01-27T00:00:00Z,2025-02-20T00:00:00Z,TRUE,2026-02-25,2019-02-19,7,1,Incomplete,0
-MLB799-01-A,185,Potential Participants,Toye,caregiver_survey,08/10/2018,Potential Participants,,,,,2018-08-10,,1,,
-MLB799-01-A,185,Potential Participants,Toye,child_survey,08/10/2018,Potential Participants,,,,,2018-08-10,,0,,
-MLB799-01-A,185,Potential Participants,Toye,ECHO 2 Re-Consent,08/10/2018,Potential Participants,,,,,2018-08-10,,1,,
-MLB799-01-A,185,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,08/10/2018,Potential Participants,,,,,2018-08-10,,0,,
-MLB799-01-A,185,Potential Participants,Toye,ipa_scheduled,08/10/2018,Potential Participants,,,,,2018-08-10,,1,,
+MLB799-01-A,185,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+MLB799-01-A,185,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+MLB799-01-A,185,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+MLB799-01-A,185,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+MLB799-01-A,185,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 MLG277-01-A,153,Potential Participants,Nicole,caregiver_survey,10/13/2022,Potential Participants,,,,,2022-10-13,,1,,
 MLG277-01-A,153,Potential Participants,Nicole,child_survey,10/13/2022,Potential Participants,,,,,2022-10-13,,0,,
 MLG277-01-A,153,Potential Participants,Nicole,ECHO 2 Re-Consent,10/13/2022,Potential Participants,,,,,2022-10-13,,1,,
@@ -3339,11 +3339,11 @@ MMK829-01-A,317,3-5 Year,Nicole,child_survey,12/05/2021,3-5 Year,2024-03-18T00:0
 MMK829-01-A,317,3-5 Year,Nicole,ECHO 2 Re-Consent,12/05/2021,3-5 Year,2024-03-18T00:00:00Z,2025-04-18T00:00:00Z,TRUE,2026-03-26,2021-12-05,4,0,,
 MMK829-01-A,317,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,12/05/2021,3-5 Year,2024-03-18T00:00:00Z,2025-04-18T00:00:00Z,TRUE,2026-03-26,2021-12-05,4,0,,
 MMK829-01-A,317,3-5 Year,Nicole,ipa_scheduled,12/05/2021,3-5 Year,2024-03-18T00:00:00Z,2025-04-18T00:00:00Z,TRUE,2026-03-26,2021-12-05,4,1,Complete,1
-MMN084-01-A,185,Potential Participants,Toye,caregiver_survey,07/19/2019,ECHO 2 Refusal,,,,,2019-07-19,,0,,
-MMN084-01-A,185,Potential Participants,Toye,child_survey,07/19/2019,ECHO 2 Refusal,,,,,2019-07-19,,0,,
-MMN084-01-A,185,Potential Participants,Toye,ECHO 2 Re-Consent,07/19/2019,ECHO 2 Refusal,,,,,2019-07-19,,0,,
-MMN084-01-A,185,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,07/19/2019,ECHO 2 Refusal,,,,,2019-07-19,,0,,
-MMN084-01-A,185,Potential Participants,Toye,ipa_scheduled,07/19/2019,ECHO 2 Refusal,,,,,2019-07-19,,0,,
+MMN084-01-A,185,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+MMN084-01-A,185,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+MMN084-01-A,185,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+MMN084-01-A,185,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+MMN084-01-A,185,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 MMN454-01-A,218,6-10 Year,Toye,caregiver_survey,09/05/2019,6-10 Year,,2024-11-05T00:00:00Z,FALSE,,2019-09-05,,1,Incomplete,0
 MMN454-01-A,218,6-10 Year,Toye,child_survey,09/05/2019,6-10 Year,,2024-11-05T00:00:00Z,FALSE,,2019-09-05,,0,Incomplete,0
 MMN454-01-A,218,6-10 Year,Toye,ECHO 2 Re-Consent,09/05/2019,6-10 Year,,2024-11-05T00:00:00Z,FALSE,,2019-09-05,,0,,
@@ -3404,11 +3404,11 @@ MPQ705-01-A,383,Potential Participants,Toye,child_survey,06/06/2019,Potential Pa
 MPQ705-01-A,383,Potential Participants,Toye,ECHO 2 Re-Consent,06/06/2019,Potential Participants,,,,,2019-06-06,,1,,
 MPQ705-01-A,383,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,06/06/2019,Potential Participants,,,,,2019-06-06,,0,,
 MPQ705-01-A,383,Potential Participants,Toye,ipa_scheduled,06/06/2019,Potential Participants,,,,,2019-06-06,,1,,
-MPS476-01-A,614,Potential Participants,Toye,caregiver_survey,05/22/2018,Potential Participants,,,,,2018-05-22,,1,,
-MPS476-01-A,614,Potential Participants,Toye,child_survey,05/22/2018,Potential Participants,,,,,2018-05-22,,0,,
-MPS476-01-A,614,Potential Participants,Toye,ECHO 2 Re-Consent,05/22/2018,Potential Participants,,,,,2018-05-22,,1,,
-MPS476-01-A,614,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,05/22/2018,Potential Participants,,,,,2018-05-22,,0,,
-MPS476-01-A,614,Potential Participants,Toye,ipa_scheduled,05/22/2018,Potential Participants,,,,,2018-05-22,,1,,
+MPS476-01-A,614,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+MPS476-01-A,614,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+MPS476-01-A,614,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+MPS476-01-A,614,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+MPS476-01-A,614,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 MPT661-01-A,515,6-10 Year,Toye,caregiver_survey,10/19/2019,6-10 Year,,2025-10-22T00:00:00Z,TRUE,2026-06-25,2019-10-19,6,1,Complete,1
 MPT661-01-A,515,6-10 Year,Toye,child_survey,10/19/2019,6-10 Year,,2025-10-22T00:00:00Z,TRUE,2026-06-25,2019-10-19,6,0,Ineligible,1
 MPT661-01-A,515,6-10 Year,Toye,ECHO 2 Re-Consent,10/19/2019,6-10 Year,,2025-10-22T00:00:00Z,TRUE,2026-06-25,2019-10-19,6,0,,
@@ -3469,11 +3469,11 @@ MSG043-01-A,987,Potential Participants,Jo,child_survey,08/27/2009,Potential Part
 MSG043-01-A,987,Potential Participants,Jo,ECHO 2 Re-Consent,08/27/2009,Potential Participants,,,,,2009-08-27,,1,,
 MSG043-01-A,987,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,08/27/2009,Potential Participants,,,,,2009-08-27,,0,,
 MSG043-01-A,987,Potential Participants,Jo,ipa_scheduled,08/27/2009,Potential Participants,,,,,2009-08-27,,1,,
-MSY822-01-A,746,Potential Participants,Toye,caregiver_survey,08/18/2018,Potential Participants,,,,,2018-08-18,,1,,
-MSY822-01-A,746,Potential Participants,Toye,child_survey,08/18/2018,Potential Participants,,,,,2018-08-18,,0,,
-MSY822-01-A,746,Potential Participants,Toye,ECHO 2 Re-Consent,08/18/2018,Potential Participants,,,,,2018-08-18,,1,,
-MSY822-01-A,746,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,08/18/2018,Potential Participants,,,,,2018-08-18,,0,,
-MSY822-01-A,746,Potential Participants,Toye,ipa_scheduled,08/18/2018,Potential Participants,,,,,2018-08-18,,1,,
+MSY822-01-A,746,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+MSY822-01-A,746,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+MSY822-01-A,746,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+MSY822-01-A,746,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+MSY822-01-A,746,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 MTX365-01-A,812,11-17 Year,Jo,caregiver_survey,03/15/2009,11-17 Year,,2024-09-10T00:00:00Z,TRUE,2026-04-28,2009-03-15,17,1,Complete,1
 MTX365-01-A,812,11-17 Year,Jo,child_survey,03/15/2009,11-17 Year,,2024-09-10T00:00:00Z,TRUE,2026-04-28,2009-03-15,17,1,Complete,1
 MTX365-01-A,812,11-17 Year,Jo,ECHO 2 Re-Consent,03/15/2009,11-17 Year,,2024-09-10T00:00:00Z,TRUE,2026-04-28,2009-03-15,17,0,,
@@ -3534,21 +3534,21 @@ MYL231-01-A,317,6-10 Year,Toye,child_survey,08/18/2020,6-10 Year,2024-03-11T00:0
 MYL231-01-A,317,6-10 Year,Toye,ECHO 2 Re-Consent,08/18/2020,6-10 Year,2024-03-11T00:00:00Z,2025-04-06T00:00:00Z,TRUE,2026-05-13,2020-08-18,5,0,,
 MYL231-01-A,317,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,08/18/2020,6-10 Year,2024-03-11T00:00:00Z,2025-04-06T00:00:00Z,TRUE,2026-05-13,2020-08-18,5,0,,
 MYL231-01-A,317,6-10 Year,Toye,ipa_scheduled,08/18/2020,6-10 Year,2024-03-11T00:00:00Z,2025-04-06T00:00:00Z,TRUE,2026-05-13,2020-08-18,5,1,Complete,1
-MYL630-01-A,416,Potential Participants,Jo,caregiver_survey,08/04/2009,Potential Participants,,,,,2009-08-04,,1,,
-MYL630-01-A,416,Potential Participants,Jo,child_survey,08/04/2009,Potential Participants,,,,,2009-08-04,,0,,
-MYL630-01-A,416,Potential Participants,Jo,ECHO 2 Re-Consent,08/04/2009,Potential Participants,,,,,2009-08-04,,1,,
-MYL630-01-A,416,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,08/04/2009,Potential Participants,,,,,2009-08-04,,0,,
-MYL630-01-A,416,Potential Participants,Jo,ipa_scheduled,08/04/2009,Potential Participants,,,,,2009-08-04,,1,,
-MYL630-02-A,449,Potential Participants,Jo,caregiver_survey,05/24/2011,Potential Participants,,,,,2011-05-24,,1,,
-MYL630-02-A,449,Potential Participants,Jo,child_survey,05/24/2011,Potential Participants,,,,,2011-05-24,,0,,
-MYL630-02-A,449,Potential Participants,Jo,ECHO 2 Re-Consent,05/24/2011,Potential Participants,,,,,2011-05-24,,1,,
-MYL630-02-A,449,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,05/24/2011,Potential Participants,,,,,2011-05-24,,0,,
-MYL630-02-A,449,Potential Participants,Jo,ipa_scheduled,05/24/2011,Potential Participants,,,,,2011-05-24,,1,,
-MYL630-03-A,482,Potential Participants,Jo,caregiver_survey,08/03/2014,Potential Participants,,,,,2014-08-03,,1,,
-MYL630-03-A,482,Potential Participants,Jo,child_survey,08/03/2014,Potential Participants,,,,,2014-08-03,,0,,
-MYL630-03-A,482,Potential Participants,Jo,ECHO 2 Re-Consent,08/03/2014,Potential Participants,,,,,2014-08-03,,1,,
-MYL630-03-A,482,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,08/03/2014,Potential Participants,,,,,2014-08-03,,0,,
-MYL630-03-A,482,Potential Participants,Jo,ipa_scheduled,08/03/2014,Potential Participants,,,,,2014-08-03,,1,,
+MYL630-01-A,416,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+MYL630-01-A,416,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+MYL630-01-A,416,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+MYL630-01-A,416,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+MYL630-01-A,416,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
+MYL630-02-A,449,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+MYL630-02-A,449,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+MYL630-02-A,449,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+MYL630-02-A,449,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+MYL630-02-A,449,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
+MYL630-03-A,482,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+MYL630-03-A,482,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+MYL630-03-A,482,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+MYL630-03-A,482,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+MYL630-03-A,482,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 MYN399-01-A,878,3-5 Year,Nicole,caregiver_survey,09/05/2022,3-5 Year,2024-02-12T00:00:00Z,2024-09-30T00:00:00Z,TRUE,2026-06-08,2022-09-05,3,1,Complete,1
 MYN399-01-A,878,3-5 Year,Nicole,child_survey,09/05/2022,3-5 Year,2024-02-12T00:00:00Z,2024-09-30T00:00:00Z,TRUE,2026-06-08,2022-09-05,3,0,,
 MYN399-01-A,878,3-5 Year,Nicole,ECHO 2 Re-Consent,09/05/2022,3-5 Year,2024-02-12T00:00:00Z,2024-09-30T00:00:00Z,TRUE,2026-06-08,2022-09-05,3,0,,
@@ -3614,11 +3614,11 @@ NCT880-01-A,218,11-17 Year,Jo,child_survey,08/10/2010,11-17 Year,,2024-09-09T00:
 NCT880-01-A,218,11-17 Year,Jo,ECHO 2 Re-Consent,08/10/2010,11-17 Year,,2024-09-09T00:00:00Z,FALSE,,2010-08-10,,0,,
 NCT880-01-A,218,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,08/10/2010,11-17 Year,,2024-09-09T00:00:00Z,FALSE,,2010-08-10,,0,,
 NCT880-01-A,218,11-17 Year,Jo,ipa_scheduled,08/10/2010,11-17 Year,,2024-09-09T00:00:00Z,FALSE,,2010-08-10,,1,Incomplete,0
-NDF394-01-A,789,Potential Participants,Nicole,caregiver_survey,12/11/2022,Potential Participants,,,,,2022-12-11,,1,,
-NDF394-01-A,789,Potential Participants,Nicole,child_survey,12/11/2022,Potential Participants,,,,,2022-12-11,,0,,
-NDF394-01-A,789,Potential Participants,Nicole,ECHO 2 Re-Consent,12/11/2022,Potential Participants,,,,,2022-12-11,,1,,
-NDF394-01-A,789,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,12/11/2022,Potential Participants,,,,,2022-12-11,,0,,
-NDF394-01-A,789,Potential Participants,Nicole,ipa_scheduled,12/11/2022,Potential Participants,,,,,2022-12-11,,1,,
+NDF394-01-A,789,Potential Participants,Nicole,caregiver_survey,,,,,,,,,0,,
+NDF394-01-A,789,Potential Participants,Nicole,child_survey,,,,,,,,,0,,
+NDF394-01-A,789,Potential Participants,Nicole,ECHO 2 Re-Consent,,,,,,,,,0,,
+NDF394-01-A,789,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+NDF394-01-A,789,Potential Participants,Nicole,ipa_scheduled,,,,,,,,,0,,
 NDN427-01-A,954,6-10 Year,Amy,caregiver_survey,01/12/2019,6-10 Year,,2024-07-12T00:00:00Z,TRUE,2026-04-27,2019-01-12,7,1,Complete,1
 NDN427-01-A,954,6-10 Year,Amy,child_survey,01/12/2019,6-10 Year,,2024-07-12T00:00:00Z,TRUE,2026-04-27,2019-01-12,7,0,Ineligible,1
 NDN427-01-A,954,6-10 Year,Amy,ECHO 2 Re-Consent,01/12/2019,6-10 Year,,2024-07-12T00:00:00Z,TRUE,2026-04-27,2019-01-12,7,0,,
@@ -3629,11 +3629,11 @@ NDP526-01-A,120,6-10 Year,Toye,child_survey,10/11/2019,6-10 Year,2024-02-01T00:0
 NDP526-01-A,120,6-10 Year,Toye,ECHO 2 Re-Consent,10/11/2019,6-10 Year,2024-02-01T00:00:00Z,2025-03-03T00:00:00Z,TRUE,2026-06-15,2019-10-11,6,0,,
 NDP526-01-A,120,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,10/11/2019,6-10 Year,2024-02-01T00:00:00Z,2025-03-03T00:00:00Z,TRUE,2026-06-15,2019-10-11,6,0,,
 NDP526-01-A,120,6-10 Year,Toye,ipa_scheduled,10/11/2019,6-10 Year,2024-02-01T00:00:00Z,2025-03-03T00:00:00Z,TRUE,2026-06-15,2019-10-11,6,1,Incomplete,0
-NDS399-01-A,383,Potential Participants,Jo,caregiver_survey,01/27/2010,Potential Participants,,,,,2010-01-27,,1,,
-NDS399-01-A,383,Potential Participants,Jo,child_survey,01/27/2010,Potential Participants,,,,,2010-01-27,,0,,
-NDS399-01-A,383,Potential Participants,Jo,ECHO 2 Re-Consent,01/27/2010,Potential Participants,,,,,2010-01-27,,1,,
-NDS399-01-A,383,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,01/27/2010,Potential Participants,,,,,2010-01-27,,0,,
-NDS399-01-A,383,Potential Participants,Jo,ipa_scheduled,01/27/2010,Potential Participants,,,,,2010-01-27,,1,,
+NDS399-01-A,383,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+NDS399-01-A,383,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+NDS399-01-A,383,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+NDS399-01-A,383,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+NDS399-01-A,383,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 NFD610-01-A,492,11-17 Year,Jo,caregiver_survey,07/15/2010,11-17 Year,,2024-07-17T00:00:00Z,TRUE,2026-08-04,2010-07-15,16,1,Complete,1
 NFD610-01-A,492,11-17 Year,Jo,child_survey,07/15/2010,11-17 Year,,2024-07-17T00:00:00Z,TRUE,2026-08-04,2010-07-15,16,1,Complete,1
 NFD610-01-A,492,11-17 Year,Jo,ECHO 2 Re-Consent,07/15/2010,11-17 Year,,2024-07-17T00:00:00Z,TRUE,2026-08-04,2010-07-15,16,0,,
@@ -3659,16 +3659,16 @@ NGD113-01-A,459,6-10 Year,Toye,child_survey,08/17/2020,6-10 Year,,2025-11-16T00:
 NGD113-01-A,459,6-10 Year,Toye,ECHO 2 Re-Consent,08/17/2020,6-10 Year,,2025-11-16T00:00:00Z,FALSE,,2020-08-17,,0,,
 NGD113-01-A,459,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,08/17/2020,6-10 Year,,2025-11-16T00:00:00Z,FALSE,,2020-08-17,,0,,
 NGD113-01-A,459,6-10 Year,Toye,ipa_scheduled,08/17/2020,6-10 Year,,2025-11-16T00:00:00Z,FALSE,,2020-08-17,,1,Incomplete,0
-NGG134-01-A,657,Potential Participants,Toye,caregiver_survey,12/23/2018,Withdrawn,,,,,2018-12-23,,0,,
-NGG134-01-A,657,Potential Participants,Toye,child_survey,12/23/2018,Withdrawn,,,,,2018-12-23,,0,,
-NGG134-01-A,657,Potential Participants,Toye,ECHO 2 Re-Consent,12/23/2018,Withdrawn,,,,,2018-12-23,,0,,
-NGG134-01-A,657,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,12/23/2018,Withdrawn,,,,,2018-12-23,,0,,
-NGG134-01-A,657,Potential Participants,Toye,ipa_scheduled,12/23/2018,Withdrawn,,,,,2018-12-23,,0,,
-NGG134-01-N,199,Potential Participants,Toye,caregiver_survey,12/23/2018,Potential Participants,,,,,2018-12-23,,1,,
-NGG134-01-N,199,Potential Participants,Toye,child_survey,12/23/2018,Potential Participants,,,,,2018-12-23,,0,,
-NGG134-01-N,199,Potential Participants,Toye,ECHO 2 Re-Consent,12/23/2018,Potential Participants,,,,,2018-12-23,,1,,
-NGG134-01-N,199,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,12/23/2018,Potential Participants,,,,,2018-12-23,,0,,
-NGG134-01-N,199,Potential Participants,Toye,ipa_scheduled,12/23/2018,Potential Participants,,,,,2018-12-23,,1,,
+NGG134-01-A,657,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+NGG134-01-A,657,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+NGG134-01-A,657,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+NGG134-01-A,657,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+NGG134-01-A,657,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
+NGG134-01-N,199,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+NGG134-01-N,199,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+NGG134-01-N,199,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+NGG134-01-N,199,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+NGG134-01-N,199,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 NGT839-01-A,482,11-17 Year,Jo,caregiver_survey,09/11/2014,11-17 Year,2024-02-10T00:00:00Z,2025-03-02T00:00:00Z,TRUE,2026-04-05,2014-09-11,11,1,Complete,1
 NGT839-01-A,482,11-17 Year,Jo,child_survey,09/11/2014,11-17 Year,2024-02-10T00:00:00Z,2025-03-02T00:00:00Z,TRUE,2026-04-05,2014-09-11,11,1,Complete,1
 NGT839-01-A,482,11-17 Year,Jo,ECHO 2 Re-Consent,09/11/2014,11-17 Year,2024-02-10T00:00:00Z,2025-03-02T00:00:00Z,TRUE,2026-04-05,2014-09-11,11,0,,
@@ -3719,11 +3719,11 @@ NKL839-01-A,350,11-17 Year,Jo,child_survey,02/12/2012,11-17 Year,2024-04-23T00:0
 NKL839-01-A,350,11-17 Year,Jo,ECHO 2 Re-Consent,02/12/2012,11-17 Year,2024-04-23T00:00:00Z,2025-02-26T00:00:00Z,TRUE,2026-03-11,2012-02-12,14,0,,
 NKL839-01-A,350,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,02/12/2012,11-17 Year,2024-04-23T00:00:00Z,2025-02-26T00:00:00Z,TRUE,2026-03-11,2012-02-12,14,0,,
 NKL839-01-A,350,11-17 Year,Jo,ipa_scheduled,02/12/2012,11-17 Year,2024-04-23T00:00:00Z,2025-02-26T00:00:00Z,TRUE,2026-03-11,2012-02-12,14,1,Incomplete,0
-NKQ202-01-A,987,Potential Participants,Nicole,caregiver_survey,01/16/2022,Potential Participants,,,,,2022-01-16,,1,,
-NKQ202-01-A,987,Potential Participants,Nicole,child_survey,01/16/2022,Potential Participants,,,,,2022-01-16,,0,,
-NKQ202-01-A,987,Potential Participants,Nicole,ECHO 2 Re-Consent,01/16/2022,Potential Participants,,,,,2022-01-16,,1,,
-NKQ202-01-A,987,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,01/16/2022,Potential Participants,,,,,2022-01-16,,0,,
-NKQ202-01-A,987,Potential Participants,Nicole,ipa_scheduled,01/16/2022,Potential Participants,,,,,2022-01-16,,1,,
+NKQ202-01-A,987,Potential Participants,Nicole,caregiver_survey,,,,,,,,,0,,
+NKQ202-01-A,987,Potential Participants,Nicole,child_survey,,,,,,,,,0,,
+NKQ202-01-A,987,Potential Participants,Nicole,ECHO 2 Re-Consent,,,,,,,,,0,,
+NKQ202-01-A,987,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+NKQ202-01-A,987,Potential Participants,Nicole,ipa_scheduled,,,,,,,,,0,,
 NKX909-01-A,680,Potential Participants,Amy,caregiver_survey,08/15/2016,Potential Participants,,,,,2016-08-15,,1,,
 NKX909-01-A,680,Potential Participants,Amy,child_survey,08/15/2016,Potential Participants,,,,,2016-08-15,,0,,
 NKX909-01-A,680,Potential Participants,Amy,ECHO 2 Re-Consent,08/15/2016,Potential Participants,,,,,2016-08-15,,1,,
@@ -3744,11 +3744,11 @@ NMK742-01-A,152,Potential Participants,Jo,child_survey,09/29/2009,Potential Part
 NMK742-01-A,152,Potential Participants,Jo,ECHO 2 Re-Consent,09/29/2009,Potential Participants,,,,,2009-09-29,,1,,
 NMK742-01-A,152,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,09/29/2009,Potential Participants,,,,,2009-09-29,,0,,
 NMK742-01-A,152,Potential Participants,Jo,ipa_scheduled,09/29/2009,Potential Participants,,,,,2009-09-29,,1,,
-NMN462-01-A,218,Potential Participants,Toye,caregiver_survey,12/01/2017,Potential Participants,,,,,2017-12-01,,1,,
-NMN462-01-A,218,Potential Participants,Toye,child_survey,12/01/2017,Potential Participants,,,,,2017-12-01,,0,,
-NMN462-01-A,218,Potential Participants,Toye,ECHO 2 Re-Consent,12/01/2017,Potential Participants,,,,,2017-12-01,,1,,
-NMN462-01-A,218,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,12/01/2017,Potential Participants,,,,,2017-12-01,,0,,
-NMN462-01-A,218,Potential Participants,Toye,ipa_scheduled,12/01/2017,Potential Participants,,,,,2017-12-01,,1,,
+NMN462-01-A,218,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+NMN462-01-A,218,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+NMN462-01-A,218,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+NMN462-01-A,218,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+NMN462-01-A,218,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 NMT952-01-A,548,3-5 Year,Nicole,caregiver_survey,09/15/2022,3-5 Year,2024-01-22T00:00:00Z,2024-10-30T00:00:00Z,TRUE,2026-04-13,2022-09-15,3,1,Complete,1
 NMT952-01-A,548,3-5 Year,Nicole,child_survey,09/15/2022,3-5 Year,2024-01-22T00:00:00Z,2024-10-30T00:00:00Z,TRUE,2026-04-13,2022-09-15,3,0,,
 NMT952-01-A,548,3-5 Year,Nicole,ECHO 2 Re-Consent,09/15/2022,3-5 Year,2024-01-22T00:00:00Z,2024-10-30T00:00:00Z,TRUE,2026-04-13,2022-09-15,3,0,,
@@ -3834,11 +3834,11 @@ NSY389-01-A,143,3-5 Year,Nicole,child_survey,08/13/2022,3-5 Year,,2024-06-26T00:
 NSY389-01-A,143,3-5 Year,Nicole,ECHO 2 Re-Consent,08/13/2022,3-5 Year,,2024-06-26T00:00:00Z,TRUE,2026-07-15,2022-08-13,3,0,,
 NSY389-01-A,143,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,08/13/2022,3-5 Year,,2024-06-26T00:00:00Z,TRUE,2026-07-15,2022-08-13,3,0,,
 NSY389-01-A,143,3-5 Year,Nicole,ipa_scheduled,08/13/2022,3-5 Year,,2024-06-26T00:00:00Z,TRUE,2026-07-15,2022-08-13,3,1,Incomplete,0
-NTG064-01-A,152,Potential Participants,Toye,caregiver_survey,01/24/2019,Withdrawn,,,,,2019-01-24,,0,,
-NTG064-01-A,152,Potential Participants,Toye,child_survey,01/24/2019,Withdrawn,,,,,2019-01-24,,0,,
-NTG064-01-A,152,Potential Participants,Toye,ECHO 2 Re-Consent,01/24/2019,Withdrawn,,,,,2019-01-24,,0,,
-NTG064-01-A,152,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,01/24/2019,Withdrawn,,,,,2019-01-24,,0,,
-NTG064-01-A,152,Potential Participants,Toye,ipa_scheduled,01/24/2019,Withdrawn,,,,,2019-01-24,,0,,
+NTG064-01-A,152,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+NTG064-01-A,152,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+NTG064-01-A,152,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+NTG064-01-A,152,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+NTG064-01-A,152,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 NTM103-01-A,152,Potential Participants,Jo,caregiver_survey,10/21/2012,Potential Participants,,,,,2012-10-21,,1,,
 NTM103-01-A,152,Potential Participants,Jo,child_survey,10/21/2012,Potential Participants,,,,,2012-10-21,,0,,
 NTM103-01-A,152,Potential Participants,Jo,ECHO 2 Re-Consent,10/21/2012,Potential Participants,,,,,2012-10-21,,1,,
@@ -3874,11 +3874,11 @@ NVS704-01-A,647,11-17 Year,Jo,child_survey,10/12/2009,11-17 Year,,2024-10-02T00:
 NVS704-01-A,647,11-17 Year,Jo,ECHO 2 Re-Consent,10/12/2009,11-17 Year,,2024-10-02T00:00:00Z,TRUE,2026-05-04,2009-10-12,16,0,,
 NVS704-01-A,647,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,10/12/2009,11-17 Year,,2024-10-02T00:00:00Z,TRUE,2026-05-04,2009-10-12,16,0,,
 NVS704-01-A,647,11-17 Year,Jo,ipa_scheduled,10/12/2009,11-17 Year,,2024-10-02T00:00:00Z,TRUE,2026-05-04,2009-10-12,16,1,Incomplete,0
-NWH124-01-A,185,Potential Participants,Jo,caregiver_survey,04/01/2012,Potential Participants,,,,,2012-04-01,,1,,
-NWH124-01-A,185,Potential Participants,Jo,child_survey,04/01/2012,Potential Participants,,,,,2012-04-01,,0,,
-NWH124-01-A,185,Potential Participants,Jo,ECHO 2 Re-Consent,04/01/2012,Potential Participants,,,,,2012-04-01,,1,,
-NWH124-01-A,185,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,04/01/2012,Potential Participants,,,,,2012-04-01,,0,,
-NWH124-01-A,185,Potential Participants,Jo,ipa_scheduled,04/01/2012,Potential Participants,,,,,2012-04-01,,1,,
+NWH124-01-A,185,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+NWH124-01-A,185,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+NWH124-01-A,185,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+NWH124-01-A,185,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+NWH124-01-A,185,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 NXR556-01-A,845,Potential Participants,Jo,caregiver_survey,04/26/2013,Potential Participants,,,,,2013-04-26,,1,,
 NXR556-01-A,845,Potential Participants,Jo,child_survey,04/26/2013,Potential Participants,,,,,2013-04-26,,0,,
 NXR556-01-A,845,Potential Participants,Jo,ECHO 2 Re-Consent,04/26/2013,Potential Participants,,,,,2013-04-26,,1,,
@@ -3894,11 +3894,11 @@ NYV684-01-A,176,6-10 Year,Amy,child_survey,05/01/2019,6-10 Year,2024-01-23T00:00
 NYV684-01-A,176,6-10 Year,Amy,ECHO 2 Re-Consent,05/01/2019,6-10 Year,2024-01-23T00:00:00Z,2025-02-19T00:00:00Z,TRUE,2026-06-30,2019-05-01,7,0,,
 NYV684-01-A,176,6-10 Year,Amy,ECHO 2 v3.01 Re-Consent,05/01/2019,6-10 Year,2024-01-23T00:00:00Z,2025-02-19T00:00:00Z,TRUE,2026-06-30,2019-05-01,7,0,,
 NYV684-01-A,176,6-10 Year,Amy,ipa_scheduled,05/01/2019,6-10 Year,2024-01-23T00:00:00Z,2025-02-19T00:00:00Z,TRUE,2026-06-30,2019-05-01,7,1,Incomplete,0
-NYZ677-01-A,274,11-17 Year,Jo,caregiver_survey,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,FALSE,,2012-12-30,,1,Incomplete,0
-NYZ677-01-A,274,11-17 Year,Jo,child_survey,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,FALSE,,2012-12-30,,0,Incomplete,0
-NYZ677-01-A,274,11-17 Year,Jo,ECHO 2 Re-Consent,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,FALSE,,2012-12-30,,0,,
-NYZ677-01-A,274,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,FALSE,,2012-12-30,,0,,
-NYZ677-01-A,274,11-17 Year,Jo,ipa_scheduled,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,FALSE,,2012-12-30,,1,Incomplete,0
+NYZ677-01-A,274,11-17 Year,Jo,caregiver_survey,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,TRUE,2026-10-12,2012-12-30,13,1,Complete,1
+NYZ677-01-A,274,11-17 Year,Jo,child_survey,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,TRUE,2026-10-12,2012-12-30,13,1,Complete,1
+NYZ677-01-A,274,11-17 Year,Jo,ECHO 2 Re-Consent,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,TRUE,2026-10-12,2012-12-30,13,0,,
+NYZ677-01-A,274,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,TRUE,2026-10-12,2012-12-30,13,0,,
+NYZ677-01-A,274,11-17 Year,Jo,ipa_scheduled,12/30/2012,11-17 Year,,2024-10-16T00:00:00Z,TRUE,2026-10-12,2012-12-30,13,1,Complete,1
 NZH802-01-A,383,6-10 Year,Toye,caregiver_survey,06/08/2019,6-10 Year,2024-01-21T00:00:00Z,2025-02-15T00:00:00Z,TRUE,2026-06-11,2019-06-08,7,1,Complete,1
 NZH802-01-A,383,6-10 Year,Toye,child_survey,06/08/2019,6-10 Year,2024-01-21T00:00:00Z,2025-02-15T00:00:00Z,TRUE,2026-06-11,2019-06-08,7,0,Ineligible,1
 NZH802-01-A,383,6-10 Year,Toye,ECHO 2 Re-Consent,06/08/2019,6-10 Year,2024-01-21T00:00:00Z,2025-02-15T00:00:00Z,TRUE,2026-06-11,2019-06-08,7,0,,
@@ -3914,11 +3914,11 @@ NZT852-01-A,944,Potential Participants,Jo,child_survey,12/10/2010,Potential Part
 NZT852-01-A,944,Potential Participants,Jo,ECHO 2 Re-Consent,12/10/2010,Potential Participants,,,,,2010-12-10,,1,,
 NZT852-01-A,944,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,12/10/2010,Potential Participants,,,,,2010-12-10,,0,,
 NZT852-01-A,944,Potential Participants,Jo,ipa_scheduled,12/10/2010,Potential Participants,,,,,2010-12-10,,1,,
-NZV016-01-A,746,Potential Participants,Toye,caregiver_survey,06/18/2018,Potential Participants,,,,,2018-06-18,,1,,
-NZV016-01-A,746,Potential Participants,Toye,child_survey,06/18/2018,Potential Participants,,,,,2018-06-18,,0,,
-NZV016-01-A,746,Potential Participants,Toye,ECHO 2 Re-Consent,06/18/2018,Potential Participants,,,,,2018-06-18,,1,,
-NZV016-01-A,746,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,06/18/2018,Potential Participants,,,,,2018-06-18,,0,,
-NZV016-01-A,746,Potential Participants,Toye,ipa_scheduled,06/18/2018,Potential Participants,,,,,2018-06-18,,1,,
+NZV016-01-A,746,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+NZV016-01-A,746,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+NZV016-01-A,746,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+NZV016-01-A,746,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+NZV016-01-A,746,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 NZV696-01-A,208,6-10 Year,Toye,caregiver_survey,05/03/2020,6-10 Year,2024-04-23T00:00:00Z,2025-11-17T00:00:00Z,TRUE,2026-02-23,2020-05-03,5,1,Complete,1
 NZV696-01-A,208,6-10 Year,Toye,child_survey,05/03/2020,6-10 Year,2024-04-23T00:00:00Z,2025-11-17T00:00:00Z,TRUE,2026-02-23,2020-05-03,5,0,Ineligible,1
 NZV696-01-A,208,6-10 Year,Toye,ECHO 2 Re-Consent,05/03/2020,6-10 Year,2024-04-23T00:00:00Z,2025-11-17T00:00:00Z,TRUE,2026-02-23,2020-05-03,5,0,,
@@ -4014,11 +4014,11 @@ PHT777-01-A,614,11-17 Year,Jo,child_survey,06/09/2009,11-17 Year,2024-02-06T00:0
 PHT777-01-A,614,11-17 Year,Jo,ECHO 2 Re-Consent,06/09/2009,11-17 Year,2024-02-06T00:00:00Z,2025-03-24T00:00:00Z,TRUE,2026-05-04,2009-06-09,16,0,,
 PHT777-01-A,614,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,06/09/2009,11-17 Year,2024-02-06T00:00:00Z,2025-03-24T00:00:00Z,TRUE,2026-05-04,2009-06-09,16,0,,
 PHT777-01-A,614,11-17 Year,Jo,ipa_scheduled,06/09/2009,11-17 Year,2024-02-06T00:00:00Z,2025-03-24T00:00:00Z,TRUE,2026-05-04,2009-06-09,16,1,Complete,1
-PHZ636-01-A,614,3-5 Year,Nicole,caregiver_survey,03/04/2022,Potential Participants,,,,,2022-03-04,,1,,
-PHZ636-01-A,614,3-5 Year,Nicole,child_survey,03/04/2022,Potential Participants,,,,,2022-03-04,,0,,
-PHZ636-01-A,614,3-5 Year,Nicole,ECHO 2 Re-Consent,03/04/2022,Potential Participants,,,,,2022-03-04,,1,,
-PHZ636-01-A,614,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,03/04/2022,Potential Participants,,,,,2022-03-04,,0,,
-PHZ636-01-A,614,3-5 Year,Nicole,ipa_scheduled,03/04/2022,Potential Participants,,,,,2022-03-04,,1,,
+PHZ636-01-A,614,3-5 Year,Nicole,caregiver_survey,,,,,,,,,0,,
+PHZ636-01-A,614,3-5 Year,Nicole,child_survey,,,,,,,,,0,,
+PHZ636-01-A,614,3-5 Year,Nicole,ECHO 2 Re-Consent,,,,,,,,,0,,
+PHZ636-01-A,614,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+PHZ636-01-A,614,3-5 Year,Nicole,ipa_scheduled,,,,,,,,,0,,
 PJV818-01-A,614,Potential Participants,Nicole,caregiver_survey,09/03/2022,Potential Participants,,,,,2022-09-03,,1,,
 PJV818-01-A,614,Potential Participants,Nicole,child_survey,09/03/2022,Potential Participants,,,,,2022-09-03,,0,,
 PJV818-01-A,614,Potential Participants,Nicole,ECHO 2 Re-Consent,09/03/2022,Potential Participants,,,,,2022-09-03,,1,,
@@ -4034,11 +4034,11 @@ PJW576-01-A,680,3-5 Year,Nicole,child_survey,03/23/2023,3-5 Year,,2024-12-18T00:
 PJW576-01-A,680,3-5 Year,Nicole,ECHO 2 Re-Consent,03/23/2023,3-5 Year,,2024-12-18T00:00:00Z,FALSE,,2023-03-23,,0,,
 PJW576-01-A,680,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,03/23/2023,3-5 Year,,2024-12-18T00:00:00Z,FALSE,,2023-03-23,,0,,
 PJW576-01-A,680,3-5 Year,Nicole,ipa_scheduled,03/23/2023,3-5 Year,,2024-12-18T00:00:00Z,FALSE,,2023-03-23,,1,Incomplete,0
-PKH666-01-A,218,Potential Participants,Toye,caregiver_survey,03/21/2019,Potential Participants,,,,,2019-03-21,,1,,
-PKH666-01-A,218,Potential Participants,Toye,child_survey,03/21/2019,Potential Participants,,,,,2019-03-21,,0,,
-PKH666-01-A,218,Potential Participants,Toye,ECHO 2 Re-Consent,03/21/2019,Potential Participants,,,,,2019-03-21,,1,,
-PKH666-01-A,218,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,03/21/2019,Potential Participants,,,,,2019-03-21,,0,,
-PKH666-01-A,218,Potential Participants,Toye,ipa_scheduled,03/21/2019,Potential Participants,,,,,2019-03-21,,1,,
+PKH666-01-A,218,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+PKH666-01-A,218,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+PKH666-01-A,218,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+PKH666-01-A,218,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+PKH666-01-A,218,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 PKM194-01-A,251,3-5 Year,Nicole,caregiver_survey,10/08/2021,3-5 Year,2024-02-29T00:00:00Z,2025-04-29T00:00:00Z,TRUE,2026-09-17,2021-10-08,4,1,Complete,1
 PKM194-01-A,251,3-5 Year,Nicole,child_survey,10/08/2021,3-5 Year,2024-02-29T00:00:00Z,2025-04-29T00:00:00Z,TRUE,2026-09-17,2021-10-08,4,0,,
 PKM194-01-A,251,3-5 Year,Nicole,ECHO 2 Re-Consent,10/08/2021,3-5 Year,2024-02-29T00:00:00Z,2025-04-29T00:00:00Z,TRUE,2026-09-17,2021-10-08,4,0,,
@@ -4049,11 +4049,11 @@ PLJ955-01-A,350,Potential Participants,Amy,child_survey,02/14/2019,Potential Par
 PLJ955-01-A,350,Potential Participants,Amy,ECHO 2 Re-Consent,02/14/2019,Potential Participants,,,,,2019-02-14,,1,,
 PLJ955-01-A,350,Potential Participants,Amy,ECHO 2 v3.01 Re-Consent,02/14/2019,Potential Participants,,,,,2019-02-14,,0,,
 PLJ955-01-A,350,Potential Participants,Amy,ipa_scheduled,02/14/2019,Potential Participants,,,,,2019-02-14,,1,,
-PLT854-01-A,614,Potential Participants,Nicole,caregiver_survey,01/26/2022,Potential Participants,,,,,2022-01-26,,1,,
-PLT854-01-A,614,Potential Participants,Nicole,child_survey,01/26/2022,Potential Participants,,,,,2022-01-26,,0,,
-PLT854-01-A,614,Potential Participants,Nicole,ECHO 2 Re-Consent,01/26/2022,Potential Participants,,,,,2022-01-26,,1,,
-PLT854-01-A,614,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,01/26/2022,Potential Participants,,,,,2022-01-26,,0,,
-PLT854-01-A,614,Potential Participants,Nicole,ipa_scheduled,01/26/2022,Potential Participants,,,,,2022-01-26,,1,,
+PLT854-01-A,614,Potential Participants,Nicole,caregiver_survey,,,,,,,,,0,,
+PLT854-01-A,614,Potential Participants,Nicole,child_survey,,,,,,,,,0,,
+PLT854-01-A,614,Potential Participants,Nicole,ECHO 2 Re-Consent,,,,,,,,,0,,
+PLT854-01-A,614,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+PLT854-01-A,614,Potential Participants,Nicole,ipa_scheduled,,,,,,,,,0,,
 PLV393-01-A,614,11-17 Year,Jo,caregiver_survey,11/03/2010,11-17 Year,,2024-09-27T00:00:00Z,TRUE,2026-03-20,2010-11-03,15,1,Complete,1
 PLV393-01-A,614,11-17 Year,Jo,child_survey,11/03/2010,11-17 Year,,2024-09-27T00:00:00Z,TRUE,2026-03-20,2010-11-03,15,1,Complete,1
 PLV393-01-A,614,11-17 Year,Jo,ECHO 2 Re-Consent,11/03/2010,11-17 Year,,2024-09-27T00:00:00Z,TRUE,2026-03-20,2010-11-03,15,0,,
@@ -4084,11 +4084,11 @@ PNR468-01-A,647,6-10 Year,Amy,child_survey,01/03/2019,6-10 Year,2024-03-23T00:00
 PNR468-01-A,647,6-10 Year,Amy,ECHO 2 Re-Consent,01/03/2019,6-10 Year,2024-03-23T00:00:00Z,2025-02-12T00:00:00Z,FALSE,,2019-01-03,,0,,
 PNR468-01-A,647,6-10 Year,Amy,ECHO 2 v3.01 Re-Consent,01/03/2019,6-10 Year,2024-03-23T00:00:00Z,2025-02-12T00:00:00Z,FALSE,,2019-01-03,,0,,
 PNR468-01-A,647,6-10 Year,Amy,ipa_scheduled,01/03/2019,6-10 Year,2024-03-23T00:00:00Z,2025-02-12T00:00:00Z,FALSE,,2019-01-03,,1,Incomplete,0
-PPC906-01-A,119,Potential Participants,Toye,caregiver_survey,09/03/2018,Withdrawn,,,,,2018-09-03,,0,,
-PPC906-01-A,119,Potential Participants,Toye,child_survey,09/03/2018,Withdrawn,,,,,2018-09-03,,0,,
-PPC906-01-A,119,Potential Participants,Toye,ECHO 2 Re-Consent,09/03/2018,Withdrawn,,,,,2018-09-03,,0,,
-PPC906-01-A,119,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,09/03/2018,Withdrawn,,,,,2018-09-03,,0,,
-PPC906-01-A,119,Potential Participants,Toye,ipa_scheduled,09/03/2018,Withdrawn,,,,,2018-09-03,,0,,
+PPC906-01-A,119,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+PPC906-01-A,119,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+PPC906-01-A,119,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+PPC906-01-A,119,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+PPC906-01-A,119,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 PPJ846-01-A,449,6-10 Year,Toye,caregiver_survey,06/23/2019,6-10 Year,2024-04-27T00:00:00Z,2025-10-14T00:00:00Z,FALSE,,2019-06-23,,1,Incomplete,0
 PPJ846-01-A,449,6-10 Year,Toye,child_survey,06/23/2019,6-10 Year,2024-04-27T00:00:00Z,2025-10-14T00:00:00Z,FALSE,,2019-06-23,,0,Incomplete,0
 PPJ846-01-A,449,6-10 Year,Toye,ECHO 2 Re-Consent,06/23/2019,6-10 Year,2024-04-27T00:00:00Z,2025-10-14T00:00:00Z,FALSE,,2019-06-23,,0,,
@@ -4154,11 +4154,11 @@ PRZ511-01-A,680,6-10 Year,Toye,child_survey,08/29/2018,6-10 Year,2024-03-25T00:0
 PRZ511-01-A,680,6-10 Year,Toye,ECHO 2 Re-Consent,08/29/2018,6-10 Year,2024-03-25T00:00:00Z,2025-03-28T00:00:00Z,TRUE,2026-08-06,2018-08-29,7,0,,
 PRZ511-01-A,680,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,08/29/2018,6-10 Year,2024-03-25T00:00:00Z,2025-03-28T00:00:00Z,TRUE,2026-08-06,2018-08-29,7,0,,
 PRZ511-01-A,680,6-10 Year,Toye,ipa_scheduled,08/29/2018,6-10 Year,2024-03-25T00:00:00Z,2025-03-28T00:00:00Z,TRUE,2026-08-06,2018-08-29,7,1,Incomplete,0
-PSK314-01-A,251,Potential Participants,Nicole,caregiver_survey,06/11/2021,Potential Participants,,,,,2021-06-11,,1,,
-PSK314-01-A,251,Potential Participants,Nicole,child_survey,06/11/2021,Potential Participants,,,,,2021-06-11,,0,,
-PSK314-01-A,251,Potential Participants,Nicole,ECHO 2 Re-Consent,06/11/2021,Potential Participants,,,,,2021-06-11,,1,,
-PSK314-01-A,251,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,06/11/2021,Potential Participants,,,,,2021-06-11,,0,,
-PSK314-01-A,251,Potential Participants,Nicole,ipa_scheduled,06/11/2021,Potential Participants,,,,,2021-06-11,,1,,
+PSK314-01-A,251,Potential Participants,Nicole,caregiver_survey,,,,,,,,,0,,
+PSK314-01-A,251,Potential Participants,Nicole,child_survey,,,,,,,,,0,,
+PSK314-01-A,251,Potential Participants,Nicole,ECHO 2 Re-Consent,,,,,,,,,0,,
+PSK314-01-A,251,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+PSK314-01-A,251,Potential Participants,Nicole,ipa_scheduled,,,,,,,,,0,,
 PTF351-01-A,152,6-10 Year,Toye,caregiver_survey,10/09/2019,6-10 Year,,2024-07-22T00:00:00Z,FALSE,,2019-10-09,,1,Incomplete,0
 PTF351-01-A,152,6-10 Year,Toye,child_survey,10/09/2019,6-10 Year,,2024-07-22T00:00:00Z,FALSE,,2019-10-09,,0,Incomplete,0
 PTF351-01-A,152,6-10 Year,Toye,ECHO 2 Re-Consent,10/09/2019,6-10 Year,,2024-07-22T00:00:00Z,FALSE,,2019-10-09,,0,,
@@ -4534,11 +4534,11 @@ QTQ022-01-A,383,6-10 Year,Toye,child_survey,09/28/2018,6-10 Year,2024-04-03T00:0
 QTQ022-01-A,383,6-10 Year,Toye,ECHO 2 Re-Consent,09/28/2018,6-10 Year,2024-04-03T00:00:00Z,2025-04-07T00:00:00Z,TRUE,2026-09-04,2018-09-28,7,0,,
 QTQ022-01-A,383,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,09/28/2018,6-10 Year,2024-04-03T00:00:00Z,2025-04-07T00:00:00Z,TRUE,2026-09-04,2018-09-28,7,0,,
 QTQ022-01-A,383,6-10 Year,Toye,ipa_scheduled,09/28/2018,6-10 Year,2024-04-03T00:00:00Z,2025-04-07T00:00:00Z,TRUE,2026-09-04,2018-09-28,7,1,Complete,1
-QTV353-01-A,779,Potential Participants,Jo,caregiver_survey,09/15/2011,Potential Participants,,,,,2011-09-15,,1,,
-QTV353-01-A,779,Potential Participants,Jo,child_survey,09/15/2011,Potential Participants,,,,,2011-09-15,,0,,
-QTV353-01-A,779,Potential Participants,Jo,ECHO 2 Re-Consent,09/15/2011,Potential Participants,,,,,2011-09-15,,1,,
-QTV353-01-A,779,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,09/15/2011,Potential Participants,,,,,2011-09-15,,0,,
-QTV353-01-A,779,Potential Participants,Jo,ipa_scheduled,09/15/2011,Potential Participants,,,,,2011-09-15,,1,,
+QTV353-01-A,779,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+QTV353-01-A,779,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+QTV353-01-A,779,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+QTV353-01-A,779,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+QTV353-01-A,779,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 QWF984-01-A,680,11-17 Year,Jo,caregiver_survey,04/12/2011,11-17 Year,,2024-08-26T00:00:00Z,TRUE,2026-07-27,2011-04-12,15,1,Complete,1
 QWF984-01-A,680,11-17 Year,Jo,child_survey,04/12/2011,11-17 Year,,2024-08-26T00:00:00Z,TRUE,2026-07-27,2011-04-12,15,1,Complete,1
 QWF984-01-A,680,11-17 Year,Jo,ECHO 2 Re-Consent,04/12/2011,11-17 Year,,2024-08-26T00:00:00Z,TRUE,2026-07-27,2011-04-12,15,0,,
@@ -4704,11 +4704,11 @@ RHJ981-01-A,251,6-10 Year,Toye,child_survey,10/04/2017,6-10 Year,2024-03-04T00:0
 RHJ981-01-A,251,6-10 Year,Toye,ECHO 2 Re-Consent,10/04/2017,6-10 Year,2024-03-04T00:00:00Z,2025-03-13T00:00:00Z,TRUE,2026-08-25,2017-10-04,8,0,,
 RHJ981-01-A,251,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,10/04/2017,6-10 Year,2024-03-04T00:00:00Z,2025-03-13T00:00:00Z,TRUE,2026-08-25,2017-10-04,8,0,,
 RHJ981-01-A,251,6-10 Year,Toye,ipa_scheduled,10/04/2017,6-10 Year,2024-03-04T00:00:00Z,2025-03-13T00:00:00Z,TRUE,2026-08-25,2017-10-04,8,1,Incomplete,0
-RHM011-01-A,822,Potential Participants,Toye,caregiver_survey,09/21/2019,Potential Participants,,,,,2019-09-21,,1,,
-RHM011-01-A,822,Potential Participants,Toye,child_survey,09/21/2019,Potential Participants,,,,,2019-09-21,,0,,
-RHM011-01-A,822,Potential Participants,Toye,ECHO 2 Re-Consent,09/21/2019,Potential Participants,,,,,2019-09-21,,1,,
-RHM011-01-A,822,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,09/21/2019,Potential Participants,,,,,2019-09-21,,0,,
-RHM011-01-A,822,Potential Participants,Toye,ipa_scheduled,09/21/2019,Potential Participants,,,,,2019-09-21,,1,,
+RHM011-01-A,822,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+RHM011-01-A,822,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+RHM011-01-A,822,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+RHM011-01-A,822,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+RHM011-01-A,822,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 RHT150-01-A,185,3-5 Year,Nicole,caregiver_survey,02/19/2022,3-5 Year,,2024-07-22T00:00:00Z,FALSE,,2022-02-19,,1,Incomplete,0
 RHT150-01-A,185,3-5 Year,Nicole,child_survey,02/19/2022,3-5 Year,,2024-07-22T00:00:00Z,FALSE,,2022-02-19,,0,,
 RHT150-01-A,185,3-5 Year,Nicole,ECHO 2 Re-Consent,02/19/2022,3-5 Year,,2024-07-22T00:00:00Z,FALSE,,2022-02-19,,0,,
@@ -4744,11 +4744,11 @@ RLV585-01-A,779,Potential Participants,Jo,child_survey,01/14/2010,Potential Part
 RLV585-01-A,779,Potential Participants,Jo,ECHO 2 Re-Consent,01/14/2010,Potential Participants,,,,,2010-01-14,,1,,
 RLV585-01-A,779,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,01/14/2010,Potential Participants,,,,,2010-01-14,,0,,
 RLV585-01-A,779,Potential Participants,Jo,ipa_scheduled,01/14/2010,Potential Participants,,,,,2010-01-14,,1,,
-RMV727-01-A,746,Potential Participants,Toye,caregiver_survey,04/16/2017,Potential Participants,,,,,2017-04-16,,1,,
-RMV727-01-A,746,Potential Participants,Toye,child_survey,04/16/2017,Potential Participants,,,,,2017-04-16,,0,,
-RMV727-01-A,746,Potential Participants,Toye,ECHO 2 Re-Consent,04/16/2017,Potential Participants,,,,,2017-04-16,,1,,
-RMV727-01-A,746,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,04/16/2017,Potential Participants,,,,,2017-04-16,,0,,
-RMV727-01-A,746,Potential Participants,Toye,ipa_scheduled,04/16/2017,Potential Participants,,,,,2017-04-16,,1,,
+RMV727-01-A,746,Potential Participants,Toye,caregiver_survey,04/16/2017,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2017-04-16,,1,Incomplete,0
+RMV727-01-A,746,Potential Participants,Toye,child_survey,04/16/2017,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2017-04-16,,0,Incomplete,0
+RMV727-01-A,746,Potential Participants,Toye,ECHO 2 Re-Consent,04/16/2017,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2017-04-16,,1,Complete,1
+RMV727-01-A,746,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,04/16/2017,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2017-04-16,,0,,
+RMV727-01-A,746,Potential Participants,Toye,ipa_scheduled,04/16/2017,6-10 Year,,2026-10-07T00:00:00Z,FALSE,,2017-04-16,,1,Incomplete,0
 RMW265-01-A,680,Potential Participants,Amy,caregiver_survey,11/07/2018,Potential Participants,,,,,2018-11-07,,1,,
 RMW265-01-A,680,Potential Participants,Amy,child_survey,11/07/2018,Potential Participants,,,,,2018-11-07,,0,,
 RMW265-01-A,680,Potential Participants,Amy,ECHO 2 Re-Consent,11/07/2018,Potential Participants,,,,,2018-11-07,,1,,
@@ -4904,11 +4904,11 @@ RYW664-01-A,175,Potential Participants,Amy,child_survey,11/02/2016,Potential Par
 RYW664-01-A,175,Potential Participants,Amy,ECHO 2 Re-Consent,11/02/2016,Potential Participants,,,,,2016-11-02,,1,,
 RYW664-01-A,175,Potential Participants,Amy,ECHO 2 v3.01 Re-Consent,11/02/2016,Potential Participants,,,,,2016-11-02,,0,,
 RYW664-01-A,175,Potential Participants,Amy,ipa_scheduled,11/02/2016,Potential Participants,,,,,2016-11-02,,1,,
-RZN087-01-A,878,Potential Participants,Jo,caregiver_survey,11/07/2011,Potential Participants,,,,,2011-11-07,,1,,
-RZN087-01-A,878,Potential Participants,Jo,child_survey,11/07/2011,Potential Participants,,,,,2011-11-07,,0,,
-RZN087-01-A,878,Potential Participants,Jo,ECHO 2 Re-Consent,11/07/2011,Potential Participants,,,,,2011-11-07,,1,,
-RZN087-01-A,878,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,11/07/2011,Potential Participants,,,,,2011-11-07,,0,,
-RZN087-01-A,878,Potential Participants,Jo,ipa_scheduled,11/07/2011,Potential Participants,,,,,2011-11-07,,1,,
+RZN087-01-A,878,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+RZN087-01-A,878,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+RZN087-01-A,878,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+RZN087-01-A,878,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+RZN087-01-A,878,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 RZR609-01-A,110,Potential Participants,Nicole,caregiver_survey,03/31/2022,Potential Participants,,,,,2022-03-31,,1,,
 RZR609-01-A,110,Potential Participants,Nicole,child_survey,03/31/2022,Potential Participants,,,,,2022-03-31,,0,,
 RZR609-01-A,110,Potential Participants,Nicole,ECHO 2 Re-Consent,03/31/2022,Potential Participants,,,,,2022-03-31,,1,,
@@ -4939,11 +4939,11 @@ SBY066-01-A,383,6-10 Year,Toye,child_survey,08/31/2019,6-10 Year,2024-02-10T00:0
 SBY066-01-A,383,6-10 Year,Toye,ECHO 2 Re-Consent,08/31/2019,6-10 Year,2024-02-10T00:00:00Z,2025-02-04T00:00:00Z,TRUE,2026-05-15,2019-08-31,6,0,,
 SBY066-01-A,383,6-10 Year,Toye,ECHO 2 v3.01 Re-Consent,08/31/2019,6-10 Year,2024-02-10T00:00:00Z,2025-02-04T00:00:00Z,TRUE,2026-05-15,2019-08-31,6,0,,
 SBY066-01-A,383,6-10 Year,Toye,ipa_scheduled,08/31/2019,6-10 Year,2024-02-10T00:00:00Z,2025-02-04T00:00:00Z,TRUE,2026-05-15,2019-08-31,6,1,Incomplete,0
-SBY793-01-A,614,Potential Participants,Toye,caregiver_survey,02/18/2019,Withdrawn,,,,,2019-02-18,,0,,
-SBY793-01-A,614,Potential Participants,Toye,child_survey,02/18/2019,Withdrawn,,,,,2019-02-18,,0,,
-SBY793-01-A,614,Potential Participants,Toye,ECHO 2 Re-Consent,02/18/2019,Withdrawn,,,,,2019-02-18,,0,,
-SBY793-01-A,614,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,02/18/2019,Withdrawn,,,,,2019-02-18,,0,,
-SBY793-01-A,614,Potential Participants,Toye,ipa_scheduled,02/18/2019,Withdrawn,,,,,2019-02-18,,0,,
+SBY793-01-A,614,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+SBY793-01-A,614,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+SBY793-01-A,614,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+SBY793-01-A,614,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+SBY793-01-A,614,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 SCB433-01-A,591,11-17 Year,Jo,caregiver_survey,09/18/2013,11-17 Year,,2024-10-30T00:00:00Z,TRUE,2026-07-08,2013-09-18,12,1,Complete,1
 SCB433-01-A,591,11-17 Year,Jo,child_survey,09/18/2013,11-17 Year,,2024-10-30T00:00:00Z,TRUE,2026-07-08,2013-09-18,12,1,Complete,1
 SCB433-01-A,591,11-17 Year,Jo,ECHO 2 Re-Consent,09/18/2013,11-17 Year,,2024-10-30T00:00:00Z,TRUE,2026-07-08,2013-09-18,12,0,,
@@ -4959,11 +4959,11 @@ SCX053-01-A,251,6-10 Year,Amy,child_survey,03/22/2019,6-10 Year,2024-02-05T00:00
 SCX053-01-A,251,6-10 Year,Amy,ECHO 2 Re-Consent,03/22/2019,6-10 Year,2024-02-05T00:00:00Z,2025-02-12T00:00:00Z,TRUE,2026-05-21,2019-03-22,7,0,,
 SCX053-01-A,251,6-10 Year,Amy,ECHO 2 v3.01 Re-Consent,03/22/2019,6-10 Year,2024-02-05T00:00:00Z,2025-02-12T00:00:00Z,TRUE,2026-05-21,2019-03-22,7,0,,
 SCX053-01-A,251,6-10 Year,Amy,ipa_scheduled,03/22/2019,6-10 Year,2024-02-05T00:00:00Z,2025-02-12T00:00:00Z,TRUE,2026-05-21,2019-03-22,7,1,Incomplete,0
-SDB837-01-A,888,Potential Participants,Jo,caregiver_survey,02/16/2010,Potential Participants,,,,,2010-02-16,,1,,
-SDB837-01-A,888,Potential Participants,Jo,child_survey,02/16/2010,Potential Participants,,,,,2010-02-16,,0,,
-SDB837-01-A,888,Potential Participants,Jo,ECHO 2 Re-Consent,02/16/2010,Potential Participants,,,,,2010-02-16,,1,,
-SDB837-01-A,888,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,02/16/2010,Potential Participants,,,,,2010-02-16,,0,,
-SDB837-01-A,888,Potential Participants,Jo,ipa_scheduled,02/16/2010,Potential Participants,,,,,2010-02-16,,1,,
+SDB837-01-A,888,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+SDB837-01-A,888,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+SDB837-01-A,888,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+SDB837-01-A,888,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+SDB837-01-A,888,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 SDH473-01-A,954,Potential Participants,Jo,caregiver_survey,05/23/2009,Potential Participants,,,,,2009-05-23,,1,,
 SDH473-01-A,954,Potential Participants,Jo,child_survey,05/23/2009,Potential Participants,,,,,2009-05-23,,0,,
 SDH473-01-A,954,Potential Participants,Jo,ECHO 2 Re-Consent,05/23/2009,Potential Participants,,,,,2009-05-23,,1,,
@@ -4999,11 +4999,11 @@ SGF025-02-A,789,11-17 Year,Jo,child_survey,10/01/2015,11-17 Year,,2024-08-28T00:
 SGF025-02-A,789,11-17 Year,Jo,ECHO 2 Re-Consent,10/01/2015,11-17 Year,,2024-08-28T00:00:00Z,TRUE,2026-07-23,2015-10-01,10,0,,
 SGF025-02-A,789,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,10/01/2015,11-17 Year,,2024-08-28T00:00:00Z,TRUE,2026-07-23,2015-10-01,10,0,,
 SGF025-02-A,789,11-17 Year,Jo,ipa_scheduled,10/01/2015,11-17 Year,,2024-08-28T00:00:00Z,TRUE,2026-07-23,2015-10-01,10,1,Incomplete,0
-SGF997-01-A,350,Potential Participants,Amy,caregiver_survey,01/07/2016,Potential Participants,,,,,2016-01-07,,1,,
-SGF997-01-A,350,Potential Participants,Amy,child_survey,01/07/2016,Potential Participants,,,,,2016-01-07,,0,,
-SGF997-01-A,350,Potential Participants,Amy,ECHO 2 Re-Consent,01/07/2016,Potential Participants,,,,,2016-01-07,,1,,
-SGF997-01-A,350,Potential Participants,Amy,ECHO 2 v3.01 Re-Consent,01/07/2016,Potential Participants,,,,,2016-01-07,,0,,
-SGF997-01-A,350,Potential Participants,Amy,ipa_scheduled,01/07/2016,Potential Participants,,,,,2016-01-07,,1,,
+SGF997-01-A,350,Potential Participants,Amy,caregiver_survey,,,,,,,,,0,,
+SGF997-01-A,350,Potential Participants,Amy,child_survey,,,,,,,,,0,,
+SGF997-01-A,350,Potential Participants,Amy,ECHO 2 Re-Consent,,,,,,,,,0,,
+SGF997-01-A,350,Potential Participants,Amy,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+SGF997-01-A,350,Potential Participants,Amy,ipa_scheduled,,,,,,,,,0,,
 SGS765-01-A,548,6-10 Year,Amy,caregiver_survey,11/19/2018,6-10 Year,2024-03-08T00:00:00Z,2025-02-07T00:00:00Z,TRUE,2026-03-10,2018-11-19,7,1,Complete,1
 SGS765-01-A,548,6-10 Year,Amy,child_survey,11/19/2018,6-10 Year,2024-03-08T00:00:00Z,2025-02-07T00:00:00Z,TRUE,2026-03-10,2018-11-19,7,0,Ineligible,1
 SGS765-01-A,548,6-10 Year,Amy,ECHO 2 Re-Consent,11/19/2018,6-10 Year,2024-03-08T00:00:00Z,2025-02-07T00:00:00Z,TRUE,2026-03-10,2018-11-19,7,0,,
@@ -5164,11 +5164,11 @@ STZ858-01-A,307,3-5 Year,Nicole,child_survey,03/03/2022,3-5 Year,2024-04-11T00:0
 STZ858-01-A,307,3-5 Year,Nicole,ECHO 2 Re-Consent,03/03/2022,3-5 Year,2024-04-11T00:00:00Z,2026-03-09T00:00:00Z,TRUE,2026-03-23,2022-03-03,4,0,,
 STZ858-01-A,307,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,03/03/2022,3-5 Year,2024-04-11T00:00:00Z,2026-03-09T00:00:00Z,TRUE,2026-03-23,2022-03-03,4,1,Complete,1
 STZ858-01-A,307,3-5 Year,Nicole,ipa_scheduled,03/03/2022,3-5 Year,2024-04-11T00:00:00Z,2026-03-09T00:00:00Z,TRUE,2026-03-23,2022-03-03,4,1,Complete,1
-SVC604-01-A,251,Potential Participants,Toye,caregiver_survey,09/06/2020,Potential Participants,,,,,2020-09-06,,1,,
-SVC604-01-A,251,Potential Participants,Toye,child_survey,09/06/2020,Potential Participants,,,,,2020-09-06,,0,,
-SVC604-01-A,251,Potential Participants,Toye,ECHO 2 Re-Consent,09/06/2020,Potential Participants,,,,,2020-09-06,,1,,
-SVC604-01-A,251,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,09/06/2020,Potential Participants,,,,,2020-09-06,,0,,
-SVC604-01-A,251,Potential Participants,Toye,ipa_scheduled,09/06/2020,Potential Participants,,,,,2020-09-06,,1,,
+SVC604-01-A,251,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+SVC604-01-A,251,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+SVC604-01-A,251,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+SVC604-01-A,251,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+SVC604-01-A,251,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 SVH828-01-A,680,3-5 Year,Nicole,caregiver_survey,04/27/2022,3-5 Year,,2024-07-24T00:00:00Z,TRUE,2026-05-04,2022-04-27,4,1,Complete,1
 SVH828-01-A,680,3-5 Year,Nicole,child_survey,04/27/2022,3-5 Year,,2024-07-24T00:00:00Z,TRUE,2026-05-04,2022-04-27,4,0,,
 SVH828-01-A,680,3-5 Year,Nicole,ECHO 2 Re-Consent,04/27/2022,3-5 Year,,2024-07-24T00:00:00Z,TRUE,2026-05-04,2022-04-27,4,0,,
@@ -5184,11 +5184,11 @@ SXJ131-01-A,383,6-10 Year,Jody,child_survey,06/28/2016,6-10 Year,2024-02-09T00:0
 SXJ131-01-A,383,6-10 Year,Jody,ECHO 2 Re-Consent,06/28/2016,6-10 Year,2024-02-09T00:00:00Z,2025-02-09T00:00:00Z,FALSE,,2016-06-28,,0,,
 SXJ131-01-A,383,6-10 Year,Jody,ECHO 2 v3.01 Re-Consent,06/28/2016,6-10 Year,2024-02-09T00:00:00Z,2025-02-09T00:00:00Z,FALSE,,2016-06-28,,0,,
 SXJ131-01-A,383,6-10 Year,Jody,ipa_scheduled,06/28/2016,6-10 Year,2024-02-09T00:00:00Z,2025-02-09T00:00:00Z,FALSE,,2016-06-28,,1,Incomplete,0
-SXX873-01-A,274,Potential Participants,Jody,caregiver_survey,08/26/2019,Withdrawn,,,,,2019-08-26,,0,,
-SXX873-01-A,274,Potential Participants,Jody,child_survey,08/26/2019,Withdrawn,,,,,2019-08-26,,0,,
-SXX873-01-A,274,Potential Participants,Jody,ECHO 2 Re-Consent,08/26/2019,Withdrawn,,,,,2019-08-26,,0,,
-SXX873-01-A,274,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,08/26/2019,Withdrawn,,,,,2019-08-26,,0,,
-SXX873-01-A,274,Potential Participants,Jody,ipa_scheduled,08/26/2019,Withdrawn,,,,,2019-08-26,,0,,
+SXX873-01-A,274,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+SXX873-01-A,274,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+SXX873-01-A,274,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+SXX873-01-A,274,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+SXX873-01-A,274,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 SXZ167-01-A,208,3-5 Year,Nicole,caregiver_survey,09/10/2022,3-5 Year,2024-01-22T00:00:00Z,2024-10-14T00:00:00Z,TRUE,2026-05-15,2022-09-10,3,1,Complete,1
 SXZ167-01-A,208,3-5 Year,Nicole,child_survey,09/10/2022,3-5 Year,2024-01-22T00:00:00Z,2024-10-14T00:00:00Z,TRUE,2026-05-15,2022-09-10,3,0,,
 SXZ167-01-A,208,3-5 Year,Nicole,ECHO 2 Re-Consent,09/10/2022,3-5 Year,2024-01-22T00:00:00Z,2024-10-14T00:00:00Z,TRUE,2026-05-15,2022-09-10,3,0,,
@@ -5214,11 +5214,11 @@ SZF435-01-A,548,11-17 Year,Jo,child_survey,07/08/2015,11-17 Year,,2024-07-15T00:
 SZF435-01-A,548,11-17 Year,Jo,ECHO 2 Re-Consent,07/08/2015,11-17 Year,,2024-07-15T00:00:00Z,TRUE,2026-09-04,2015-07-08,11,0,,
 SZF435-01-A,548,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,07/08/2015,11-17 Year,,2024-07-15T00:00:00Z,TRUE,2026-09-04,2015-07-08,11,0,,
 SZF435-01-A,548,11-17 Year,Jo,ipa_scheduled,07/08/2015,11-17 Year,,2024-07-15T00:00:00Z,TRUE,2026-09-04,2015-07-08,11,1,Complete,1
-TBK288-01-A,152,Potential Participants,Jo,caregiver_survey,03/12/2010,Potential Participants,,,,,2010-03-12,,1,,
-TBK288-01-A,152,Potential Participants,Jo,child_survey,03/12/2010,Potential Participants,,,,,2010-03-12,,0,,
-TBK288-01-A,152,Potential Participants,Jo,ECHO 2 Re-Consent,03/12/2010,Potential Participants,,,,,2010-03-12,,1,,
-TBK288-01-A,152,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,03/12/2010,Potential Participants,,,,,2010-03-12,,0,,
-TBK288-01-A,152,Potential Participants,Jo,ipa_scheduled,03/12/2010,Potential Participants,,,,,2010-03-12,,1,,
+TBK288-01-A,152,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+TBK288-01-A,152,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+TBK288-01-A,152,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+TBK288-01-A,152,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+TBK288-01-A,152,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 TCG434-01-A,822,3-5 Year,Nicole,caregiver_survey,09/01/2021,3-5 Year,,2024-05-29T00:00:00Z,TRUE,2026-07-06,2021-09-01,4,1,Complete,1
 TCG434-01-A,822,3-5 Year,Nicole,child_survey,09/01/2021,3-5 Year,,2024-05-29T00:00:00Z,TRUE,2026-07-06,2021-09-01,4,0,,
 TCG434-01-A,822,3-5 Year,Nicole,ECHO 2 Re-Consent,09/01/2021,3-5 Year,,2024-05-29T00:00:00Z,TRUE,2026-07-06,2021-09-01,4,0,,
@@ -5539,11 +5539,11 @@ TTR638-01-A,944,6-10 Year,Amy,child_survey,12/29/2018,Withdrawn,2024-04-05T00:00
 TTR638-01-A,944,6-10 Year,Amy,ECHO 2 Re-Consent,12/29/2018,Withdrawn,2024-04-05T00:00:00Z,,,,2018-12-29,,0,,
 TTR638-01-A,944,6-10 Year,Amy,ECHO 2 v3.01 Re-Consent,12/29/2018,Withdrawn,2024-04-05T00:00:00Z,,,,2018-12-29,,0,Incomplete,0
 TTR638-01-A,944,6-10 Year,Amy,ipa_scheduled,12/29/2018,Withdrawn,2024-04-05T00:00:00Z,,,,2018-12-29,,0,,
-TVD275-01-A,449,Potential Participants,Toye,caregiver_survey,03/06/2020,ECHO 2 Refusal,,,,,2020-03-06,,0,,
-TVD275-01-A,449,Potential Participants,Toye,child_survey,03/06/2020,ECHO 2 Refusal,,,,,2020-03-06,,0,,
-TVD275-01-A,449,Potential Participants,Toye,ECHO 2 Re-Consent,03/06/2020,ECHO 2 Refusal,,,,,2020-03-06,,0,,
-TVD275-01-A,449,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,03/06/2020,ECHO 2 Refusal,,,,,2020-03-06,,0,,
-TVD275-01-A,449,Potential Participants,Toye,ipa_scheduled,03/06/2020,ECHO 2 Refusal,,,,,2020-03-06,,0,,
+TVD275-01-A,449,Potential Participants,Toye,caregiver_survey,,,,,,,,,0,,
+TVD275-01-A,449,Potential Participants,Toye,child_survey,,,,,,,,,0,,
+TVD275-01-A,449,Potential Participants,Toye,ECHO 2 Re-Consent,,,,,,,,,0,,
+TVD275-01-A,449,Potential Participants,Toye,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+TVD275-01-A,449,Potential Participants,Toye,ipa_scheduled,,,,,,,,,0,,
 TVM525-01-A,680,Potential Participants,Jody,caregiver_survey,07/22/2019,6-10 Year,,2026-05-01T00:00:00Z,FALSE,,2019-07-22,,1,Incomplete,0
 TVM525-01-A,680,Potential Participants,Jody,child_survey,07/22/2019,6-10 Year,,2026-05-01T00:00:00Z,FALSE,,2019-07-22,,0,Incomplete,0
 TVM525-01-A,680,Potential Participants,Jody,ECHO 2 Re-Consent,07/22/2019,6-10 Year,,2026-05-01T00:00:00Z,FALSE,,2019-07-22,,1,Complete,1
@@ -5554,11 +5554,11 @@ TVZ168-01-A,208,Potential Participants,Nicole,child_survey,03/25/2022,Potential 
 TVZ168-01-A,208,Potential Participants,Nicole,ECHO 2 Re-Consent,03/25/2022,Potential Participants,,,,,2022-03-25,,1,,
 TVZ168-01-A,208,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,03/25/2022,Potential Participants,,,,,2022-03-25,,0,,
 TVZ168-01-A,208,Potential Participants,Nicole,ipa_scheduled,03/25/2022,Potential Participants,,,,,2022-03-25,,1,,
-TWB870-01-A,449,Potential Participants,Jody,caregiver_survey,06/22/2016,Potential Participants,,,,,2016-06-22,,1,,
-TWB870-01-A,449,Potential Participants,Jody,child_survey,06/22/2016,Potential Participants,,,,,2016-06-22,,0,,
-TWB870-01-A,449,Potential Participants,Jody,ECHO 2 Re-Consent,06/22/2016,Potential Participants,,,,,2016-06-22,,1,,
-TWB870-01-A,449,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,06/22/2016,Potential Participants,,,,,2016-06-22,,0,,
-TWB870-01-A,449,Potential Participants,Jody,ipa_scheduled,06/22/2016,Potential Participants,,,,,2016-06-22,,1,,
+TWB870-01-A,449,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+TWB870-01-A,449,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+TWB870-01-A,449,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+TWB870-01-A,449,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+TWB870-01-A,449,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 TWD966-01-A,713,6-10 Year,Jody,caregiver_survey,10/09/2018,6-10 Year,2024-04-09T00:00:00Z,2026-03-12T00:00:00Z,FALSE,,2018-10-09,,1,Incomplete,0
 TWD966-01-A,713,6-10 Year,Jody,child_survey,10/09/2018,6-10 Year,2024-04-09T00:00:00Z,2026-03-12T00:00:00Z,FALSE,,2018-10-09,,0,Incomplete,0
 TWD966-01-A,713,6-10 Year,Jody,ECHO 2 Re-Consent,10/09/2018,6-10 Year,2024-04-09T00:00:00Z,2026-03-12T00:00:00Z,FALSE,,2018-10-09,,0,,
@@ -5839,11 +5839,11 @@ VPN686-01-A,845,Potential Participants,Jody,child_survey,08/16/2018,Potential Pa
 VPN686-01-A,845,Potential Participants,Jody,ECHO 2 Re-Consent,08/16/2018,Potential Participants,,,,,2018-08-16,,1,,
 VPN686-01-A,845,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,08/16/2018,Potential Participants,,,,,2018-08-16,,0,,
 VPN686-01-A,845,Potential Participants,Jody,ipa_scheduled,08/16/2018,Potential Participants,,,,,2018-08-16,,1,,
-VPY064-01-A,878,Potential Participants,Jody,caregiver_survey,06/23/2017,Withdrawn,,,,,2017-06-23,,0,,
-VPY064-01-A,878,Potential Participants,Jody,child_survey,06/23/2017,Withdrawn,,,,,2017-06-23,,0,,
-VPY064-01-A,878,Potential Participants,Jody,ECHO 2 Re-Consent,06/23/2017,Withdrawn,,,,,2017-06-23,,0,,
-VPY064-01-A,878,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,06/23/2017,Withdrawn,,,,,2017-06-23,,0,,
-VPY064-01-A,878,Potential Participants,Jody,ipa_scheduled,06/23/2017,Withdrawn,,,,,2017-06-23,,0,,
+VPY064-01-A,878,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+VPY064-01-A,878,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+VPY064-01-A,878,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+VPY064-01-A,878,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+VPY064-01-A,878,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 VQF365-01-A,416,3-5 Year,Nicole,caregiver_survey,11/16/2022,3-5 Year,,2024-11-05T00:00:00Z,FALSE,,2022-11-16,,1,Incomplete,0
 VQF365-01-A,416,3-5 Year,Nicole,child_survey,11/16/2022,3-5 Year,,2024-11-05T00:00:00Z,FALSE,,2022-11-16,,0,,
 VQF365-01-A,416,3-5 Year,Nicole,ECHO 2 Re-Consent,11/16/2022,3-5 Year,,2024-11-05T00:00:00Z,FALSE,,2022-11-16,,0,,
@@ -5959,11 +5959,11 @@ VWT853-01-A,142,Potential Participants,Nicole,child_survey,03/17/2022,Potential 
 VWT853-01-A,142,Potential Participants,Nicole,ECHO 2 Re-Consent,03/17/2022,Potential Participants,,,,,2022-03-17,,1,,
 VWT853-01-A,142,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,03/17/2022,Potential Participants,,,,,2022-03-17,,0,,
 VWT853-01-A,142,Potential Participants,Nicole,ipa_scheduled,03/17/2022,Potential Participants,,,,,2022-03-17,,1,,
-VWW669-01-A,406,Potential Participants,Jo,caregiver_survey,08/15/2009,Potential Participants,,,,,2009-08-15,,1,,
-VWW669-01-A,406,Potential Participants,Jo,child_survey,08/15/2009,Potential Participants,,,,,2009-08-15,,0,,
-VWW669-01-A,406,Potential Participants,Jo,ECHO 2 Re-Consent,08/15/2009,Potential Participants,,,,,2009-08-15,,1,,
-VWW669-01-A,406,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,08/15/2009,Potential Participants,,,,,2009-08-15,,0,,
-VWW669-01-A,406,Potential Participants,Jo,ipa_scheduled,08/15/2009,Potential Participants,,,,,2009-08-15,,1,,
+VWW669-01-A,406,Potential Participants,Jo,caregiver_survey,,,,,,,,,0,,
+VWW669-01-A,406,Potential Participants,Jo,child_survey,,,,,,,,,0,,
+VWW669-01-A,406,Potential Participants,Jo,ECHO 2 Re-Consent,,,,,,,,,0,,
+VWW669-01-A,406,Potential Participants,Jo,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+VWW669-01-A,406,Potential Participants,Jo,ipa_scheduled,,,,,,,,,0,,
 VWX418-01-A,175,3-5 Year,Nicole,caregiver_survey,11/09/2022,3-5 Year,2024-01-22T00:00:00Z,2025-01-12T00:00:00Z,TRUE,2026-05-27,2022-11-09,3,1,Complete,1
 VWX418-01-A,175,3-5 Year,Nicole,child_survey,11/09/2022,3-5 Year,2024-01-22T00:00:00Z,2025-01-12T00:00:00Z,TRUE,2026-05-27,2022-11-09,3,0,,
 VWX418-01-A,175,3-5 Year,Nicole,ECHO 2 Re-Consent,11/09/2022,3-5 Year,2024-01-22T00:00:00Z,2025-01-12T00:00:00Z,TRUE,2026-05-27,2022-11-09,3,0,,
@@ -5974,11 +5974,11 @@ VWY523-01-A,109,Potential Participants,Amy,child_survey,03/31/2019,Potential Par
 VWY523-01-A,109,Potential Participants,Amy,ECHO 2 Re-Consent,03/31/2019,Potential Participants,,,,,2019-03-31,,1,,
 VWY523-01-A,109,Potential Participants,Amy,ECHO 2 v3.01 Re-Consent,03/31/2019,Potential Participants,,,,,2019-03-31,,0,,
 VWY523-01-A,109,Potential Participants,Amy,ipa_scheduled,03/31/2019,Potential Participants,,,,,2019-03-31,,1,,
-VXC560-01-A,449,Potential Participants,Jody,caregiver_survey,12/21/2018,Potential Participants,,,,,2018-12-21,,1,,
-VXC560-01-A,449,Potential Participants,Jody,child_survey,12/21/2018,Potential Participants,,,,,2018-12-21,,0,,
-VXC560-01-A,449,Potential Participants,Jody,ECHO 2 Re-Consent,12/21/2018,Potential Participants,,,,,2018-12-21,,1,,
-VXC560-01-A,449,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,12/21/2018,Potential Participants,,,,,2018-12-21,,0,,
-VXC560-01-A,449,Potential Participants,Jody,ipa_scheduled,12/21/2018,Potential Participants,,,,,2018-12-21,,1,,
+VXC560-01-A,449,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+VXC560-01-A,449,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+VXC560-01-A,449,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+VXC560-01-A,449,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+VXC560-01-A,449,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 VXC743-01-A,548,6-10 Year,Jody,caregiver_survey,10/26/2016,6-10 Year,2024-02-13T00:00:00Z,2026-02-13T00:00:00Z,TRUE,2026-03-03,2016-10-26,9,1,Complete,1
 VXC743-01-A,548,6-10 Year,Jody,child_survey,10/26/2016,6-10 Year,2024-02-13T00:00:00Z,2026-02-13T00:00:00Z,TRUE,2026-03-03,2016-10-26,9,1,Complete,1
 VXC743-01-A,548,6-10 Year,Jody,ECHO 2 Re-Consent,10/26/2016,6-10 Year,2024-02-13T00:00:00Z,2026-02-13T00:00:00Z,TRUE,2026-03-03,2016-10-26,9,0,,
@@ -6034,11 +6034,11 @@ WBH589-01-A,284,11-17 Year,Jo,child_survey,11/02/2010,11-17 Year,,2024-09-22T00:
 WBH589-01-A,284,11-17 Year,Jo,ECHO 2 Re-Consent,11/02/2010,11-17 Year,,2024-09-22T00:00:00Z,TRUE,2026-08-10,2010-11-02,15,0,,
 WBH589-01-A,284,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,11/02/2010,11-17 Year,,2024-09-22T00:00:00Z,TRUE,2026-08-10,2010-11-02,15,0,,
 WBH589-01-A,284,11-17 Year,Jo,ipa_scheduled,11/02/2010,11-17 Year,,2024-09-22T00:00:00Z,TRUE,2026-08-10,2010-11-02,15,1,Complete,1
-WCZ411-01-A,383,Potential Participants,Nicole,caregiver_survey,05/23/2021,Potential Participants,,,,,2021-05-23,,1,,
-WCZ411-01-A,383,Potential Participants,Nicole,child_survey,05/23/2021,Potential Participants,,,,,2021-05-23,,0,,
-WCZ411-01-A,383,Potential Participants,Nicole,ECHO 2 Re-Consent,05/23/2021,Potential Participants,,,,,2021-05-23,,1,,
-WCZ411-01-A,383,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,05/23/2021,Potential Participants,,,,,2021-05-23,,0,,
-WCZ411-01-A,383,Potential Participants,Nicole,ipa_scheduled,05/23/2021,Potential Participants,,,,,2021-05-23,,1,,
+WCZ411-01-A,383,Potential Participants,Nicole,caregiver_survey,,,,,,,,,0,,
+WCZ411-01-A,383,Potential Participants,Nicole,child_survey,,,,,,,,,0,,
+WCZ411-01-A,383,Potential Participants,Nicole,ECHO 2 Re-Consent,,,,,,,,,0,,
+WCZ411-01-A,383,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+WCZ411-01-A,383,Potential Participants,Nicole,ipa_scheduled,,,,,,,,,0,,
 WDB499-01-A,152,6-10 Year,Jody,caregiver_survey,06/02/2018,6-10 Year,2024-03-15T00:00:00Z,2026-03-11T00:00:00Z,FALSE,,2018-06-02,,1,Incomplete,0
 WDB499-01-A,152,6-10 Year,Jody,child_survey,06/02/2018,6-10 Year,2024-03-15T00:00:00Z,2026-03-11T00:00:00Z,FALSE,,2018-06-02,,0,Incomplete,0
 WDB499-01-A,152,6-10 Year,Jody,ECHO 2 Re-Consent,06/02/2018,6-10 Year,2024-03-15T00:00:00Z,2026-03-11T00:00:00Z,FALSE,,2018-06-02,,0,,
@@ -6104,11 +6104,11 @@ WGH698-01-A,482,3-5 Year,Nicole,child_survey,03/20/2023,3-5 Year,,2024-05-31T00:
 WGH698-01-A,482,3-5 Year,Nicole,ECHO 2 Re-Consent,03/20/2023,3-5 Year,,2024-05-31T00:00:00Z,TRUE,2026-05-22,2023-03-20,3,0,,
 WGH698-01-A,482,3-5 Year,Nicole,ECHO 2 v3.01 Re-Consent,03/20/2023,3-5 Year,,2024-05-31T00:00:00Z,TRUE,2026-05-22,2023-03-20,3,0,,
 WGH698-01-A,482,3-5 Year,Nicole,ipa_scheduled,03/20/2023,3-5 Year,,2024-05-31T00:00:00Z,TRUE,2026-05-22,2023-03-20,3,1,Complete,1
-WGJ956-01-A,449,11-17 Year,Jo,caregiver_survey,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,FALSE,,2011-03-31,,1,Incomplete,0
-WGJ956-01-A,449,11-17 Year,Jo,child_survey,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,FALSE,,2011-03-31,,0,Incomplete,0
-WGJ956-01-A,449,11-17 Year,Jo,ECHO 2 Re-Consent,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,FALSE,,2011-03-31,,0,,
-WGJ956-01-A,449,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,FALSE,,2011-03-31,,0,,
-WGJ956-01-A,449,11-17 Year,Jo,ipa_scheduled,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,FALSE,,2011-03-31,,1,Complete,1
+WGJ956-01-A,449,11-17 Year,Jo,caregiver_survey,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,TRUE,2026-10-12,2011-03-31,15,1,Complete,1
+WGJ956-01-A,449,11-17 Year,Jo,child_survey,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,TRUE,2026-10-12,2011-03-31,15,1,Complete,1
+WGJ956-01-A,449,11-17 Year,Jo,ECHO 2 Re-Consent,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,TRUE,2026-10-12,2011-03-31,15,0,,
+WGJ956-01-A,449,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,TRUE,2026-10-12,2011-03-31,15,0,,
+WGJ956-01-A,449,11-17 Year,Jo,ipa_scheduled,03/31/2011,11-17 Year,,2024-08-06T00:00:00Z,TRUE,2026-10-12,2011-03-31,15,1,Complete,1
 WGQ246-01-A,416,6-10 Year,Jody,caregiver_survey,08/10/2016,6-10 Year,,2026-02-20T00:00:00Z,TRUE,2026-04-28,2016-08-10,9,1,Complete,1
 WGQ246-01-A,416,6-10 Year,Jody,child_survey,08/10/2016,6-10 Year,,2026-02-20T00:00:00Z,TRUE,2026-04-28,2016-08-10,9,1,Complete,1
 WGQ246-01-A,416,6-10 Year,Jody,ECHO 2 Re-Consent,08/10/2016,6-10 Year,,2026-02-20T00:00:00Z,TRUE,2026-04-28,2016-08-10,9,1,Complete,1
@@ -6479,11 +6479,11 @@ XKF863-01-A,383,11-17 Year,Jo,child_survey,12/04/2013,11-17 Year,,2024-10-29T00:
 XKF863-01-A,383,11-17 Year,Jo,ECHO 2 Re-Consent,12/04/2013,11-17 Year,,2024-10-29T00:00:00Z,TRUE,2026-03-09,2013-12-04,12,0,,
 XKF863-01-A,383,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,12/04/2013,11-17 Year,,2024-10-29T00:00:00Z,TRUE,2026-03-09,2013-12-04,12,0,,
 XKF863-01-A,383,11-17 Year,Jo,ipa_scheduled,12/04/2013,11-17 Year,,2024-10-29T00:00:00Z,TRUE,2026-03-09,2013-12-04,12,1,Complete,1
-XKK645-01-A,482,Potential Participants,Nicole,caregiver_survey,09/06/2022,ECHO 2 Refusal,,,,,2022-09-06,,0,,
-XKK645-01-A,482,Potential Participants,Nicole,child_survey,09/06/2022,ECHO 2 Refusal,,,,,2022-09-06,,0,,
-XKK645-01-A,482,Potential Participants,Nicole,ECHO 2 Re-Consent,09/06/2022,ECHO 2 Refusal,,,,,2022-09-06,,0,,
-XKK645-01-A,482,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,09/06/2022,ECHO 2 Refusal,,,,,2022-09-06,,0,,
-XKK645-01-A,482,Potential Participants,Nicole,ipa_scheduled,09/06/2022,ECHO 2 Refusal,,,,,2022-09-06,,0,,
+XKK645-01-A,482,Potential Participants,Nicole,caregiver_survey,,,,,,,,,0,,
+XKK645-01-A,482,Potential Participants,Nicole,child_survey,,,,,,,,,0,,
+XKK645-01-A,482,Potential Participants,Nicole,ECHO 2 Re-Consent,,,,,,,,,0,,
+XKK645-01-A,482,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+XKK645-01-A,482,Potential Participants,Nicole,ipa_scheduled,,,,,,,,,0,,
 XKM202-01-A,185,6-10 Year,Jody,caregiver_survey,06/06/2019,6-10 Year,2024-02-27T00:00:00Z,2025-02-17T00:00:00Z,FALSE,,2019-06-06,,1,Incomplete,0
 XKM202-01-A,185,6-10 Year,Jody,child_survey,06/06/2019,6-10 Year,2024-02-27T00:00:00Z,2025-02-17T00:00:00Z,FALSE,,2019-06-06,,0,Incomplete,0
 XKM202-01-A,185,6-10 Year,Jody,ECHO 2 Re-Consent,06/06/2019,6-10 Year,2024-02-27T00:00:00Z,2025-02-17T00:00:00Z,FALSE,,2019-06-06,,0,,
@@ -6509,11 +6509,11 @@ XMH232-01-A,185,6-10 Year,Amy,child_survey,01/04/2019,6-10 Year,2024-02-27T00:00
 XMH232-01-A,185,6-10 Year,Amy,ECHO 2 Re-Consent,01/04/2019,6-10 Year,2024-02-27T00:00:00Z,2025-02-14T00:00:00Z,TRUE,2026-05-21,2019-01-04,7,0,,
 XMH232-01-A,185,6-10 Year,Amy,ECHO 2 v3.01 Re-Consent,01/04/2019,6-10 Year,2024-02-27T00:00:00Z,2025-02-14T00:00:00Z,TRUE,2026-05-21,2019-01-04,7,0,,
 XMH232-01-A,185,6-10 Year,Amy,ipa_scheduled,01/04/2019,6-10 Year,2024-02-27T00:00:00Z,2025-02-14T00:00:00Z,TRUE,2026-05-21,2019-01-04,7,1,Complete,1
-XMK732-01-A,449,Potential Participants,Jody,caregiver_survey,10/09/2016,Potential Participants,,,,,2016-10-09,,1,,
-XMK732-01-A,449,Potential Participants,Jody,child_survey,10/09/2016,Potential Participants,,,,,2016-10-09,,0,,
-XMK732-01-A,449,Potential Participants,Jody,ECHO 2 Re-Consent,10/09/2016,Potential Participants,,,,,2016-10-09,,1,,
-XMK732-01-A,449,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,10/09/2016,Potential Participants,,,,,2016-10-09,,0,,
-XMK732-01-A,449,Potential Participants,Jody,ipa_scheduled,10/09/2016,Potential Participants,,,,,2016-10-09,,1,,
+XMK732-01-A,449,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+XMK732-01-A,449,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+XMK732-01-A,449,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+XMK732-01-A,449,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+XMK732-01-A,449,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 XMR094-01-A,713,3-5 Year,Nicole,caregiver_survey,10/09/2022,3-5 Year,2024-02-29T00:00:00Z,2024-12-29T00:00:00Z,TRUE,2026-05-19,2022-10-09,3,1,Complete,1
 XMR094-01-A,713,3-5 Year,Nicole,child_survey,10/09/2022,3-5 Year,2024-02-29T00:00:00Z,2024-12-29T00:00:00Z,TRUE,2026-05-19,2022-10-09,3,0,,
 XMR094-01-A,713,3-5 Year,Nicole,ECHO 2 Re-Consent,10/09/2022,3-5 Year,2024-02-29T00:00:00Z,2024-12-29T00:00:00Z,TRUE,2026-05-19,2022-10-09,3,0,,
@@ -6644,11 +6644,11 @@ XVL743-01-A,845,6-10 Year,Jody,child_survey,08/24/2018,6-10 Year,2024-04-19T00:0
 XVL743-01-A,845,6-10 Year,Jody,ECHO 2 Re-Consent,08/24/2018,6-10 Year,2024-04-19T00:00:00Z,2025-04-02T00:00:00Z,TRUE,2026-05-15,2018-08-24,7,0,,
 XVL743-01-A,845,6-10 Year,Jody,ECHO 2 v3.01 Re-Consent,08/24/2018,6-10 Year,2024-04-19T00:00:00Z,2025-04-02T00:00:00Z,TRUE,2026-05-15,2018-08-24,7,0,,
 XVL743-01-A,845,6-10 Year,Jody,ipa_scheduled,08/24/2018,6-10 Year,2024-04-19T00:00:00Z,2025-04-02T00:00:00Z,TRUE,2026-05-15,2018-08-24,7,1,Complete,1
-XVW921-01-A,142,Potential Participants,Jody,caregiver_survey,10/05/2018,Withdrawn,,,,,2018-10-05,,0,,
-XVW921-01-A,142,Potential Participants,Jody,child_survey,10/05/2018,Withdrawn,,,,,2018-10-05,,0,,
-XVW921-01-A,142,Potential Participants,Jody,ECHO 2 Re-Consent,10/05/2018,Withdrawn,,,,,2018-10-05,,0,,
-XVW921-01-A,142,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,10/05/2018,Withdrawn,,,,,2018-10-05,,0,,
-XVW921-01-A,142,Potential Participants,Jody,ipa_scheduled,10/05/2018,Withdrawn,,,,,2018-10-05,,0,,
+XVW921-01-A,142,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+XVW921-01-A,142,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+XVW921-01-A,142,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+XVW921-01-A,142,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+XVW921-01-A,142,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 XWH745-01-A,812,Potential Participants,Jo,caregiver_survey,07/12/2011,Potential Participants,,,,,2011-07-12,,1,,
 XWH745-01-A,812,Potential Participants,Jo,child_survey,07/12/2011,Potential Participants,,,,,2011-07-12,,0,,
 XWH745-01-A,812,Potential Participants,Jo,ECHO 2 Re-Consent,07/12/2011,Potential Participants,,,,,2011-07-12,,1,,
@@ -6744,11 +6744,11 @@ YDG462-01-A,153,11-17 Year,Jo,child_survey,07/25/2009,11-17 Year,,2024-07-30T00:
 YDG462-01-A,153,11-17 Year,Jo,ECHO 2 Re-Consent,07/25/2009,11-17 Year,,2024-07-30T00:00:00Z,TRUE,2026-05-01,2009-07-25,16,0,,
 YDG462-01-A,153,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,07/25/2009,11-17 Year,,2024-07-30T00:00:00Z,TRUE,2026-05-01,2009-07-25,16,0,,
 YDG462-01-A,153,11-17 Year,Jo,ipa_scheduled,07/25/2009,11-17 Year,,2024-07-30T00:00:00Z,TRUE,2026-05-01,2009-07-25,16,1,Incomplete,0
-YDP643-01-A,383,Potential Participants,Jody,caregiver_survey,09/28/2018,Withdrawn,,,,,2018-09-28,,0,,
-YDP643-01-A,383,Potential Participants,Jody,child_survey,09/28/2018,Withdrawn,,,,,2018-09-28,,0,,
-YDP643-01-A,383,Potential Participants,Jody,ECHO 2 Re-Consent,09/28/2018,Withdrawn,,,,,2018-09-28,,0,,
-YDP643-01-A,383,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,09/28/2018,Withdrawn,,,,,2018-09-28,,0,,
-YDP643-01-A,383,Potential Participants,Jody,ipa_scheduled,09/28/2018,Withdrawn,,,,,2018-09-28,,0,,
+YDP643-01-A,383,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+YDP643-01-A,383,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+YDP643-01-A,383,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+YDP643-01-A,383,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+YDP643-01-A,383,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 YDW028-01-A,515,3-5 Year,Nicole,caregiver_survey,11/05/2022,3-5 Year,2024-03-01T00:00:00Z,2025-01-06T00:00:00Z,TRUE,2026-04-24,2022-11-05,3,1,Complete,1
 YDW028-01-A,515,3-5 Year,Nicole,child_survey,11/05/2022,3-5 Year,2024-03-01T00:00:00Z,2025-01-06T00:00:00Z,TRUE,2026-04-24,2022-11-05,3,0,,
 YDW028-01-A,515,3-5 Year,Nicole,ECHO 2 Re-Consent,11/05/2022,3-5 Year,2024-03-01T00:00:00Z,2025-01-06T00:00:00Z,TRUE,2026-04-24,2022-11-05,3,0,,
@@ -6809,11 +6809,11 @@ YHR839-01-A,812,6-10 Year,Amy,child_survey,03/22/2019,6-10 Year,2024-01-30T00:00
 YHR839-01-A,812,6-10 Year,Amy,ECHO 2 Re-Consent,03/22/2019,6-10 Year,2024-01-30T00:00:00Z,2025-02-12T00:00:00Z,TRUE,2026-06-11,2019-03-22,7,0,,
 YHR839-01-A,812,6-10 Year,Amy,ECHO 2 v3.01 Re-Consent,03/22/2019,6-10 Year,2024-01-30T00:00:00Z,2025-02-12T00:00:00Z,TRUE,2026-06-11,2019-03-22,7,0,,
 YHR839-01-A,812,6-10 Year,Amy,ipa_scheduled,03/22/2019,6-10 Year,2024-01-30T00:00:00Z,2025-02-12T00:00:00Z,TRUE,2026-06-11,2019-03-22,7,1,Incomplete,0
-YHV034-01-A,515,Potential Participants,Jody,caregiver_survey,09/05/2018,Withdrawn,,,,,2018-09-05,,0,,
-YHV034-01-A,515,Potential Participants,Jody,child_survey,09/05/2018,Withdrawn,,,,,2018-09-05,,0,,
-YHV034-01-A,515,Potential Participants,Jody,ECHO 2 Re-Consent,09/05/2018,Withdrawn,,,,,2018-09-05,,0,,
-YHV034-01-A,515,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,09/05/2018,Withdrawn,,,,,2018-09-05,,0,,
-YHV034-01-A,515,Potential Participants,Jody,ipa_scheduled,09/05/2018,Withdrawn,,,,,2018-09-05,,0,,
+YHV034-01-A,515,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+YHV034-01-A,515,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+YHV034-01-A,515,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+YHV034-01-A,515,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+YHV034-01-A,515,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 YHX112-01-A,482,6-10 Year,Jody,caregiver_survey,12/10/2016,6-10 Year,,2026-02-16T00:00:00Z,TRUE,2026-03-12,2016-12-10,9,1,Complete,1
 YHX112-01-A,482,6-10 Year,Jody,child_survey,12/10/2016,6-10 Year,,2026-02-16T00:00:00Z,TRUE,2026-03-12,2016-12-10,9,1,Complete,1
 YHX112-01-A,482,6-10 Year,Jody,ECHO 2 Re-Consent,12/10/2016,6-10 Year,,2026-02-16T00:00:00Z,TRUE,2026-03-12,2016-12-10,9,1,Complete,1
@@ -6989,11 +6989,11 @@ YVB489-01-A,779,11-17 Year,Jo,child_survey,04/14/2013,11-17 Year,,2024-11-17T00:
 YVB489-01-A,779,11-17 Year,Jo,ECHO 2 Re-Consent,04/14/2013,11-17 Year,,2024-11-17T00:00:00Z,TRUE,2026-04-05,2013-04-14,12,0,,
 YVB489-01-A,779,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,04/14/2013,11-17 Year,,2024-11-17T00:00:00Z,TRUE,2026-04-05,2013-04-14,12,0,,
 YVB489-01-A,779,11-17 Year,Jo,ipa_scheduled,04/14/2013,11-17 Year,,2024-11-17T00:00:00Z,TRUE,2026-04-05,2013-04-14,12,1,Incomplete,0
-YVD652-01-A,581,Potential Participants,Nicole,caregiver_survey,02/27/2022,ECHO 2 Refusal,,,,,2022-02-27,,0,,
-YVD652-01-A,581,Potential Participants,Nicole,child_survey,02/27/2022,ECHO 2 Refusal,,,,,2022-02-27,,0,,
-YVD652-01-A,581,Potential Participants,Nicole,ECHO 2 Re-Consent,02/27/2022,ECHO 2 Refusal,,,,,2022-02-27,,0,,
-YVD652-01-A,581,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,02/27/2022,ECHO 2 Refusal,,,,,2022-02-27,,0,,
-YVD652-01-A,581,Potential Participants,Nicole,ipa_scheduled,02/27/2022,ECHO 2 Refusal,,,,,2022-02-27,,0,,
+YVD652-01-A,581,Potential Participants,Nicole,caregiver_survey,,,,,,,,,0,,
+YVD652-01-A,581,Potential Participants,Nicole,child_survey,,,,,,,,,0,,
+YVD652-01-A,581,Potential Participants,Nicole,ECHO 2 Re-Consent,,,,,,,,,0,,
+YVD652-01-A,581,Potential Participants,Nicole,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+YVD652-01-A,581,Potential Participants,Nicole,ipa_scheduled,,,,,,,,,0,,
 YVL672-01-A,911,Potential Participants,Jody,caregiver_survey,08/24/2018,Potential Participants,,,,,2018-08-24,,1,,
 YVL672-01-A,911,Potential Participants,Jody,child_survey,08/24/2018,Potential Participants,,,,,2018-08-24,,0,,
 YVL672-01-A,911,Potential Participants,Jody,ECHO 2 Re-Consent,08/24/2018,Potential Participants,,,,,2018-08-24,,1,,
@@ -7069,11 +7069,11 @@ ZBP753-01-A,416,6-10 Year,Amy,child_survey,03/28/2019,6-10 Year,2024-03-18T00:00
 ZBP753-01-A,416,6-10 Year,Amy,ECHO 2 Re-Consent,03/28/2019,6-10 Year,2024-03-18T00:00:00Z,,FALSE,,2019-03-28,,0,,
 ZBP753-01-A,416,6-10 Year,Amy,ECHO 2 v3.01 Re-Consent,03/28/2019,6-10 Year,2024-03-18T00:00:00Z,,FALSE,,2019-03-28,,1,Incomplete,0
 ZBP753-01-A,416,6-10 Year,Amy,ipa_scheduled,03/28/2019,6-10 Year,2024-03-18T00:00:00Z,,FALSE,,2019-03-28,,1,Incomplete,0
-ZBS601-01-A,251,Potential Participants,Jody,caregiver_survey,10/29/2019,Potential Participants,,,,,2019-10-29,,1,,
-ZBS601-01-A,251,Potential Participants,Jody,child_survey,10/29/2019,Potential Participants,,,,,2019-10-29,,0,,
-ZBS601-01-A,251,Potential Participants,Jody,ECHO 2 Re-Consent,10/29/2019,Potential Participants,,,,,2019-10-29,,1,,
-ZBS601-01-A,251,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,10/29/2019,Potential Participants,,,,,2019-10-29,,0,,
-ZBS601-01-A,251,Potential Participants,Jody,ipa_scheduled,10/29/2019,Potential Participants,,,,,2019-10-29,,1,,
+ZBS601-01-A,251,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+ZBS601-01-A,251,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+ZBS601-01-A,251,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+ZBS601-01-A,251,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+ZBS601-01-A,251,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 ZCR636-01-A,515,Potential Participants,Nicole,caregiver_survey,02/19/2022,3-5 Year,,2026-05-01T00:00:00Z,TRUE,2026-05-29,2022-02-19,4,1,Complete,1
 ZCR636-01-A,515,Potential Participants,Nicole,child_survey,02/19/2022,3-5 Year,,2026-05-01T00:00:00Z,TRUE,2026-05-29,2022-02-19,4,0,,
 ZCR636-01-A,515,Potential Participants,Nicole,ECHO 2 Re-Consent,02/19/2022,3-5 Year,,2026-05-01T00:00:00Z,TRUE,2026-05-29,2022-02-19,4,1,Complete,1
@@ -7169,16 +7169,16 @@ ZLN940-01-A,614,11-17 Year,Jo,child_survey,08/02/2012,11-17 Year,,2024-11-21T00:
 ZLN940-01-A,614,11-17 Year,Jo,ECHO 2 Re-Consent,08/02/2012,11-17 Year,,2024-11-21T00:00:00Z,TRUE,2026-03-27,2012-08-02,13,0,,
 ZLN940-01-A,614,11-17 Year,Jo,ECHO 2 v3.01 Re-Consent,08/02/2012,11-17 Year,,2024-11-21T00:00:00Z,TRUE,2026-03-27,2012-08-02,13,0,,
 ZLN940-01-A,614,11-17 Year,Jo,ipa_scheduled,08/02/2012,11-17 Year,,2024-11-21T00:00:00Z,TRUE,2026-03-27,2012-08-02,13,1,Incomplete,0
-ZMC796-01-M,989,Potential Participants,Jody,caregiver_survey,11/05/2018,Potential Participants,,,,,2018-11-05,,1,,
-ZMC796-01-M,989,Potential Participants,Jody,child_survey,11/05/2018,Potential Participants,,,,,2018-11-05,,0,,
-ZMC796-01-M,989,Potential Participants,Jody,ECHO 2 Re-Consent,11/05/2018,Potential Participants,,,,,2018-11-05,,1,,
-ZMC796-01-M,989,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,11/05/2018,Potential Participants,,,,,2018-11-05,,0,,
-ZMC796-01-M,989,Potential Participants,Jody,ipa_scheduled,11/05/2018,Potential Participants,,,,,2018-11-05,,1,,
-ZMC796-01-N,123,Potential Participants,Jody,caregiver_survey,11/05/2018,Potential Participants,,,,,2018-11-05,,1,,
-ZMC796-01-N,123,Potential Participants,Jody,child_survey,11/05/2018,Potential Participants,,,,,2018-11-05,,0,,
-ZMC796-01-N,123,Potential Participants,Jody,ECHO 2 Re-Consent,11/05/2018,Potential Participants,,,,,2018-11-05,,1,,
-ZMC796-01-N,123,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,11/05/2018,Potential Participants,,,,,2018-11-05,,0,,
-ZMC796-01-N,123,Potential Participants,Jody,ipa_scheduled,11/05/2018,Potential Participants,,,,,2018-11-05,,1,,
+ZMC796-01-M,989,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+ZMC796-01-M,989,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+ZMC796-01-M,989,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+ZMC796-01-M,989,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+ZMC796-01-M,989,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
+ZMC796-01-N,123,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+ZMC796-01-N,123,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+ZMC796-01-N,123,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+ZMC796-01-N,123,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+ZMC796-01-N,123,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 ZMF471-01-A,350,Potential Participants,Amy,caregiver_survey,05/18/2019,Potential Participants,,,,,2019-05-18,,1,,
 ZMF471-01-A,350,Potential Participants,Amy,child_survey,05/18/2019,Potential Participants,,,,,2019-05-18,,0,,
 ZMF471-01-A,350,Potential Participants,Amy,ECHO 2 Re-Consent,05/18/2019,Potential Participants,,,,,2019-05-18,,1,,
@@ -7219,11 +7219,11 @@ ZPB972-01-A,515,Potential Participants,Jody,child_survey,04/26/2020,Potential Pa
 ZPB972-01-A,515,Potential Participants,Jody,ECHO 2 Re-Consent,04/26/2020,Potential Participants,,,,,2020-04-26,,1,,
 ZPB972-01-A,515,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,04/26/2020,Potential Participants,,,,,2020-04-26,,0,,
 ZPB972-01-A,515,Potential Participants,Jody,ipa_scheduled,04/26/2020,Potential Participants,,,,,2020-04-26,,1,,
-ZPF284-01-A,515,Potential Participants,Jody,caregiver_survey,04/25/2016,Potential Participants,,,,,2016-04-25,,1,,
-ZPF284-01-A,515,Potential Participants,Jody,child_survey,04/25/2016,Potential Participants,,,,,2016-04-25,,0,,
-ZPF284-01-A,515,Potential Participants,Jody,ECHO 2 Re-Consent,04/25/2016,Potential Participants,,,,,2016-04-25,,1,,
-ZPF284-01-A,515,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,04/25/2016,Potential Participants,,,,,2016-04-25,,0,,
-ZPF284-01-A,515,Potential Participants,Jody,ipa_scheduled,04/25/2016,Potential Participants,,,,,2016-04-25,,1,,
+ZPF284-01-A,515,Potential Participants,Jody,caregiver_survey,,,,,,,,,0,,
+ZPF284-01-A,515,Potential Participants,Jody,child_survey,,,,,,,,,0,,
+ZPF284-01-A,515,Potential Participants,Jody,ECHO 2 Re-Consent,,,,,,,,,0,,
+ZPF284-01-A,515,Potential Participants,Jody,ECHO 2 v3.01 Re-Consent,,,,,,,,,0,,
+ZPF284-01-A,515,Potential Participants,Jody,ipa_scheduled,,,,,,,,,0,,
 ZPR445-01-A,878,11-17 Year,Jo,caregiver_survey,04/15/2010,11-17 Year,2024-03-27T00:00:00Z,2025-02-24T00:00:00Z,TRUE,2026-03-24,2010-04-15,15,1,Complete,1
 ZPR445-01-A,878,11-17 Year,Jo,child_survey,04/15/2010,11-17 Year,2024-03-27T00:00:00Z,2025-02-24T00:00:00Z,TRUE,2026-03-24,2010-04-15,15,1,Complete,1
 ZPR445-01-A,878,11-17 Year,Jo,ECHO 2 Re-Consent,04/15/2010,11-17 Year,2024-03-27T00:00:00Z,2025-02-24T00:00:00Z,TRUE,2026-03-24,2010-04-15,15,0,,
