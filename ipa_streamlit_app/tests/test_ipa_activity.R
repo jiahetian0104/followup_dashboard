@@ -155,3 +155,40 @@ tied_out <- build_ipa_activity_exports(bind_rows(prev,tied),new_p,new_map)
 stopifnot(tied_out$participant_ipa_records.csv$`Completion FTM`[
   tied_out$participant_ipa_records.csv$`IPA Complete`] == 'Pending verification')
 cat('Expanded completion evidence checks passed\n')
+
+# Staff verification is last, year/band scoped, and never creates completion.
+verified <- ipa_verified_completion_hosts()
+verified_evidence <- verified %>% transmute(
+  `Participant ID`, `Participant Cohort`='cohort', `IPA Age Band`,
+  `IPA Complete`=TRUE, `Completion Date`=as.Date('2026-04-03'))
+manual_out <- build_ipa_activity_exports(history[0, ], participants, event_map,
+  completion_evidence=verified_evidence)
+manual_rows <- manual_out$participant_ipa_records.csv
+stopifnot(identical(sort(manual_rows$`Completion FTM`), sort(verified$`Verified FTM`)),
+  all(manual_rows$`Completion Attribution`=='Staff-verified completion fallback'),
+  all(manual_rows$`Completion Verification Date`==as.Date('2026-10-12')),
+  sum(manual_out$ftm_ipa_summary.csv$`Complete Count`)==4L,
+  sum(manual_out$ftm_ipa_summary.csv$`Appointment Count`)==0L)
+new_booking <- history[3, ] %>% mutate(`Participant ID`='HKY684-01-A',
+  `IPA Age Band`='6_10yr', `Calendly FTM`='Calendly host')
+priority_out <- build_ipa_activity_exports(new_booking, participants, event_map,
+  completion_evidence=verified_evidence)
+priority_row <- priority_out$participant_ipa_records.csv %>% filter(`Participant ID`=='HKY684-01-A')
+stopifnot(priority_row$`Completion FTM`=='Calendly host',
+  priority_row$`Completion Attribution`=='Matched completion date',
+  is.na(priority_row$`Completion Verification Date`))
+latest_booking <- new_booking %>% mutate(`Event Start Date`=as.Date('2026-04-01'))
+latest_priority <- build_ipa_activity_exports(latest_booking,participants,event_map,
+  completion_evidence=verified_evidence)
+stopifnot(latest_priority$participant_ipa_records.csv$`Completion FTM`[
+ latest_priority$participant_ipa_records.csv$`Participant ID`=='HKY684-01-A']=='Calendly host')
+wrong_band <- verified_evidence[1, ] %>% mutate(`IPA Age Band`='3_5yr')
+wrong_band_out <- build_ipa_activity_exports(history[0, ],participants,event_map,completion_evidence=wrong_band)
+stopifnot(wrong_band_out$participant_ipa_records.csv$`Completion FTM`=='Pending verification')
+not_complete <- verified_evidence %>% mutate(`IPA Complete`=FALSE)
+not_complete_out <- build_ipa_activity_exports(history[0, ],participants,event_map,completion_evidence=not_complete)
+stopifnot(all(is.na(not_complete_out$participant_ipa_records.csv$`Completion FTM`)))
+wrong_year_out <- build_ipa_activity_exports(history[0, ],participants,event_map,
+ report_year=2027L,completion_evidence=verified_evidence)
+stopifnot(all(wrong_year_out$participant_ipa_records.csv$`Completion FTM`=='Pending verification'))
+cat('Staff-confirmed completion fallback checks passed\n')

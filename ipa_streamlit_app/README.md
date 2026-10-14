@@ -109,3 +109,11 @@ python3 -m unittest discover -s followup_dashboard/ipa_streamlit_app/tests
 ## Optional path override
 
 If the R script is run from another location, set `IPA_DASHBOARD_APP_DIR` to this app directory before running it.
+
+Colleague-confirmed completion hosts are maintained in `ipa_verified_completion_hosts()`
+in `../ipa_activity.R`. They are scoped by participant, age band and completion
+reporting year, and used only after all Calendly attribution tiers remain unresolved.
+They do not create completion or booking records. Source is labeled
+`Staff-verified completion fallback`, with `Completion Verification Date`.
+Future usable Calendly evidence automatically supersedes them. Jolyn uses the
+existing canonical dashboard label `Jo`.

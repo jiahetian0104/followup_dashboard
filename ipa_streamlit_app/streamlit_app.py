@@ -632,6 +632,7 @@ with ipa_tab:
                     "preceding age band, preferring a completion-date match and then the latest booking. "
                     "The latest booking supplies "
                     "fallback completion credit, regardless of booking cancellation/no-show status. "
+                    "If Calendly cannot determine the completion host, a staff-confirmed host is used as the last fallback. "
                     "A booking covering multiple children counts once for each child. "
                     "Blank counts mean missing evidence; darker cells mean more activity."
                 )
@@ -664,7 +665,7 @@ with ipa_tab:
                     ["Participant ID", "Participant Cohort", "IPA Age Band"]
                 ].drop_duplicates()
                 if not fallback_keys.empty:
-                    st.caption(f"{len(fallback_keys):,} completions use fallback booking evidence or a previous-age-band match.")
+                    st.caption(f"{len(fallback_keys):,} completions use fallback attribution, including previous-age-band or staff-confirmed evidence.")
                 with st.expander("Activity attributed to each FTM"):
                     st.dataframe(activity, hide_index=True, width="stretch")
                     st.download_button("Download participant × age band × FTM activity", csv_bytes(activity),
@@ -678,7 +679,8 @@ with ipa_tab:
             participant_records = participant_records.drop(columns=["firstName", "lastName"], errors="ignore")
             record_order = ["Participant ID", "Age Group", "IPA Complete", "No-show Count",
                             "Cancel Count", "Reschedule Count", "Completion FTM",
-                            "Completion Date", "Completion Attribution", "Completion Fallback Appointment Date", "Appointment Count",
+                            "Completion Date", "Completion Attribution", "Completion Fallback Appointment Date",
+                            "Completion Verification Date", "Appointment Count",
                             "Participant Cohort", "IPA Age Band", "IPA Year"]
             record_order = [column for column in record_order if column in participant_records]
             record_order += [column for column in participant_records if column not in record_order]
@@ -973,7 +975,7 @@ with st.expander("Metric definitions"):
         - **IPA No-show:** distinct participant/invitee bookings marked No Show.
         - **IPA Cancel:** canceled bookings with Rescheduled = FALSE. Rescheduled cancellations are excluded; missing rescheduling evidence stays unknown.
         - **IPA Reschedule:** each old booking marked Rescheduled = TRUE counts as one action, including intermediate bookings in a reschedule chain.
-        - **IPA completion credit:** Ripple proves completion. Prefer the single eligible Calendly host on the completion date (not canceled or no-show). Ignore cohort differences when matching completion hosts. Use 2025 and 2026 bookings, preferring the same age band: completion-date match first, then latest booking. Only if the same age band has no bookings, try the immediately preceding age band with the same date-first priority. Latest-booking fallbacks may include canceled/no-show bookings and are labeled. Latest is ordered by appointment time then booking creation time. Conflicting latest hosts, missing hosts, or no usable same/previous-band booking remain Pending verification. Older bookings supply completion evidence only; appointment workload remains in the reporting year.
+        - **IPA completion credit:** Ripple proves completion. Prefer the single eligible Calendly host on the completion date (not canceled or no-show). Ignore cohort differences when matching completion hosts. Use 2025 and 2026 bookings, preferring the same age band: completion-date match first, then latest booking. Only if the same age band has no bookings, try the immediately preceding age band with the same date-first priority. Latest-booking fallbacks may include canceled/no-show bookings and are labeled. Latest is ordered by appointment time then booking creation time. Conflicting latest hosts, missing hosts, or no usable same/previous-band booking remain Pending verification. Staff-confirmed participant/age-band/year hosts are used only after Calendly attribution remains unresolved. Their source and verification date are retained; future usable Calendly evidence takes priority. Older bookings supply completion evidence only; appointment workload remains in the reporting year.
         - **Weighted IPA performance:** (Complete + 0.25 × No-show) divided by distinct participant/cohort/age-band records attributed to each FTM. Cancel/reschedule-only records enter the denominator. Repeated no-shows can push the score above 100%; the score is not a completion rate.
         - **Shared IPA hosts:** appointment activity is retained once under a combined Shared hosts label, without duplicating counts across individual FTMs.
         - **Other task source:** Ripple only.

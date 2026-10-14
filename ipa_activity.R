@@ -28,9 +28,23 @@ ipa_activity_sum <- function(x) {
   if (any(is.na(x))) NA_integer_ else as.integer(sum(x))
 }
 
+# Colleague-confirmed completion hosts, supplied 2026-10-12. These only fill
+# unresolved completed IPA tasks; all usable Calendly attribution takes priority.
+# Jolyn is normalized to Jo, the existing dashboard FTM label.
+ipa_verified_completion_hosts <- function() {
+  tribble(
+    ~`Participant ID`, ~`IPA Age Band`, ~`IPA Year`, ~`Verified FTM`, ~`Verification Date`,
+    "HKY684-01-A", "6_10yr", 2026L, "Jody", as.Date("2026-10-12"),
+    "LPT526-01-A", "3_5yr", 2026L, "Anna", as.Date("2026-10-12"),
+    "VCT498-01-A", "3_5yr", 2026L, "Anna", as.Date("2026-10-12"),
+    "BKX774-01-B", "11_17yr", 2026L, "Jo", as.Date("2026-10-12")
+  )
+}
+
 build_ipa_activity_exports <- function(
     calendly_data, participant_data, event_map, historical_tasks = tibble(),
-    report_year = 2026L, completion_evidence = NULL
+    report_year = 2026L, completion_evidence = NULL,
+    verified_completion_hosts = ipa_verified_completion_hosts()
 ) {
   keys <- c("Participant ID", "Participant Cohort", "IPA Age Band")
   for (column in c("Rescheduled", "Old Invitee URI", "New Invitee URI")) {
@@ -196,12 +210,29 @@ build_ipa_activity_exports <- function(
           "No same/previous-age-band booking in reporting or prior year" else
             "Completion host unresolved"
     }
+    verification_date <- as.Date(NA)
+    if (record$`IPA Complete` && is.na(host)) {
+      verified <- verified_completion_hosts %>% filter(
+        `Participant ID` == record$`Participant ID`,
+        `IPA Age Band` == record$`IPA Age Band`, `IPA Year` == report_year
+      )
+      if (nrow(verified) > 0 && n_distinct(verified$`Verified FTM`) == 1 &&
+          !any(is.na(verified$`Verified FTM`)) &&
+          !any(verified$`Verified FTM` %in% c("", "Unassigned", "Pending verification")) &&
+          !any(startsWith(verified$`Verified FTM`, "Shared hosts:"))) {
+        host <- first(verified$`Verified FTM`)
+        attribution <- "Staff-verified completion fallback"
+        verification_date <- max(verified$`Verification Date`)
+        evidence_date <- as.Date(NA)
+      }
+    }
     if (!record$`IPA Complete`) {
       host <- NA_character_; attribution <- "Not complete"; evidence_date <- as.Date(NA)
     } else if (is.na(host)) host <- "Pending verification"
     record %>% select(all_of(keys)) %>% mutate(
       `Completion FTM` = host, `Completion Attribution` = attribution,
-      `Completion Fallback Appointment Date` = evidence_date
+      `Completion Fallback Appointment Date` = evidence_date,
+      `Completion Verification Date` = verification_date
     )
   })
 
@@ -245,7 +276,8 @@ build_ipa_activity_exports <- function(
     ) %>%
     left_join(records %>% select(
       all_of(keys), `IPA Year`, `IPA Complete`, `Completion Date`,
-      `Completion FTM`, `Completion Attribution`, `Completion Fallback Appointment Date`
+      `Completion FTM`, `Completion Attribution`, `Completion Fallback Appointment Date`,
+      `Completion Verification Date`
     ), by = keys) %>%
     arrange(FTM, `Participant ID`, `IPA Age Band`)
 
