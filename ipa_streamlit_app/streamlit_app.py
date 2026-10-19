@@ -100,8 +100,16 @@ with completion_tab:
         left,right = st.columns([1.1,1])
         with left:
             by_ftm = completed.groupby(["Attributed FTM","Age Group"], dropna=False).size().rename("Completions").reset_index()
-            figure(px.bar(by_ftm, x="Completions", y="Attributed FTM", color="Age Group", orientation="h",
-                          title="Completions by FTM and age group", category_orders={"Age Group":AGE_GROUP_ORDER}))
+            ftm_chart = px.bar(by_ftm, x="Completions", y="Attributed FTM", color="Age Group", orientation="h",
+                              title="Completions by FTM and age group", category_orders={"Age Group":AGE_GROUP_ORDER})
+            ftm_totals = by_ftm.groupby("Attributed FTM", dropna=False)["Completions"].sum()
+            for ftm, total in ftm_totals.items():
+                ftm_chart.add_annotation(x=int(total), y=ftm, text=f"{total:,}", showarrow=False,
+                                         xanchor="left", yanchor="middle", xshift=6,
+                                         font=dict(size=12, color="#25313c"))
+            largest_ftm_total = int(ftm_totals.max())
+            ftm_chart.update_xaxes(range=[0, largest_ftm_total + max(3, largest_ftm_total * 0.14)])
+            figure(ftm_chart)
         with right:
             monthly = completed.assign(Month=completed["Completed at"].dt.month_name()).groupby(
                 ["Month","Attributed FTM"]).size().rename("Completions").reset_index()
@@ -109,6 +117,13 @@ with completion_tab:
                            category_orders={"Month":MONTH_NAMES})
             chart.update_xaxes(type="category")
             chart.update_traces(hovertemplate="Month: %{x}<br>Completions: %{y}<extra>%{fullData.name}</extra>")
+            month_totals = monthly.groupby("Month")["Completions"].sum()
+            for month, total in month_totals.items():
+                chart.add_annotation(x=month, y=int(total), text=f"{total:,}", showarrow=False,
+                                     xanchor="center", yanchor="bottom", yshift=5,
+                                     font=dict(size=12, color="#25313c"))
+            largest_month_total = int(month_totals.max())
+            chart.update_yaxes(range=[0, largest_month_total + max(2, largest_month_total * 0.14)])
             figure(chart)
         site_counts = completed.assign(Site=completed["Site"].fillna("Not recorded")).groupby("Site").size().rename("Completions").reset_index()
         figure(px.bar(site_counts,x="Site",y="Completions",title="Completions by site",color_discrete_sequence=["#2f6b9a"]))
