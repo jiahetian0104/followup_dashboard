@@ -47,6 +47,7 @@ build_2026_exports <- function(ripple_6_35, ripple_3_20, calendly, report_year =
     stop("Missing or duplicate participant IDs in Ripple source; resolve before publishing")
 
   surveys <- build_ipa_surveys(ripple_6_35, ripple_3_20, report_year)
+  survey_duplicates <- build_ipa_survey_duplicate_qc(surveys$history, report_year)
   completions <- surveys$completions %>% mutate(`Completion Date` = as_date(`Completed at`))
   keys <- c("Participant ID", "IPA Age Band")
   history <- calendly %>% filter(`IPA Year` == report_year) %>% mutate(
@@ -191,6 +192,8 @@ build_2026_exports <- function(ripple_6_35, ripple_3_20, calendly, report_year =
     "ipa_survey_submissions.csv" = surveys$history,
     "ipa_survey_completions.csv" = completions,
     "ipa_survey_latest.csv" = surveys$latest,
+    "ipa_survey_duplicate_summary.csv" = survey_duplicates$summary,
+    "ipa_survey_duplicate_qc.csv" = survey_duplicates$detail,
     "ipa_event_evidence.csv" = events,
     "ipa_survey_event_comparison.csv" = comparison,
     "ipa_survey_event_qc.csv" = comparison %>% filter(`QC Relevant`,

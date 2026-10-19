@@ -192,3 +192,27 @@ ipa_submission_history <- ipa_submission_detail %>% mutate(
     distinct(`Participant ID`, `IPA Age Band`, .keep_all = TRUE)
   list(history = ipa_submission_history, completions = first, latest = latest)
 }
+
+
+build_ipa_survey_duplicate_qc <- function(history, report_year = 2026L) {
+  keys <- c("Participant ID", "IPA Age Band")
+  # Apply the same year, grain and timestamp/index tie-break as completion selection.
+  detail <- history %>% filter(`Completion year` == report_year) %>%
+    arrange(`Completed at`, `Submission index`) %>%
+    group_by(across(all_of(keys))) %>%
+    mutate(`Submission Count` = n(), `Submission Order` = row_number(),
+      `Counted in IPA` = row_number() == 1L,
+      `QC Issue` = "Multiple completed surveys in the same age band") %>%
+    filter(`Submission Count` > 1L) %>% ungroup() %>%
+    arrange(`Participant ID`, `IPA Age Band`, `Submission Order`)
+  summary <- detail %>% group_by(across(all_of(keys))) %>% summarise(
+    `Participant Cohort` = first(`Participant Cohort`),
+    `Survey age group` = first(`Survey age group`),
+    `Submission Count` = n(), `Extra Submissions` = n() - 1L,
+    `First Completion Time` = first(`Completed at`),
+    `Latest Completion Time` = last(`Completed at`),
+    `First FTM` = first(`Attributed FTM`), `Latest FTM` = last(`Attributed FTM`),
+    `FTMs Recorded` = paste(unique(`Attributed FTM`), collapse = "; "),
+    `QC Issue` = first(`QC Issue`), .groups = "drop")
+  list(summary = summary, detail = detail)
+}

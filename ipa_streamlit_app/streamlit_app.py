@@ -174,6 +174,29 @@ IPA completion counts use the first completed Survey; biospecimen FTM assignment
     with st.expander("Collection records"):
         table(specimens,"biospecimen_collections.csv","collection records")
 with qc_tab:
+    st.subheader("Survey duplicates · same age band")
+    st.caption("Participants with more than one completed Survey in the same age band within 2026. Only the first completed submission counts toward IPA completions; all repeated submissions remain available for review.")
+    duplicate_summary_path = version.path / "ipa_survey_duplicate_summary.csv"
+    duplicate_detail_path = version.path / "ipa_survey_duplicate_qc.csv"
+    if duplicate_summary_path.exists() and duplicate_detail_path.exists():
+        duplicate_summary = filter_records(load(duplicate_summary_path), ages, cohorts)
+        duplicate_detail = filter_records(load(duplicate_detail_path), ages, cohorts)
+        duplicate_metrics = st.columns(3)
+        duplicate_metrics[0].metric("Participants with duplicates", f"{duplicate_summary['Participant ID'].nunique():,}")
+        duplicate_metrics[1].metric("Participant age bands with duplicates", f"{len(duplicate_summary):,}")
+        duplicate_metrics[2].metric("Extra completed submissions", f"{duplicate_summary['Extra Submissions'].sum():,}")
+        if duplicate_summary.empty:
+            st.info("No duplicate completed Surveys match these age and cohort filters.")
+        else:
+            summary_columns = ["Participant ID", "Age Group", "Submission Count", "Extra Submissions",
+                "First Completion Time", "Latest Completion Time", "First FTM", "Latest FTM", "FTMs Recorded"]
+            table(duplicate_summary[summary_columns], "ipa_survey_duplicate_summary.csv", "duplicate survey summary")
+        with st.expander("All submissions in duplicate groups"):
+            detail_columns = ["Participant ID", "Age Group", "Submission index", "Submission Order", "Completed at",
+                "Attributed FTM", "Site", "Counted in IPA", "Submission Count", "Participant Cohort", "QC Issue"]
+            table(duplicate_detail[detail_columns], "ipa_survey_duplicate_qc.csv", "duplicate survey submissions")
+    else:
+        st.info("Duplicate Survey QC was not exported in this snapshot. Run the updated IPA Data.R to add it to a new snapshot.")
     st.subheader("Survey and event cross-check")
     st.caption("Compare completion presence per child and age band. Survey controls IPA completion counts. Event flags remain independent evidence; missing dates and date differences are retained for review.")
     comparison = filter_records(tables["comparison"],ages,cohorts)

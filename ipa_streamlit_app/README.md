@@ -140,3 +140,9 @@ Completion age groups keep the original automatic Plotly color assignment. Only 
 Appointment totals appear in their own host-level table. No-show, Cancel and Reschedule are shown separately as appointment actions; Appointment Count is not a parallel action series. The appointment grand total adds bookings but deduplicates participants and participant/cohort/age-band combinations across hosts.
 
 The biospecimen tab explains the same-child/same-band/2026 FTM priority directly on the page. Its monthly collection table replaces the former monthly stacked chart, with specimen task columns and row/column totals that follow the active filters. Only months with recorded collections are shown.
+
+### Duplicate Survey QC
+
+The Data QC tab includes **Survey duplicates · same age band**. A duplicate group is one Participant ID and survey age band with more than one completed submission within 2026. Different age bands and submissions outside the reporting year do not create duplicate groups. These checks use the full submission history before selecting first completions.
+
+`ipa_survey_duplicate_summary.csv` reports group counts, extra submissions, first/latest completion times and FTMs. `ipa_survey_duplicate_qc.csv` retains every submission in each duplicate group, ordered by completed time then submission index, and marks exactly one row `Counted in IPA = TRUE`. Completion credit remains unchanged. Both tables follow the dashboard's age/cohort filters; the detail table and summary are downloadable. Earlier snapshots without these exports explicitly show that duplicate QC was unavailable for that batch.

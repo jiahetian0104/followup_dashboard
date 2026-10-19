@@ -34,7 +34,7 @@ class DataVersion:
 def read_csv(path: Path) -> pd.DataFrame:
     """Preserve identifiers; convert only documented numeric/date/boolean columns."""
     data = pd.read_csv(path, dtype="string").drop(columns=["firstName", "lastName"], errors="ignore")
-    for column in ["Completed at", "Survey Assignment Time"]:
+    for column in ["Completed at", "Survey Assignment Time", "First Completion Time", "Latest Completion Time"]:
         if column in data:
             # readr serializes POSIXct as UTC; restore study-local calendar dates/months.
             data[column] = pd.to_datetime(data[column], errors="coerce", utc=True, format="mixed").dt.tz_convert("America/New_York").dt.tz_localize(None)
@@ -42,10 +42,10 @@ def read_csv(path: Path) -> pd.DataFrame:
                    "Collection Date", "Calendly Assignment Date"]:
         if column in data:
             data[column] = pd.to_datetime(data[column], errors="coerce", format="mixed")
-    for column in [*WORKLOAD_COUNTS, "Completion year", "Submission index", "Date Difference Days"]:
+    for column in [*WORKLOAD_COUNTS, "Completion year", "Submission index", "Submission Count", "Submission Order", "Extra Submissions", "Date Difference Days"]:
         if column in data:
             data[column] = pd.to_numeric(data[column], errors="raise").astype("Int64")
-    for column in ["Survey Complete", "Event Complete", "Event Complete 2026", "QC Relevant", "Canceled", "True Cancel", "No Show", "Rescheduled"]:
+    for column in ["Survey Complete", "Event Complete", "Event Complete 2026", "QC Relevant", "Counted in IPA", "Canceled", "True Cancel", "No Show", "Rescheduled"]:
         if column in data:
             data[column] = data[column].str.lower().map({"true": True, "false": False}).astype("boolean")
     if "IPA Age Band" in data:

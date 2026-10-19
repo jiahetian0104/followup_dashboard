@@ -138,3 +138,21 @@ date_row <- build_2026_exports(date_infant,child,bookings)$ipa_survey_event_qc.c
 stopifnot(date_row$`QC Issue`=='Completion date difference',date_row$`Date Difference Days`==2L,
   date_row$`Event Date Raw`=='02/03/2026',date_row$`Event Date Field`=='event.12_23mo_ipa_complete.completedDate')
 cat('Paired age-band conflicts, legitimate same-day bands, historical QC exclusion and date provenance checks passed\n')
+# Duplicate QC uses child/age-band/year, preserves both submissions, and selects
+# the same chronological first record as completion credit (not submission zero).
+duplicates <- build_ipa_survey_duplicate_qc(build_ipa_surveys(infant,child)$history)
+stopifnot(nrow(duplicates$summary)==1L,nrow(duplicates$detail)==2L,
+  duplicates$summary$`Submission Count`==2L,duplicates$summary$`Extra Submissions`==1L,
+  duplicates$summary$`First FTM`=='Anna',duplicates$summary$`Latest FTM`=='Nicole',
+  sum(duplicates$detail$`Counted in IPA`)==1L,
+  duplicates$detail$`Submission index`[duplicates$detail$`Counted in IPA`]==1L)
+# An earlier-year submission is not a duplicate of the one reporting-year row.
+stopifnot(nrow(build_ipa_survey_duplicate_qc(build_ipa_surveys(manual,child)$history)$summary)==0L)
+# Different age bands are separate assessments, not duplicates.
+stopifnot(nrow(build_ipa_survey_duplicate_qc(build_ipa_surveys(infant[2:3,],conflict_child)$history)$summary)==0L)
+# Exact timestamp ties follow the completion rule's smaller-index tie-break.
+tied <- build_ipa_surveys(infant,child)$history
+tied$`Completed at` <- rep(tied$`Completed at`[1],nrow(tied))
+tied_qc <- build_ipa_survey_duplicate_qc(tied)
+stopifnot(tied_qc$detail$`Submission index`[tied_qc$detail$`Counted in IPA`]==0L)
+cat('Survey duplicate scope, retained first submission, cross-age/year exclusions and ties passed\n')
