@@ -1,0 +1,14 @@
+event_code,event_label,is_biospecimen
+postnatal_consent,Postnatal Consent,FALSE
+survey,Survey,FALSE
+child_anthro,Child Anthro,FALSE
+mom_anthro,Mom Anthro,FALSE
+visit_scheduled,Visit Scheduled,FALSE
+vib_request,VIB Request,FALSE
+diaper_sent,Diaper Sent,FALSE
+partner_contact,Partner Contact,FALSE
+child_urine,Child Urine,TRUE
+child_stool,Child Stool,TRUE
+mom_hair,Mom Hair,TRUE
+mom_bs,Mom Bloodspot,TRUE
+breast_milk,Breast Milk,TRUE

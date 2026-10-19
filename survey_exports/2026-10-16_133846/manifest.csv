@@ -1,0 +1,3 @@
+study,study_id,survey_parameters,survey_ids,survey_export_since,exported_at,rows,columns,file
+3_20_year,QhZZT24wtWCpGkKdE,survey7;survey8;survey9;survey10,kFOE-iNu8LYL6_Qp1;QiQQS_3MQYq6iPaeS;mi63YrTXz1_DTBQnQ;NcIj8oFbEjY6PgaNA,,2026-10-16T13:56:49-0400,1460,787,ripple_surveys_3_20_year.csv
+6_35_month,REakqQKvCboEdX7BL,survey3;survey4,4PsVDDIam9qybK21J;ZE-phZDg2hDm7OziS,,2026-10-16T13:56:49-0400,323,365,ripple_surveys_6_35_month.csv
