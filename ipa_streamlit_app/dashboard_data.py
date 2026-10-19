@@ -1,619 +1,159 @@
-"""Data loading, validation, filtering, and summaries for the IPA dashboard."""
-
+"""2026 IPA dashboard data contract. No API calls or prior-output state."""
 from __future__ import annotations
-
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
-
-import numpy as np
 import pandas as pd
 
-
-REQUIRED_COLUMNS = {
-    "FTM",
-    "Participant ID",
-    "Participant Cohort",
-    "IPA Age Band",
-    "Task",
-    "Outcome",
-    "Score",
-}
-
-ROSTER_REQUIRED_COLUMNS = {
-    "FTM",
-    "Participant ID",
-    "Participant Cohort",
-    "statusId",
-    "Age Group",
-    "Task Eligible",
-    "Eligibility Status",
-}
-
+SCHEMA_VERSION = "ipa-2026-v2"
 AGE_GROUP_LABELS = {
-    "6_11_month": "6–11 months",
-    "12_23_month": "12–23 months",
-    "24_35_month": "24–35 months",
-    "3_5yr": "3–5 years",
-    "6_10yr": "6–10 years",
-    "11_17yr": "11–17 years",
-    "18_20yr": "18–20 years",
-    "potential": "Potential participants",
-    "needs_review": "Needs review",
+    "6_11_month": "6–11 months", "12_23_month": "12–23 months",
+    "24_35_month": "24–35 months", "3_5yr": "3–5 years", "6_10yr": "6–10 years",
+    "11_17yr": "11–17 years", "18_20yr": "18–20 years", "needs_review": "Needs review",
 }
-
 AGE_GROUP_ORDER = list(AGE_GROUP_LABELS.values())
-OUTCOME_ORDER = ["Complete", "No-Show", "Incomplete", "No record"]
-IPA_METRICS = ["Complete Count", "No-show Count", "Cancel Count", "Reschedule Count"]
-IPA_COUNTS = ["Appointment Count", *IPA_METRICS]
-PARTICIPANT_SCOPE_ORDER = [
-    "Task eligible",
-    "6-11 months",
-    "Potential participants",
-    "Needs review",
-]
-TREND_COLUMNS = [
-    "Snapshot Date",
-    "FTM",
-    "Weighted Progress",
-    "Completion Rate",
-    "Complete",
-    "No-Show",
-    "Needs Follow-up",
-    "Participants",
-    "Task Records",
-]
+MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July",
+               "August", "September", "October", "November", "December"]
 
+WORKLOAD_COUNTS = ["Appointment Count", "No-show Count", "Cancel Count", "Reschedule Count"]
+FILES = {
+    "completions": "ipa_survey_completions.csv", "submissions": "ipa_survey_submissions.csv",
+    "appointments": "ipa_appointment_history.csv", "workload": "participant_ipa_ftm_records.csv",
+    "appointment_qc": "ipa_appointment_history_qc.csv", "comparison": "ipa_survey_event_comparison.csv",
+    "event_qc": "ipa_survey_event_qc.csv", "specimens": "biospecimen_collections.csv",
+    "specimen_qc": "biospecimen_qc.csv", "roster": "participant_roster.csv",
+}
 
 @dataclass(frozen=True)
 class DataVersion:
-    """A selectable dashboard dataset."""
-
     label: str
     path: Path
-    snapshot_date: str | None
-    is_latest: bool = False
+    schema: str
+    timestamp: str
 
 
-def discover_data_versions(latest_path: Path, snapshot_dir: Path) -> list[DataVersion]:
-    """Return Latest followed by available dated snapshots, newest first."""
-    versions: list[DataVersion] = []
-    if latest_path.exists():
-        versions.append(DataVersion("Latest", latest_path, None, True))
-
-    if snapshot_dir.exists():
-        for folder in sorted(snapshot_dir.iterdir(), reverse=True):
-            if not folder.is_dir():
-                continue
-            candidates = [
-                folder / "task_checklist_long.csv",
-                folder / "participant_task_checklist_long.csv",
-                folder / "detail.csv",
-            ]
-            file_path = next((path for path in candidates if path.exists()), None)
-            if file_path is not None:
-                snapshot_value = folder.name
-                manifest_path = folder / "manifest.csv"
-                if manifest_path.exists():
-                    try:
-                        manifest = pd.read_csv(manifest_path, nrows=1)
-                        generated_at = str(manifest.loc[0, "generated_at"])
-                        # R appends a timezone abbreviation; the dashboard already
-                        # runs in the same local timezone, so keep the wall time.
-                        snapshot_value = generated_at.rsplit(" ", 1)[0]
-                    except (OSError, KeyError, IndexError, pd.errors.ParserError):
-                        snapshot_value = folder.name
-                versions.append(
-                    DataVersion(
-                        label=f"Snapshot · {format_snapshot_label(snapshot_value)}",
-                        path=file_path,
-                        snapshot_date=snapshot_value,
-                    )
-                )
-    return versions
+def read_csv(path: Path) -> pd.DataFrame:
+    """Preserve identifiers; convert only documented numeric/date/boolean columns."""
+    data = pd.read_csv(path, dtype="string").drop(columns=["firstName", "lastName"], errors="ignore")
+    for column in ["Completed at", "Survey Assignment Time"]:
+        if column in data:
+            # readr serializes POSIXct as UTC; restore study-local calendar dates/months.
+            data[column] = pd.to_datetime(data[column], errors="coerce", utc=True, format="mixed").dt.tz_convert("America/New_York").dt.tz_localize(None)
+    for column in ["Completion Date", "Event Start Date", "Event Completion Date",
+                   "Collection Date", "Calendly Assignment Date"]:
+        if column in data:
+            data[column] = pd.to_datetime(data[column], errors="coerce", format="mixed")
+    for column in [*WORKLOAD_COUNTS, "Completion year", "Submission index", "Date Difference Days"]:
+        if column in data:
+            data[column] = pd.to_numeric(data[column], errors="raise").astype("Int64")
+    for column in ["Survey Complete", "Event Complete", "Event Complete 2026", "QC Relevant", "Canceled", "True Cancel", "No Show", "Rescheduled"]:
+        if column in data:
+            data[column] = data[column].str.lower().map({"true": True, "false": False}).astype("boolean")
+    if "IPA Age Band" in data:
+        data["Age Group"] = data["IPA Age Band"].map(AGE_GROUP_LABELS).fillna(data["IPA Age Band"])
+    for source, label in [("Survey Age Band", "Survey Age Group"), ("Event Age Band", "Event Age Group")]:
+        if source in data:
+            data[label] = data[source].map(AGE_GROUP_LABELS).fillna(data[source])
+    return data
 
 
-def parse_snapshot_datetime(snapshot_id: str) -> pd.Timestamp:
-    """Parse legacy daily and new per-refresh snapshot folder names."""
-    for date_format in ("%Y-%m-%d_%H%M%S", "%Y-%m-%d"):
-        try:
-            return pd.to_datetime(snapshot_id, format=date_format)
-        except ValueError:
-            continue
-    return pd.to_datetime(snapshot_id, errors="coerce")
-
-
-def format_snapshot_label(snapshot_id: str) -> str:
-    """Return a concise human-readable snapshot label."""
-    timestamp = parse_snapshot_datetime(snapshot_id)
-    if pd.isna(timestamp):
-        return snapshot_id
-    if "_" in snapshot_id or len(snapshot_id) > 10:
-        return timestamp.strftime("%b %d, %Y · %I:%M:%S %p")
-    return timestamp.strftime("%b %d, %Y")
-
-
-def read_dashboard_csv(path: Path) -> pd.DataFrame:
-    """Read a task checklist CSV without coercing participant IDs."""
-    return pd.read_csv(path, dtype={"Participant ID": "string", "PIN": "string"})
-
-
-def read_roster_csv(path: Path) -> pd.DataFrame:
-    """Read the participant roster without coercing participant identifiers."""
-    return pd.read_csv(path, dtype={"Participant ID": "string", "PIN": "string"})
-
-
-def standardize_dashboard_data(data: pd.DataFrame) -> pd.DataFrame:
-    """Validate and standardize the participant-task long table."""
-    df = data.copy()
-    missing = sorted(REQUIRED_COLUMNS - set(df.columns))
-    if missing:
-        raise ValueError("Missing required column(s): " + ", ".join(missing))
-
-    text_columns = [
-        "FTM",
-        "Current FTM",
-        "Responsible FTM",
-        "Task Stage",
-        "Participant ID",
-        "firstName",
-        "lastName",
-        "Participant Cohort",
-        "statusId",
-        "IPA Age Band",
-        "Task",
-        "Outcome",
-        "Source",
-        "Previous Roster FTM",
-        "Assignment Source",
-        "Calendly FTM Matched Age Band",
-        "Calendly Assignment Year",
-        "Calendly Assignment Rule",
-        "Calendly Host Raw",
-        "Calendly Match Method",
-        "Calendly FTM QA Flag",
-    ]
-    for column in text_columns:
-        if column in df.columns:
-            df[column] = df[column].astype("string").str.strip()
-
-    df["FTM"] = df["FTM"].fillna("Unassigned")
-    df["Score"] = pd.to_numeric(df["Score"], errors="coerce")
-    df["Age Group"] = df["IPA Age Band"].map(AGE_GROUP_LABELS).fillna(
-        df["IPA Age Band"]
-    )
-    df["Age Group"] = pd.Categorical(
-        df["Age Group"], categories=AGE_GROUP_ORDER, ordered=True
-    )
-    df["Outcome"] = pd.Categorical(
-        df["Outcome"], categories=OUTCOME_ORDER, ordered=True
-    )
-
-    for column in [
-        "birthday",
-        "Outcome_Date",
-        "Calendly_Appointment_Date",
-        "Calendly Appointment Date",
-        "Calendly Assignment Date",
-    ]:
-        if column in df.columns:
-            df[column] = pd.to_datetime(df[column], errors="coerce")
-
-    duplicate_key = ["Participant ID", "Participant Cohort", "IPA Age Band", "Task"]
-    duplicates = df.duplicated(duplicate_key, keep=False)
-    if duplicates.any():
-        examples = (
-            df.loc[duplicates, duplicate_key]
-            .drop_duplicates()
-            .head(5)
-            .astype(str)
-            .agg(" / ".join, axis=1)
-            .tolist()
-        )
-        raise ValueError(
-            "Participant-task rows are not unique. Examples: " + "; ".join(examples)
-        )
-
-    return df
-
-
-def standardize_participant_roster(data: pd.DataFrame) -> pd.DataFrame:
-    """Validate the complete roster, including participants without tasks."""
-    df = data.copy()
-    missing = sorted(ROSTER_REQUIRED_COLUMNS - set(df.columns))
-    if missing:
-        raise ValueError("Missing roster column(s): " + ", ".join(missing))
-
-    text_columns = [
-        "FTM",
-        "Previous Roster FTM",
-        "Participant ID",
-        "firstName",
-        "lastName",
-        "Participant Cohort",
-        "statusId",
-        "Age Group",
-        "IPA Age Band",
-        "Eligibility Status",
-        "Assignment Source",
-        "Calendly FTM Matched Age Band",
-        "Calendly Assignment Year",
-        "Calendly Assignment Rule",
-        "Calendly Host Raw",
-        "Calendly Match Method",
-        "Calendly FTM QA Flag",
-    ]
-    for column in text_columns:
-        if column in df.columns:
-            df[column] = df[column].astype("string").str.strip()
-
-    df["FTM"] = df["FTM"].fillna("Unassigned")
-    df["Task Eligible"] = (
-        df["Task Eligible"]
-        .astype("string")
-        .str.lower()
-        .isin(["true", "1", "yes", "y"])
-    )
-    df["Age Group"] = df["Age Group"].map(AGE_GROUP_LABELS).fillna(df["Age Group"])
-    df["Age Group"] = pd.Categorical(
-        df["Age Group"], categories=AGE_GROUP_ORDER, ordered=True
-    )
-    for column in [
-        "birthday",
-        "Calendly Appointment Date",
-        "Calendly Assignment Date",
-    ]:
-        if column in df.columns:
-            df[column] = pd.to_datetime(df[column], errors="coerce")
-
-    duplicate_key = ["Participant ID", "Participant Cohort"]
-    duplicates = df.duplicated(duplicate_key, keep=False)
-    if duplicates.any():
-        examples = (
-            df.loc[duplicates, duplicate_key]
-            .drop_duplicates()
-            .head(5)
-            .astype(str)
-            .agg(" / ".join, axis=1)
-            .tolist()
-        )
-        raise ValueError(
-            "Participant roster rows are not unique. Examples: " + "; ".join(examples)
-        )
-    return df
-
-
-def roster_from_task_data(data: pd.DataFrame) -> pd.DataFrame:
-    """Create an eligible-only roster for legacy snapshots without a roster file."""
-    preferred = [
-        "FTM",
-        "Participant ID",
-        "firstName",
-        "lastName",
-        "birthday",
-        "Participant Cohort",
-        "statusId",
-        "Age Group",
-    ]
-    roster = data[[column for column in preferred if column in data.columns]].copy()
-    roster = roster.drop_duplicates(["Participant ID", "Participant Cohort"])
-    roster["Task Eligible"] = True
-    roster["Eligibility Status"] = "Task eligible"
-    return roster
-
-
-def safe_unique(values: Iterable) -> list[str]:
-    """Return sorted non-missing values as strings."""
-    return sorted(str(value) for value in pd.Series(values).dropna().unique())
-
-
-def standardize_ipa_records(data: pd.DataFrame, *, ftm_records: bool = False) -> pd.DataFrame:
-    """Validate activity exports; missing counts stay unknown rather than zero."""
-    df = data.drop(columns=["firstName", "lastName"], errors="ignore").copy()
-    keys = ["Participant ID", "Participant Cohort", "IPA Age Band"]
-    required = {*keys, "IPA Year", "IPA Complete", "Appointment Count",
-                "No-show Count", "Cancel Count", "Reschedule Count"}
-    if ftm_records:
-        required |= {"FTM", "Complete Count"}
-        keys.append("FTM")
-    missing = sorted(required - set(df.columns))
-    if missing:
-        raise ValueError("Missing IPA column(s): " + ", ".join(missing))
-    for column in [*keys, "Completion FTM", "Completion Attribution"]:
-        if column in df:
-            df[column] = df[column].astype("string").str.strip()
-    if df[keys].isna().any().any() or df.duplicated(keys).any():
-        raise ValueError("IPA records must have complete, unique participant/age-band keys.")
-    for column in IPA_COUNTS:
-        if column in df:
-            df[column] = pd.to_numeric(df[column], errors="raise").astype("Int64")
-            if df[column].dropna().lt(0).any():
-                raise ValueError(f"Negative IPA counts in {column}.")
-    df["IPA Year"] = pd.to_numeric(df["IPA Year"], errors="raise").astype("Int64")
-    df["IPA Complete"] = df["IPA Complete"].astype("string").str.lower().isin(
-        ["true", "1", "yes"]
-    )
-    df["Age Group"] = df["IPA Age Band"].map(AGE_GROUP_LABELS).fillna(df["IPA Age Band"])
-    return df
-
-
-def filter_ipa_records(
-    data: pd.DataFrame, ftms: list[str], age_groups: list[str], cohorts: list[str]
-) -> pd.DataFrame:
-    """IPA filters apply to event-host/credit attribution, never current owners."""
-    df = data.copy()
-    if ftms:
-        df = df[df["FTM"].isin(ftms)]
-    if age_groups:
-        df = df[df["Age Group"].isin(age_groups)]
-    if cohorts:
-        df = df[df["Participant Cohort"].isin(cohorts)]
-    return df
-
-
-def summarize_ipa_activity(data: pd.DataFrame) -> pd.DataFrame:
-    """Sum actions and credited completions at participant-age-band-FTM grain."""
-    columns = ["FTM", *IPA_METRICS, "Appointment Count", "Participants", "Participant Age Bands",
-               "Weighted Points", "Weighted IPA Performance"]
-    if data.empty:
-        return pd.DataFrame(columns=columns)
-    grouped = data.groupby("FTM", observed=True, dropna=False)
-    counts = grouped[IPA_COUNTS].agg(
-        lambda values: pd.NA if values.isna().any() else int(values.sum())
-    )
-    counts["Participants"] = grouped["Participant ID"].nunique()
-    counts["Participant Age Bands"] = grouped.size()
-    counts["Weighted Points"] = counts["Complete Count"] + 0.25 * counts["No-show Count"]
-    counts["Weighted IPA Performance"] = counts["Weighted Points"] / counts["Participant Age Bands"]
-    unresolved = (counts.index.isin(["Unassigned", "Pending verification"])
-                  | counts.index.astype(str).str.startswith("Shared hosts:"))
-    counts.loc[unresolved, "Weighted IPA Performance"] = np.nan
-    return counts.reset_index()[columns]
-
-
-def apply_filters(
-    data: pd.DataFrame,
-    ftms: list[str],
-    tasks: list[str],
-    age_groups: list[str],
-    outcomes: list[str],
-    cohorts: list[str],
-) -> pd.DataFrame:
-    """Apply all dashboard-wide filters."""
-    df = data.copy()
-    if ftms:
-        df = df[df["FTM"].isin(ftms)]
-    if tasks:
-        df = df[df["Task"].isin(tasks)]
-    if age_groups:
-        df = df[df["Age Group"].astype("string").isin(age_groups)]
-    if outcomes:
-        df = df[df["Outcome"].astype("string").isin(outcomes)]
-    if cohorts:
-        df = df[df["Participant Cohort"].isin(cohorts)]
-    return df
-
-
-def apply_roster_filters(
-    data: pd.DataFrame,
-    ftms: list[str],
-    age_groups: list[str],
-    cohorts: list[str],
-    participant_scopes: list[str],
-) -> pd.DataFrame:
-    """Apply roster-level filters without changing task denominators."""
-    df = data.copy()
-    if ftms:
-        df = df[df["FTM"].isin(ftms)]
-    if age_groups:
-        df = df[df["Age Group"].astype("string").isin(age_groups)]
-    if cohorts:
-        df = df[df["Participant Cohort"].isin(cohorts)]
-    if participant_scopes:
-        df = df[df["Eligibility Status"].isin(participant_scopes)]
-    return df
-
-
-def calculate_kpis(data: pd.DataFrame) -> dict[str, float | int]:
-    """Calculate dashboard headline metrics at participant-task grain."""
-    task_rows = len(data)
-    participants = data["Participant ID"].nunique()
-    weighted_points = float(data["Score"].fillna(0).sum())
-    weighted_progress = np.nan if task_rows == 0 else weighted_points / task_rows
-    complete = int((data["Outcome"] == "Complete").sum())
-    no_show = int((data["Outcome"] == "No-Show").sum())
-    incomplete = int((data["Outcome"] == "Incomplete").sum())
-    no_record = int((data["Outcome"] == "No record").sum())
-    return {
-        "participants": participants,
-        "task_rows": task_rows,
-        "weighted_points": weighted_points,
-        "weighted_progress": weighted_progress,
-        "complete": complete,
-        "no_show": no_show,
-        "incomplete": incomplete,
-        "no_record": no_record,
-    }
-
-
-def summarize_progress(data: pd.DataFrame, group_columns: list[str]) -> pd.DataFrame:
-    """Weighted task progress by the requested dimensions."""
-    if data.empty:
-        return pd.DataFrame(
-            columns=group_columns
-            + ["task_rows", "participants", "weighted_points", "progress"]
-        )
-
-    summary = (
-        data.assign(_score=data["Score"].fillna(0))
-        .groupby(group_columns, observed=True, dropna=False)
-        .agg(
-            task_rows=("Task", "size"),
-            participants=("Participant ID", "nunique"),
-            weighted_points=("_score", "sum"),
-        )
-        .reset_index()
-    )
-    summary["progress"] = summary["weighted_points"] / summary["task_rows"]
-    return summary
-
-
-def summarize_outcomes(data: pd.DataFrame, group_column: str) -> pd.DataFrame:
-    """Outcome counts and within-group shares."""
-    if data.empty:
-        return pd.DataFrame(columns=[group_column, "Outcome", "records", "share"])
-
-    summary = (
-        data.groupby([group_column, "Outcome"], observed=True, dropna=False)
-        .size()
-        .rename("records")
-        .reset_index()
-    )
-    totals = summary.groupby(group_column, observed=True)["records"].transform("sum")
-    summary["share"] = summary["records"] / totals
-    return summary
-
-
-def build_snapshot_trend(
-    versions: list[DataVersion],
-    ftms: list[str],
-    tasks: list[str],
-    age_groups: list[str],
-    outcomes: list[str],
-    cohorts: list[str],
-    ftm_column: str = "FTM",
-    current_tasks_only: bool = False,
-    calendly_assignment_only: bool = True,
-) -> pd.DataFrame:
-    """Apply filters to comparable snapshots and calculate one row per FTM.
-
-    FTM attribution changed from Ripple/Call List to Calendly host in September
-    2026 and later added a 2025 Calendly fallback. By default, snapshots without
-    the current assignment-year field are excluded so a trend line never mixes
-    different ownership definitions.
-    """
-    records: list[dict[str, object]] = []
-    for version in versions:
-        if version.is_latest or version.snapshot_date is None:
+def discover_data_versions(data_dir: Path) -> list[DataVersion]:
+    result = []
+    folders = [data_dir / "latest"]
+    snapshots = data_dir / "snapshots"
+    if snapshots.exists():
+        folders += sorted((p for p in snapshots.iterdir() if p.is_dir()), reverse=True)
+    for folder in folders:
+        manifest_path = folder / "manifest.csv"
+        if not manifest_path.exists():
             continue
         try:
-            snapshot = standardize_dashboard_data(read_dashboard_csv(version.path))
-        except (OSError, ValueError, pd.errors.ParserError):
+            manifest = pd.read_csv(manifest_path, dtype="string").iloc[0]
+        except (OSError, ValueError, IndexError, pd.errors.ParserError):
             continue
-        if calendly_assignment_only:
-            if "Assignment Source" not in snapshot.columns:
-                continue
-            if "Calendly Assignment Year" not in snapshot.columns:
-                continue
-            assignment_sources = (
-                snapshot["Assignment Source"].astype("string").dropna().str.strip()
-            )
-            if not assignment_sources.str.startswith("Calendly").any():
-                continue
-        if ftm_column in snapshot.columns:
-            snapshot["FTM"] = snapshot[ftm_column].fillna("Unassigned")
-        if current_tasks_only and "Task Stage" in snapshot.columns:
-            snapshot = snapshot[snapshot["Task Stage"] == "Current"]
-        filtered = apply_filters(snapshot, ftms, tasks, age_groups, outcomes, cohorts)
-        snapshot_time = parse_snapshot_datetime(version.snapshot_date)
-        for ftm, ftm_rows in filtered.groupby("FTM", dropna=False, observed=True):
-            metrics = calculate_kpis(ftm_rows)
-            records.append(
-                {
-                    "Snapshot Date": snapshot_time,
-                    "FTM": str(ftm),
-                    "Weighted Progress": metrics["weighted_progress"],
-                    "Completion Rate": (
-                        np.nan
-                        if metrics["task_rows"] == 0
-                        else metrics["complete"] / metrics["task_rows"]
-                    ),
-                    "Complete": metrics["complete"],
-                    "No-Show": metrics["no_show"],
-                    "Needs Follow-up": metrics["incomplete"] + metrics["no_record"],
-                    "Participants": metrics["participants"],
-                    "Task Records": metrics["task_rows"],
-                }
-            )
-    if not records:
-        return pd.DataFrame(columns=TREND_COLUMNS)
-    return pd.DataFrame(records).dropna(subset=["Snapshot Date"]).sort_values(
-        ["Snapshot Date", "FTM"]
-    )
-
-
-def prepare_detail_table(data: pd.DataFrame) -> pd.DataFrame:
-    """Return a concise operational detail table."""
-    preferred = [
-        "FTM",
-        "Current FTM",
-        "Responsible FTM",
-        "Task Stage",
-        "Participant ID",
-        "Age Group",
-        "Task",
-        "Outcome",
-        "Score",
-        "Outcome_Date",
-        "Participant Cohort",
-        "statusId",
-        "Source",
-        "Assignment Source",
-        "Calendly FTM Matched Age Band",
-        "Calendly Assignment Year",
-        "Calendly Assignment Rule",
-        "Calendly Host Raw",
-        "Calendly Appointment Date",
-        "Calendly Assignment Date",
-        "Calendly Match Method",
-        "Calendly FTM QA Flag",
-        "Calendly_Status",
-        "Calendly_Appointment_Date",
-    ]
-    columns = [column for column in preferred if column in data.columns]
-    result = data[columns].copy()
-    for column in [
-        "Outcome_Date",
-        "Calendly_Appointment_Date",
-        "Calendly Appointment Date",
-        "Calendly Assignment Date",
-    ]:
-        if column in result.columns:
-            result[column] = result[column].dt.strftime("%Y-%m-%d").fillna("")
+        schema = str(manifest.get("schema_version", "legacy"))
+        timestamp = str(manifest.get("generated_at", folder.name))
+        prefix = "Latest" if folder.name == "latest" else "Snapshot"
+        suffix = " · previous methodology" if schema != SCHEMA_VERSION else ""
+        result.append(DataVersion(f"{prefix} · {timestamp}{suffix}", folder, schema, timestamp))
     return result
 
 
-def prepare_roster_table(data: pd.DataFrame) -> pd.DataFrame:
-    """Return the complete filtered participant roster for FTM review."""
-    preferred = [
-        "FTM",
-        "Participant ID",
-        "birthday",
-        "Participant Cohort",
-        "statusId",
-        "Age Group",
-        "Eligibility Status",
-        "Task Eligible",
-        "Assignment Source",
-        "Calendly FTM Matched Age Band",
-        "Calendly Assignment Year",
-        "Calendly Assignment Rule",
-        "Calendly Host Raw",
-        "Calendly Appointment Date",
-        "Calendly Assignment Date",
-        "Calendly Match Method",
-        "Calendly FTM QA Flag",
-    ]
-    columns = [column for column in preferred if column in data.columns]
-    result = data[columns].copy()
-    for column in [
-        "birthday",
-        "Calendly Appointment Date",
-        "Calendly Assignment Date",
-    ]:
-        if column in result.columns:
-            values = pd.to_datetime(result[column], errors="coerce")
-            result[column] = values.dt.strftime("%Y-%m-%d").fillna("")
-    return result.sort_values(
-        [column for column in ["FTM", "Participant Cohort", "Age Group", "Participant ID"] if column in result.columns]
-    )
+def filter_records(data: pd.DataFrame, ages=(), cohorts=(), ftms=(), ftm_column="FTM") -> pd.DataFrame:
+    result = data.copy()
+    for column, selected in [("Age Group", ages), ("Participant Cohort", cohorts), (ftm_column, ftms)]:
+        if selected and column in result:
+            result = result[result[column].isin(selected)]
+    return result
+
+
+def unknown_sum(values: pd.Series):
+    return pd.NA if values.isna().any() else int(values.sum())
+
+
+def summarize_workload(data: pd.DataFrame) -> pd.DataFrame:
+    if data.empty:
+        return pd.DataFrame(columns=["FTM", *WORKLOAD_COUNTS, "Participants", "Participant Age Bands"])
+    grouped = data.groupby("FTM", dropna=False, observed=True)
+    result = grouped[WORKLOAD_COUNTS].agg(unknown_sum)
+    result["Participants"] = grouped["Participant ID"].nunique()
+    result["Participant Age Bands"] = grouped.size()
+    return result.reset_index()
+
+
+def validate_batch(tables: dict[str, pd.DataFrame]) -> None:
+    completions = tables["completions"]
+    keys = ["Participant ID", "IPA Age Band"]
+    if completions[keys].isna().any().any() or completions.duplicated(keys).any():
+        raise ValueError("Survey completions must be unique by participant and age band.")
+    if completions["Completed at"].isna().any() or not completions["Completed at"].dt.year.eq(2026).all():
+        raise ValueError("Completion timestamps must be in 2026.")
+    specimens = tables["specimens"]
+    if specimens["Collection Date"].isna().any() or not specimens["Collection Date"].dt.year.eq(2026).all():
+        raise ValueError("Biospecimen collections need a valid 2026 collection date.")
+    workload = tables["workload"]
+    if workload.duplicated([*keys, "Participant Cohort", "FTM"]).any():
+        raise ValueError("Workload keys are duplicated.")
+    matched = tables["appointments"]["Match Status"].eq("Matched").sum()
+    if workload["Appointment Count"].sum() != matched:
+        raise ValueError("Appointment workload does not reconcile with matched bookings.")
+    if any(workload[column].dropna().lt(0).any() for column in WORKLOAD_COUNTS):
+        raise ValueError("Negative activity counts.")
+
+
+def snapshot_trend(versions: list[DataVersion], ages=(), cohorts=(), ftms=()) -> pd.DataFrame:
+    rows = []
+    for version in versions:
+        if version.path.name == "latest" or version.path.name.startswith("replaced_") or version.schema != SCHEMA_VERSION:
+            continue
+        try:
+            completions = filter_records(read_csv(version.path / FILES["completions"]), ages, cohorts, ftms, "Attributed FTM")
+            specimens = filter_records(read_csv(version.path / FILES["specimens"]), ages, cohorts, ftms)
+            timestamp = pd.to_datetime(version.timestamp.rsplit(" ", 1)[0])
+        except (OSError, ValueError, KeyError, pd.errors.ParserError):
+            continue
+        rows.append({"Refresh": timestamp, "IPA completions": len(completions), "Biospecimen collections": len(specimens)})
+    return pd.DataFrame(rows).sort_values("Refresh") if rows else pd.DataFrame()
+
+
+def appointment_count_table(workload: pd.DataFrame) -> pd.DataFrame:
+    """Booking totals by host; the grand-total distinct counts cross host boundaries."""
+    columns = ["FTM", "Appointment Count", "Participants", "Participant Age Bands"]
+    result = summarize_workload(workload)[columns]
+    total = pd.DataFrame([{"FTM": "Total", "Appointment Count": int(workload["Appointment Count"].sum()),
+        "Participants": workload["Participant ID"].nunique(),
+        "Participant Age Bands": len(workload.drop_duplicates(["Participant ID", "Participant Cohort", "IPA Age Band"]))}])
+    return pd.concat([result, total], ignore_index=True)
+
+
+def monthly_collection_table(specimens: pd.DataFrame) -> pd.DataFrame:
+    """Month rows and specimen-task columns, with row/column totals from filtered collections."""
+    if specimens.empty:
+        return pd.DataFrame(columns=["Month", "Total"])
+    counts = (specimens.assign(_month=specimens["Collection Date"].dt.month)
+              .groupby(["_month", "Task"], observed=True).size().unstack(fill_value=0).sort_index())
+    counts["Total"] = counts.sum(axis=1)
+    counts.index = [MONTH_NAMES[int(month)-1] for month in counts.index]
+    counts.loc["Total"] = counts.sum(axis=0)
+    counts.index.name = "Month"
+    counts.columns.name = None
+    return counts.reset_index()

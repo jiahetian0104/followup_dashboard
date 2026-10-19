@@ -1,119 +1,142 @@
-# CHARM IPA Task Dashboard
+# CHARM IPA 2026 Dashboard
 
-This Streamlit app gives FTM staff a filterable participant-level view of IPA and Ripple task progress.
+The dashboard covers three independent measures: completed IPA surveys, Calendly appointment activity, and biospecimens collected in 2026. There are no weighted scores, responsibility ledgers, previous-output inputs or 2025 booking fallbacks.
 
-IPA activity is a separate tab from biospecimens and other Ripple tasks. Its
-heatmap places FTM names horizontally and Complete, No-show, Cancel, and
-Reschedule counts vertically. Below the work summary, a percentage bar chart
-shows `(Complete + 0.25 * No-show) / participant age bands` for each individual
-FTM. Participant age bands are unique within each FTM, include cancel/reschedule-only
-records, and use the same filters as the numerator. Transferred tasks can enter
-more than one FTM's denominator. Repeated no-shows can yield a score above 100%:
-this weighted performance score is not a completion rate and is not capped.
-Unassigned, Pending verification and Shared hosts do not receive individual
-performance percentages. The other-task charts, metrics, details and
-trends exclude In-Person Assessments. IPA controls are independent of the
-sidebar's roster/current-caseload/task filters and include all recorded age bands.
+## Refresh and launch
 
-## Data flow
+Run `followup_dashboard/IPA Data.R` with Source in RStudio or `Rscript` from the workspace. The entry point finds its sibling modules regardless of working directory. Required R packages: tidyverse (including lubridate), httr2 and readxl. The optional survey-only Excel exporter also uses openxlsx. XLConnect and Java are no longer required by this pipeline.
 
-Running `../IPA Data.R` writes dashboard-ready files to:
+The existing credentials have been moved to `followup_dashboard/.Renviron.ipa`, a private local file excluded by `.gitignore`. Do not commit this file. It supplies `RIPPLE_AUTH_KEY` (the complete Authorization value) and `CALENDLY_TOKEN` (the Calendly personal access token). Environment-based configuration is also supported when the local file is absent. The legacy Ripple configuration can supply the Ripple key if neither environment nor local configuration supplies it.
 
-- `data/latest/`: replaced after every refresh
-- `data/snapshots/YYYY-MM-DD_HHMMSS/`: one immutable time point per successful refresh
+The Crosswalk default is the existing shared-drive path to `Data/Miscellaneous/Global Crosswalk/CHARM_Cohort_List.xlsx`, sheet `Cohort_List`. Set `IPA_CROSSWALK_PATH` to use another location. Set `IPA_DASHBOARD_APP_DIR` to change the dashboard output directory.
 
-The dashboard uses `task_checklist_long.csv` for task metrics and
-`participant_roster.csv` for the complete current roster. The roster retains
-6–11 month and potential participants even though they do not yet have
-applicable IPA task rows. The wide checklist and FTM summary are also exported
-for downstream use.
-
-The refresh also maintains two persistent audit tables:
-
-- `data/latest/ipa_appointment_history.csv`: all 2026 assessment bookings, with participant/age-band matching, booking host, canceled/no-show/rescheduled flags and old/new invitee links. Repeated reschedules are counted on each old booking, not on the new booking.
-- `data/latest/ipa_appointment_history_qc.csv`: unresolved participant/age-band bookings, missing status evidence, missing hosts and shared-host bookings.
-- `data/latest/participant_ipa_records.csv`: one row per participant/cohort/recorded age band, with completion, appointment counts, historical no-show/true cancellation/reschedule counts and completion attribution.
-- `data/latest/participant_ipa_ftm_records.csv`: participant × age band × FTM activity. Each booking stays with its host; completion credit can belong to a different FTM.
-- `data/latest/ftm_ipa_summary.csv`: FTM activity totals, separate from `ftm_task_summary.csv` (other tasks only).
-- `data/latest/ipa_completion_evidence.csv`: retained Ripple completion/date evidence for replaying attribution rules without a new API refresh.
-
-- `data/latest/calendly_ftm_lookup.csv`: one latest host/inviter record per participant, appointment year, and IPA age band for 2025–2026, with the source appointment and matching method retained for audit.
-- `data/latest/participant_calendly_assignment_lookup.csv`: the current assignment decision for every participant-age-band row. Priority is direct 2026 same-age evidence, Invitee name/email evidence, direct 2026 previous-age evidence, direct 2025 Calendly evidence, then the staff-verified recent IPA FTM fallback.
-- `data/latest/calendly_ftm_lookup_qc.csv`: Calendly records whose participant, age band, or host could not be resolved confidently.
-- `data/latest/calendly_participant_match_audit.csv`: every retained Calendly participant match with the invitee, child-name answer, matching method, age band, host, and QA result.
-- `data/latest/participant_contact_name_aliases.csv`: active Ripple Participant/Mother/Alternate name and email relationships used for Invitee fallback matching.
-- `data/latest/calendly_invitee_fallback_assignments.csv`: participant-age-band assignments supplied by the Invitee name/email evidence tier.
-- `data/latest/manual_verified_fallback_assignments.csv`: auditable last-resort participant-age-band assignments confirmed by project staff when no usable Calendly evidence exists.
-- `data/latest/ftm_assignment_history.csv`: effective-dated IPA assignment history by participant and age band. Calendly is the authoritative source; Ripple and the Call List remain available only as comparison fields.
-- `data/latest/task_responsibility_ledger.csv`: locks every participant-age-band-task row to the assigned IPA FTM for that age band, regardless of outcome. A lower-priority fallback is upgraded when higher-priority Calendly evidence becomes available.
-
-The September 20, 2026 refresh is the Calendly-assignment baseline. A participant can have a different Calendly host in a later age band; prior Complete, No-Show, Incomplete, and No record rows remain with the FTM recorded for the earlier age band. Participant identity is resolved using explicit IDs, child-name answers, Invitee child names, and active Ripple Participant/Mother/Alternate name or email relationships. Email can bridge contact surname changes. If one contact maps to siblings, a child first name can distinguish the participant; otherwise the event remains unresolved rather than assigning credit arbitrarily. Current assignment priority is direct 2026 same-age evidence, Invitee name/email evidence, direct 2026 previous-age evidence, direct 2025 Calendly evidence, then the staff-verified recent IPA FTM fallback. If none exists, the task remains `Unassigned`; Ripple and Call List owners are never used for IPA credit. The 2025 and staff-verified fallbacks supply responsibility only and never change a 2026 IPA outcome. Any later higher-priority Calendly evidence automatically replaces the staff-verified fallback.
-
-## Run locally
-
-From this directory:
+From this app directory:
 
 ```bash
 python3 -m pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-The sidebar lets users choose Latest, a timestamped snapshot, or a manually uploaded checklist CSV. `Task responsibility` includes current and historical age-band tasks under their locked responsible FTM. `Current caseload` shows only currently applicable tasks under the participant's current Calendly FTM. Filters are available for participant scope, FTM, task, age group, outcome, and participant cohort. The Participant roster tab lets FTMs explicitly open Potential participants or 6–11 month participants without adding them to task-progress denominators. The Assignment QA tab shows host matching coverage, source appointments, and unresolved records. The Snapshot trend tab starts with the Calendly-assignment baseline and excludes older Ripple/Call List snapshots so the series does not mix ownership definitions.
+The dashboard's **Reload saved data** button reloads files; it does not call APIs. Select Latest or an immutable snapshot in the sidebar. Age and cohort filters apply across tabs; each tab has its own FTM attribution filter.
 
-## Metric definitions
+## Code structure
 
-- **Complete:** score 1
-- **No-Show:** score 0.25
-- **Incomplete:** score 0
-- **No record:** no source record; displayed separately and counted as 0 in weighted progress
-- **Weighted progress:** sum of task scores divided by the number of applicable participant-task rows
+| File | Responsibility |
+|---|---|
+| `../IPA Data.R` | Acquire inputs, build a complete batch, verify outputs, publish snapshot/latest |
+| `../ipa_sources.R` | Two combined Ripple study requests; 2026 Calendly requests; identity catalog |
+| `../ipa_matching.R` | Existing identity, contact, name, host and appointment-age functions, preserved |
+| `../ipa_fields.R` | IPA and specimen event-field mappings |
+| `../ipa_surveys.R` | Survey submissions, original manually verified corrections, first/latest completions, site labels |
+| `../ipa_activity.R` | Stateless booking counts, survey/event QC, dated specimen collections and owners |
+| `dashboard_data.py` | Read/validate/filter batches and summarize counts |
+| `streamlit_app.py` | Completion, booking, specimen, QC and snapshot views |
 
-IPA activity uses every matching appointment, rather than the legacy checklist's
-latest appointment. Cancel counts only `Canceled = TRUE` with `Rescheduled = FALSE`;
-Reschedule counts each `Rescheduled = TRUE` old booking, including repeated actions
-in a chain. New/old invitee links are exported for tracing the chain. A successor
-link is also accepted as positive rescheduling evidence. Missing flags remain
-unknown, including in summaries, rather than becoming zero.
+`../Ripple 2026 survey export.R` remains an optional survey-only CSV/Excel exporter. It uses the same functions and first-completion definition; its manual correction rules are shared in `ipa_surveys.R`, not maintained as a second copy.
 
-Ripple completion is counted once per participant/age band. Completion credit first
-goes to a single distinct individual Calendly host on the Ripple completion date,
-from a booking that is neither canceled nor no-show. If that host cannot be resolved,
-credit falls back to the latest booking in the same age band. Cohort differences
-are ignored for completion attribution; the credited task retains its Ripple cohort.
-Bookings in 2025 and 2026 may supply completion evidence. Only when no same-band
-booking exists, try the immediately preceding age band, preferring an eligible
-completion-date host and then the latest booking. Latest fallbacks include canceled
-or no-show bookings and use appointment time, then booking creation time.
-`Completion Attribution` and `Completion Fallback Appointment Date` identify
-inferred credit. Missing/shared hosts or conflicting latest hosts remain
-**Pending verification**. Older bookings do not enter the 2026 workload counts.
-`ipa_completion_booking_evidence.csv` retains both years for attribution replay.
-Participant IPA exports, displays and downloads exclude first and last names,
-including displays loaded from older snapshots. Shared-host bookings are counted
-once under a combined label. Dated 2025 completion evidence is excluded.
-Undated completion flags remain visible for verification. Unmatched participant or
-age-band appointments remain in the history QA export and do not get FTM credit.
+## Sources and year scope
 
-The full legacy checklist remains available for responsibility audit and historical
-completion evidence; its latest-record IPA outcome is not used by the new IPA
-heatmap. Older snapshots without the new exports explicitly show that IPA activity
-history is unavailable. They are not reconstructed from latest-task records.
+Each refresh requests participants, contacts, events and the selected IPA surveys together from each of the two Ripple studies. `surveyExportSince` is explicitly `2026-01-01`. The returned survey schema is validated, and completion time is independently filtered to the reporting year. Missing required event fields fail the refresh rather than silently producing zero collections.
 
-Run the focused calculation checks from the workspace root:
+Calendly events are requested from local midnight January 1, 2026 through local midnight January 1, 2027, exclusive at the end. Only the original eight assessment booking types are processed. No-show, true cancellation and rescheduling flags retain their previous definitions. The same assessment type filter is applied before requesting invitees to avoid unnecessary calls for unrelated events.
+
+Withdrawn participants remain available to assess completed surveys and 2026 specimen collections. Known test records are excluded. Current age group still comes from Ripple status; appointment age still comes from birthday plus appointment date, with the existing age-answer fallback. Current status does not remove an otherwise valid 2026 collection.
+
+## Completion definition
+
+- One completed IPA per **Participant ID × survey age band** within 2026.
+- Use the **earliest completed timestamp in 2026**, not the latest submission and not submission index zero. A smaller submission index breaks exact timestamp ties.
+- FTM, site and month follow that first completed submission. There is no Calendly inference of completion FTM.
+- All returned completed submissions, including repeat submissions, remain in `ipa_survey_submissions.csv` for audit; they are not all counted.
+- `ipa_survey_latest.csv` separately retains the latest 2026 completed submission for specimen assignment.
+- Original placeholder-FTM mappings and submission-specific FTM/site corrections remain applied only within their original conditions. Original values, actual source fields and correction provenance remain in exports.
+- Ripple's `24-35 Month` survey supports both `IPA_FTM` and its older `ftm_member` field. Conflicting nonempty values stop the refresh rather than being selected arbitrarily.
+- Site labels are Detroit, East Lansing, Flint, Grand Rapids and Traverse City. Original site values remain available.
+- Reporting dates/months use America/New_York. CSV timestamp serialization to UTC is converted back before dashboard month grouping.
+
+## Appointment workload
+
+Each row represents one child-booking, not necessarily one physical meeting. Explicit multi-child bookings retain one row per child. Bookings are deduplicated by invitee, participant, cohort and age band. All preserved actions stay with the booking host, independently of survey completion FTM.
+
+- No-show counts each flagged appointment.
+- True Cancel requires Canceled TRUE and Rescheduled FALSE.
+- Reschedule counts each old booking in a chain. A New Invitee URI is also positive reschedule evidence.
+- Missing action flags propagate as unknown instead of zero.
+- Shared hosts remain one combined host label.
+- Unresolved participant/age-band/booking IDs remain in appointment history and QC and are excluded from matched workload totals.
+- Future appointments within the reporting year remain part of the annual booking records.
+
+## Survey/event QC
+
+Compare evidence at **Participant ID × age band**, independently of repeat survey submissions or cohort transitions. The main completion count always uses Survey.
+
+The comparison reports Both complete, Survey only, Event only, Neither complete and Event year/date needs review. All event flags, parsed dates, raw dates, source fields and date differences remain inspectable. Year-specific 2026 event fields can establish event completion with an undated flag, but missing dates are flagged. An undated infant event field cannot establish its completion year. Completed events dated outside 2026 do not establish a 2026 event completion. Date differences are QC evidence, not automatic corrections.
+
+## Biospecimens
+
+Count only records with a completed collection flag and a valid completion date in 2026, regardless of present age/status. Counts are collections, with no inferred incomplete-task denominator or completion percentage.
+
+FTM priority, always within the same child and age band:
+
+1. Latest completed 2026 Survey's FTM.
+2. Latest 2026 Calendly host, ordered by appointment time then creation time.
+3. Unassigned.
+
+An unresolved survey FTM remains visibly unconfirmed instead of silently transferring credit. A fallback booking may be canceled/no-show; its purpose is responsibility attribution, not evidence of specimen collection. Combined hosts stay combined.
+
+Age-specific specimen fields retain their mapped age bands. Tooth fields apply across ages 3+; collection age from birthday and collection date selects the band. An unresolved tooth age band remains in collection totals and QC. Missing/unparseable collection dates are excluded from totals and retained in QC. A 2026 date without a completed flag is also flagged.
+
+## Saved files and snapshots
+
+- `data/raw/<run-id>/api_inputs.rds`: acquired API evidence and identity catalog, with no authentication values. This directory is private source evidence and is excluded from version control.
+- `data/latest/`: the most recent fully built batch, schema `ipa-2026-v2`.
+- `data/snapshots/<run-id>/`: immutable output for each successful calculation.
+- `data/snapshots/replaced_<run-id>/`: preserves the previous latest batch, including independently modified legacy outputs. These backup copies do not produce duplicate points in snapshot trends.
+
+Raw API responses allow offline replay by setting `IPA_RAW_RUN` to a saved raw run directory before running `IPA Data.R`. Replay never contacts APIs or reads the previous dashboard outputs. The manifest retains API acquisition time, calculation time, source mode, reporting window and metric rules. A replay is explicitly labeled in the page.
+
+Publishing writes and checks a complete staging batch, finalizes the snapshot, prepares a new latest directory and switches latest only after success. If the latest switch fails, the previous latest is restored. Original legacy snapshots remain selectable in a reference-only view and are excluded from new methodology trends. Snapshot trend lines show successive refresh counts, not completion-month trajectories.
+
+Main outputs:
+
+| File | Grain / purpose |
+|---|---|
+| `ipa_survey_completions.csv` | First 2026 completion per child/age band |
+| `ipa_survey_submissions.csv` | All returned completed submissions |
+| `ipa_survey_latest.csv` | Latest 2026 completion per child/age band, specimen owner evidence |
+| `ipa_event_evidence.csv` | Raw/parsed event completion evidence per child/cohort/age band |
+| `ipa_survey_event_comparison.csv` | Independent survey/event presence comparison |
+| `ipa_survey_event_qc.csv` | Mismatches and date exceptions |
+| `ipa_appointment_history.csv` | 2026 child-booking actions |
+| `ipa_appointment_history_qc.csv` | Matching, age, host and status exceptions |
+| `participant_ipa_ftm_records.csv` | Child/cohort/age band/host workload counts, no completion credit or weighted score |
+| `ftm_ipa_workload.csv` | Host workload totals |
+| `biospecimen_collections.csv` | Dated completed 2026 collections and assignment evidence |
+| `biospecimen_qc.csv` | Missing/bad dates, conflicting flags, unresolved collection age |
+| `participant_roster.csv` | ID/cohort/current status/current age band, without responsibility assignment |
+| `manifest.csv` | Batch schema, times, rules and reconciliation counts |
+
+## Verification
+
+From the workspace root:
 
 ```bash
 Rscript followup_dashboard/ipa_streamlit_app/tests/test_ipa_activity.R
 python3 -m unittest discover -s followup_dashboard/ipa_streamlit_app/tests
 ```
 
-## Optional path override
+Tests cover earliest vs latest submission, repeat handling, year scope, original corrections, renamed survey fields, canonical sites, year-end/month-end timezone boundaries, withdrawn-participant collections, survey-vs-booking attribution, bidirectional event QC, unknown action flags, reschedule/cancel counting, stateless replay, schema validation, snapshot methodology separation and rendered Streamlit filters.
 
-If the R script is run from another location, set `IPA_DASHBOARD_APP_DIR` to this app directory before running it.
+### QC refinement (October 19, 2026)
 
-Colleague-confirmed completion hosts are maintained in `ipa_verified_completion_hosts()`
-in `../ipa_activity.R`. They are scoped by participant, age band and completion
-reporting year, and used only after all Calendly attribution tiers remain unresolved.
-They do not create completion or booking records. Source is labeled
-`Staff-verified completion fallback`, with `Completion Verification Date`.
-Future usable Calendly evidence automatically supersedes them. Jolyn uses the
-existing canonical dashboard label `Jo`.
+Same-day Survey-only and Event-only evidence in different age bands is paired as an explicit **Age-band conflict**. `ipa_age_band_conflicts.csv` shows one row per paired conflict with both age bands, date and Survey FTM; the detailed comparison retains both evidence rows and their original Evidence Status. Two genuine same-band matches on the same day do not create a conflict.
+
+Review queues include only records with a 2026 Survey completion or a 2026 event completion. An event dated before 2026, with no 2026 Survey, remains in the source comparison/evidence but is excluded from actionable QC. Date-only differences remain separate. Event Date Raw and Event Date Field identify the actual exported date and its exact source field. Ripple and Calendly acquisition times are recorded separately when source responses are refreshed independently.
+
+### Presentation refinements (October 19, 2026)
+
+Completion age groups keep the original automatic Plotly color assignment. Only age groups present in the filtered completions appear in the legend; 24–35 months will appear and receive an automatic color when completions are available. Completion-month chart values and hover labels use month names, ordered January through December.
+
+Appointment totals appear in their own host-level table. No-show, Cancel and Reschedule are shown separately as appointment actions; Appointment Count is not a parallel action series. The appointment grand total adds bookings but deduplicates participants and participant/cohort/age-band combinations across hosts.
+
+The biospecimen tab explains the same-child/same-band/2026 FTM priority directly on the page. Its monthly collection table replaces the former monthly stacked chart, with specimen task columns and row/column totals that follow the active filters. Only months with recorded collections are shown.

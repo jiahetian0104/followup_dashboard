@@ -1,93 +1,99 @@
-"""Checks for IPA action counts, filters, and the rendered Streamlit model."""
+"""Contract, filtering, snapshot compatibility and Streamlit interaction checks."""
 from pathlib import Path
+import os
+import subprocess
 import sys
+import tempfile
 import unittest
-
+from unittest.mock import patch
 import pandas as pd
 
 APP_DIR = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(APP_DIR))
-from dashboard_data import (standardize_ipa_records, filter_ipa_records,
-                            summarize_ipa_activity, IPA_COUNTS)
+ROOT = APP_DIR.parents[1]
+sys.path.insert(0,str(APP_DIR))
+from dashboard_data import (FILES, read_csv, validate_batch, summarize_workload,
+    filter_records, discover_data_versions, snapshot_trend)
 
+class DashboardTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.temp = tempfile.TemporaryDirectory(prefix="ipa_dashboard_test_")
+        cls.data_dir = Path(cls.temp.name)
+        env = os.environ.copy()
+        env["IPA_TEST_OUTPUT_DIR"] = str(cls.data_dir)
+        subprocess.run(["Rscript",str(APP_DIR/"tests/test_ipa_activity.R")],cwd=ROOT,env=env,check=True,capture_output=True)
+        cls.tables = {key:read_csv(cls.data_dir/"latest"/filename) for key,filename in FILES.items()}
 
-class IpaActivityTests(unittest.TestCase):
-    def setUp(self):
-        self.data = standardize_ipa_records(pd.DataFrame([
-            ["A", "cohort", "3_5yr", 2026, False, "FTM 1", 2, 0, 0, 1, 1],
-            ["B", "cohort", "3_5yr", 2026, True, "FTM 2", 1, 1, 0, 0, 0],
-            ["C", "cohort", "6_10yr", 2026, True, "FTM 1", 1, 0, 1, 0, 0],
-            ["C", "cohort", "6_10yr", 2026, True, "FTM 2", 1, 1, 0, 0, 0],
-        ], columns=["Participant ID", "Participant Cohort", "IPA Age Band", "IPA Year",
-                    "IPA Complete", "FTM", *IPA_COUNTS]), ftm_records=True)
+    @classmethod
+    def tearDownClass(cls):
+        cls.temp.cleanup()
 
-    def test_participant_names_are_removed_from_legacy_exports(self):
-        named = self.data.assign(firstName="Private", lastName="Name")
-        cleaned = standardize_ipa_records(named, ftm_records=True)
-        self.assertNotIn("firstName", cleaned.columns)
-        self.assertNotIn("lastName", cleaned.columns)
+    def test_contract_and_first_vs_latest(self):
+        validate_batch(self.tables)
+        completed = self.tables["completions"].iloc[0]
+        self.assertEqual(completed["Attributed FTM"],"Anna")
+        self.assertEqual(completed["Completed at"].month,2)
+        specimen = self.tables["specimens"].query('`Participant ID` == "A"').iloc[0]
+        self.assertEqual(specimen["FTM"],"Nicole")
+        self.assertEqual(specimen["statusId"],"Withdrawn")
 
-    def test_actions_stay_with_host_and_complete_is_credited_once(self):
-        summary = summarize_ipa_activity(self.data).set_index("FTM")
-        self.assertEqual(summary.loc["FTM 1", "Complete Count"], 0)
-        self.assertEqual(summary.loc["FTM 1", "Cancel Count"], 1)
-        self.assertEqual(summary.loc["FTM 1", "Reschedule Count"], 1)
-        self.assertEqual(summary.loc["FTM 2", "Complete Count"], 2)
-        self.assertEqual(summary["Appointment Count"].sum(), 5)
-        self.assertEqual(summary.loc["FTM 1", "Participant Age Bands"], 2)
-        self.assertEqual(summary.loc["FTM 1", "Weighted Points"], 0.25)
-        self.assertAlmostEqual(summary.loc["FTM 1", "Weighted IPA Performance"], 0.125)
-        self.assertEqual(summary.loc["FTM 2", "Weighted IPA Performance"], 1)
+    def test_unknown_workload_and_filters(self):
+        data = self.tables["workload"].copy()
+        selected = filter_records(data,[],[],["Jo"])
+        self.assertEqual(summarize_workload(selected)["Appointment Count"].sum(),2)
+        data.loc[data["FTM"]=="Jo","No-show Count"] = pd.NA
+        summary = summarize_workload(data).set_index("FTM")
+        self.assertTrue(pd.isna(summary.loc["Jo","No-show Count"]))
+        self.assertFalse(any("Weighted" in col for col in summary.columns))
 
-    def test_filters_and_reset_reconcile(self):
-        selected = filter_ipa_records(self.data, ["FTM 1"], ["3–5 years"], [])
-        self.assertEqual(len(selected), 1)
-        self.assertEqual(summarize_ipa_activity(selected)["Appointment Count"].sum(), 2)
-        reset = filter_ipa_records(self.data, [], [], [])
-        self.assertEqual(summarize_ipa_activity(reset)["Complete Count"].sum(), 2)
+    def test_study_timezone_preserves_completion_month(self):
+        path = self.data_dir / "timezone.csv"
+        pd.DataFrame({"Completed at":["2026-02-01T04:30:00Z", "2027-01-01T04:30:00Z"]}).to_csv(path,index=False)
+        dates = read_csv(path)["Completed at"]
+        self.assertEqual(dates.iloc[0], pd.Timestamp("2026-01-31 23:30:00"))
+        self.assertEqual(dates.iloc[1].year,2026)
 
-    def test_unknown_counts_are_preserved(self):
-        self.data.loc[0, "Cancel Count"] = pd.NA
-        summary = summarize_ipa_activity(self.data).set_index("FTM")
-        self.assertTrue(pd.isna(summary.loc["FTM 1", "Cancel Count"]))
+    def test_duplicate_and_wrong_year_fail(self):
+        tables = {key:value.copy() for key,value in self.tables.items()}
+        tables["completions"] = pd.concat([tables["completions"]]*2)
+        with self.assertRaises(ValueError):validate_batch(tables)
+        tables["completions"] = self.tables["completions"].copy()
+        tables["specimens"]["Collection Date"] = pd.Timestamp("2025-01-01")
+        with self.assertRaises(ValueError):validate_batch(tables)
 
-    def test_duplicate_records_are_rejected(self):
-        with self.assertRaises(ValueError):
-            standardize_ipa_records(pd.concat([self.data, self.data.iloc[:1]]), ftm_records=True)
+    def test_snapshots_only_compare_same_method(self):
+        import shutil
+        snapshots = self.data_dir/"snapshots"
+        snapshots.mkdir(exist_ok=True)
+        new = snapshots/"2026-10-19_100000"
+        if not new.exists():shutil.copytree(self.data_dir/"latest",new)
+        old = snapshots/"2026-10-05_100000"
+        old.mkdir(exist_ok=True)
+        pd.DataFrame([{"generated_at":"2026-10-05 10:00:00 EDT"}]).to_csv(old/"manifest.csv",index=False)
+        versions=discover_data_versions(self.data_dir)
+        self.assertTrue(any(v.schema=="legacy" for v in versions))
+        trend=snapshot_trend(versions)
+        self.assertEqual(len(trend),1)
+        self.assertEqual(trend.iloc[0]["IPA completions"],1)
+        self.assertEqual(snapshot_trend(versions,ftms=["Nicole"]).iloc[0]["IPA completions"],0)
 
-    def test_empty_selection(self):
-        selected = filter_ipa_records(self.data, ["no such host"], [], [])
-        self.assertTrue(summarize_ipa_activity(selected).empty)
-
-    def test_repeated_no_shows_are_not_capped(self):
-        record = self.data.iloc[[1]].copy()
-        record["No-show Count"] = 2
-        summary = summarize_ipa_activity(record)
-        self.assertEqual(summary["Weighted IPA Performance"].iloc[0], 1.5)
-
-    def test_unresolved_credit_has_no_individual_percentage(self):
-        record = self.data.iloc[[1]].copy()
-        record["FTM"] = "Pending verification"
-        self.assertTrue(pd.isna(summarize_ipa_activity(record)["Weighted IPA Performance"].iloc[0]))
-
-
-class StreamlitModelTests(unittest.TestCase):
-    def test_app_loads_and_separates_ipa(self):
+    def test_app_and_filters(self):
         from streamlit.testing.v1 import AppTest
-        app = AppTest.from_file(str(APP_DIR / "streamlit_app.py"), default_timeout=30).run()
-        self.assertFalse(app.exception, [exc.message for exc in app.exception])
-        self.assertEqual(app.tabs[0].label, "IPA activity")
-        task_control = next(widget for widget in app.multiselect if widget.label == "Task")
-        self.assertNotIn("In-Person Assessments", task_control.options)
-        ipa_control = next((widget for widget in app.multiselect if widget.label == "IPA FTM"), None)
-        if ipa_control is not None and ipa_control.options:
-            ipa_control.set_value([ipa_control.options[0]])
-            app.run()
-            self.assertFalse(app.exception, [exc.message for exc in app.exception])
-            next(widget for widget in app.multiselect if widget.label == "IPA FTM").set_value([])
-            app.run()
-            self.assertFalse(app.exception, [exc.message for exc in app.exception])
+        with patch.dict(os.environ,{"IPA_DASHBOARD_DATA_DIR":str(self.data_dir)}):
+            app=AppTest.from_file(str(APP_DIR/"streamlit_app.py"),default_timeout=30).run()
+            self.assertFalse(app.exception,[e.message for e in app.exception])
+            self.assertEqual([t.label for t in app.tabs],["IPA completions","Appointment workload","Biospecimens","Data QC","Snapshot trend"])
+            owner=next(w for w in app.multiselect if w.label=="Completion FTM")
+            owner.set_value(["Anna"]);app.run()
+            self.assertFalse(app.exception,[e.message for e in app.exception])
+            host=next(w for w in app.multiselect if w.label=="Booking host")
+            host.set_value(["Jo"]);app.run()
+            self.assertFalse(app.exception,[e.message for e in app.exception])
+            age=next(w for w in app.multiselect if w.label=="Age group")
+            age.set_value(["12–23 months"]);app.run()
+            self.assertFalse(app.exception,[e.message for e in app.exception])
+            owner=next(w for w in app.multiselect if w.label=="Completion FTM")
+            owner.set_value([]);app.run()
+            self.assertFalse(app.exception,[e.message for e in app.exception])
 
-
-if __name__ == "__main__":
-    unittest.main()
+if __name__=="__main__":unittest.main()

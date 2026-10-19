@@ -1,0 +1,6 @@
+.Renviron.ipa
+ipa_streamlit_app/data/raw/
+ipa_streamlit_app/data/.staging_*/
+ipa_streamlit_app/data/.next_*/
+__pycache__/
+*.pyc
