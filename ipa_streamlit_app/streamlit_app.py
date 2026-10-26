@@ -126,7 +126,13 @@ with completion_tab:
             chart.update_yaxes(range=[0, largest_month_total + max(2, largest_month_total * 0.14)])
             figure(chart)
         site_counts = completed.assign(Site=completed["Site"].fillna("Not recorded")).groupby("Site").size().rename("Completions").reset_index()
-        figure(px.bar(site_counts,x="Site",y="Completions",title="Completions by site",color_discrete_sequence=["#2f6b9a"]))
+        site_chart = px.bar(site_counts,x="Site",y="Completions",text="Completions",
+                            title="Completions by site",color_discrete_sequence=["#2f6b9a"])
+        site_chart.update_traces(texttemplate="%{text:,.0f}", textposition="outside", cliponaxis=False,
+                                 textfont=dict(size=12, color="#25313c"))
+        largest_site_total = int(site_counts["Completions"].max())
+        site_chart.update_yaxes(range=[0, largest_site_total + max(2, largest_site_total * 0.14)])
+        figure(site_chart)
     with st.expander("Completion records"):
         table(completed, "ipa_survey_completions.csv", "completion records")
     with st.expander("All original survey submissions"):
