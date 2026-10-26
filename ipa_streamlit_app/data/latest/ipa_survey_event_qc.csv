@@ -11,12 +11,14 @@ GWP690-01-A,11_17yr,3-20 year,TRUE,TRUE,2026-04-22,04/22/2026,event.2026_11_17yr
 GYL243-01-A,12_23_month,6-35 month,TRUE,TRUE,2026-10-14,10/14/2026,event.12_23mo_ipa_complete.completedDate,,6-35 month,2026-10-16,Andrew,TRUE,Both complete,-2,,Both complete,TRUE,Completion date difference
 HHW537-01-A,12_23_month,6-35 month,TRUE,TRUE,2026-04-03,04/03/2026,event.12_23mo_ipa_complete.completedDate,,6-35 month,2026-10-15,Jody,TRUE,Both complete,-195,,Both complete,TRUE,Completion date difference
 HLW497-01-A,3_5yr,3-20 year,TRUE,TRUE,2026-07-28,07/28/2026,event.2026_3_5yr_ipa_complete.completedDate,,3-20 year,2026-07-29,Jody,TRUE,Both complete,-1,,Both complete,TRUE,Completion date difference
+JFL342-01-A,12_23_month,6-35 month,TRUE,TRUE,2026-04-16,04/16/2026,event.12_23mo_ipa_complete.completedDate,,6-35 month,2026-10-20,Andrew,TRUE,Both complete,-187,,Both complete,TRUE,Completion date difference
 JJK068-01-A,3_5yr,3-20 year,TRUE,TRUE,2026-07-24,07/24/2026,event.2026_3_5yr_ipa_complete.completedDate,,3-20 year,2026-07-27,Jody,TRUE,Both complete,-3,,Both complete,TRUE,Completion date difference
 JMR655-01-A,11_17yr,3-20 year,TRUE,TRUE,2026-06-09,06/09/2026,event.2026_11_17yr_ipa_complete.completedDate,,,,,FALSE,Age-band conflict,,6_10yr,Event only,TRUE,Same-date survey/event age-band conflict
 JMR655-01-A,6_10yr,3-20 year,FALSE,FALSE,,,event.2026_6_10yr_ipa_complete.completedDate,,3-20 year,2026-06-09,Jo,TRUE,Age-band conflict,,11_17yr,Survey only,TRUE,Same-date survey/event age-band conflict
 KBQ321-01-A,3_5yr,3-20 year,TRUE,TRUE,2026-05-03,05/03/2026,event.2026_3_5yr_ipa_complete.completedDate,,3-20 year,2026-05-14,Jody,TRUE,Both complete,-11,,Both complete,TRUE,Completion date difference
 KLK075-01-A,3_5yr,3-20 year,TRUE,TRUE,2026-07-26,07/26/2026,event.2026_3_5yr_ipa_complete.completedDate,,3-20 year,2026-07-29,Toye,TRUE,Both complete,-3,,Both complete,TRUE,Completion date difference
 KRR544-01-A,12_23_month,6-35 month,TRUE,TRUE,2026-06-02,06/02/2026,event.12_23mo_ipa_complete.completedDate,,,,,FALSE,Event only,,,Event only,TRUE,2026 event completion without a same-band completed survey
+KRS023-01-A,12_23_month,6-35 month,TRUE,TRUE,2026-04-22,04/22/2026,event.12_23mo_ipa_complete.completedDate,,6-35 month,2026-10-25,Toye,TRUE,Both complete,-186,,Both complete,TRUE,Completion date difference
 KRY635-01-A,6_10yr,3-20 year,TRUE,TRUE,2026-04-18,04/18/2026,event.2026_6_10yr_ipa_complete.completedDate,,3-20 year,2026-10-15,Jo,TRUE,Both complete,-180,,Both complete,TRUE,Completion date difference
 LBG473-01-A,6_10yr,3-20 year,TRUE,TRUE,2026-04-14,04/14/2026,event.2026_6_10yr_ipa_complete.completedDate,,3-20 year,2026-04-21,Toye,TRUE,Both complete,-7,,Both complete,TRUE,Completion date difference
 LKY497-01-A,11_17yr,3-20 year,TRUE,TRUE,2026-07-22,07/22/2026,event.2026_11_17yr_ipa_complete.completedDate,,3-20 year,2026-10-15,Jo,TRUE,Both complete,-85,,Both complete,TRUE,Completion date difference
