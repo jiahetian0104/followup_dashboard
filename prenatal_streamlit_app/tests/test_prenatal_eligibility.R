@@ -5,8 +5,10 @@ for (nm in c('normalize_prenatal_ids','build_prenatal_powerbi')) {
   fun <- Filter(function(x) is.call(x) && identical(x[[1]],as.name('<-')) && identical(x[[2]],as.name(nm)),expr)
   eval(fun[[1]])
 }
-p <- tibble(globalId=c('AAA111-01-0 (1)','BBB222-01-0 (2)','CCC333-01-0 (3)','DDD444-01-0 (4)','EEE555-01-0 (5)'),customId=c('4101P1','4401P1','4701P1','4102P1','4402P1'),statusId='Active')
+p <- tibble(globalId=c('AAA111-01-0 (1)','BBB222-01-0 (2)','CCC333-01-0 (3)','DDD444-01-0 (4)','4402P1'),customId=c('4101P1','4401P1','4701P1','4102P1','EEE555-01-0 (***)'),statusId='Active')
 p <- normalize_prenatal_ids(p)
+stopifnot(p$globalId[5] == "EEE555-01-0 (***)", p$customId[5] == "4402P1",
+          p$echo_id[5] == "EEE555-01-0", is.na(p$PIN[5]), p$id_swapped[5])
 fields <- c('consent_date','child_dob','pn1_survey','pn1_anthro','pn1_urine','pn1_blood','pn2_survey','pn2_anthro','pn2_urine','pn2_blood','actigraphy','event.household_water.completedDate','cordblood','mmra','estduedate','pregnancy_loss')
 for (col in fields) p[[col]] <- as.Date(rep(NA_character_,5))
 p$consent_date <- as.Date(c('2026-01-01','2025-12-31',NA,'2026-12-31','2026-06-01'))
@@ -20,6 +22,7 @@ r <- build_prenatal_powerbi(p,f,2026L,as.Date('2026-10-07'))
 pn1 <- r$progress %>% filter(event_code=='pn1_survey') %>% arrange(customId)
 check_row <- function(id, code) r$progress %>% filter(customId==id,event_code==code)
 stopifnot(nrow(r$progress)==60,
+          check_row('4402P1','pn1_survey')$participant_key == 'custom:4402P1',
           check_row('4101P1','pn1_survey')$`Complete Status`=='Complete',
           check_row('4102P1','actigraphy')$`Complete Status`=='Incomplete',
           check_row('4401P1','pn1_survey')$`Complete Status`=='Not Eligible',

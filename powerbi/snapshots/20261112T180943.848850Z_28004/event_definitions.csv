@@ -1,0 +1,21 @@
+event_code,event_label,stage,is_biospecimen,is_prenatal_element
+consent_date,Enrollments,Milestone,FALSE,FALSE
+child_dob,Births,Milestone,FALSE,FALSE
+pn1_survey,Prenatal 1 Survey,Prenatal,FALSE,TRUE
+pn1_anthro,Prenatal 1 Anthro,Prenatal,FALSE,TRUE
+pn1_urine,Prenatal 1 Urine,Prenatal,TRUE,TRUE
+pn1_blood,Prenatal 1 Blood,Prenatal,TRUE,TRUE
+pn2_survey,Prenatal 2 Survey,Prenatal,FALSE,TRUE
+pn2_anthro,Prenatal 2 Anthro,Prenatal,FALSE,TRUE
+pn2_urine,Prenatal 2 Urine,Prenatal,TRUE,TRUE
+pn2_blood,Prenatal 2 Blood,Prenatal,TRUE,TRUE
+actigraphy,Actigraphy,Prenatal,FALSE,TRUE
+water,Water,Prenatal,TRUE,TRUE
+cordblood,Cord Blood,Prenatal,FALSE,TRUE
+mmra,Maternal Medical Record Abstraction,Prenatal,FALSE,TRUE
+child_urine,Child Urine,0-5 Month,TRUE,FALSE
+child_stool,Child Stool,0-5 Month,TRUE,FALSE
+mom_hair,Maternal Hair,0-5 Month,TRUE,FALSE
+mom_bs,Maternal Bloodspot,0-5 Month,TRUE,FALSE
+breast_milk,Breast Milk,0-5 Month,TRUE,FALSE
+estduedate,Projected Births,Projection,FALSE,FALSE

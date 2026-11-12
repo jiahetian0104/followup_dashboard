@@ -97,12 +97,20 @@ def annual_counts(progress: pd.DataFrame, date_field: str, year: int, sites: lis
     return counts.reindex(sites, fill_value=0).rename("Participants").reset_index()
 
 
-def month_cards(progress: pd.DataFrame, specimens: pd.DataFrame | None, year: int, month: int) -> dict:
+def card_period_mask(dates: pd.Series, year: int, period: int | str, as_of: pd.Timestamp) -> pd.Series:
+    in_year = dates.dt.year.eq(year)
+    if period == "YTD":
+        return in_year & dates.le(as_of)
+    return in_year & dates.dt.month.eq(period)
+
+
+def month_cards(progress: pd.DataFrame, specimens: pd.DataFrame | None, year: int,
+                period: int | str, as_of: pd.Timestamp) -> dict:
     roster = progress.drop_duplicates("participant_key")
-    in_month = lambda dates: dates.dt.year.eq(year) & dates.dt.month.eq(month)
-    return {"Enrollments": int(in_month(roster["consent_date"]).sum()),
-            "Births": int(in_month(roster["child_dob"]).sum()),
-            "Biospecimens collected": None if specimens is None else int(in_month(specimens["event_date"]).sum())}
+    return {"Enrollments": int(card_period_mask(roster["consent_date"], year, period, as_of).sum()),
+            "Births": int(card_period_mask(roster["child_dob"], year, period, as_of).sum()),
+            "Biospecimens collected": None if specimens is None else
+                int(card_period_mask(specimens["event_date"], year, period, as_of).sum())}
 
 
 def event_summary(progress: pd.DataFrame, year: int) -> pd.DataFrame:

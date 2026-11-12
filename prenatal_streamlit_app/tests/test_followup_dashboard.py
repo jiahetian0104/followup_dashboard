@@ -49,8 +49,10 @@ class FollowupTests(unittest.TestCase):
         baseline = [metric.value for metric in app.metric]
         app.session_state['followup_sites'] = ['Detroit']
         app.run()
-        expected = followup_cards(self.events[self.events.site=='Detroit'],self.year,int(app.session_state['followup_month']))
+        expected = followup_cards(self.events[self.events.site=='Detroit'],self.year,int(app.session_state['followup_month']), self.roster.report_as_of.iloc[0])
         self.assertEqual([metric.value for metric in app.metric], [str(value) for value in expected.values()])
+        app.selectbox(key='followup_month').set_value('YTD').run()
+        self.assertTrue(all(metric.label.startswith('YTD ') for metric in app.metric))
         app.checkbox(key='followup_eligible_only').check().run()
         self.assertEqual(len(app.exception),0)
         app.radio(key='workflow_basis').set_value('Linked participant coverage').run()

@@ -38,9 +38,17 @@ class MetricTests(unittest.TestCase):
         self.assertEqual(births["Participants"].tolist(), [1, 0])
         enrolled = annual_counts(self.frame, "consent_date", 2026, ["Detroit", "Flint"])
         self.assertEqual(enrolled["Participants"].tolist(), [1, 0])
-        self.assertEqual(month_cards(self.frame, None, 2026, 10),
+        self.assertEqual(month_cards(self.frame, None, 2026, 10, pd.Timestamp("2026-10-07")),
                          {"Enrollments": 1, "Births": 1, "Biospecimens collected": None})
-        self.assertEqual(month_cards(self.frame, pd.DataFrame({"event_date": pd.to_datetime([])}), 2026, 10)["Biospecimens collected"], 0)
+        self.assertEqual(month_cards(self.frame, pd.DataFrame({"event_date": pd.to_datetime([])}), 2026, 10, pd.Timestamp("2026-10-07"))["Biospecimens collected"], 0)
+
+    def test_ytd_cards_include_snapshot_day_and_exclude_future_dates(self):
+        as_of = pd.Timestamp("2026-10-07")
+        specimens = pd.DataFrame({"event_date": pd.to_datetime(
+            ["2025-12-31", "2026-01-01", "2026-10-07", "2026-10-08", None])})
+        self.assertEqual(month_cards(self.frame, specimens, 2026, "YTD", as_of),
+                         {"Enrollments": 1, "Births": 1, "Biospecimens collected": 2})
+        self.assertEqual(month_cards(self.frame, specimens, 2026, 10, as_of)["Biospecimens collected"], 2)
 
     def test_actuals_do_not_drop_not_eligible_completions(self):
         summary = event_summary(self.frame, 2026).set_index("Data element")
@@ -75,7 +83,7 @@ class MetricTests(unittest.TestCase):
             result = read_specimens(path, self.frame)
             self.assertEqual(result.participant_key.tolist(), ["a"])
             self.assertEqual(result.site.tolist(), ["Detroit"])
-            self.assertEqual(month_cards(self.frame, result, 2026, 10)["Biospecimens collected"], 1)
+            self.assertEqual(month_cards(self.frame, result, 2026, 10, pd.Timestamp("2026-10-07"))["Biospecimens collected"], 1)
 
     def test_rejects_duplicate_progress(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -110,9 +118,11 @@ class StreamlitTests(unittest.TestCase):
         self.assertEqual(len(app.exception), 0)
         frame = read_progress(APP.parent / "powerbi" / "latest" / "prenatal_progress.csv")
         subset = frame[frame.site == "Detroit"]
-        expected = month_cards(subset, None, int(frame.report_year.iloc[0]), int(app.session_state["selected_month"]))
+        expected = month_cards(subset, None, int(frame.report_year.iloc[0]), int(app.session_state["selected_month"]), frame.report_as_of.iloc[0])
         self.assertEqual(app.metric[0].value, str(expected["Enrollments"]))
         self.assertEqual(app.metric[2].value, str(expected["Births"]))
+        app.selectbox(key="selected_month").set_value("YTD").run()
+        self.assertTrue(all(metric.label.startswith("YTD ") for metric in app.metric))
         app.selectbox(key="selected_month").set_value(1).run()
         self.assertTrue(app.metric[0].label.startswith("January"))
         app.button(key="reset_filters").click().run()

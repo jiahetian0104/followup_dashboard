@@ -153,21 +153,23 @@ overview, eligibility_tab = st.tabs(["Overview", "Eligibility & progress"])
 summary = event_summary(progress, year)
 with overview:
     with st.container(border=True):
-        month = st.selectbox("Monthly cards", range(1, 13), index=default_month - 1,
-                             format_func=lambda value: calendar.month_name[value], key="selected_month")
-    values = month_cards(progress, specimens, year, month)
+        period = st.selectbox("Card period", [*range(1, 13), "YTD"], index=default_month - 1,
+                             format_func=lambda value: "YTD" if value == "YTD" else calendar.month_name[value], key="selected_month")
+    period_label = "YTD" if period == "YTD" else calendar.month_name[period]
+    values = month_cards(progress, specimens, year, period, as_of)
     c1, c2, c3 = st.columns(3)
-    c1.metric(f"{calendar.month_name[month]} enrollments", values["Enrollments"],
+    c1.metric(f"{period_label} enrollments", values["Enrollments"],
               help="Unique participants by enrollment date; not event-row counts.")
-    c2.metric(f"{calendar.month_name[month]} biospecimens",
+    c2.metric(f"{period_label} biospecimens",
               "—" if values["Biospecimens collected"] is None else values["Biospecimens collected"],
               help="Completed participant × sample events from prenatal and 0–5 month collections.")
-    c3.metric(f"{calendar.month_name[month]} births", values["Births"], help="Unique participants by actual birth date.")
+    c3.metric(f"{period_label} births", values["Births"], help="Unique participants by actual birth date.")
     if specimens is None:
         st.warning("The biospecimen export is unavailable or inconsistent. Reload the exports after running PRENATAL_2026.R.")
         with st.expander("Biospecimen source issue"):
             st.write(specimen_error)
-    st.caption("The month selection applies to the three cards; the charts below show the full reporting year.")
+    st.caption(f"YTD uses {year} dates through {as_of:%B %d, %Y}. Annual charts are unchanged."
+               if period == "YTD" else "The period selection applies only to the three cards.")
 
     left, right = st.columns([2.2, 1], gap="large")
     with left, st.container(border=True):

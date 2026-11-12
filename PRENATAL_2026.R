@@ -86,8 +86,9 @@ normalize_prenatal_ids <- function(data) {
   local <- toupper(trimws(data$customId_raw))
   global[!is.na(global) & global == ""] <- NA_character_
   local[!is.na(local) & local == ""] <- NA_character_
-  pattern <- "^([A-Z]{3}[0-9]{3}-[0-9]{2}-[0-9]+)\\s*\\(\\s*([0-9]+)\\s*\\)$"
+  pattern <- "^([A-Z]{3}[0-9]{3}-[0-9]{2}-[0-9]+)\\s*\\(\\s*([0-9]+|\\*+)\\s*\\)$"
   # Ripple sometimes exports these two identifiers in the opposite columns.
+  # A masked PIN such as *** still identifies the ECHO column, but is not a usable PIN.
   # Swap only when BOTH formats confirm the reversal; never infer from site alone.
   local_pattern <- "^[0-9]{4}[PF][0-9]+$"
   data$id_swapped <- !is.na(global) & !is.na(local) &
@@ -114,7 +115,9 @@ normalize_prenatal_ids <- function(data) {
   data$PIN <- NA_character_
   data$echo_id[valid_global] <- sub(pattern, "\\1", global[valid_global], perl = TRUE)
   data$PIN[valid_global] <- sub(pattern, "\\2", global[valid_global], perl = TRUE)
-  global[valid_global] <- paste0(data$echo_id[valid_global], " (", data$PIN[valid_global], ")")
+  data$PIN[!is.na(data$PIN) & !grepl("^[0-9]+$", data$PIN)] <- NA_character_
+  has_pin <- valid_global & !is.na(data$PIN)
+  global[has_pin] <- paste0(data$echo_id[has_pin], " (", data$PIN[has_pin], ")")
   data$globalId <- global
   data$customId <- local
   if (any(!valid_global)) {

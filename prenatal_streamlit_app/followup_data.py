@@ -2,6 +2,8 @@
 from pathlib import Path
 import pandas as pd
 
+from dashboard_data import card_period_mask
+
 FOLLOWUP_ELEMENTS = ["Postnatal Consent", "Survey", "Child Anthro", "Mom Anthro",
                      "Visit Scheduled", "Diaper Sent", "VIB Request", "Child Urine",
                      "Child Stool", "Mom Hair", "Mom Bloodspot", "Breast Milk", "Partner Contact"]
@@ -86,9 +88,8 @@ def followup_summary(events, year):
     return pd.DataFrame(rows)
 
 
-def followup_cards(events, year, month):
-    dates = events["Complete Date"]
-    current = events.loc[dates.dt.year.eq(year) & dates.dt.month.eq(month)]
+def followup_cards(events, year, period, as_of):
+    current = events.loc[card_period_mask(events["Complete Date"], year, period, as_of)]
     return {"Surveys": int(current["event_code"].eq("survey").sum()),
             "Biospecimens": int(current["is_biospecimen"].fillna(False).sum()),
             "Visits scheduled": int(current["event_code"].eq("visit_scheduled").sum())}

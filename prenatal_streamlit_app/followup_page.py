@@ -89,15 +89,17 @@ overview, progress_tab = st.tabs(["Overview", "Eligibility & progress"])
 summary = followup_summary(events, year)
 with overview:
     with st.container(border=True):
-        month = st.selectbox("Monthly cards", range(1, 13), index=st.session_state["followup_default_month"] - 1,
-            format_func=lambda value: calendar.month_name[value], key="followup_month")
-    cards = followup_cards(events, year, month)
+        period = st.selectbox("Card period", [*range(1, 13), "YTD"], index=st.session_state["followup_default_month"] - 1,
+            format_func=lambda value: "YTD" if value == "YTD" else calendar.month_name[value], key="followup_month")
+    period_label = "YTD" if period == "YTD" else calendar.month_name[period]
+    cards = followup_cards(events, year, period, as_of)
     c1, c2, c3 = st.columns(3)
-    c1.metric(f"{calendar.month_name[month]} surveys", cards["Surveys"])
-    c2.metric(f"{calendar.month_name[month]} biospecimens", cards["Biospecimens"],
+    c1.metric(f"{period_label} surveys", cards["Surveys"])
+    c2.metric(f"{period_label} biospecimens", cards["Biospecimens"],
               help="Child urine/stool, maternal hair/bloodspot, and breast milk completion events.")
-    c3.metric(f"{calendar.month_name[month]} visits scheduled", cards["Visits scheduled"])
-    st.caption("The month selection applies to the three cards. Annual charts use the full reporting year.")
+    c3.metric(f"{period_label} visits scheduled", cards["Visits scheduled"])
+    st.caption(f"YTD uses {year} dates through {as_of:%B %d, %Y}. Annual charts are unchanged."
+               if period == "YTD" else "The period selection applies only to the three cards.")
     left, right = st.columns([2.1, 1], gap="large")
     with left, st.container(border=True):
         st.subheader(f"{year} completed data elements")

@@ -1,0 +1,49 @@
+site,event_code,Data Element Name,Participant Count,Completed in Report Year,Eligible Count,Eligible Complete Count,Eligible Complete in Report Year,Eligible Incomplete Count,Not Eligible Count,Eligibility Unknown Count,Completion Rate,report_year,report_as_of
+All Sites,actigraphy,Actigraphy,720,77,120,76,76,44,284,316,0.6333333333333333,2026,2026-11-12
+All Sites,cordblood,Cord Blood,720,2,,,,,0,720,,2026,2026-11-12
+All Sites,mmra,Maternal Medical Record Abstraction,720,0,,,,,0,720,,2026,2026-11-12
+All Sites,pn1_anthro,Prenatal 1 Anthro,720,119,120,119,119,1,284,316,0.9916666666666667,2026,2026-11-12
+All Sites,pn1_blood,Prenatal 1 Blood,720,84,120,83,83,37,284,316,0.6916666666666667,2026,2026-11-12
+All Sites,pn1_survey,Prenatal 1 Survey,720,93,120,93,93,27,284,316,0.775,2026,2026-11-12
+All Sites,pn1_urine,Prenatal 1 Urine,720,103,120,103,103,17,284,316,0.8583333333333333,2026,2026-11-12
+All Sites,pn2_anthro,Prenatal 2 Anthro,720,112,145,97,97,48,259,316,0.6689655172413793,2026,2026-11-12
+All Sites,pn2_blood,Prenatal 2 Blood,720,101,145,86,86,59,259,316,0.593103448275862,2026,2026-11-12
+All Sites,pn2_survey,Prenatal 2 Survey,720,100,145,89,88,56,259,316,0.6137931034482759,2026,2026-11-12
+All Sites,pn2_urine,Prenatal 2 Urine,720,106,145,93,93,52,259,316,0.6413793103448275,2026,2026-11-12
+All Sites,water,Water,720,62,110,58,57,52,294,316,0.5272727272727272,2026,2026-11-12
+Detroit,actigraphy,Actigraphy,213,25,46,24,24,22,79,88,0.5217391304347826,2026,2026-11-12
+Detroit,cordblood,Cord Blood,213,2,,,,,0,213,,2026,2026-11-12
+Detroit,mmra,Maternal Medical Record Abstraction,213,0,,,,,0,213,,2026,2026-11-12
+Detroit,pn1_anthro,Prenatal 1 Anthro,213,46,46,46,46,0,79,88,1,2026,2026-11-12
+Detroit,pn1_blood,Prenatal 1 Blood,213,20,46,19,19,27,79,88,0.41304347826086957,2026,2026-11-12
+Detroit,pn1_survey,Prenatal 1 Survey,213,34,46,34,34,12,79,88,0.7391304347826086,2026,2026-11-12
+Detroit,pn1_urine,Prenatal 1 Urine,213,41,46,41,41,5,79,88,0.8913043478260869,2026,2026-11-12
+Detroit,pn2_anthro,Prenatal 2 Anthro,213,37,51,34,34,17,74,88,0.6666666666666666,2026,2026-11-12
+Detroit,pn2_blood,Prenatal 2 Blood,213,27,51,25,25,26,74,88,0.49019607843137253,2026,2026-11-12
+Detroit,pn2_survey,Prenatal 2 Survey,213,26,51,25,25,26,74,88,0.49019607843137253,2026,2026-11-12
+Detroit,pn2_urine,Prenatal 2 Urine,213,35,51,33,33,18,74,88,0.6470588235294118,2026,2026-11-12
+Detroit,water,Water,213,26,40,25,25,15,85,88,0.625,2026,2026-11-12
+Flint,actigraphy,Actigraphy,233,21,34,21,21,13,95,104,0.6176470588235294,2026,2026-11-12
+Flint,cordblood,Cord Blood,233,0,,,,,0,233,,2026,2026-11-12
+Flint,mmra,Maternal Medical Record Abstraction,233,0,,,,,0,233,,2026,2026-11-12
+Flint,pn1_anthro,Prenatal 1 Anthro,233,34,34,34,34,0,95,104,1,2026,2026-11-12
+Flint,pn1_blood,Prenatal 1 Blood,233,30,34,30,30,4,95,104,0.8823529411764706,2026,2026-11-12
+Flint,pn1_survey,Prenatal 1 Survey,233,27,34,27,27,7,95,104,0.7941176470588235,2026,2026-11-12
+Flint,pn1_urine,Prenatal 1 Urine,233,28,34,28,28,6,95,104,0.8235294117647058,2026,2026-11-12
+Flint,pn2_anthro,Prenatal 2 Anthro,233,27,45,23,23,22,84,104,0.5111111111111111,2026,2026-11-12
+Flint,pn2_blood,Prenatal 2 Blood,233,25,45,21,21,24,84,104,0.4666666666666667,2026,2026-11-12
+Flint,pn2_survey,Prenatal 2 Survey,233,26,45,24,23,21,84,104,0.5333333333333333,2026,2026-11-12
+Flint,pn2_urine,Prenatal 2 Urine,233,23,45,20,20,25,84,104,0.4444444444444444,2026,2026-11-12
+Flint,water,Water,233,5,30,6,5,24,99,104,0.2,2026,2026-11-12
+Traverse City,actigraphy,Actigraphy,274,31,40,31,31,9,110,124,0.775,2026,2026-11-12
+Traverse City,cordblood,Cord Blood,274,0,,,,,0,274,,2026,2026-11-12
+Traverse City,mmra,Maternal Medical Record Abstraction,274,0,,,,,0,274,,2026,2026-11-12
+Traverse City,pn1_anthro,Prenatal 1 Anthro,274,39,40,39,39,1,110,124,0.975,2026,2026-11-12
+Traverse City,pn1_blood,Prenatal 1 Blood,274,34,40,34,34,6,110,124,0.85,2026,2026-11-12
+Traverse City,pn1_survey,Prenatal 1 Survey,274,32,40,32,32,8,110,124,0.8,2026,2026-11-12
+Traverse City,pn1_urine,Prenatal 1 Urine,274,34,40,34,34,6,110,124,0.85,2026,2026-11-12
+Traverse City,pn2_anthro,Prenatal 2 Anthro,274,48,49,40,40,9,101,124,0.8163265306122449,2026,2026-11-12
+Traverse City,pn2_blood,Prenatal 2 Blood,274,49,49,40,40,9,101,124,0.8163265306122449,2026,2026-11-12
+Traverse City,pn2_survey,Prenatal 2 Survey,274,48,49,40,40,9,101,124,0.8163265306122449,2026,2026-11-12
+Traverse City,pn2_urine,Prenatal 2 Urine,274,48,49,40,40,9,101,124,0.8163265306122449,2026,2026-11-12
+Traverse City,water,Water,274,31,40,27,27,13,110,124,0.675,2026,2026-11-12

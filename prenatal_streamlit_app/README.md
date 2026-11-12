@@ -35,7 +35,7 @@ The required libraries were already available on the development machine.
   Unknown is offered only when present in the roster. Deselecting all sites
   shows an explicit empty-selection message. **Reset filters** restores all
   sites and the snapshot month.
-- **Monthly cards** changes only the three cards. Annual charts and current
+- **Card period** changes only the three cards. **YTD** counts dates in the reporting year through the selected snapshot date, inclusive. Annual charts and current
   pending-birth projections retain their named periods.
 - **Biospecimens** includes prenatal + 0–5 month collections.
   Each completion counts once per participant × sample event, not per tube.
