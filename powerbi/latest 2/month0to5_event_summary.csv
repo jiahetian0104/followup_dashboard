@@ -1,0 +1,53 @@
+site,event_code,Data Element Name,Completed in Report Year,Eligible Count,Eligible Complete Count,Eligible Complete in Report Year,Eligible Incomplete Count,Not Eligible Count,Eligibility Unknown Count,Completion Rate,report_year,report_as_of
+All Sites,breast_milk,Breast Milk,24,149,22,22,127,172,0,0.1476510067114094,2026,2026-11-16
+All Sites,child_anthro,Child Anthro,83,149,64,64,85,172,0,0.42953020134228187,2026,2026-11-16
+All Sites,child_stool,Child Stool,60,149,45,45,104,172,0,0.30201342281879195,2026,2026-11-16
+All Sites,child_urine,Child Urine,61,149,46,45,103,172,0,0.3087248322147651,2026,2026-11-16
+All Sites,diaper_sent,Diaper Sent,59,149,50,50,99,172,0,0.33557046979865773,2026,2026-11-16
+All Sites,mom_anthro,Mom Anthro,79,149,61,61,88,172,0,0.40939597315436244,2026,2026-11-16
+All Sites,mom_bs,Mom Bloodspot,59,149,46,45,103,172,0,0.3087248322147651,2026,2026-11-16
+All Sites,mom_hair,Mom Hair,63,149,48,48,101,172,0,0.3221476510067114,2026,2026-11-16
+All Sites,partner_contact,Partner Contact,19,149,15,15,134,172,0,0.10067114093959731,2026,2026-11-16
+All Sites,postnatal_consent,Postnatal Consent,137,149,116,116,33,172,0,0.7785234899328859,2026,2026-11-16
+All Sites,survey,Survey,117,149,112,112,37,172,0,0.7516778523489933,2026,2026-11-16
+All Sites,vib_request,VIB Request,62,149,57,57,92,172,0,0.3825503355704698,2026,2026-11-16
+All Sites,visit_scheduled,Visit Scheduled,67,149,56,56,93,172,0,0.37583892617449666,2026,2026-11-16
+Detroit,breast_milk,Breast Milk,4,41,4,4,37,47,0,0.0975609756097561,2026,2026-11-16
+Detroit,child_anthro,Child Anthro,14,41,12,12,29,47,0,0.2926829268292683,2026,2026-11-16
+Detroit,child_stool,Child Stool,9,41,7,7,34,47,0,0.17073170731707318,2026,2026-11-16
+Detroit,child_urine,Child Urine,9,41,8,8,33,47,0,0.1951219512195122,2026,2026-11-16
+Detroit,diaper_sent,Diaper Sent,15,41,15,15,26,47,0,0.36585365853658536,2026,2026-11-16
+Detroit,mom_anthro,Mom Anthro,12,41,10,10,31,47,0,0.24390243902439024,2026,2026-11-16
+Detroit,mom_bs,Mom Bloodspot,13,41,11,11,30,47,0,0.2682926829268293,2026,2026-11-16
+Detroit,mom_hair,Mom Hair,8,41,6,6,35,47,0,0.14634146341463414,2026,2026-11-16
+Detroit,partner_contact,Partner Contact,2,41,1,1,40,47,0,0.024390243902439025,2026,2026-11-16
+Detroit,postnatal_consent,Postnatal Consent,26,41,22,22,19,47,0,0.5365853658536586,2026,2026-11-16
+Detroit,survey,Survey,23,41,23,23,18,47,0,0.5609756097560976,2026,2026-11-16
+Detroit,vib_request,VIB Request,10,41,8,8,33,47,0,0.1951219512195122,2026,2026-11-16
+Detroit,visit_scheduled,Visit Scheduled,16,41,14,14,27,47,0,0.34146341463414637,2026,2026-11-16
+Flint,breast_milk,Breast Milk,4,41,2,2,39,63,0,0.04878048780487805,2026,2026-11-16
+Flint,child_anthro,Child Anthro,19,41,11,11,30,63,0,0.2682926829268293,2026,2026-11-16
+Flint,child_stool,Child Stool,11,41,6,6,35,63,0,0.14634146341463414,2026,2026-11-16
+Flint,child_urine,Child Urine,15,41,8,8,33,63,0,0.1951219512195122,2026,2026-11-16
+Flint,diaper_sent,Diaper Sent,21,41,15,15,26,63,0,0.36585365853658536,2026,2026-11-16
+Flint,mom_anthro,Mom Anthro,19,41,11,11,30,63,0,0.2682926829268293,2026,2026-11-16
+Flint,mom_bs,Mom Bloodspot,16,41,8,8,33,63,0,0.1951219512195122,2026,2026-11-16
+Flint,mom_hair,Mom Hair,18,41,10,10,31,63,0,0.24390243902439024,2026,2026-11-16
+Flint,partner_contact,Partner Contact,1,41,1,1,40,63,0,0.024390243902439025,2026,2026-11-16
+Flint,postnatal_consent,Postnatal Consent,41,41,32,32,9,63,0,0.7804878048780488,2026,2026-11-16
+Flint,survey,Survey,31,41,29,29,12,63,0,0.7073170731707317,2026,2026-11-16
+Flint,vib_request,VIB Request,11,41,11,11,30,63,0,0.2682926829268293,2026,2026-11-16
+Flint,visit_scheduled,Visit Scheduled,25,41,19,19,22,63,0,0.4634146341463415,2026,2026-11-16
+Traverse City,breast_milk,Breast Milk,16,67,16,16,51,62,0,0.23880597014925373,2026,2026-11-16
+Traverse City,child_anthro,Child Anthro,50,67,41,41,26,62,0,0.6119402985074627,2026,2026-11-16
+Traverse City,child_stool,Child Stool,40,67,32,32,35,62,0,0.47761194029850745,2026,2026-11-16
+Traverse City,child_urine,Child Urine,37,67,30,29,37,62,0,0.44776119402985076,2026,2026-11-16
+Traverse City,diaper_sent,Diaper Sent,23,67,20,20,47,62,0,0.29850746268656714,2026,2026-11-16
+Traverse City,mom_anthro,Mom Anthro,48,67,40,40,27,62,0,0.5970149253731343,2026,2026-11-16
+Traverse City,mom_bs,Mom Bloodspot,30,67,27,26,40,62,0,0.40298507462686567,2026,2026-11-16
+Traverse City,mom_hair,Mom Hair,37,67,32,32,35,62,0,0.47761194029850745,2026,2026-11-16
+Traverse City,partner_contact,Partner Contact,16,67,13,13,54,62,0,0.19402985074626866,2026,2026-11-16
+Traverse City,postnatal_consent,Postnatal Consent,70,67,62,62,5,62,0,0.9253731343283582,2026,2026-11-16
+Traverse City,survey,Survey,63,67,60,60,7,62,0,0.8955223880597015,2026,2026-11-16
+Traverse City,vib_request,VIB Request,41,67,38,38,29,62,0,0.5671641791044776,2026,2026-11-16
+Traverse City,visit_scheduled,Visit Scheduled,26,67,23,23,44,62,0,0.34328358208955223,2026,2026-11-16

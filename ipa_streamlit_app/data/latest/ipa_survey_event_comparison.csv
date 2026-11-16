@@ -2262,7 +2262,7 @@ GRG479-01-A,24_35_month,3-20 year,FALSE,FALSE,,,event.24_35mo_ipa_complete.compl
 GRG479-01-A,3_5yr,3-20 year,FALSE,FALSE,,,event.2026_3_5yr_ipa_complete.completedDate,,,,,FALSE,Neither complete,,,Neither complete,FALSE,
 GRG479-01-A,6_10yr,3-20 year,FALSE,FALSE,,,event.2026_6_10yr_ipa_complete.completedDate,,,,,FALSE,Neither complete,,,Neither complete,FALSE,
 GRM073-01-A,11_17yr,6-35 month,FALSE,FALSE,,,event.2026_11_17yr_ipa_complete.completedDate,,,,,FALSE,Neither complete,,,Neither complete,FALSE,
-GRM073-01-A,12_23_month,6-35 month,FALSE,FALSE,,,event.12_23mo_ipa_complete.completedDate,,,,,FALSE,Neither complete,,,Neither complete,FALSE,
+GRM073-01-A,12_23_month,6-35 month,TRUE,TRUE,2026-11-12,11/12/2026,event.12_23mo_ipa_complete.completedDate,,6-35 month,2026-11-12,Andrew,TRUE,Both complete,0,,Both complete,TRUE,
 GRM073-01-A,18_20yr,6-35 month,FALSE,FALSE,,,event.2026_18_20yr_ipa_complete.completedDate,,,,,FALSE,Neither complete,,,Neither complete,FALSE,
 GRM073-01-A,24_35_month,6-35 month,FALSE,FALSE,,,event.24_35mo_ipa_complete.completedDate,,,,,FALSE,Neither complete,,,Neither complete,FALSE,
 GRM073-01-A,3_5yr,6-35 month,FALSE,FALSE,,,event.2026_3_5yr_ipa_complete.completedDate,,,,,FALSE,Neither complete,,,Neither complete,FALSE,

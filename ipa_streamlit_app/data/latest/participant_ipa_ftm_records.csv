@@ -82,6 +82,7 @@ Andrew,JYP178-01-N,3-20 year,3_5yr,1,1,0,0
 Andrew,JZP660-01-A,3-20 year,3_5yr,1,1,0,0
 Andrew,KSZ066-01-A,3-20 year,6_10yr,2,0,0,1
 Andrew,LDR942-01-A,3-20 year,6_10yr,1,0,1,0
+Andrew,LGT159-01-A,6-35 month,12_23_month,1,0,0,0
 Andrew,LHC128-01-A,3-20 year,6_10yr,1,0,0,1
 Andrew,LMR839-01-A,3-20 year,3_5yr,1,0,0,0
 Andrew,LYY018-01-A,3-20 year,6_10yr,1,1,0,0
@@ -342,6 +343,7 @@ Jody,ZQT032-01-A,3-20 year,11_17yr,1,0,0,0
 Jody,ZVD237-01-A,6-35 month,12_23_month,1,0,0,0
 Kowlini,BKK569-01-A,3-20 year,6_10yr,1,0,0,0
 Kowlini,BWJ550-01-A,6-35 month,12_23_month,2,0,1,0
+Kowlini,CTT657-01-A,6-35 month,12_23_month,1,0,0,0
 Kowlini,CXR904-01-A,3-20 year,6_10yr,3,0,1,1
 Kowlini,DLW793-01-A,6-35 month,12_23_month,1,0,0,0
 Kowlini,DSN848-01-A,3-20 year,6_10yr,2,0,0,1
@@ -362,6 +364,7 @@ Kowlini,LBZ361-01-A,6-35 month,12_23_month,4,3,0,1
 Kowlini,LHC177-01-A,6-35 month,12_23_month,2,2,0,0
 Kowlini,LNT397-01-A,6-35 month,12_23_month,1,0,0,0
 Kowlini,MCC047-01-A,3-20 year,6_10yr,2,1,0,1
+Kowlini,MFH339-01-A,6-35 month,12_23_month,1,0,0,0
 Kowlini,MJZ709-01-A,6-35 month,12_23_month,1,1,0,0
 Kowlini,MMK829-01-A,3-20 year,3_5yr,1,0,0,0
 Kowlini,MMV961-01-A,6-35 month,12_23_month,1,0,0,0
@@ -380,10 +383,12 @@ Kowlini,TSN328-01-N,3-20 year,6_10yr,2,1,0,0
 Kowlini,TTY851-01-A,6-35 month,12_23_month,1,0,0,0
 Kowlini,VCL006-01-A,3-20 year,3_5yr,1,0,0,0
 Kowlini,VWC757-01-A,3-20 year,6_10yr,1,0,0,0
+Kowlini,WDC372-01-A,3-20 year,3_5yr,1,0,0,0
 Kowlini,WDV681-01-A,3-20 year,11_17yr,2,0,0,2
 Kowlini,WDV681-02-A,3-20 year,11_17yr,2,0,0,2
 Kowlini,WKW938-01-A,3-20 year,3_5yr,1,0,0,0
 Kowlini,XZN379-01-A,3-20 year,3_5yr,3,1,0,2
+Kowlini,YBC948-01-A,6-35 month,12_23_month,1,0,0,0
 Kowlini,YNF452-01-A,6-35 month,12_23_month,1,0,0,0
 Kowlini,YNF452-01-B,6-35 month,12_23_month,1,0,0,0
 Kowlini,YYB078-01-A,6-35 month,12_23_month,1,0,0,0
