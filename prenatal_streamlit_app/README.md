@@ -122,7 +122,7 @@ Each successful R export writes all dashboard CSVs into
 `../powerbi/snapshots/<UTC timestamp>_<process ID>/` and publishes the complete
 set to `../powerbi/latest/`. The dashboard defaults to `latest/`. The sidebar **Data version** dropdown can select any complete historical snapshot for both reports.
 `snapshot_info.csv` records the export time, reporting year and snapshot date.
-A failed export leaves the previous `latest/` intact.
+The R script keeps the `latest/` folder in place and overwrites its CSVs after the snapshot is complete. If copying to `latest/` fails, the complete snapshot remains available.
 
 For GitHub deployment, push the app code and updated `powerbi/latest/` files
 on the deployed branch. Push `powerbi/snapshots/` as well to make those historical versions available online. Snapshots are no longer ignored by Git. The CSVs contain participant-level data and belong

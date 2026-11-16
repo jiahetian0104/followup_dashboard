@@ -729,16 +729,12 @@ write_csv(tibble(snapshot_id = basename(powerbi_dir), report_year = report_year,
                  report_as_of = report_as_of,
                  exported_at_utc = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")),
           file.path(powerbi_dir, "snapshot_info.csv"), na = "")
-latest_stage <- tempfile(".latest-stage-", tmpdir = dirname(latest_dir))
-dir.create(latest_stage)
-snapshot_files <- list.files(powerbi_dir, full.names = TRUE)
-if (!all(file.copy(snapshot_files, latest_stage))) stop("Could not stage latest exports")
-latest_backup <- tempfile(".latest-backup-", tmpdir = dirname(latest_dir))
-had_latest <- dir.exists(latest_dir)
-if (had_latest && !file.rename(latest_dir, latest_backup)) stop("Could not preserve previous latest")
-if (!file.rename(latest_stage, latest_dir)) {
-  if (had_latest) file.rename(latest_backup, latest_dir)
-  stop("Could not publish latest exports; previous latest restored")
+# Keep the directory in place so OneDrive does not sync a replacement as "latest 2".
+dir.create(latest_dir, showWarnings = FALSE, recursive = TRUE)
+snapshot_files <- list.files(powerbi_dir, pattern = "[.]csv$", full.names = TRUE)
+manifest <- file.path(powerbi_dir, "snapshot_info.csv")
+if (!all(file.copy(setdiff(snapshot_files, manifest), latest_dir, overwrite = TRUE)) ||
+    !file.copy(manifest, latest_dir, overwrite = TRUE)) {
+  stop("Could not update latest exports. The complete snapshot is available at: ", powerbi_dir)
 }
-if (had_latest) unlink(latest_backup, recursive = TRUE)
 message("Dashboard latest: ", latest_dir, "\nSnapshot retained: ", powerbi_dir)
